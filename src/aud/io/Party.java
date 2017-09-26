@@ -1,4 +1,4 @@
-package sample;
+package aud.io;
 
 public class Party {
     private int partyId;
