@@ -16,10 +16,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="maven" />
+        <module name="Audio" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Audio" target="1.5" />
       <module name="comnus_spotify" target="1.5" />
       <module name="maven" target="1.5" />
       <module name="spotify" target="1.5" />
