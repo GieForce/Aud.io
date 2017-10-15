@@ -7,8 +7,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        SpotifyMedia spotifyMedia = new SpotifyMedia();
-        spotifyMedia.getAlbumByName();
+        
     }
 
 
