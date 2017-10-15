@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2521a8a-4c29-466f-a421-54064c010fe1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="e2521a8a-4c29-466f-a421-54064c010fe1" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/maven/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -513,7 +511,7 @@
       <workItem from="1507825108437" duration="7970000" />
       <workItem from="1507877993473" duration="1293000" />
       <workItem from="1508060864638" duration="2544000" />
-      <workItem from="1508078897822" duration="2958000" />
+      <workItem from="1508078897822" duration="3582000" />
     </task>
     <task id="LOCAL-00001" summary="Added pomfile">
       <created>1507621359770</created>
@@ -561,7 +559,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52262000" />
+    <option name="totallyTimeSpent" value="52886000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
