@@ -20,10 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Audio" target="1.5" />
-      <module name="comnus_spotify" target="1.5" />
-      <module name="maven" target="1.5" />
-      <module name="spotify" target="1.5" />
+      <module name="Audio" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
