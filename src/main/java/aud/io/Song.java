@@ -16,4 +16,28 @@ public class Song {
         this.album = album;
         this.artist = artist;
     }
+
+    public float getLengte() {
+        return lengte;
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public String getLocatie() {
+        return locatie;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public String getAlbum() {
+        return album;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
 }

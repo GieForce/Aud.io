@@ -1,7 +1,7 @@
 package aud.io;
 
-import net.sf.json.JSONObject;
+import com.google.gson.Gson;
 
 public interface IMedia {
-    JSONObject getFile(String zoekterm);
+    Gson getFile(String zoekterm);
 }
