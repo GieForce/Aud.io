@@ -30,6 +30,7 @@ public class ClientMain {
             registry = LocateRegistry.getRegistry(registryName,port);
             server = (IPartyServer) registry.lookup(serverName);
             publisher = (IRemotePublisherForListener) registry.lookup(publisherName);
+            if (true)
             manager = new ClientManager(publisher, server);
 
         } catch (RemoteException | NotBoundException e) {

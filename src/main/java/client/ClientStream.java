@@ -30,7 +30,7 @@ public class ClientStream {
             Clip clip = AudioSystem.getClip();
             clip.open(ais);
             clip.start();
-            Thread.sleep(100); // given clip.drain a chance to start
+            Thread.sleep(100); // Clip heeft de kans om op te starten
             clip.drain();
         }
         catch (IOException ex)
