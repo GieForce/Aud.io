@@ -12,57 +12,63 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.JoinController">
+<AnchorPane minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0"
+            xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.CreatePartyController">
     <children>
         <ImageView pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@background.png" />
+                <Image url="@background.png"/>
             </image>
         </ImageView>
         <VBox alignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                 <padding>
-                    <Insets top="10.0" />
+                    <Insets top="10.0"/>
                 </padding>
                 <VBox alignment="CENTER">
-                    <ImageView fitHeight="125.0" fitWidth="125.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fitHeight="125.0" fitWidth="125.0" nodeOrientation="INHERIT" pickOnBounds="true"
+                               preserveRatio="true">
                         <VBox.margin>
-                            <Insets bottom="10.0" top="10.0" />
+                            <Insets bottom="10.0" top="10.0"/>
                         </VBox.margin>
-                        <Image url="@Logo.png" />
+                        <Image url="@Logo.png"/>
                     </ImageView>
                     <Separator opacity="0.5" prefWidth="200.0" style="-fx-background-color: black;">
                         <VBox.margin>
-                            <Insets bottom="10.0" left="-150.0" right="-150.0" />
+                            <Insets bottom="10.0" left="-150.0" right="-150.0"/>
                         </VBox.margin>
                     </Separator>
                     <HBox alignment="CENTER">
-                        <Label text="Let's join a party!" textFill="#f5e9be">
+                        <Label text="Time to create a party!" textFill="#f5e9be">
                             <font>
-                                <Font size="44.0" />
+                                <Font size="44.0"/>
                             </font>
                         </Label>
                     </HBox>
                     <HBox alignment="CENTER">
                         <padding>
-                            <Insets top="80.0" />
+                            <Insets top="80.0"/>
                         </padding>
                         <VBox alignment="CENTER_RIGHT">
                             <children>
-                                <TextField fx:id="tbPartyName" promptText="party id" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;">
+                                <TextField fx:id="tbPartyName" promptText="party name"
+                                           style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;">
                                     <font>
-                                        <Font size="24.0" />
+                                        <Font size="24.0"/>
                                     </font>
                                 </TextField>
-                                <Button fx:id="btnJoin" mnemonicParsing="false" onAction="#JoinParty" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;" text="Join party" textFill="#f5e9be">
+                                <Button fx:id="btnCreate" mnemonicParsing="false" onAction="#CreateParty"
+                                        style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;"
+                                        text="Create party" textFill="#f5e9be">
                                     <font>
-                                        <Font size="24.0" />
+                                        <Font size="24.0"/>
                                     </font>
                                     <padding>
-                                        <Insets left="50.0" right="50.0" />
+                                        <Insets left="50.0" right="50.0"/>
                                     </padding>
                                     <VBox.margin>
-                                        <Insets top="10.0" />
+                                        <Insets top="10.0"/>
                                     </VBox.margin>
                                 </Button>
                             </children>

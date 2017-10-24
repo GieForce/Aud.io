@@ -15,8 +15,8 @@ public class LoginController {
     public void Login(ActionEvent actionEvent) {
         String user = tbUsername.getText();
         String password = tbPassword.getText();
-        //TODO: Login
-        Message.Show("Login details", user + " " + password);
+        //TODO: LoginView
+        Message.Show("LoginView details", user + " " + password);
     }
 
     public void GuestLogin(MouseEvent mouseEvent) {
