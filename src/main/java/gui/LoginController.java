@@ -1,25 +1,31 @@
 package gui;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.event.ActionEvent;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.MouseEvent;
 
 public class LoginController {
-    public ImageView imageBackground;
-    public VBox vboxRoot;
+    public Button btnJoin;
+    public ImageView imageLogo;
+    public PasswordField tbPassword;
+    public TextField tbUsername;
 
-    private javax.swing.text.html.ImageView background;
-    private javax.swing.text.html.ImageView logo;
-    private Label label;
-    private TextField txId;
-    private Button btnJoin;
 
-    public void Initialize() {
-        imageBackground.setFitWidth(240);
-        imageBackground.setPreserveRatio(true);
+    public void Login(ActionEvent actionEvent) {
+        String user = tbUsername.getText();
+        String password = tbPassword.getText();
+        //TODO: Login
+        Message.Show("Login details", user + " " + password);
+    }
 
-        
+    public void GuestLogin(MouseEvent mouseEvent) {
+        //Redirect to party list
+        Message.Show("Clicked", "Clicked");
+    }
+
+    public void SignUp(MouseEvent mouseEvent) {
+        //Redirect to Sign Up.
+        Message.Show("Clicked", "Clicked");
     }
 }
