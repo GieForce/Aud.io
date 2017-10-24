@@ -7,13 +7,13 @@ public interface IPartyManager  extends Remote {
 
     IParty joinParty(String partyKey, User user) throws RemoteException;
 
-    IParty createParty(RegisteredUser user) throws RemoteException;
+    IParty createParty(RegisteredUser user, String partyName) throws RemoteException;
 
     void addSong(String song, String partyKey, User user) throws RemoteException;
 
     User login(String name, String password) throws RemoteException;
 
-    Boolean createUser(String name, String password) throws RemoteException;
+    Boolean createUser(String name, String password, String nickname) throws RemoteException;
 
     Boolean logout(User user) throws RemoteException;
 

@@ -1,10 +1,9 @@
 package gui;
 
-import Demo.Client.ClientManager;
-import Demo.Shared.IPartyServer;
-import Demo.Shared.RegisteredUser;
 import Demo.Shared.SharedData;
-import Demo.Shared.fontyspublisher.IRemotePublisherForListener;
+import aud.io.ClientManager;
+import aud.io.IPartyManager;
+import aud.io.fontyspublisher.IRemotePublisherForListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
@@ -27,7 +26,7 @@ public class GuiController implements Initializable {
     private static  String publisherName;
 
     private static Registry registry;
-    private static IPartyServer server;
+    private static IPartyManager server;
     private static IRemotePublisherForListener publisher;
     private static ClientManager manager;
 
@@ -42,7 +41,7 @@ public class GuiController implements Initializable {
 
     public void login()
     {
-        manager.login("Stefan");
+        //manager.login("Stefan");
     }
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,7 +52,7 @@ public class GuiController implements Initializable {
 
         try {
             registry = LocateRegistry.getRegistry(registryName,port);
-            server = (IPartyServer) registry.lookup(serverName);
+            server = (IPartyManager) registry.lookup(serverName);
             publisher = (IRemotePublisherForListener) registry.lookup(publisherName);
             manager = new ClientManager(publisher, server);
         }
