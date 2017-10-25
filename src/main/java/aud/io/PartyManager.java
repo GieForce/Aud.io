@@ -3,10 +3,12 @@ package aud.io;
 
 import aud.io.fontyspublisher.RemotePublisher;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.*;
 
-public class PartyManager implements Observer, IPartyManager {
+public class PartyManager extends UnicastRemoteObject implements Observer, IPartyManager {
     ArrayList<RegisteredUser> registeredUsers;
     List<Party> activeParties;
     IDatabase database;
@@ -16,7 +18,7 @@ public class PartyManager implements Observer, IPartyManager {
     /**
      * Create a new PartyManager which will handle all Parties
      */
-    public PartyManager(RemotePublisher publisher) {
+    public PartyManager(RemotePublisher publisher) throws RemoteException{
         this.publisher = publisher;
 
         database = new MemoryDatabase();

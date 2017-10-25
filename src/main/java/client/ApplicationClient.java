@@ -49,13 +49,14 @@ public class ApplicationClient {
 
     private static void executeInput(String line, Scanner scanner) throws RemoteException {
         if (line.equals("temp")){
+            System.out.print("nickname:");
             System.out.println(manager.getTemporaryUser(scanner.nextLine()));
         }
 
         if (line.equals("login")){
             System.out.print("username:");
             String username = scanner.nextLine();
-            System.out.print("password");
+            System.out.print("password:");
             System.out.println(manager.login(username, scanner.nextLine()));
         }
 

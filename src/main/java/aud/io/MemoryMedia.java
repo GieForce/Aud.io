@@ -1,8 +1,9 @@
 package aud.io;
 
+import java.io.Serializable;
 import java.util.Properties;
 
-public class MemoryMedia implements IMedia {
+public class MemoryMedia implements IMedia, Serializable {
 
     public MemoryMedia() {
     }

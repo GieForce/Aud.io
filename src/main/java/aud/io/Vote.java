@@ -1,6 +1,8 @@
 package aud.io;
 
-public enum Vote {
+import java.io.Serializable;
+
+public enum Vote implements Serializable{
     LIKE,
     DISLIKE
 }

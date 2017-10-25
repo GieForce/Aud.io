@@ -1,6 +1,8 @@
 package aud.io;
 
-public class Track extends Votable {
+import java.io.Serializable;
+
+public class Track extends Votable implements Serializable{
     private String artist;
     private String album;
 

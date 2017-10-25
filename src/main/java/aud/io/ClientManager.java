@@ -25,12 +25,13 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
 
     @Override
     public synchronized void propertyChange(PropertyChangeEvent evt) throws RemoteException {
-
+        currentParty = (Party) evt.getNewValue();
+        System.out.println(currentParty.getPartyMessage());
     }
 
     public  String createParty(String partyName) throws RemoteException {
 
-        if (currentParty == null){
+        if (currentParty != null){
             return "You are already in a party";
         }
 
@@ -66,6 +67,8 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
         publisher.unsubscribeRemoteListener(this,currentParty.getPartyKey());
         server.leaveParty(getUser(), currentParty.getPartyKey());
 
+        currentParty = null;
+
         return "You left the party.";
     }
 
@@ -78,7 +81,12 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
             return "You're not logged in.";
         }
 
-        Party party = (Party) server.joinParty(partyKey, getUser());
+        IParty iParty = server.joinParty(partyKey, getUser());
+        if (iParty == null){
+            return "This is not a valid key";
+        }
+
+        Party party = (Party) iParty;
         publisher.subscribeRemoteListener(this,party.getPartyKey());
         currentParty = party;
 
@@ -134,6 +142,8 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
 
         if (currentParty != null){
             partyKey = currentParty.getPartyKey();
+            publisher.unsubscribeRemoteListener(this,partyKey);
+            currentParty = null;
         }
 
         server.logout(getUser(), partyKey);

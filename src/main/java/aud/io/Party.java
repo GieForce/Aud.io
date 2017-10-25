@@ -1,9 +1,10 @@
 package aud.io;
 
+import java.io.Serializable;
 import java.security.SecureRandom;
 import java.util.*;
 
-public class Party extends Observable implements IParty{
+public class Party extends Observable implements IParty, Serializable {
     private ArrayList<User> participants;
     private ArrayList<Votable> votables;
     private RegisteredUser host;
@@ -26,6 +27,7 @@ public class Party extends Observable implements IParty{
 
         stringGenerator = new RandomString();
         participants = new ArrayList<>();
+        votables = new ArrayList<>();
         partyKey = generatePartyKey();
     }
 
@@ -132,7 +134,13 @@ public class Party extends Observable implements IParty{
     }
 
     public synchronized void removeUser(User user){
-        participants.remove(user);
+        for (User u : participants){
+            if (u.getNickname().equals(user.getNickname())){
+                participants.remove(u);
+                break;
+            }
+        }
+        //participants.remove(user);
     }
 
     @Override
@@ -142,6 +150,7 @@ public class Party extends Observable implements IParty{
 
         s += String.format("You are currently in party: %s%s", name, System.lineSeparator());
         s += String.format("The party key is: %s%s", partyKey, System.lineSeparator());
+        s += String.format("This party is hosted by: %s", host.getNickname());
         s += String.format("%sCurrent users: %s", System.lineSeparator(), System.lineSeparator());
         for(User user : participants){
             s += String.format("%s%s", user.getNickname(), System.lineSeparator());
@@ -165,7 +174,7 @@ public class Party extends Observable implements IParty{
      * @author erikson
      * https://stackoverflow.com/a/41156
      */
-    private class RandomString {
+    private class RandomString implements Serializable{
 
         /**
          * Generate a random string.
