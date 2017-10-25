@@ -58,7 +58,7 @@
                         <padding>
                             <Insets top="10.0" />
                         </padding>
-                        <Button fx:id="btnJoin" mnemonicParsing="false" onAction="#Login" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;" text="Login" textFill="#f5e9be">
+                        <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#Login" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;" text="Login" textFill="#f5e9be">
                             <font>
                                 <Font size="24.0" />
                             </font>
@@ -77,7 +77,7 @@
                            <Font size="24.0" />
                         </font>
                      </Label>
-                     <Label fx:id="lbGuest" onMouseClicked="#GuestLogin" layoutX="10.0" layoutY="20.0" text="Continue as a guest" textFill="#f5e9be" underline="true">
+                     <Label fx:id="lbGuest" layoutX="10.0" layoutY="20.0" onMouseClicked="#GuestLogin" text="Continue as a guest" textFill="#f5e9be" underline="true">
                         <font>
                            <Font size="24.0" />
                         </font>

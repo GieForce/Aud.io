@@ -10,4 +10,9 @@ public abstract class User {
     public User(String nickname) {
         this.nickname = nickname;
     }
+
+    @Override
+    public String toString() {
+        return nickname;
+    }
 }
