@@ -11,6 +11,8 @@ public class Party extends Observable implements IParty{
     private String name;
     private String partyKey;
 
+    private String partyMessage;
+
     private RandomString stringGenerator;
 
     /**
@@ -25,6 +27,14 @@ public class Party extends Observable implements IParty{
         stringGenerator = new RandomString();
         participants = new ArrayList<>();
         partyKey = generatePartyKey();
+    }
+
+    public String getPartyMessage() {
+        return partyMessage;
+    }
+
+    public void setPartyMessage(String partyMessage) {
+        this.partyMessage = partyMessage;
     }
 
     /**

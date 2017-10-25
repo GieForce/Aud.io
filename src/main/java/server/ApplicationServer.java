@@ -8,6 +8,7 @@ import aud.io.fontyspublisher.RemotePublisher;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Scanner;
 
 public class ApplicationServer {
     private static RemotePublisher publisher;
@@ -22,9 +23,7 @@ public class ApplicationServer {
         initSharedData();
 
         try {
-            if (true){
-
-            }
+            System.out.println("Server will start.");
             publisher = new RemotePublisher();
             server = new PartyManager(publisher);
 
@@ -35,9 +34,14 @@ public class ApplicationServer {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Server has started, type 'exit' to stop.");
 
-        while (true){
-
+        boolean loop = true;
+        while (loop){
+            if (scanner.nextLine().equals("exit")) {
+                loop = false;
+            }
         }
     }
 

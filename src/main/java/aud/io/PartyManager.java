@@ -109,10 +109,14 @@ public class PartyManager implements Observer, IPartyManager {
      * @return true whether or not joining the party succeeded
      */
     @Override
-    public IParty joinParty(String partyKey, User user) throws RemoteException {
+    public synchronized IParty joinParty(String partyKey, User user) throws RemoteException {
         Party party = getPartyByKey(partyKey);
         if (party != null){
             party.join(user);
+
+            party.setPartyMessage(String.format("%s has joined the party.", user.getNickname()));
+            publisher.inform(party.getPartyKey(),null,party);
+
             return party;
         }
         return null;
@@ -125,7 +129,7 @@ public class PartyManager implements Observer, IPartyManager {
      * @return Key which Users can use to join Party
      */
     @Override
-    public IParty createParty(RegisteredUser user, String partyName) throws RemoteException {
+    public synchronized IParty createParty(RegisteredUser user, String partyName) throws RemoteException {
         Party party = new Party(user,partyName);
         activeParties.add(party);
         publisher.registerProperty(party.getPartyKey());
@@ -140,7 +144,7 @@ public class PartyManager implements Observer, IPartyManager {
      * @return
      */
     @Override
-    public List<Votable> addMedia(String media, String partyKey, User user) throws RemoteException {
+    public synchronized List<Votable> addMedia(String media, String partyKey, User user) throws RemoteException {
 
         List<Votable> votables = database.getSongsWithSearchterm(media);
 
@@ -148,6 +152,8 @@ public class PartyManager implements Observer, IPartyManager {
             Party party = getPartyByKey(partyKey);
             if (party != null){
                 party.addToVotables(votables.get(0));
+                party.setPartyMessage(String.format("%s added %s", user.getNickname(), votables.get(0).getName()));
+                publisher.inform(party.getPartyKey(),null,party);
 
                 //TODO: User votes on votable?
             }
@@ -164,7 +170,7 @@ public class PartyManager implements Observer, IPartyManager {
      */
 
     @Override
-    public User login(String name, String password) throws RemoteException {
+    public synchronized User login(String name, String password) throws RemoteException {
         return database.loginUser(name, password);
     }
 
@@ -176,12 +182,12 @@ public class PartyManager implements Observer, IPartyManager {
      * @return wether or not adding user succeeded
      */
     @Override
-    public Boolean createUser(String name, String password, String nickname) throws RemoteException {
+    public synchronized Boolean createUser(String name, String password, String nickname) throws RemoteException {
         return database.createUser(name, nickname,password);
     }
 
     @Override
-    public Boolean logout(User user, String partyKey) throws RemoteException {
+    public synchronized Boolean logout(User user, String partyKey) throws RemoteException {
         if (!partyKey.equals("")){
             leaveParty(user, partyKey);
         }
@@ -189,29 +195,31 @@ public class PartyManager implements Observer, IPartyManager {
     }
 
     @Override
-    public void vote(Votable votable, User user, String partyKey) throws RemoteException {
+    public synchronized void vote(Votable votable, User user, String partyKey) throws RemoteException {
 
     }
 
     @Override
-    public void mediaIsPlayed(Votable media, String partyKey, User host) {
+    public synchronized void mediaIsPlayed(Votable media, String partyKey, User host) {
 
     }
 
     @Override
-    public User getTemporaryUser(String nickname) throws RemoteException {
+    public synchronized User getTemporaryUser(String nickname) throws RemoteException {
         return new TemporaryUser(nickname);
     }
 
     @Override
-    public void leaveParty(User user, String partyKey) throws RemoteException {
+    public synchronized void leaveParty(User user, String partyKey) throws RemoteException {
         Party party = getPartyByKey(partyKey);
         if (party != null){
             party.removeUser(user);
+            party.setPartyMessage(String.format("%s has left the party.", user.getNickname()));
+            publisher.inform(party.getPartyKey(),null,party);
         }
     }
 
-    private Party getPartyByKey(String partyKey){
+    private synchronized Party getPartyByKey(String partyKey){
         for (Party party : activeParties){
             if (party.getPartyKey().equals(partyKey)) return party;
         }
