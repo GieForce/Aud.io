@@ -153,6 +153,14 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
         return String.format("You logged in as: %s", user.getNickname());
     }
 
+    public String getPartyInfo(){
+        if (currentParty == null){
+            return "You're not in a party.";
+        }
+
+        return currentParty.toString();
+    }
+
     public  User getUser(){
         if (registeredUser != null){
             return registeredUser;

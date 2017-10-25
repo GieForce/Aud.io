@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e2521a8a-4c29-466f-a421-54064c010fe1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/Party.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/Party.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" afterPath="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" />
     </list>
@@ -53,6 +54,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ClientManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Client/ClientManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-690">
+              <caret line="36" column="55" lean-forward="true" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="GuiController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gui/GuiController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -86,16 +97,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gui/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="11" column="68" lean-forward="false" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ApplicationServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/server/ApplicationServer.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -109,22 +110,28 @@
       <file leaf-file-name="ClientManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1909">
-              <caret line="152" column="72" lean-forward="false" selection-start-line="152" selection-start-column="72" selection-end-line="152" selection-end-column="72" />
+            <state relative-caret-position="601">
+              <caret line="161" column="5" lean-forward="true" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
               <folding>
                 <element signature="method#createParty#0;class#ClientManager#0" expanded="false" />
+                <element signature="method#leaveParty#0;class#ClientManager#0" expanded="false" />
                 <element signature="method#joinParty#0;class#ClientManager#0" expanded="false" />
                 <element signature="method#addMedia#0;class#ClientManager#0" expanded="false" />
+                <element signature="method#login#0;class#ClientManager#0" expanded="false" />
+                <element signature="method#logout#0;class#ClientManager#0" expanded="false" />
+                <element signature="method#getTemporaryUser#0;class#ClientManager#0" expanded="false" />
+                <element signature="method#getPartyInfo#0;class#ClientManager#0" expanded="false" />
+                <element signature="method#getUser#0;class#ClientManager#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplicationClient.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ApplicationClient.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/client/ApplicationClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="29" column="59" lean-forward="true" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
+            <state relative-caret-position="863">
+              <caret line="81" column="66" lean-forward="false" selection-start-line="81" selection-start-column="66" selection-end-line="81" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,16 +139,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Party.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Party.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/Party.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-449">
+              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Party.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Party.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+            <state relative-caret-position="667">
+              <caret line="158" column="36" lean-forward="false" selection-start-line="158" selection-start-column="36" selection-end-line="158" selection-end-column="36" />
               <folding>
                 <element signature="e#820#821#0" expanded="true" />
                 <element signature="e#855#856#0" expanded="true" />
-                <element signature="e#3398#3399#0" expanded="true" />
-                <element signature="e#3423#3424#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,16 +167,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="299">
               <caret line="33" column="59" lean-forward="true" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/server/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -247,8 +252,8 @@
         <option value="$PROJECT_DIR$/src/main/java/server/ApplicationServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/PartyManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/Party.java" />
+        <option value="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" />
       </list>
     </option>
   </component>
@@ -672,7 +677,7 @@
       <workItem from="1508744288681" duration="518000" />
       <workItem from="1508759681286" duration="12912000" />
       <workItem from="1508829832963" duration="13467000" />
-      <workItem from="1508916962781" duration="30746000" />
+      <workItem from="1508916962781" duration="33046000" />
     </task>
     <task id="LOCAL-00001" summary="Added pomfile">
       <created>1507621359770</created>
@@ -751,7 +756,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508961522280</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Synchronization fixes and prepped ApplicationClient for CLI input">
+      <created>1508963085098</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1508963085098</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -760,7 +772,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115875000" />
+    <option name="totallyTimeSpent" value="118175000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -842,7 +854,8 @@
     <MESSAGE value="added database interface, added mock database" />
     <MESSAGE value="changed IDatabase, added MemoryMedia, implemented part of RMI functionality" />
     <MESSAGE value="Implemented all RMI functions needed for iteration 1 in PartyManager and ClientManager." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented all RMI functions needed for iteration 1 in PartyManager and ClientManager." />
+    <MESSAGE value="Synchronization fixes and prepped ApplicationClient for CLI input" />
+    <option name="LAST_COMMIT_MESSAGE" value="Synchronization fixes and prepped ApplicationClient for CLI input" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1098,22 +1111,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Client/ClientManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="36" column="55" lean-forward="true" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/Party.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-449">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/IPartyManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
@@ -1245,18 +1242,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1909">
-          <caret line="152" column="72" lean-forward="false" selection-start-line="152" selection-start-column="72" selection-end-line="152" selection-end-column="72" />
-          <folding>
-            <element signature="method#createParty#0;class#ClientManager#0" expanded="false" />
-            <element signature="method#joinParty#0;class#ClientManager#0" expanded="false" />
-            <element signature="method#addMedia#0;class#ClientManager#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Client/ClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -1273,25 +1258,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/client/ApplicationClient.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/Party.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="29" column="59" lean-forward="true" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-449">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Client/ClientManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-690">
+          <caret line="36" column="55" lean-forward="true" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Party.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+        <state relative-caret-position="667">
+          <caret line="158" column="36" lean-forward="false" selection-start-line="158" selection-start-column="36" selection-end-line="158" selection-end-column="36" />
           <folding>
             <element signature="e#820#821#0" expanded="true" />
             <element signature="e#855#856#0" expanded="true" />
-            <element signature="e#3398#3399#0" expanded="true" />
-            <element signature="e#3423#3424#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="161" column="5" lean-forward="true" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
+          <folding>
+            <element signature="method#createParty#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#leaveParty#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#joinParty#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#addMedia#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#login#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#logout#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#getTemporaryUser#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#getPartyInfo#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#getUser#0;class#ClientManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/client/ApplicationClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="863">
+          <caret line="81" column="66" lean-forward="false" selection-start-line="81" selection-start-column="66" selection-end-line="81" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

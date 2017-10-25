@@ -137,7 +137,28 @@ public class Party extends Observable implements IParty{
 
     @Override
     public synchronized String toString(){
-        return "";
+
+        String s = "";
+
+        s += String.format("You are currently in party: %s%s", name, System.lineSeparator());
+        s += String.format("The party key is: %s%s", partyKey, System.lineSeparator());
+        s += String.format("%sCurrent users: %s", System.lineSeparator(), System.lineSeparator());
+        for(User user : participants){
+            s += String.format("%s%s", user.getNickname(), System.lineSeparator());
+        }
+
+        //TODO: If other media added, need more instanceof checks.
+        s += String.format("%sCurrent songs: %s", System.lineSeparator(), System.lineSeparator());
+        for (Votable votable : votables){
+            if (votable instanceof Track){
+                Track track = (Track)votable;
+                s += String.format("%s by %s%s", track.getName(), track.getArtist(), System.lineSeparator());
+            }
+        }
+
+        s += System.lineSeparator();
+
+        return s;
     }
 
     /**

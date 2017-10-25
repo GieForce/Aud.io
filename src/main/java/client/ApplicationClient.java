@@ -35,24 +35,69 @@ public class ApplicationClient {
 
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Type 'help' for a list of all commands.");
 
         while (true){
-            executeInput(scanner.nextLine(), scanner);
+            try {
+                executeInput(scanner.nextLine(), scanner);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
 
     }
 
-    private static void executeInput(String line, Scanner scanner){
-        if (line.equals("")){
+    private static void executeInput(String line, Scanner scanner) throws RemoteException {
+        if (line.equals("temp")){
+            System.out.println(manager.getTemporaryUser(scanner.nextLine()));
         }
 
-        if (line.equals("")){
+        if (line.equals("login")){
+            System.out.print("username:");
+            String username = scanner.nextLine();
+            System.out.print("password");
+            System.out.println(manager.login(username, scanner.nextLine()));
         }
 
-        if (line.equals("")){
+        if (line.equals("logout")){
+            System.out.println(manager.logout());
         }
 
-        if (line.equals("")){
+        if (line.equals("join")){
+            System.out.print("party key:");
+            System.out.println(manager.joinParty(scanner.nextLine()));
+        }
+
+        if (line.equals("leave")){
+            System.out.println(manager.leaveParty());
+        }
+
+        if (line.equals("create")){
+            System.out.print("party name:");
+            System.out.println(manager.createParty(scanner.nextLine()));
+        }
+
+        if (line.equals("add")){
+            System.out.print("song:");
+            System.out.println(manager.addMedia(scanner.nextLine()));
+        }
+
+        if (line.equals("help")){
+            System.out.println("----------");
+            System.out.println("type 'temp' to log in as a temporary user");
+            System.out.println("type 'login' to log in as a registered user");
+            System.out.println("type 'logout' to log out");
+            System.out.println("type 'create' to create a new party");
+            System.out.println("type 'join' to join a party");
+            System.out.println("type 'leave' to leave your current party");
+            System.out.println("type 'add' to add a song to the party");
+            System.out.println("type 'party' to see information about your current party");
+            System.out.println("type 'help' for a list of all commands");
+            System.out.println("----------");
+        }
+
+        if (line.equals("party")){
+            System.out.println(manager.getPartyInfo());
         }
 
     }
