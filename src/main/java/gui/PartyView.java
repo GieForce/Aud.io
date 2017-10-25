@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MenuView extends Application {
+public class PartyView extends Application {
     private User user;
-    private MenuController controller;
+    private PartyViewController controller;
 
     public static void main(String[] args) {
         launch(args);
@@ -19,25 +19,27 @@ public class MenuView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu.fxml"));
-        Parent parent = loader.load();
-        primaryStage.setTitle("Menu");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/party.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        //TODO: Get party name and add it here
+        primaryStage.setTitle("Party");
         controller = loader.getController();
         controller.setStage(primaryStage);
-        Scene scene = new Scene(parent);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     public void start(Stage stage, User user) throws IOException {
         this.user = user;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu.fxml"));
-        Parent parent = loader.load();
-        stage.setTitle("Menu");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/party.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        //TODO: Get party name and add it here
+        stage.setTitle("Party");
         controller = loader.getController();
         controller.setStage(stage);
         controller.setUser(user);
-        Scene scene = new Scene(parent);
         stage.setScene(scene);
     }
 }

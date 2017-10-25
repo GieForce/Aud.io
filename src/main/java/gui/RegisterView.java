@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginView extends Application {
+public class RegisterView extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -16,11 +16,11 @@ public class LoginView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/register.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Login");
-        LoginController controller = loader.getController();
+        primaryStage.setTitle("Register");
+        RegisterController controller = loader.getController();
         controller.setStage(primaryStage);
         primaryStage.setScene(scene);
         primaryStage.show();
