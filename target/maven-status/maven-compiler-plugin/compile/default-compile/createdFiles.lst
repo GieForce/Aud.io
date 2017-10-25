@@ -1,5 +1,4 @@
 aud\io\PartyManager.class
-sample\Controller.class
 Demo\Shared\IClientParty.class
 client\ClientStream.class
 aud\io\IMedia.class
@@ -13,7 +12,6 @@ Demo\Shared\fontyspublisher\RemotePublisher.class
 aud\io\Votable.class
 Demo\Shared\fontyspublisher\IRemotePublisherForDomain.class
 Demo\Server\PartyManager.class
-sample\Main.class
 aud\io\Vote.class
 aud\io\Song.class
 Demo\Shared\TemporaryUser.class
