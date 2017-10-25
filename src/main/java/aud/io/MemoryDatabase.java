@@ -15,19 +15,30 @@ public class MemoryDatabase implements IDatabase {
                                             ,new RegisteredUser("hicham","hicham","hicham")
                                             ,new RegisteredUser("davey","davey","davey")};
 
-    private static Song[] songs = {new Song(0f, "never gonna give you up", "", "", "best of rick astley", "rick astley")
-                                 , new Song(0f, "shooting stars", "", "", "shooting stars", "bag raiders")
-                                 , new Song(0f, "sandstorm", "", "", "sandstorm", "darude")
-                                 , new Song(0f, "iron maiden", "", "", "iron maiden", "iron maiden")
-                                 , new Song(0f, "the pretender", "", "", "foo fighters", "foo fighters")
-                                 , new Song(0f, "strife", "", "", "trivium", "trivium")
-                                 , new Song(0f, "rap god", "", "", "eminem", "eminem")
-                                 , new Song(0f, "shut the lights", "", "", "DEVA", "DEVA")
-                                 , new Song(0f, "carry on my wayward son", "", "", "kansas", "kansas")
-                                 , new Song(0f, "brabant", "", "", "guus", "guus meeuwis")};
+    private static Votable[] songs = {new Track(new MemoryMedia(),"never gonna give you up",0f,"rick astley","best of rick astley")
+                                     ,new Track(new MemoryMedia(),"shooting stars",0f,"bag raiders","shooting stars")
+                                     ,new Track(new MemoryMedia(),"sandstorm",0f,"darude","sandstorm")
+                                     ,new Track(new MemoryMedia(),"iron maiden",0f,"iron maiden","iron maiden")
+                                     ,new Track(new MemoryMedia(),"the pretender",0f,"foo fighters","foo fighters")
+                                     ,new Track(new MemoryMedia(),"strife",0f,"trivium","trivium")
+                                     ,new Track(new MemoryMedia(),"rap god",0f,"eminem","eminem")
+                                     ,new Track(new MemoryMedia(),"shut the lights",0f,"DEVA","DEVA")
+                                     ,new Track(new MemoryMedia(),"carry on my wayward son",0f,"kansas","kansas")
+                                     ,new Track(new MemoryMedia(),"brabant",0f,"guus","guus meeuwis")};
+
+    //private static Song[] songs = {new Song(0f, "never gonna give you up", "", "", "best of rick astley", "rick astley")
+    //                             , new Song(0f, "shooting stars", "", "", "shooting stars", "bag raiders")
+    //                             , new Song(0f, "sandstorm", "", "", "sandstorm", "darude")
+    //                             , new Song(0f, "iron maiden", "", "", "iron maiden", "iron maiden")
+    //                             , new Song(0f, "the pretender", "", "", "foo fighters", "foo fighters")
+    //                             , new Song(0f, "strife", "", "", "trivium", "trivium")
+    //                             , new Song(0f, "rap god", "", "", "eminem", "eminem")
+    //                             , new Song(0f, "shut the lights", "", "", "DEVA", "DEVA")
+    //                             , new Song(0f, "carry on my wayward son", "", "", "kansas", "kansas")
+    //                             , new Song(0f, "brabant", "", "", "guus", "guus meeuwis")};
 
     @Override
-    public User loginUser(String name, String password) {
+    public synchronized User loginUser(String name, String password) {
         for (RegisteredUser user : users) {
             if (user.checkLogin(name, password)){
                 return user;
@@ -37,22 +48,24 @@ public class MemoryDatabase implements IDatabase {
     }
 
     @Override
-    public boolean createUser(String name, String nickname, String password) {
+    public synchronized boolean createUser(String name, String nickname, String password) {
         return false;
     }
 
     @Override
-    public List<Song> getSongsWithSearchterm(String searchterm) {
-        List<Song> found = new ArrayList<>();
+    public synchronized List<Votable> getSongsWithSearchterm(String searchterm) {
+        List<Votable> found = new ArrayList<>();
 
         if (searchterm.equals("")){
             found.addAll(Arrays.asList(songs));
             return found;
         }
 
-        for (Song song :
+        for (Votable votable :
                 songs) {
-            if (song.getNaam().contains(searchterm) || song.getAlbum().contains(searchterm) || song.getArtist().contains(searchterm)) {
+            Track song = (Track) votable;
+
+            if (song.getName().contains(searchterm) || song.getAlbum().contains(searchterm) || song.getArtist().contains(searchterm)) {
                 found.add(song);
             }
         }

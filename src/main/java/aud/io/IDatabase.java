@@ -8,5 +8,5 @@ public interface IDatabase {
 
     boolean createUser(String name, String nickname, String password);
 
-    List<Song> getSongsWithSearchterm(String searchterm);
+    List<Votable> getSongsWithSearchterm(String searchterm);
 }

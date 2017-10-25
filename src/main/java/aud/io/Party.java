@@ -1,15 +1,17 @@
 package aud.io;
 
-import java.util.ArrayList;
-import java.util.Observable;
+import java.security.SecureRandom;
+import java.util.*;
 
-public class Party extends Observable {
+public class Party extends Observable implements IParty{
     private ArrayList<User> participants;
     private ArrayList<Votable> votables;
     private RegisteredUser host;
     private Votable nowPlayer;
     private String name;
     private String partyKey;
+
+    private RandomString stringGenerator;
 
     /**
      * Create a new Party
@@ -19,6 +21,8 @@ public class Party extends Observable {
     Party(RegisteredUser host, String name) {
         this.host = host;
         this.name = name;
+
+        stringGenerator = new RandomString();
         participants = new ArrayList<>();
         partyKey = generatePartyKey();
     }
@@ -38,8 +42,8 @@ public class Party extends Observable {
      * @return A randomly generated partykey
      */
     private String generatePartyKey() {
-        //TODO: Actually generate party key
-        return "JAJA";
+        //TODO: Collision check?
+        return stringGenerator.nextString();
     }
 
     /**
@@ -116,4 +120,69 @@ public class Party extends Observable {
     public ArrayList<User> getParticipants() {
         return participants;
     }
+
+    public void removeUser(User user){
+        participants.remove(user);
+    }
+
+    /**
+     * @author erikson
+     * https://stackoverflow.com/a/41156
+     */
+    private class RandomString {
+
+        /**
+         * Generate a random string.
+         */
+        public synchronized String nextString() {
+            for (int idx = 0; idx < buf.length; ++idx)
+                buf[idx] = symbols[random.nextInt(symbols.length)];
+            return new String(buf);
+        }
+
+        public static final String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        //public static final String lower = upper.toLowerCase(Locale.ROOT);
+
+        //public static final String digits = "0123456789";
+
+        public static final String alphanum = upper;// + lower + digits;
+
+        private final Random random;
+
+        private final char[] symbols;
+
+        private final char[] buf;
+
+        public RandomString(int length, Random random, String symbols) {
+            if (length < 1) throw new IllegalArgumentException();
+            if (symbols.length() < 2) throw new IllegalArgumentException();
+            this.random = Objects.requireNonNull(random);
+            this.symbols = symbols.toCharArray();
+            this.buf = new char[length];
+        }
+
+        /**
+         * Create an alphanumeric string generator.
+         */
+        private RandomString(int length, Random random) {
+            this(length, random, alphanum);
+        }
+
+        /**
+         * Create an alphanumeric strings from a secure generator.
+         */
+         RandomString(int length) {
+            this(length, new SecureRandom());
+        }
+
+        /**
+         * Create session identifiers.
+         */
+        public RandomString() {
+            this(6);
+        }
+
+    }
+
 }
