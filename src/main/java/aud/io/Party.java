@@ -29,11 +29,11 @@ public class Party extends Observable implements IParty{
         partyKey = generatePartyKey();
     }
 
-    public String getPartyMessage() {
+    public synchronized String getPartyMessage() {
         return partyMessage;
     }
 
-    public void setPartyMessage(String partyMessage) {
+    public synchronized void setPartyMessage(String partyMessage) {
         this.partyMessage = partyMessage;
     }
 
@@ -42,7 +42,7 @@ public class Party extends Observable implements IParty{
      * @param user User to generate Votables for
      * @return List with Votables which should suit the users preferences.
      */
-    public ArrayList<Votable> generateVoteList(User user) {
+    public synchronized ArrayList<Votable> generateVoteList(User user) {
         //TODO: Implement
         return new ArrayList<>();
     }
@@ -51,7 +51,7 @@ public class Party extends Observable implements IParty{
      * Generate Party key which is used so Users can join a Party
      * @return A randomly generated partykey
      */
-    private String generatePartyKey() {
+    private synchronized String generatePartyKey() {
         //TODO: Collision check?
         return stringGenerator.nextString();
     }
@@ -71,7 +71,7 @@ public class Party extends Observable implements IParty{
      * Gets Party Key
      * @return partyKey
      */
-    public String getPartyKey() {
+    public synchronized String getPartyKey() {
         return partyKey;
     }
 
@@ -79,7 +79,7 @@ public class Party extends Observable implements IParty{
      * Gets participants
      * @return participants
      */
-    public ArrayList<User> getUsers() {
+    public synchronized ArrayList<User> getUsers() {
         return participants;
     }
 
@@ -87,7 +87,7 @@ public class Party extends Observable implements IParty{
      * Join this party
      * @param user user that will join the party
      */
-    public void join(User user) {
+    public synchronized void join(User user) {
         participants.add(user);
     }
 
@@ -95,7 +95,7 @@ public class Party extends Observable implements IParty{
      * returns Name
      * @return name
      */
-    public String getName() {
+    public synchronized String getName() {
         return name;
     }
 
@@ -103,7 +103,7 @@ public class Party extends Observable implements IParty{
      * Gets the song next in queue
      * @return next song
      */
-    public Votable getNextSong() {
+    public synchronized Votable getNextSong() {
         return votables.get(1);
     }
 
@@ -111,7 +111,7 @@ public class Party extends Observable implements IParty{
      * Returns all Votables in the playlist
      * @return all Votables in party
      */
-    public ArrayList<Votable> getPlaylist() {
+    public synchronized ArrayList<Votable> getPlaylist() {
         return votables;
     }
 
@@ -119,7 +119,7 @@ public class Party extends Observable implements IParty{
      * Add a Votable to the playlist
      * @param votable Votable to be added
      */
-    public void addToVotables(Votable votable) {
+    public synchronized void addToVotables(Votable votable) {
         votables.add(votable);
     }
 
@@ -127,12 +127,17 @@ public class Party extends Observable implements IParty{
      * Get participants
      * @return participants
      */
-    public ArrayList<User> getParticipants() {
+    public synchronized ArrayList<User> getParticipants() {
         return participants;
     }
 
-    public void removeUser(User user){
+    public synchronized void removeUser(User user){
         participants.remove(user);
+    }
+
+    @Override
+    public synchronized String toString(){
+        return "";
     }
 
     /**

@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2521a8a-4c29-466f-a421-54064c010fe1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/client/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/client/Main.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aud/io/Party.class" afterPath="$PROJECT_DIR$/target/classes/aud/io/Party.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aud/io/PartyManager.class" afterPath="$PROJECT_DIR$/target/classes/aud/io/PartyManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aud/io/Song.class" afterPath="$PROJECT_DIR$/target/classes/aud/io/Song.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aud/io/User.class" afterPath="$PROJECT_DIR$/target/classes/aud/io/User.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/Party.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/Party.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/PartyManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/PartyManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/User.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/server/ApplicationServer.java" afterPath="$PROJECT_DIR$/src/main/java/server/ApplicationServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" afterPath="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/maven/target/" />
@@ -66,8 +56,8 @@
       <file leaf-file-name="GuiController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gui/GuiController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="43" column="10" lean-forward="false" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
+            <state relative-caret-position="448">
+              <caret line="52" column="8" lean-forward="false" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -106,16 +96,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientStream.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/client/ClientStream.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="32" column="69" lean-forward="false" selection-start-line="32" selection-start-column="69" selection-end-line="32" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ApplicationServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/server/ApplicationServer.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -126,7 +106,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClientManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1909">
@@ -143,9 +123,26 @@
       <file leaf-file-name="ApplicationClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/client/ApplicationClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="115">
+              <caret line="29" column="59" lean-forward="true" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Party.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Party.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+              <folding>
+                <element signature="e#820#821#0" expanded="true" />
+                <element signature="e#855#856#0" expanded="true" />
+                <element signature="e#3398#3399#0" expanded="true" />
+                <element signature="e#3423#3424#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,8 +150,8 @@
       <file leaf-file-name="ClientMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Client/ClientMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="41" column="40" lean-forward="true" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="40" />
+            <state relative-caret-position="299">
+              <caret line="33" column="59" lean-forward="true" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -245,12 +242,13 @@
         <option value="$PROJECT_DIR$/src/main/java/aud/io/IDatabase.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/MemoryDatabase.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/IPartyManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aud/io/Party.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/client/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/ApplicationServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/PartyManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/Party.java" />
       </list>
     </option>
   </component>
@@ -674,7 +672,7 @@
       <workItem from="1508744288681" duration="518000" />
       <workItem from="1508759681286" duration="12912000" />
       <workItem from="1508829832963" duration="13467000" />
-      <workItem from="1508916962781" duration="29179000" />
+      <workItem from="1508916962781" duration="30746000" />
     </task>
     <task id="LOCAL-00001" summary="Added pomfile">
       <created>1507621359770</created>
@@ -746,7 +744,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508949585478</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Implemented all RMI functions needed for iteration 1 in PartyManager and ClientManager.">
+      <created>1508961522280</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1508961522280</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -755,7 +760,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114308000" />
+    <option name="totallyTimeSpent" value="115875000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -836,7 +841,8 @@
     <MESSAGE value="Prepped server and client for RMI" />
     <MESSAGE value="added database interface, added mock database" />
     <MESSAGE value="changed IDatabase, added MemoryMedia, implemented part of RMI functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed IDatabase, added MemoryMedia, implemented part of RMI functionality" />
+    <MESSAGE value="Implemented all RMI functions needed for iteration 1 in PartyManager and ClientManager." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented all RMI functions needed for iteration 1 in PartyManager and ClientManager." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1150,18 +1156,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Party.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="31" column="37" lean-forward="false" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
-          <folding>
-            <element signature="e#842#843#0" expanded="true" />
-            <element signature="e#898#899#0" expanded="true" />
-            <element signature="e#946#947#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/TemporaryUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -1186,14 +1180,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gui/GuiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="43" column="10" lean-forward="false" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1226,22 +1212,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
           <caret line="29" column="54" lean-forward="true" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/client/ApplicationClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Client/ClientMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="41" column="40" lean-forward="true" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1283,6 +1253,45 @@
             <element signature="method#createParty#0;class#ClientManager#0" expanded="false" />
             <element signature="method#joinParty#0;class#ClientManager#0" expanded="false" />
             <element signature="method#addMedia#0;class#ClientManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Client/ClientMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="33" column="59" lean-forward="true" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/GuiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="52" column="8" lean-forward="false" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/client/ApplicationClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="29" column="59" lean-forward="true" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Party.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+          <folding>
+            <element signature="e#820#821#0" expanded="true" />
+            <element signature="e#855#856#0" expanded="true" />
+            <element signature="e#3398#3399#0" expanded="true" />
+            <element signature="e#3423#3424#0" expanded="true" />
           </folding>
         </state>
       </provider>
