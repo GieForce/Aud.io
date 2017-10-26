@@ -1,5 +1,8 @@
 package aud.io;
 
+/**
+ * @deprecated
+ */
 public class Song {
     private float lengte;
     private String naam;

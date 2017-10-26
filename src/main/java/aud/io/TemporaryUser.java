@@ -1,6 +1,8 @@
 package aud.io;
 
-public class TemporaryUser extends User {
+import java.io.Serializable;
+
+public class TemporaryUser extends User implements Serializable{
 
     /**
      * New temporary user

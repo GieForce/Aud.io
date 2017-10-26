@@ -1,9 +1,10 @@
 package aud.io;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract class Votable {
+public abstract class Votable implements Serializable{
     private HashMap<User, Vote> voters;
     private IMedia media;
     private String name;
