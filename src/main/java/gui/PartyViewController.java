@@ -28,9 +28,9 @@ public class PartyViewController {
         if(message != null && !Objects.equals(message, "")) {
             String prev = taChat.getText();
             if(prev == null || Objects.equals(prev, "")) {
-                taChat.setText(String.format("%s: %s", user.toString(), message));
+                taChat.setText(String.format("%s: %s", user.getNickname(), message));
             } else {
-                taChat.setText(String.format("%s\n%s: %s", prev, user.toString(), message));
+                taChat.setText(String.format("%s\n%s: %s", prev, user.getNickname(), message));
             }
         }
     }

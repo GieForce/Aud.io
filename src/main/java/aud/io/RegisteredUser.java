@@ -28,9 +28,4 @@ public class RegisteredUser extends User implements Serializable{
     public boolean checkLogin(String email, String password) {
         return Objects.equals(this.email, email) && Objects.equals(this.password, password);
     }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 }
