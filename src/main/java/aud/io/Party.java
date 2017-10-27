@@ -58,6 +58,21 @@ public class Party extends Observable implements IParty, Serializable {
         return stringGenerator.nextString();
     }
 
+    public boolean mediaIsPlayed(Votable media, User host){
+        //TODO: remove votable correctly, this current implementation is a hack
+
+        if (host.getNickname().equals(this.host.getNickname())){
+            for (Votable votable : votables){
+                if (votable.getName().equals(media.getName())){
+                    votables.remove(votable);
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     /**
      * Vote on a Votable
      * @param user User that voted
@@ -106,7 +121,7 @@ public class Party extends Observable implements IParty, Serializable {
      * @return next song
      */
     public synchronized Votable getNextSong() {
-        return votables.get(1);
+        return votables.get(0);
     }
 
     /**

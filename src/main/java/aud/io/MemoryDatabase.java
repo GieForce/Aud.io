@@ -16,16 +16,16 @@ public class MemoryDatabase implements IDatabase {
                                             ,new RegisteredUser("hicham","hicham","hicham")
                                             ,new RegisteredUser("davey","davey","davey")};
 
-    private static Votable[] songs = {new Track(new MemoryMedia(),"never gonna give you up",0f,"rick astley","best of rick astley")
-                                     ,new Track(new MemoryMedia(),"shooting stars",0f,"bag raiders","shooting stars")
-                                     ,new Track(new MemoryMedia(),"sandstorm",0f,"darude","sandstorm")
-                                     ,new Track(new MemoryMedia(),"iron maiden",0f,"iron maiden","iron maiden")
-                                     ,new Track(new MemoryMedia(),"the pretender",0f,"foo fighters","foo fighters")
-                                     ,new Track(new MemoryMedia(),"strife",0f,"trivium","trivium")
-                                     ,new Track(new MemoryMedia(),"rap god",0f,"eminem","eminem")
-                                     ,new Track(new MemoryMedia(),"shut the lights",0f,"DEVA","DEVA")
-                                     ,new Track(new MemoryMedia(),"carry on my wayward son",0f,"kansas","kansas")
-                                     ,new Track(new MemoryMedia(),"brabant",0f,"guus","guus meeuwis")};
+    private static Votable[] songs = {new Track(new MemoryMedia("never gonna give you up"),"never gonna give you up",0f,"rick astley","best of rick astley")
+                                     ,new Track(new MemoryMedia("shooting stars"),"shooting stars",0f,"bag raiders","shooting stars")
+                                     ,new Track(new MemoryMedia("sandstorm"),"sandstorm",0f,"darude","sandstorm")
+                                     ,new Track(new MemoryMedia("iron maiden"),"iron maiden",0f,"iron maiden","iron maiden")
+                                     ,new Track(new MemoryMedia("the pretender"),"the pretender",0f,"foo fighters","foo fighters")
+                                     ,new Track(new MemoryMedia("strife"),"strife",0f,"trivium","trivium")
+                                     ,new Track(new MemoryMedia("rap god"),"rap god",0f,"eminem","eminem")
+                                     ,new Track(new MemoryMedia("shut the lights"),"shut the lights",0f,"DEVA","DEVA")
+                                     ,new Track(new MemoryMedia("carry on my wayward son"),"carry on my wayward son",0f,"kansas","kansas")
+                                     ,new Track(new MemoryMedia("brabant"),"brabant",0f,"guus meeuwis","guus")};
 
     //private static Song[] songs = {new Song(0f, "never gonna give you up", "", "", "best of rick astley", "rick astley")
     //                             , new Song(0f, "shooting stars", "", "", "shooting stars", "bag raiders")
