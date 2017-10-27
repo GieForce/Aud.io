@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2521a8a-4c29-466f-a421-54064c010fe1" name="Default" comment="Added whole mongoDB&#10;- Functionality to insert tracks&#10;- Functionality to load all tracks / votables">
+    <list default="true" id="e2521a8a-4c29-466f-a421-54064c010fe1" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aud/io/Party.class" afterPath="$PROJECT_DIR$/target/classes/aud/io/Party.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aud/io/PartyManager.class" afterPath="$PROJECT_DIR$/target/classes/aud/io/PartyManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Audio.iml" afterPath="$PROJECT_DIR$/Audio.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/IPartyManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/IPartyManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/MemoryDatabase.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/MemoryDatabase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/MemoryMedia.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/MemoryMedia.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/Party.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/Party.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/PartyManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/PartyManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" afterPath="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/StreamMedia.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/StreamMedia.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/maven/target/" />
@@ -71,11 +66,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplicationClient.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ApplicationClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/client/ApplicationClient.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="429">
               <caret line="86" column="47" lean-forward="false" selection-start-line="86" selection-start-column="47" selection-end-line="86" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StreamMedia.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/StreamMedia.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="383">
+              <caret line="41" column="28" lean-forward="false" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientStream.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/client/ClientStream.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="21" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -134,28 +151,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="621">
               <caret line="27" column="73" lean-forward="false" selection-start-line="27" selection-start-column="73" selection-end-line="27" selection-end-column="73" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MongoDatabase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/MongoDatabase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -262,7 +257,6 @@
         <option value="$PROJECT_DIR$/src/main/java/aud/io/Connection.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/Track.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/MongoDatabase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aud/io/StreamMedia.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/IMedia.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/Votable.java" />
@@ -273,6 +267,7 @@
         <option value="$PROJECT_DIR$/src/main/java/aud/io/MemoryDatabase.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/StreamMedia.java" />
       </list>
     </option>
   </component>
@@ -791,7 +786,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509004082317</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added play functionality to Party, Partymanager, Cientmanager and ApplicationClient.&#10;&#10;Prepped Memorymedia for small demo.">
+      <created>1509107547992</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1509107547992</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -800,7 +802,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144038000" />
+    <option name="totallyTimeSpent" value="145745000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -949,7 +951,8 @@
     <MESSAGE value="HEEL VEEL BUGFIXES, made most classes serializable, fixed bugs in clientmanager, applicationclient, party and partymanager" />
     <MESSAGE value="Fixed RMI connection issue" />
     <MESSAGE value="Added whole mongoDB&#10;- Functionality to insert tracks&#10;- Functionality to load all tracks / votables" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added whole mongoDB&#10;- Functionality to insert tracks&#10;- Functionality to load all tracks / votables" />
+    <MESSAGE value="Added play functionality to Party, Partymanager, Cientmanager and ApplicationClient.&#10;&#10;Prepped Memorymedia for small demo." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added play functionality to Party, Partymanager, Cientmanager and ApplicationClient.&#10;&#10;Prepped Memorymedia for small demo." />
   </component>
   <component name="WindowStateProjectService">
     <state width="357" height="465" key="Git.Branch.Popup" />
@@ -1215,14 +1218,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/client/ClientStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="32" column="69" lean-forward="false" selection-start-line="32" selection-start-column="69" selection-end-line="32" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Track.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-46">
@@ -1270,16 +1265,6 @@
         <state relative-caret-position="920">
           <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/StreamMedia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1410,6 +1395,24 @@
         <state relative-caret-position="429">
           <caret line="86" column="47" lean-forward="false" selection-start-line="86" selection-start-column="47" selection-end-line="86" selection-end-column="47" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/client/ClientStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="21" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/StreamMedia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="41" column="28" lean-forward="false" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
