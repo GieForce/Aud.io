@@ -8,8 +8,9 @@ public class MemoryMedia implements IMedia, Serializable {
     public MemoryMedia() {
     }
 
+
     @Override
-    public Properties getProperties() {
-        return null;
+    public void play() {
+
     }
 }
