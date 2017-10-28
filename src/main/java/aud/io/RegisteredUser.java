@@ -19,6 +19,23 @@ public class RegisteredUser extends User implements Serializable{
         this.password = password;
     }
 
+
+    /**
+     * Set email
+     * @param email email of the user
+     */
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    /**
+     * Get email
+     * @return email of the user
+     */
+    public String getEmail(){
+        return this.email;
+    }
+
     /**
      * Check if login details are correct
      * @param email Email of the User
