@@ -6,6 +6,7 @@ import aud.io.fontyspublisher.IRemotePublisherForListener;
 import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClientManager  extends UnicastRemoteObject implements IRemotePropertyListener {
@@ -17,6 +18,7 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
 
     private RegisteredUser registeredUser;
     private TemporaryUser temporaryUser;
+    private List<Votable> votables;
 
     public ClientManager(IRemotePublisherForListener publisher, IPartyManager server) throws RemoteException {
         this.publisher = publisher;
@@ -93,8 +95,15 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
         return String.format("You have joined the party: %s with the key: %s", party.getName(), party.getPartyKey());
     }
 
+    public List<Votable> getVotables() throws RemoteException {
+        if(votables == null)
+            //addMedia hasn't run yet
+            return null;
+        return votables;
+    }
+
     public  String addMedia(String media) throws RemoteException {
-        List<Votable> votables = null;
+        votables = null;
         if (currentParty == null){
             return "You're not in a party.";
         }
@@ -188,6 +197,13 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
         }
 
         return currentParty.toString();
+    }
+
+    public Party getParty() {
+        if(currentParty == null) {
+            return null;
+        }
+        return currentParty;
     }
 
     public  User getUser(){

@@ -1,5 +1,6 @@
 package gui;
 
+import aud.io.ClientManager;
 import aud.io.RegisteredUser;
 import javafx.event.ActionEvent;
 import javafx.scene.control.PasswordField;
@@ -30,6 +31,8 @@ public class RegisterController {
                 Objects.equals(password, "") || password == null) {
             Message.Show("Error", "Please fill in all fields!");
         } else if (password.equals(passwordConfirm)) {
+            ClientManager manager = RmiClient.getManager();
+            //TODO: Implement manager register
             RegisteredUser user = new RegisteredUser(mail, username, password);
             //Show Menu
             MenuView menu = new MenuView();

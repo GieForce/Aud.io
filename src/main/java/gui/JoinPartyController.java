@@ -1,5 +1,7 @@
 package gui;
 
+import aud.io.ClientManager;
+import aud.io.Party;
 import aud.io.User;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -23,14 +25,19 @@ public class JoinPartyController {
     }
 
     public void JoinParty(ActionEvent actionEvent) throws IOException {
-        String partyId = tbPartyId.getText();
-        if (partyId == null || Objects.equals(partyId, "")) {
+        String partyKey = tbPartyId.getText();
+        if (partyKey == null || Objects.equals(partyKey, "")) {
             Message.Show("Error", "Please fill in Party ID");
         } else {
-            Message.Show("Info", partyId);
-            //TODO: Somehow find party by Id
-            PartyView partyView = new PartyView();
-            partyView.start(stage, user);
+            ClientManager manager = RmiClient.getManager();
+            manager.joinParty(partyKey);
+            Party p = manager.getParty();
+            if(p != null) {
+                PartyView partyView = new PartyView();
+                partyView.start(stage, p.getName(), user);
+            } else {
+                Message.Show("Error", "No party with key " + partyKey);
+            }
         }
     }
 

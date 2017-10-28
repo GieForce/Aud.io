@@ -1,5 +1,7 @@
 package gui;
 
+import aud.io.ClientManager;
+import aud.io.TemporaryUser;
 import aud.io.User;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
@@ -11,25 +13,20 @@ import java.util.Objects;
 public class TempUserController {
     public TextField tbTempName;
     private Stage stage;
-    private User user;
 
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public void SetName(ActionEvent actionEvent) throws IOException {
         String nickname = tbTempName.getText();
-        if(!Objects.equals(nickname, "") || nickname != null) {
-            user.setNickname(nickname);
-
+        if (!Objects.equals(nickname, "") || nickname != null) {
+            ClientManager manager = RmiClient.getManager();
+            manager.getTemporaryUser(nickname);
+            TemporaryUser user = (TemporaryUser) manager.getUser();
             JoinPartyView joinParty = new JoinPartyView();
             joinParty.start(stage, user);
-        }
-        else {
+        } else {
             Message.Show("Error", "Please enter a nickname");
         }
     }

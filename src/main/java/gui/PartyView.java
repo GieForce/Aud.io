@@ -12,6 +12,7 @@ import java.io.IOException;
 public class PartyView extends Application {
     private User user;
     private PartyViewController controller;
+    private String name;
 
     public static void main(String[] args) {
         launch(args);
@@ -22,7 +23,6 @@ public class PartyView extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/party.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        //TODO: Get party name and add it here
         primaryStage.setTitle("Party");
         controller = loader.getController();
         controller.setStage(primaryStage);
@@ -30,16 +30,32 @@ public class PartyView extends Application {
         primaryStage.show();
     }
 
-    public void start(Stage stage, User user) throws IOException {
+    public void start(Stage stage, String name, User user) throws IOException {
         this.user = user;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/party.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        //TODO: Get party name and add it here
         stage.setTitle("Party");
         controller = loader.getController();
         controller.setStage(stage);
         controller.setUser(user);
+        controller.setName(name);
+        controller.setPartyInfo();
+        stage.setScene(scene);
+    }
+
+    public void start(Stage stage, String name, String partyKey, User user) throws IOException {
+        //TODO: do something with this user being the host
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/party.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setTitle("Party");
+        controller = loader.getController();
+        controller.setStage(stage);
+        controller.setUser(user);
+        controller.setName(name);
+        controller.setKey(partyKey);
+        controller.setPartyInfo();
         stage.setScene(scene);
     }
 }
