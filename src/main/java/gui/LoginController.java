@@ -38,8 +38,8 @@ public class LoginController {
 
     public void GuestLogin(MouseEvent mouseEvent) throws IOException {
         //Redirect to party list
-        JoinPartyView joinParty = new JoinPartyView();
-        joinParty.start(stage, new TemporaryUser("nickname"));
+        TempUserView tempUserView = new TempUserView();
+        tempUserView.start(stage, new TemporaryUser("Unset"));
     }
 
     public void SignUp(MouseEvent mouseEvent) throws IOException {
