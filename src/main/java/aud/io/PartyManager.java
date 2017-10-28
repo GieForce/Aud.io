@@ -229,7 +229,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
         }
     }
 
-    private synchronized Party getPartyByKey(String partyKey){
+    synchronized Party getPartyByKey(String partyKey){
         for (Party party : activeParties){
             if (party.getPartyKey().equals(partyKey)) return party;
         }
