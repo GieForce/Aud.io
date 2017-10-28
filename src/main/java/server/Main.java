@@ -1,13 +1,20 @@
 package server;
 
 import aud.io.Song;
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mongodb.*;
+import com.mongodb.client.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import org.bson.BsonDocument;
+import org.bson.Document;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
+import org.mongojack.JacksonDBCollection;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
@@ -16,10 +23,14 @@ public class Main extends Application {
     private MongoClient mongoClient;
     private MongoDatabase database;
     private CodecRegistry pojoCodecRegistry;
+    private DBCollection collection;
+    private List<Song> songList;
 
     public void start(Stage primaryStage) throws Exception {
         pojoCodecRegistry = fromRegistries(MongoClient.getDefaultCodecRegistry(),fromProviders(PojoCodecProvider.builder().automatic(true).build()));
-        initDatabase();
+        songList = new ArrayList<>();
+        //initDatabase();
+        getSongs();
     }
 
     private void initDatabase()
@@ -47,5 +58,17 @@ public class Main extends Application {
             ex.fillInStackTrace();
         }
 
+    }
+
+    private List<Song> getSongs() {
+
+        MongoClient mongoClient = new MongoClient(new ServerAddress("37.139.5.90", 27017));
+        MongoDatabase db = mongoClient.getDatabase("music").withCodecRegistry(pojoCodecRegistry);
+        MongoCollection<Song> mongoCollection = db.getCollection("audio", Song.class);
+
+        JacksonDBCollection<Song, String> items = JacksonDBCollection.wrap((DBCollection) mongoCollection, Song.class, String.class);
+        System.out.println(items);
+
+        return null;
     }
 }

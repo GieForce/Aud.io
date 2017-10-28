@@ -35,6 +35,9 @@ Demo\Shared\IPartyServer.class
 Demo\Shared\fontyspublisher\RemotePublisher.class
 aud\io\Votable.class
 Demo\Shared\fontyspublisher\IRemotePublisherForDomain.class
+Demo\Server\PartyManager.class
+aud\io\Vote.class
+aud\io\Song.class
 Demo\Shared\TemporaryUser.class
 aud\io\Party.class
 Demo\Shared\SharedData.class
