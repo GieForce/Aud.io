@@ -83,6 +83,10 @@ public class ApplicationClient {
             System.out.println(manager.addMedia(scanner.nextLine()));
         }
 
+        if (line.equals("play")){
+            System.out.println(manager.play());
+        }
+
         if (line.equals("help")){
             System.out.println("----------");
             System.out.println("type 'temp' to log in as a temporary user");
@@ -92,6 +96,7 @@ public class ApplicationClient {
             System.out.println("type 'join' to join a party");
             System.out.println("type 'leave' to leave your current party");
             System.out.println("type 'add' to add a song to the party");
+            System.out.println("type 'play' to play a song in the party");
             System.out.println("type 'party' to see information about your current party");
             System.out.println("type 'help' for a list of all commands");
             System.out.println("----------");

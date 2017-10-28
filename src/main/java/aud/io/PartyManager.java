@@ -202,8 +202,16 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     }
 
     @Override
-    public synchronized void mediaIsPlayed(Votable media, String partyKey, User host) {
+    public synchronized boolean mediaIsPlayed(Votable media, String partyKey, User host) throws RemoteException {
+        //TODO: remove votable correctly, this current implementation is a hack
+        Party party = getPartyByKey(partyKey);
+        if (party.mediaIsPlayed(media, host)){
+            party.setPartyMessage(String.format("%s has started playing.", media.getName()));
+            publisher.inform(party.getPartyKey(),null,party);
+            return true;
+        }
 
+        return false;
     }
 
     @Override

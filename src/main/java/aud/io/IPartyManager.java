@@ -20,7 +20,7 @@ public interface IPartyManager  extends Remote {
 
     void vote(Votable votable, User user, String partyKey) throws RemoteException;
 
-    void mediaIsPlayed(Votable media, String partyKey, User host) throws RemoteException;
+    boolean mediaIsPlayed(Votable media, String partyKey, User host) throws RemoteException;
 
     User getTemporaryUser(String nickname) throws RemoteException;
 

@@ -163,6 +163,25 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
         return String.format("You logged in as: %s", user.getNickname());
     }
 
+    public String play() throws RemoteException {
+        User user = getUser();
+        if (user == null){
+            return "You're not logged in";
+        }
+        if (currentParty == null){
+            return "You're not in a party";
+        }
+
+        Votable votable = currentParty.getNextSong();
+
+        if (server.mediaIsPlayed(votable,currentParty.getPartyKey(),user)){
+            votable.getMedia().play();
+            return String.format("You started playing %s", votable.getName());
+        }
+
+        return "This action is not allowed.";
+    }
+
     public String getPartyInfo(){
         if (currentParty == null){
             return "You're not in a party.";
