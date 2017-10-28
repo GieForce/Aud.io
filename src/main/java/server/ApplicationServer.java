@@ -49,6 +49,7 @@ public class ApplicationServer {
         port = SharedData.getPort();
         serverName = SharedData.getServerName();
         publisherName = SharedData.getPublisherName();
+        System.setProperty("java.rmi.server.hostname", SharedData.getRegistryName() );
     }
 
 }
