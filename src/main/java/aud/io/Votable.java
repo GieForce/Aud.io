@@ -1,10 +1,18 @@
 package aud.io;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.jongo.marshall.jackson.oid.MongoObjectId;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract class Votable {
+@JsonTypeInfo(use= JsonTypeInfo.Id.CLASS,property="_class")
+public abstract class Votable implements Serializable{
+
     private HashMap<User, Vote> voters;
+
     private IMedia media;
     private String name;
     private float length;
@@ -25,6 +33,20 @@ public abstract class Votable {
      * @param name
      * @param length
      */
+
+    @MongoObjectId
+    private String _id;
+
+    @JsonCreator
+    public Votable(String _id, IMedia media, String name, float length) {
+        this.media = media;
+        this.name = name;
+        this.length = length;
+        this._id = _id;
+        voters = new HashMap<User, Vote>();
+    }
+
+
     public Votable(IMedia media, String name, float length) {
         this.media = media;
         this.name = name;

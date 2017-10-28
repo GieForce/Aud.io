@@ -1,8 +1,9 @@
 package aud.io;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class RegisteredUser extends User {
+public class RegisteredUser extends User implements Serializable{
     private String email;
     private String password;
 
