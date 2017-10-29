@@ -14,11 +14,15 @@ public class SongTest {
         song = new Song
                 (656, "Hurt", "Spotify", "Country", "American IX", "Johnny Cash");
 
+
+
     }
+
+
 
     @Test
     public void getLengte() {
-        assertEquals(656, song.getLengte());
+        assertEquals(656, song.getLengte(), 0.002);
     }
 
     @Test

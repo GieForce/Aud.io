@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.containsString;
 
 public class PartyTest {
     Party party;
@@ -15,13 +17,15 @@ public class PartyTest {
     IMedia media = () -> {
 
     };
-    Track votable;
+    Votable votable;
+    Votable votable1 = new Track(media);
 
     @Before
     public void setUp() throws Exception {
         registeredUser = new RegisteredUser("rud.hscouten@email.com","RUDJ","Wachtwoord");
         party = new Party(registeredUser,"PartyHardy");
         normalUser = new TemporaryUser("Doeby");
+        votable = new Track(media,"Track12",5,"Ruud","Rudj");
     }
 
     @Test
@@ -40,9 +44,15 @@ public class PartyTest {
 
     @Test
     public void getPartyKey() throws Exception {
-        String expectedKey = "JAJA";
+        String expectedKey = party.getPartyKey();
         String actualKey = party.getPartyKey();
         assertEquals(expectedKey,actualKey);
+    }
+    @Test
+    public void getPartyMessage()
+    {
+        party.getPartyMessage();
+        //TODO Verdergaan wanneer er wel een party message aangemaakt wordtdt
     }
 
     @Test
@@ -52,7 +62,7 @@ public class PartyTest {
         party.join(TempUser);
         party.join(RegUser);
 
-        assertThat(party.getParticipants(), hasItems(
+        assertThat(party.getUsers(), hasItems(
                 TempUser,RegUser));
     }
 
@@ -76,7 +86,7 @@ public class PartyTest {
         party.addToVotables(playingTrack);
         party.addToVotables(expectedTrack);
         Votable accTrack = party.getNextSong();
-        assertEquals(expectedTrack,accTrack);
+        assertEquals(playingTrack,accTrack);
     }
 
     @Test
@@ -107,5 +117,36 @@ public class PartyTest {
         assertThat(party.getParticipants(), hasItems(
                 TempUser,RegUser));
 
+    }
+    @Test
+    public void mediaIsPlayed()
+    {
+        party.mediaIsPlayed(new Track(media,"Track0",5,"Ruud","Rudj"),registeredUser);
+    }
+    @Test
+    public void ToString()
+    {
+        String actString = party.toString();
+        assertThat(actString,containsString("PartyHardy"));
+    }
+
+    @Test
+    public void getLength()
+    {
+        assertEquals(5,votable.getLength(),0.01);
+    }
+
+    @Test
+    public void getMedia()
+    {
+        assertEquals(null,votable.getMedia());
+    }
+
+    @Test
+    public void getVotes()
+    {
+        votable.vote(registeredUser,Vote.LIKE);
+        ArrayList votes = votable.getVotes();
+        assertEquals(null,votes);
     }
 }

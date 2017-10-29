@@ -11,6 +11,9 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 
 public class PartyManagerTest {
 
@@ -26,18 +29,18 @@ public class PartyManagerTest {
         temporaryUser = new TemporaryUser("Dav");
         party = new Party(registeredUser,"PartyDav");
         manager.createParty(registeredUser, "PartyDav");
-        manager.registeredUsers.add(registeredUser);
-
+        //manager.registeredUsers.add(registeredUser);
+        manager.createUser("rud.hscouten@email.com","RUDJ","Wachtwoord");
     }
 
     @Test
     public void sendKeepAlive() throws Exception {
-        //Nog niets
+        manager.sendKeepAlive();
     }
 
     @Test
     public void update() throws Exception {
-        //nog niets
+        manager.update(null,null);
     }
 
     @Test
@@ -51,14 +54,13 @@ public class PartyManagerTest {
     @Test
     public void createParty() throws Exception {
         manager.createParty(registeredUser, "Party2Dab");
-        list = manager.activeParties;
-        assertThat(list, hasItem(
-                new Party(registeredUser,"Party2Dab")));
+        assertTrue(manager.activeParties.stream().anyMatch(item -> "Party2Dab".equals(item.getName())));
     }
 
     @Test
     public void addMedia() throws Exception {
         String partyKey = manager.activeParties.get(0).getPartyKey();
+        manager.addMedia("Kygo",partyKey,temporaryUser);
         List expectedList = manager.addMedia("Joost",partyKey,temporaryUser);
         List actualList = manager.activeParties.get(0).getPlaylist();
         assertEquals(expectedList,actualList);
@@ -66,8 +68,8 @@ public class PartyManagerTest {
 
     @Test
     public void login() throws Exception {
-        User registeredUser1 = manager.login("RUDJ","Wachtwoord");
-        assertEquals(registeredUser,registeredUser1);
+        User registeredUser1 = manager.login("davey","davey");
+        assertEquals(registeredUser,null);
     }
 
     @Test
@@ -88,11 +90,13 @@ public class PartyManagerTest {
     @Test
     public void vote() throws Exception {
         //nog niks om te testen
+        manager.vote(null,registeredUser,party.getPartyKey());
     }
 
     @Test
     public void mediaIsPlayed() throws Exception {
         //current implementation is a hack apparently
+        assertFalse(manager.mediaIsPlayed(new Track(null,"Track1",5,"Ruud","Rudj"),party.getPartyKey(),registeredUser));
     }
 
     @Test
@@ -107,5 +111,5 @@ public class PartyManagerTest {
         manager.leaveParty(tUser,manager.activeParties.get(0).getPartyKey());
         assertThat(manager.activeParties.get(0).getParticipants(), not(hasItem(tUser)));
     }
-
+    //TODO kan UpdatePlaylist niet testen want die is private.
 }
