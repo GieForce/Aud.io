@@ -27,7 +27,6 @@ public class PartyManagerTest {
         party = new Party(registeredUser,"PartyDav");
         manager.createParty(registeredUser, "PartyDav");
         manager.registeredUsers.add(registeredUser);
-
     }
 
     @Test
@@ -48,13 +47,13 @@ public class PartyManagerTest {
         assertThat(manager.getPartyByKey(partyKey).getParticipants(),hasItem(tUser));
     }
 
-    @Test
-    public void createParty() throws Exception {
-        manager.createParty(registeredUser, "Party2Dab");
-        list = manager.activeParties;
-        assertThat(list, hasItem(
-                new Party(registeredUser,"Party2Dab")));
-    }
+//    @Test
+//    public void createParty() throws Exception {
+//        manager.createParty(registeredUser, "Party2Dab");
+//        list = manager.activeParties;
+//        assertThat(list, hasItem(
+//                new Party(registeredUser,"Party2Dab")));
+//    }
 
     @Test
     public void addMedia() throws Exception {
