@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2521a8a-4c29-466f-a421-54064c010fe1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/server/Main.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Audio-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/Audio-1.0-SNAPSHOT.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/SharedData.java" afterPath="$PROJECT_DIR$/src/main/java/Demo/Shared/SharedData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/MemoryMedia.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/MemoryMedia.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/server/ApplicationServer.java" afterPath="$PROJECT_DIR$/src/main/java/server/ApplicationServer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/maven/target/" />
@@ -96,10 +93,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MemoryMedia.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MemoryMedia.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/MemoryMedia.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
+            <state relative-caret-position="506">
               <caret line="29" column="116" lean-forward="false" selection-start-line="29" selection-start-column="116" selection-end-line="29" selection-end-column="116" />
               <folding />
             </state>
@@ -141,18 +138,18 @@
       <file leaf-file-name="ApplicationServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/server/ApplicationServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="42" column="29" lean-forward="true" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
+            <state relative-caret-position="443">
+              <caret line="52" column="86" lean-forward="true" selection-start-line="52" selection-start-column="86" selection-end-line="52" selection-end-column="86" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SharedData.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SharedData.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/SharedData.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="92">
-              <caret line="4" column="61" lean-forward="false" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
+              <caret line="4" column="62" lean-forward="false" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -198,7 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/aud/io/SpotifyMedia.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/SpotifyMedia.java" />
         <option value="$PROJECT_DIR$/src/main/java/client/StreamClient.java" />
@@ -245,10 +241,11 @@
         <option value="$PROJECT_DIR$/Test/aud/io/ClientManagerTest.java" />
         <option value="$PROJECT_DIR$/Test/aud/io/SongTest.java" />
         <option value="$PROJECT_DIR$/Test/aud/io/PartyTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Demo/Shared/SharedData.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/client/ClientStream.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/MemoryMedia.java" />
+        <option value="$PROJECT_DIR$/src/main/java/server/ApplicationServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Demo/Shared/SharedData.java" />
       </list>
     </option>
   </component>
@@ -364,6 +361,23 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Demo" type="462c0819:PsiDirectoryNode" />
+              <item name="Shared" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -434,7 +448,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ApplicationClient">
+  <component name="RunManager" selected="Application.ApplicationServer">
     <configuration name="ApplicationClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -632,8 +646,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.ApplicationClient" />
-        <item index="1" class="java.lang.String" itemvalue="Application.ApplicationServer" />
+        <item index="0" class="java.lang.String" itemvalue="Application.ApplicationServer" />
+        <item index="1" class="java.lang.String" itemvalue="Application.ApplicationClient" />
         <item index="2" class="java.lang.String" itemvalue="Application.LoginView" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.aud.io in Audio" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.SongTest.setAlbum" />
@@ -681,7 +695,7 @@
       <workItem from="1509189921186" duration="11136000" />
       <workItem from="1509225128512" duration="162000" />
       <workItem from="1509304087798" duration="8514000" />
-      <workItem from="1509359195658" duration="2218000" />
+      <workItem from="1509359195658" duration="3763000" />
     </task>
     <task id="LOCAL-00001" summary="Added pomfile">
       <created>1507621359770</created>
@@ -746,7 +760,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509205391538</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added static audio playing">
+      <created>1509361439982</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1509361439982</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -782,10 +803,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110581000" />
+    <option name="totallyTimeSpent" value="112126000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -795,7 +817,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287827" sideWeight="0.5021482" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3206522" sideWeight="0.49785176" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3206522" sideWeight="0.49785176" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32764506" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -861,7 +883,8 @@
     <MESSAGE value="Added gui to project&#10;- Interaction GUI with server&#10;- Fix maven file (default java version 1.5)" />
     <MESSAGE value="Added maven libraries?" />
     <MESSAGE value="Added RMI to GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added RMI to GUI" />
+    <MESSAGE value="added static audio playing" />
+    <option name="LAST_COMMIT_MESSAGE" value="added static audio playing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1262,14 +1285,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/SharedData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="61" lean-forward="false" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/server/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -1282,14 +1297,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/ApplicationServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="42" column="29" lean-forward="true" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1312,8 +1319,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/MemoryMedia.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
+        <state relative-caret-position="506">
           <caret line="29" column="116" lean-forward="false" selection-start-line="29" selection-start-column="116" selection-end-line="29" selection-end-column="116" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/server/ApplicationServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="52" column="86" lean-forward="true" selection-start-line="52" selection-start-column="86" selection-end-line="52" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/SharedData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="62" lean-forward="false" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
           <folding />
         </state>
       </provider>

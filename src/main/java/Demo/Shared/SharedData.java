@@ -2,7 +2,7 @@ package Demo.Shared;
 
 public class SharedData {
     private static final int port = 1099;
-    private static final String registryName = "145.93.72.167";
+    private static final String registryName = "145.93.168.207";
     private static final String serverName = "partyServer";
     private static final String publisherName = "serverPublisher";
 
