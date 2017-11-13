@@ -22,6 +22,7 @@ public class PartyManagerTest {
     List list;
     TemporaryUser temporaryUser;
     RegisteredUser registeredUser;
+
     @Before
     public void setUp() throws Exception {
         manager = new PartyManager(new RemotePublisher());
@@ -69,7 +70,7 @@ public class PartyManagerTest {
     @Test
     public void login() throws Exception {
         User registeredUser1 = manager.login("davey","davey");
-        assertEquals(registeredUser,null);
+        assertEquals(manager.login("davey", "davey"),registeredUser1);
     }
 
     @Test
@@ -101,7 +102,7 @@ public class PartyManagerTest {
 
     @Test
     public void getTemporaryUser() throws Exception {
-        User tempUser = manager.getTemporaryUser("BlBal");
+        assertNotNull(manager.getTemporaryUser("BlBal"));
     }
 
     @Test

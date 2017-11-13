@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.*;
@@ -139,14 +141,16 @@ public class PartyTest {
     @Test
     public void getMedia()
     {
-        assertEquals(null,votable.getMedia());
+        assertEquals(media, votable.getMedia());
     }
 
     @Test
     public void getVotes()
     {
         votable.vote(registeredUser,Vote.LIKE);
-        ArrayList votes = votable.getVotes();
-        assertEquals(null,votes);
+        Map<User, Vote> votes = votable.getVotes();
+        Map<User, Vote> testVotes = new HashMap<>();
+        testVotes.put(registeredUser, Vote.LIKE);
+        assertEquals(testVotes,votes);
     }
 }
