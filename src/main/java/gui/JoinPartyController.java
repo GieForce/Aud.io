@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class JoinPartyController {
-    public Button btnJoin;
     public TextField tbPartyId;
     private Stage stage;
     private User user;

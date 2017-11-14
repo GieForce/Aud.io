@@ -1,12 +1,13 @@
 package gui;
 
-import Demo.Shared.SharedData;
 import aud.io.ClientManager;
 import aud.io.IPartyManager;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
+import aud.io.fontyspublisher.SharedData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import server.Main;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +17,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class GuiController implements Initializable {
@@ -30,13 +33,15 @@ public class GuiController implements Initializable {
     private static IRemotePublisherForListener publisher;
     private static ClientManager manager;
 
+    private static final Logger LOGGER = Logger.getLogger(GuiController.class.getName());
+
     public void getSongs()
     {
         System.out.println("Songs");
     }
 
     public void createParty() throws RemoteException {
-        System.out.println("Created a party");
+        LOGGER.log(Level.INFO, "Created a party");
     }
 
     public void login()
@@ -58,7 +63,7 @@ public class GuiController implements Initializable {
         }
         catch (RemoteException | NotBoundException ex)
         {
-            ex.printStackTrace();
+            LOGGER.log(Level.WARNING, ex.getMessage());
         }
     }
 }

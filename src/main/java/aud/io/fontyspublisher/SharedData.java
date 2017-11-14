@@ -1,4 +1,4 @@
-package Demo.Shared;
+package aud.io.fontyspublisher;
 
 public class SharedData {
     private static final int port = 1099;

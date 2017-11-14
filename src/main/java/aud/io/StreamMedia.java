@@ -11,10 +11,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class StreamMedia implements IMedia, Serializable {
 
     private static final String STREAMMEDIA = "StreamMedia";
+    private static final Logger LOGGER = Logger.getLogger(StreamMedia.class.getName());
 
     private String streamLocation;
 
@@ -22,8 +25,7 @@ public class StreamMedia implements IMedia, Serializable {
     private String _id;
 
     @JsonCreator
-    public StreamMedia(@JsonProperty(STREAMMEDIA) String streamLocation)
-    {
+    public StreamMedia(@JsonProperty(STREAMMEDIA) String streamLocation) {
         this.streamLocation = streamLocation;
     }
 
@@ -35,35 +37,46 @@ public class StreamMedia implements IMedia, Serializable {
             @Override
             public void run() {
                 //Praat met audioserver voor ophalen media
+                Socket socket = null;
                 try {
-                    Socket socket = new Socket(streamLocation, 6666);
+                    socket = new Socket(streamLocation, 6666);
                     if (socket.isConnected()) {
                         InputStream in = new BufferedInputStream(socket.getInputStream());
                         playAudio(in);
                     }
-
                 } catch (IOException ex) {
-                    ex.printStackTrace();
+                    LOGGER.log(Level.WARNING, ex.getMessage());
+                } finally {
+                    try {
+                        if(socket != null) socket.close();
+                    } catch (IOException e) {
+                        LOGGER.log(Level.WARNING, e.getMessage());
+                    }
                 }
             }
+
             private void playAudio(final InputStream in) {
+                AudioInputStream ais = null;
+                Clip audioClip = null;
                 try {
-                    AudioInputStream ais = AudioSystem.getAudioInputStream(in);
-                    Clip audioClip = AudioSystem.getClip();
+                    ais = AudioSystem.getAudioInputStream(in);
+                    audioClip = AudioSystem.getClip();
                     audioClip.open(ais);
                     audioClip.start();
                     Thread.sleep(100); //Clip heeft de kans om op te starten
                     audioClip.drain();
                 } catch (IOException | InterruptedException | LineUnavailableException | UnsupportedAudioFileException ex) {
-                    ex.printStackTrace();
+                    LOGGER.log(Level.WARNING, ex.getMessage());
+                } finally {
+                    try {
+                        if(ais != null) ais.close();
+                    } catch (IOException e) {
+                        LOGGER.log(Level.WARNING, e.getMessage());
+                    }
+                    if(audioClip != null) audioClip.close();
                 }
             }
 
         })).start();
-
-
-        //
     }
-
-
 }

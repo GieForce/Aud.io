@@ -9,9 +9,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import server.Main;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PartyViewController {
     public TextArea taChat;
@@ -22,6 +25,8 @@ public class PartyViewController {
     private Stage stage;
     private String key;
     private User user;
+
+    private static final Logger LOGGER = Logger.getLogger("Chat");
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -62,6 +67,7 @@ public class PartyViewController {
 
     private void print(String msg, User user) {
         String prev = taChat.getText();
+        LOGGER.log(Level.INFO, String.format("[%s]: %s", user, msg));
         if(prev == null || Objects.equals(prev, "")) {
             taChat.setText(String.format("%s: %s", user.getNickname(), msg));
         } else {

@@ -1,9 +1,9 @@
 package gui;
 
-import Demo.Shared.SharedData;
 import aud.io.ClientManager;
 import aud.io.IPartyManager;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
+import aud.io.fontyspublisher.SharedData;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
