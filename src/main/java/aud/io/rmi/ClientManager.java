@@ -1,15 +1,15 @@
-package aud.io;
+package aud.io.rmi;
 
+import aud.io.*;
 import aud.io.fontyspublisher.IRemotePropertyListener;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
 
 import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 import java.util.List;
 
-public class ClientManager  extends UnicastRemoteObject implements IRemotePropertyListener {
+public class ClientManager extends UnicastRemoteObject implements IRemotePropertyListener {
 
     private IRemotePublisherForListener publisher;
     private IPartyManager server;
@@ -31,42 +31,40 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
         System.out.println(currentParty.getPartyMessage());
     }
 
-    public  String createParty(String partyName) throws RemoteException {
+    public String createParty(String partyName) throws RemoteException {
 
-        if (currentParty != null){
+        if (currentParty != null) {
             return "You are already in a party";
         }
 
         //TODO: Verify with server if logged in?
 
-        if (getUser() != null){
-            if (getUser() instanceof RegisteredUser){
-                Party party = (Party)server.createParty((RegisteredUser) getUser(),partyName);
+        if (getUser() != null) {
+            if (getUser() instanceof RegisteredUser) {
+                Party party = (Party) server.createParty((RegisteredUser) getUser(), partyName);
 
                 publisher.subscribeRemoteListener(this, party.getPartyKey());
                 currentParty = party;
 
                 return String.format("You have created the party: %s with the key: %s", party.getName(), party.getPartyKey());
-            }
-            else{
+            } else {
                 return "To create a party you have to be a registered user.";
             }
-        }
-        else{
+        } else {
             return "You need to be logged in to create a party.";
         }
     }
 
-    public  String leaveParty() throws RemoteException {
-        if (currentParty == null){
+    public String leaveParty() throws RemoteException {
+        if (currentParty == null) {
             return "You're not in a party.";
         }
 
-        if (getUser() == null){
+        if (getUser() == null) {
             return "You're not logged in.";
         }
 
-        publisher.unsubscribeRemoteListener(this,currentParty.getPartyKey());
+        publisher.unsubscribeRemoteListener(this, currentParty.getPartyKey());
         server.leaveParty(getUser(), currentParty.getPartyKey());
 
         currentParty = null;
@@ -74,54 +72,54 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
         return "You left the party.";
     }
 
-    public  String joinParty(String partyKey) throws RemoteException {
-        if (currentParty != null){
+    public String joinParty(String partyKey) throws RemoteException {
+        if (currentParty != null) {
             return "You're already in a party.";
         }
 
-        if (getUser() == null){
+        if (getUser() == null) {
             return "You're not logged in.";
         }
 
         IParty iParty = server.joinParty(partyKey, getUser());
-        if (iParty == null){
+        if (iParty == null) {
             return "This is not a valid key";
         }
 
         Party party = (Party) iParty;
-        publisher.subscribeRemoteListener(this,party.getPartyKey());
+        publisher.subscribeRemoteListener(this, party.getPartyKey());
         currentParty = party;
 
         return String.format("You have joined the party: %s with the key: %s", party.getName(), party.getPartyKey());
     }
 
     public List<Votable> getVotables() throws RemoteException {
-        if(votables == null)
+        if (votables == null)
             //addMedia hasn't run yet
             return null;
         return votables;
     }
 
-    public  String addMedia(String media) throws RemoteException {
+    public String addMedia(String media) throws RemoteException {
         votables = null;
-        if (currentParty == null){
+        if (currentParty == null) {
             return "You're not in a party.";
         }
 
-        if (getUser() == null){
+        if (getUser() == null) {
             return "You're not logged in.";
         }
 
         votables = server.addMedia(media, currentParty.getPartyKey(), getUser());
 
-        if (votables.size() == 0){
+        if (votables.size() == 0) {
             return "The song does not exist.";
-        } else if (votables.size() == 1){
+        } else if (votables.size() == 1) {
             return "You have added the song.";
         } else {
             String s = "choose one of the following:" + System.lineSeparator();
 
-            for(Votable votable : votables){
+            for (Votable votable : votables) {
                 s += String.format("%s%s", votable.getName(), System.lineSeparator());
             }
 
@@ -129,13 +127,13 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
         }
     }
 
-    public  String login(String username, String password) throws RemoteException {
-        if (getUser() != null){
+    public String login(String username, String password) throws RemoteException {
+        if (getUser() != null) {
             return "You're already logged in";
         }
         User user = server.login(username, password);
 
-        if (user == null){
+        if (user == null) {
             return "Incorrect username or password.";
         }
 
@@ -143,15 +141,15 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
         return String.format("You logged in as: %s", user.getNickname());
     }
 
-    public  String logout() throws RemoteException {
-        if (getUser() == null){
+    public String logout() throws RemoteException {
+        if (getUser() == null) {
             return "You're not logged in.";
         }
         String partyKey = "";
 
-        if (currentParty != null){
+        if (currentParty != null) {
             partyKey = currentParty.getPartyKey();
-            publisher.unsubscribeRemoteListener(this,partyKey);
+            publisher.unsubscribeRemoteListener(this, partyKey);
             currentParty = null;
         }
 
@@ -161,8 +159,8 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
         return "You logged out.";
     }
 
-    public  String getTemporaryUser(String nickname) throws RemoteException {
-        if (getUser() != null){
+    public String getTemporaryUser(String nickname) throws RemoteException {
+        if (getUser() != null) {
             return "You're already logged in.";
         }
 
@@ -174,16 +172,16 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
 
     public String play() throws RemoteException {
         User user = getUser();
-        if (user == null){
+        if (user == null) {
             return "You're not logged in";
         }
-        if (currentParty == null){
+        if (currentParty == null) {
             return "You're not in a party";
         }
 
         Votable votable = currentParty.getNextSong();
 
-        if (server.mediaIsPlayed(votable,currentParty.getPartyKey(),user)){
+        if (server.mediaIsPlayed(votable, currentParty.getPartyKey(), user)) {
             votable.getMedia().play();
             return String.format("You started playing %s", votable.getName());
         }
@@ -191,8 +189,8 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
         return "This action is not allowed.";
     }
 
-    public String getPartyInfo(){
-        if (currentParty == null){
+    public String getPartyInfo() {
+        if (currentParty == null) {
             return "You're not in a party.";
         }
 
@@ -200,23 +198,21 @@ public class ClientManager  extends UnicastRemoteObject implements IRemoteProper
     }
 
     public Party getParty() {
-        if(currentParty == null) {
+        if (currentParty == null) {
             return null;
         }
         return currentParty;
     }
 
-    public  User getUser(){
-        if (registeredUser != null){
+    public User getUser() {
+        if (registeredUser != null) {
             return registeredUser;
-        }
-        else if (temporaryUser != null){
+        } else if (temporaryUser != null) {
             return temporaryUser;
-        }
-        else return  null;
+        } else return null;
     }
 
-    private  void clearUsers(){
+    private void clearUsers() {
         registeredUser = null;
         temporaryUser = null;
     }

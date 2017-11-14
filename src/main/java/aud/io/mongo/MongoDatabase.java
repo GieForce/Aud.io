@@ -1,10 +1,13 @@
-package aud.io;
+package aud.io.mongo;
 
+import aud.io.IDatabase;
+import aud.io.audioplayer.Track;
+import aud.io.User;
+import aud.io.Votable;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MongoDatabase implements IDatabase {
     @Override

@@ -1,5 +1,7 @@
-package aud.io;
+package aud.io.audioplayer;
 
+import aud.io.IMedia;
+import aud.io.Votable;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.jongo.marshall.jackson.oid.MongoObjectId;
@@ -9,13 +11,13 @@ import java.io.Serializable;
 public class Track extends Votable implements Serializable{
 
     //MongoDB van Track
-    private static final String ARTIST = "Artist";
-    private static final String ALBUM = "Album";
+    private static final String MONGO_ARTIST = "Artist";
+    private static final String MONGO_ALBUM = "Album";
 
     //MongoDB van Votable
-    private static final String MEDIA = "Media";
-    private static final String NAME = "Name";
-    private static final String LENGTH = "Length";
+    private static final String MONGO_MEDIA = "Media";
+    private static final String MONGO_NAME = "Name";
+    private static final String MONGO_LENGTH = "Length";
 
     private String artist;
     private String album;
@@ -24,11 +26,11 @@ public class Track extends Votable implements Serializable{
     private String _id;
 
     @JsonCreator
-    public Track(@JsonProperty(MEDIA) IMedia media,
-                 @JsonProperty(NAME) String name,
-                 @JsonProperty(LENGTH) float length,
-                 @JsonProperty(ARTIST) String artist,
-                 @JsonProperty(ALBUM) String album) {
+    public Track(@JsonProperty(MONGO_MEDIA) IMedia media,
+                 @JsonProperty(MONGO_NAME) String name,
+                 @JsonProperty(MONGO_LENGTH) float length,
+                 @JsonProperty(MONGO_ARTIST) String artist,
+                 @JsonProperty(MONGO_ALBUM) String album) {
         super(media, name, length);
         this.artist = artist;
         this.album = album;
@@ -56,11 +58,6 @@ public class Track extends Votable implements Serializable{
 //        this.artist = artist;
 //        this.album = album;
 //    }
-
-
-
-
-
 
     /**
      * Get Artist

@@ -17,7 +17,7 @@
     <children>
         <ImageView fx:id="imageBackground" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@background.png"/>
+                <Image url="@../img/background.png"/>
             </image>
         </ImageView>
         <VBox alignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -31,7 +31,7 @@
                         <VBox.margin>
                             <Insets bottom="10.0" top="10.0"/>
                         </VBox.margin>
-                        <Image url="@Logo.png"/>
+                        <Image url="@../img/Logo.png"/>
                     </ImageView>
                     <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="341.0">
                         <children>

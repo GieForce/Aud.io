@@ -1,4 +1,9 @@
-package aud.io;
+package aud.io.rmi;
+
+import aud.io.IParty;
+import aud.io.RegisteredUser;
+import aud.io.User;
+import aud.io.Votable;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

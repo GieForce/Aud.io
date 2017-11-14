@@ -19,7 +19,7 @@ public class MenuView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/menu.fxml"));
         Parent parent = loader.load();
         primaryStage.setTitle("Menu");
         controller = loader.getController();
@@ -31,7 +31,7 @@ public class MenuView extends Application {
 
     public void start(Stage stage, User user) throws IOException {
         this.user = user;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/menu.fxml"));
         Parent parent = loader.load();
         stage.setTitle("Menu");
         controller = loader.getController();

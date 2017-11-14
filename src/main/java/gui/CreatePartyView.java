@@ -19,7 +19,7 @@ public class CreatePartyView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/create.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/create.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setTitle("Create Party");
@@ -31,7 +31,7 @@ public class CreatePartyView extends Application {
 
     public void start(Stage stage, User user) throws IOException {
         this.user = user;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/create.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/create.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setTitle("Create Party");

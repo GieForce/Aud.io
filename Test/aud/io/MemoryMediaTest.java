@@ -1,8 +1,7 @@
 package aud.io;
 
+import aud.io.memory.MemoryMedia;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class MemoryMediaTest {
     @Test

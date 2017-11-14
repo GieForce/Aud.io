@@ -20,7 +20,7 @@ public class PartyView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/party.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/party.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setTitle("Party");
@@ -32,7 +32,7 @@ public class PartyView extends Application {
 
     public void start(Stage stage, String name, User user) throws IOException {
         this.user = user;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/party.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/party.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setTitle("Party");
@@ -46,7 +46,7 @@ public class PartyView extends Application {
 
     public void start(Stage stage, String name, String partyKey, User user) throws IOException {
         //TODO: do something with this user being the host
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/party.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/party.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setTitle("Party");

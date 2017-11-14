@@ -1,22 +1,17 @@
 package gui;
 
-import aud.io.ClientManager;
-import aud.io.IPartyManager;
+import aud.io.rmi.ClientManager;
+import aud.io.rmi.IPartyManager;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
 import aud.io.fontyspublisher.SharedData;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
-import server.Main;
 
-import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
-import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

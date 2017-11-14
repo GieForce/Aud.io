@@ -1,24 +1,24 @@
 package aud.io.fontyspublisher;
 
 public class SharedData {
-    private static final int port = 1099;
-    private static final String registryName = "localhost";
-    private static final String serverName = "partyServer";
-    private static final String publisherName = "serverPublisher";
+    private static final int PORT = 1099;
+    private static final String REGISTRY_NAME = "localhost";
+    private static final String SERVER_NAME = "partyServer";
+    private static final String PUBLISHER_NAME = "serverPublisher";
 
     public static int getPort() {
-        return port;
+        return PORT;
     }
 
     public static String getRegistryName() {
-        return registryName;
+        return REGISTRY_NAME;
     }
 
     public static String getServerName() {
-        return serverName;
+        return SERVER_NAME;
     }
 
     public static String getPublisherName() {
-        return publisherName;
+        return PUBLISHER_NAME;
     }
 }

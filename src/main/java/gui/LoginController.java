@@ -1,8 +1,7 @@
 package gui;
 
-import aud.io.ClientManager;
+import aud.io.rmi.ClientManager;
 import aud.io.RegisteredUser;
-import aud.io.TemporaryUser;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;

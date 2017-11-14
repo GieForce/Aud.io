@@ -1,19 +1,32 @@
-package aud.io;
+package aud.io.rmi;
 
 
+import aud.io.*;
 import aud.io.fontyspublisher.RemotePublisher;
+import aud.io.memory.MemoryDatabase;
 
-import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.*;
 
 public class PartyManager extends UnicastRemoteObject implements Observer, IPartyManager {
-    ArrayList<RegisteredUser> registeredUsers;
-    List<Party> activeParties;
-    IDatabase database;
+    private ArrayList<RegisteredUser> registeredUsers;
+    private List<Party> activeParties;
+    private IDatabase database;
 
     private RemotePublisher publisher;
+
+    public ArrayList<RegisteredUser> getRegisteredUsers() {
+        return registeredUsers;
+    }
+
+    public List<Party> getActiveParties() {
+        return activeParties;
+    }
+
+    public IDatabase getDatabase() {
+        return database;
+    }
 
     /**
      * Create a new PartyManager which will handle all Parties
@@ -198,7 +211,8 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
 
     @Override
     public synchronized void vote(Votable votable, User user, String partyKey) throws RemoteException {
-
+        //Not sure how to implement this, should do the following:
+        //User votes on a votable with a vote, vote isn't defined though.
     }
 
     @Override
@@ -229,7 +243,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
         }
     }
 
-    synchronized Party getPartyByKey(String partyKey){
+    public synchronized Party getPartyByKey(String partyKey){
         for (Party party : activeParties){
             if (party.getPartyKey().equals(partyKey)) return party;
         }

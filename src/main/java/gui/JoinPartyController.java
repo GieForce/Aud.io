@@ -1,10 +1,9 @@
 package gui;
 
-import aud.io.ClientManager;
+import aud.io.rmi.ClientManager;
 import aud.io.Party;
 import aud.io.User;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 

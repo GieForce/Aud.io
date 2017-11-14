@@ -1,6 +1,8 @@
-package aud.io;
+package aud.io.memory;
 
-import java.io.Serializable;
+import aud.io.*;
+import aud.io.audioplayer.Track;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,17 +28,6 @@ public class MemoryDatabase implements IDatabase {
                                      ,new Track(new MemoryMedia("shut the lights"),"shut the lights",0f,"DEVA","DEVA")
                                      ,new Track(new MemoryMedia("carry on my wayward son"),"carry on my wayward son",0f,"kansas","kansas")
                                      ,new Track(new MemoryMedia("brabant"),"brabant",0f,"guus meeuwis","guus")};
-
-    //private static Song[] songs = {new Song(0f, "never gonna give you up", "", "", "best of rick astley", "rick astley")
-    //                             , new Song(0f, "shooting stars", "", "", "shooting stars", "bag raiders")
-    //                             , new Song(0f, "sandstorm", "", "", "sandstorm", "darude")
-    //                             , new Song(0f, "iron maiden", "", "", "iron maiden", "iron maiden")
-    //                             , new Song(0f, "the pretender", "", "", "foo fighters", "foo fighters")
-    //                             , new Song(0f, "strife", "", "", "trivium", "trivium")
-    //                             , new Song(0f, "rap god", "", "", "eminem", "eminem")
-    //                             , new Song(0f, "shut the lights", "", "", "DEVA", "DEVA")
-    //                             , new Song(0f, "carry on my wayward son", "", "", "kansas", "kansas")
-    //                             , new Song(0f, "brabant", "", "", "guus", "guus meeuwis")};
 
     @Override
     public synchronized User loginUser(String name, String password) {

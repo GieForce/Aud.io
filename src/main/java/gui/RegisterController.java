@@ -1,6 +1,6 @@
 package gui;
 
-import aud.io.ClientManager;
+import aud.io.rmi.ClientManager;
 import aud.io.RegisteredUser;
 import javafx.event.ActionEvent;
 import javafx.scene.control.PasswordField;

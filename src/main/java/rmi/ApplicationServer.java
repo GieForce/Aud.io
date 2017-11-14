@@ -1,7 +1,7 @@
-package server;
+package rmi;
 
-import aud.io.IPartyManager;
-import aud.io.PartyManager;
+import aud.io.rmi.IPartyManager;
+import aud.io.rmi.PartyManager;
 import aud.io.fontyspublisher.RemotePublisher;
 import aud.io.fontyspublisher.SharedData;
 

@@ -1,7 +1,7 @@
-package client;
+package rmi;
 
-import aud.io.ClientManager;
-import aud.io.IPartyManager;
+import aud.io.rmi.ClientManager;
+import aud.io.rmi.IPartyManager;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
 import aud.io.fontyspublisher.SharedData;
 

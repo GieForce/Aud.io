@@ -12,7 +12,7 @@
     <children>
         <ImageView pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@background.png"/>
+                <Image url="@../img/background.png"/>
             </image>
         </ImageView>
         <VBox alignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -23,7 +23,7 @@
                         <Insets bottom="10.0" top="10.0"/>
                     </VBox.margin>
                     <image>
-                        <Image url="@Logo.png"/>
+                        <Image url="@../img/Logo.png"/>
                     </image>
                 </ImageView>
                 <Separator minWidth="200.0" opacity="0.5" style="-fx-background-color: black;">

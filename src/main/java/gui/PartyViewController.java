@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import server.Main;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -67,7 +66,7 @@ public class PartyViewController {
 
     private void print(String msg, User user) {
         String prev = taChat.getText();
-        LOGGER.log(Level.INFO, String.format("[%s]: %s", user, msg));
+        LOGGER.log(Level.INFO, String.format("[%s]: %s", user.getNickname(), msg));
         if(prev == null || Objects.equals(prev, "")) {
             taChat.setText(String.format("%s: %s", user.getNickname(), msg));
         } else {

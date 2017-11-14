@@ -1,11 +1,10 @@
 package gui;
 
-import aud.io.ClientManager;
+import aud.io.rmi.ClientManager;
 import aud.io.Votable;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,7 +17,6 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class SongListController {
