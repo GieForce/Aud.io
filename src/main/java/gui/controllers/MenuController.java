@@ -1,6 +1,8 @@
-package gui;
+package gui.controllers;
 
 import aud.io.User;
+import gui.views.CreatePartyView;
+import gui.views.JoinPartyView;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 

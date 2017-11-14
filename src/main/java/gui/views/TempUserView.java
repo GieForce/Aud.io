@@ -1,5 +1,6 @@
-package gui;
+package gui.views;
 
+import gui.controllers.TempUserController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

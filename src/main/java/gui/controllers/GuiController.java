@@ -1,4 +1,4 @@
-package gui;
+package gui.controllers;
 
 import aud.io.rmi.ClientManager;
 import aud.io.rmi.IPartyManager;

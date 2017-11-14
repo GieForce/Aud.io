@@ -1,5 +1,6 @@
-package gui;
+package gui.views;
 
+import gui.controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegisterView extends Application {
+public class LoginView extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -16,11 +17,11 @@ public class RegisterView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/register.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/login.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Register");
-        RegisterController controller = loader.getController();
+        primaryStage.setTitle("Login");
+        LoginController controller = loader.getController();
         controller.setStage(primaryStage);
         primaryStage.setScene(scene);
         primaryStage.show();

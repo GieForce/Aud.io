@@ -1,5 +1,7 @@
-package gui;
+package gui.views;
 
+import aud.io.User;
+import gui.controllers.SongListController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +10,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginView extends Application {
+public class SongListView extends Application {
+    private User user;
+    private SongListController controller;
+    private String name;
 
     public static void main(String[] args) {
         launch(args);
@@ -16,11 +21,11 @@ public class LoginView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/songlist.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Login");
-        LoginController controller = loader.getController();
+        primaryStage.setTitle("Party");
+        controller = loader.getController();
         controller.setStage(primaryStage);
         primaryStage.setScene(scene);
         primaryStage.show();

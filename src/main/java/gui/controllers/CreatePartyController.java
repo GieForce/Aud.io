@@ -1,8 +1,10 @@
-package gui;
+package gui.controllers;
 
 import aud.io.rmi.ClientManager;
 import aud.io.Party;
 import aud.io.User;
+import gui.Message;
+import gui.views.PartyView;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;

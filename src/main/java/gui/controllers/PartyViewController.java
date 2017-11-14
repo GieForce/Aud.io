@@ -1,7 +1,8 @@
-package gui;
+package gui.controllers;
 
 import aud.io.TemporaryUser;
 import aud.io.User;
+import gui.views.SongListView;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;

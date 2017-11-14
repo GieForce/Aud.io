@@ -1,6 +1,7 @@
-package gui;
+package gui.views;
 
 import aud.io.User;
+import gui.controllers.JoinPartyController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

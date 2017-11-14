@@ -1,6 +1,6 @@
-package gui;
+package gui.views;
 
-import aud.io.User;
+import gui.controllers.RegisterController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,10 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SongListView extends Application {
-    private User user;
-    private SongListController controller;
-    private String name;
+public class RegisterView extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -20,11 +17,11 @@ public class SongListView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/songlist.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/register.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Party");
-        controller = loader.getController();
+        primaryStage.setTitle("Register");
+        RegisterController controller = loader.getController();
         controller.setStage(primaryStage);
         primaryStage.setScene(scene);
         primaryStage.show();

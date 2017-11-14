@@ -1,7 +1,11 @@
-package gui;
+package gui.controllers;
 
 import aud.io.rmi.ClientManager;
 import aud.io.RegisteredUser;
+import gui.views.MenuView;
+import gui.Message;
+import gui.views.RegisterView;
+import gui.views.TempUserView;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
