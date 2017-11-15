@@ -4,6 +4,7 @@ import aud.io.TemporaryUser;
 import aud.io.User;
 import gui.views.SongListView;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -17,9 +18,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PartyViewController {
-    public TextArea taChat;
-    public TextField tbMessage;
-    public Label lbPartyName;
+    @FXML
+    private TextArea taChat;
+    @FXML
+    private TextField tbMessage;
+    @FXML
+    private Label lbPartyName;
 
     private String name;
     private Stage stage;
@@ -56,7 +60,7 @@ public class PartyViewController {
     private void printUserMesage() {
         String message = tbMessage.getText();
         tbMessage.setText("");
-        if(message != null && !Objects.equals(message, "")) {
+        if (message != null && !Objects.equals(message, "")) {
             print(message, user);
         }
     }
@@ -68,34 +72,34 @@ public class PartyViewController {
     private void print(String msg, User user) {
         String prev = taChat.getText();
         LOGGER.log(Level.INFO, String.format("[%s]: %s", user.getNickname(), msg));
-        if(prev == null || Objects.equals(prev, "")) {
+        if (prev == null || Objects.equals(prev, "")) {
             taChat.setText(String.format("%s: %s", user.getNickname(), msg));
         } else {
             taChat.setText(String.format("%s\n%s: %s", prev, user.getNickname(), msg));
         }
     }
 
-    public void EnterPressed(KeyEvent keyEvent) {
-        if(keyEvent.getCode() == KeyCode.ENTER) {
+    public void enterPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
             printUserMesage();
         }
     }
 
-    public void AddSongs(ActionEvent actionEvent) throws IOException {
+    public void addSongs(ActionEvent actionEvent) throws IOException {
         SongListView songListView = new SongListView();
         Stage s = new Stage();
         songListView.start(s);
     }
 
-    public void VoteUp(ActionEvent actionEvent) {
+    public void voteUp(ActionEvent actionEvent) {
         //TODO: Get song and add vote
     }
 
-    public void VoteDown(ActionEvent actionEvent) {
+    public void voteDown(ActionEvent actionEvent) {
         //TODO: Get song and add vote
     }
 
-    public void VoteSkip(ActionEvent actionEvent) {
+    public void voteSkip(ActionEvent actionEvent) {
         //TODO: Get song and add vote
     }
 }

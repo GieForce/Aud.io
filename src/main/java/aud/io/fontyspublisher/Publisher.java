@@ -229,7 +229,7 @@ public class Publisher {
     }
 
     /**
-     * Register property. Register property at this publisher. From now on
+     * register property. register property at this publisher. From now on
      * listeners can subscribe to this property. Nothing changes in case given
      * property was already registered.
      *

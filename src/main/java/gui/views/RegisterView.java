@@ -20,7 +20,7 @@ public class RegisterView extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/register.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Register");
+        primaryStage.setTitle("register");
         RegisterController controller = loader.getController();
         controller.setStage(primaryStage);
         primaryStage.setScene(scene);

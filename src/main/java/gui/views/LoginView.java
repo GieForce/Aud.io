@@ -20,7 +20,7 @@ public class LoginView extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/login.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Login");
+        primaryStage.setTitle("login");
         LoginController controller = loader.getController();
         controller.setStage(primaryStage);
         primaryStage.setScene(scene);

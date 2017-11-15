@@ -46,7 +46,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     //}
 
 
-    //public RegisteredUser Login(String email, String password) {
+    //public RegisteredUser login(String email, String password) {
     //    RegisteredUser rUser = null;
     //    for (RegisteredUser user : registeredUsers) {
     //        if (user.checkLogin(email, password)) {
@@ -178,7 +178,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     }
 
     /**
-     * Login for existing users
+     * login for existing users
      * @param name Email of the user
      * @param password Password of the user
      * @return User that has just logged in

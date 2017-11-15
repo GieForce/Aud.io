@@ -5,6 +5,7 @@ import aud.io.RegisteredUser;
 import gui.views.MenuView;
 import gui.Message;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -12,10 +13,14 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public class RegisterController {
-    public TextField tbMail;
-    public TextField tbUsername;
-    public PasswordField tbPassword;
-    public PasswordField tbPasswordConfirm;
+    @FXML
+    private TextField tbMail;
+    @FXML
+    private TextField tbUsername;
+    @FXML
+    private PasswordField tbPassword;
+    @FXML
+    private PasswordField tbPasswordConfirm;
 
     private Stage stage;
 
@@ -23,7 +28,7 @@ public class RegisterController {
         this.stage = stage;
     }
 
-    public void Register(ActionEvent actionEvent) throws Exception {
+    public void register(ActionEvent actionEvent) throws Exception {
         String mail = tbMail.getText();
         String username = tbUsername.getText();
         String password = tbPassword.getText();

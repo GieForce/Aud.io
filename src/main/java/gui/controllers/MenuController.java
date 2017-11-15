@@ -20,14 +20,14 @@ public class MenuController {
         this.user = user;
     }
 
-    public void CreateParty(ActionEvent actionEvent) throws IOException {
-        //Redirect to CreateParty
+    public void createParty(ActionEvent actionEvent) throws IOException {
+        //Redirect to createParty
         CreatePartyView createParty = new CreatePartyView();
         createParty.start(stage, user);
     }
 
-    public void JoinParty(ActionEvent actionEvent) throws IOException {
-        //Redirect to JoinParty
+    public void joinParty(ActionEvent actionEvent) throws IOException {
+        //Redirect to joinParty
         JoinPartyView joinParty = new JoinPartyView();
         joinParty.start(stage, user);
     }

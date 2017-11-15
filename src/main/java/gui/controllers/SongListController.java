@@ -4,6 +4,7 @@ import aud.io.rmi.ClientManager;
 import aud.io.Votable;
 import gui.Message;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -21,8 +22,11 @@ import java.rmi.RemoteException;
 import java.util.Objects;
 
 public class SongListController {
-    public VBox songContainer;
-    public TextField tbSongName;
+    @FXML
+    private VBox songContainer;
+    @FXML
+    private TextField tbSongName;
+
     private Stage stage;
     private ClientManager manager;
 
@@ -35,13 +39,13 @@ public class SongListController {
         }
     }
 
-    public void EnterPressed(KeyEvent keyEvent) {
+    public void enterPressed(KeyEvent keyEvent) {
     }
 
-    public void SearchSong(ActionEvent actionEvent) throws RemoteException {
+    public void searchSong(ActionEvent actionEvent) throws RemoteException {
         songContainer.getChildren().clear();
         String name = tbSongName.getText();
-        if(!Objects.equals(name, "") || name != null) {
+        if (!Objects.equals(name, "") || name != null) {
             manager.addMedia(name);
             for (Votable v : manager.getVotables()) {
                 setHboxSong(v);
@@ -64,7 +68,7 @@ public class SongListController {
         b.setMaxWidth(50);
         b.setMinWidth(50);
         b.setMnemonicParsing(false);
-        b.setOnAction(this::AddSong);
+        b.setOnAction(this::addSong);
         b.setStyle("-fx-background-color: black; -fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;");
         b.setText("+");
         b.setTextAlignment(TextAlignment.CENTER);
@@ -97,7 +101,7 @@ public class SongListController {
         songContainer.getChildren().add(box);
     }
 
-    public void AddSong(ActionEvent actionEvent) {
+    public void addSong(ActionEvent actionEvent) {
 
     }
 

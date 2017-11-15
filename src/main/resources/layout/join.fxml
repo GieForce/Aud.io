@@ -54,7 +54,7 @@
                                         <Font size="24.0" />
                                     </font>
                                 </TextField>
-                                <Button fx:id="btnJoin" mnemonicParsing="false" onAction="#JoinParty" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;" text="Join party" textFill="#f5e9be">
+                                <Button fx:id="btnJoin" mnemonicParsing="false" onAction="#joinParty" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;" text="Join party" textFill="#f5e9be">
                                     <font>
                                         <Font size="24.0" />
                                     </font>

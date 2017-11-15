@@ -31,7 +31,7 @@
                                     <children>
                                         <HBox alignment="CENTER_RIGHT">
                                             <children>
-                                                <Button fx:id="btnAddSong" mnemonicParsing="false" onAction="#AddSongs"
+                                                <Button fx:id="btnAddSong" mnemonicParsing="false" onAction="#addSongs"
                                                         style="-fx-background-color: #34454d; -fx-background-radius: 50 50 50 50; -fx-border-radius: 50 50 50 50;"
                                                         text="Add songs" textFill="#f5e9be">
                                                     <font>
@@ -105,7 +105,7 @@
                                                         <VBox>
                                                             <children>
                                                                 <Button fx:id="btnUp" minHeight="27.0" minWidth="27.0"
-                                                                        mnemonicParsing="false" onAction="#VoteUp"
+                                                                        mnemonicParsing="false" onAction="#voteUp"
                                                                         style="-fx-background-color: black; -fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;"
                                                                         text="▲" textFill="#f5e9be">
                                                                     <padding>
@@ -117,7 +117,7 @@
                                                                     </VBox.margin>
                                                                 </Button>
                                                                 <Button fx:id="btnDown" minHeight="27.0" minWidth="27.0"
-                                                                        mnemonicParsing="false" onAction="#VoteDown"
+                                                                        mnemonicParsing="false" onAction="#voteDown"
                                                                         style="-fx-background-color: black; -fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;"
                                                                         text="▼" textFill="#f5e9be">
                                                                     <padding>
@@ -128,7 +128,7 @@
                                                             </children>
                                                         </VBox>
                                                         <Button fx:id="btnSkip" minHeight="45.0" minWidth="45.0"
-                                                                mnemonicParsing="false" onAction="#VoteSkip"
+                                                                mnemonicParsing="false" onAction="#voteSkip"
                                                                 style="-fx-background-color: black; -fx-background-radius: 50 50 50 50; -fx-border-radius: 50 50 50 50;">
                                                             <graphic>
                                                                 <ImageView fitHeight="20.0" fitWidth="20.0"
@@ -205,7 +205,7 @@
                                                         <HBox alignment="CENTER">
                                                             <children>
                                                                 <TextField fx:id="tbMessage" minWidth="280.0"
-                                                                           onKeyPressed="#EnterPressed"
+                                                                           onKeyPressed="#enterPressed"
                                                                            prefWidth="280.0" promptText="Message"
                                                                            style="-fx-background-radius: 50 50 50 50; -fx-border-radius: 50 50 50 50;">
                                                                     <font>
