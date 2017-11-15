@@ -1,11 +1,11 @@
 package aud.io;
 
+import aud.io.audioplayer.Track;
 import aud.io.fontyspublisher.RemotePublisher;
+import aud.io.rmi.PartyManager;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -46,7 +46,7 @@ public class PartyManagerTest {
 
     @Test
     public void joinParty() throws Exception {
-        String partyKey = manager.activeParties.get(0).getPartyKey();
+        String partyKey = manager.getActiveParties().get(0).getPartyKey();
         TemporaryUser tUser = new TemporaryUser("Nick");
         manager.joinParty(partyKey,tUser);
         assertThat(manager.getPartyByKey(partyKey).getParticipants(),hasItem(tUser));
@@ -55,15 +55,15 @@ public class PartyManagerTest {
     @Test
     public void createParty() throws Exception {
         manager.createParty(registeredUser, "Party2Dab");
-        assertTrue(manager.activeParties.stream().anyMatch(item -> "Party2Dab".equals(item.getName())));
+        assertTrue(manager.getActiveParties().stream().anyMatch(item -> "Party2Dab".equals(item.getName())));
     }
 
     @Test
     public void addMedia() throws Exception {
-        String partyKey = manager.activeParties.get(0).getPartyKey();
+        String partyKey = manager.getActiveParties().get(0).getPartyKey();
         manager.addMedia("Kygo",partyKey,temporaryUser);
         List expectedList = manager.addMedia("Joost",partyKey,temporaryUser);
-        List actualList = manager.activeParties.get(0).getPlaylist();
+        List actualList = manager.getActiveParties().get(0).getPlaylist();
         assertEquals(expectedList,actualList);
     }
 
@@ -83,9 +83,9 @@ public class PartyManagerTest {
     @Test
     public void logout() throws Exception {
         TemporaryUser tUser = new TemporaryUser("Nick");
-        manager.joinParty(manager.activeParties.get(0).getPartyKey(), tUser);
-        manager.logout(tUser,manager.activeParties.get(0).getPartyKey());
-        assertThat(manager.activeParties.get(0).getParticipants(), not(hasItem(tUser)));
+        manager.joinParty(manager.getActiveParties().get(0).getPartyKey(), tUser);
+        manager.logout(tUser,manager.getActiveParties().get(0).getPartyKey());
+        assertThat(manager.getActiveParties().get(0).getParticipants(), not(hasItem(tUser)));
     }
 
     @Test
@@ -108,9 +108,9 @@ public class PartyManagerTest {
     @Test
     public void leaveParty() throws Exception {
         TemporaryUser tUser = new TemporaryUser("Nick");
-        manager.joinParty(manager.activeParties.get(0).getPartyKey(), tUser);
-        manager.leaveParty(tUser,manager.activeParties.get(0).getPartyKey());
-        assertThat(manager.activeParties.get(0).getParticipants(), not(hasItem(tUser)));
+        manager.joinParty(manager.getActiveParties().get(0).getPartyKey(), tUser);
+        manager.leaveParty(tUser,manager.getActiveParties().get(0).getPartyKey());
+        assertThat(manager.getActiveParties().get(0).getParticipants(), not(hasItem(tUser)));
     }
     //TODO kan UpdatePlaylist niet testen want die is private.
 }

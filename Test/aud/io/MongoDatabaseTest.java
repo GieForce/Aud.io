@@ -1,5 +1,8 @@
 package aud.io;
 
+import aud.io.audioplayer.Track;
+import aud.io.mongo.Connection;
+import aud.io.mongo.MongoDatabase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +16,6 @@ public class MongoDatabaseTest {
     public void setUp() throws Exception {
         mongoDatabase = new MongoDatabase();
         Connection con = new Connection();
-        Main main = new Main();
     }
 
     @Test
@@ -30,7 +32,7 @@ public class MongoDatabaseTest {
 
     @Test
     public void getSongsWithSearchterm() throws Exception {
-        ArrayList list = mongoDatabase.getSongsWithSearchterm("Slapend Rijk");
+        ArrayList list = (ArrayList) mongoDatabase.getSongsWithSearchterm("Slapend Rijk");
         //TODO Werkt DB al goed genoeg?
     }
 
