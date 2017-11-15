@@ -37,21 +37,13 @@ public class StreamMedia implements IMedia, Serializable {
             @Override
             public void run() {
                 //Praat met audioserver voor ophalen media
-                Socket socket = null;
-                try {
-                    socket = new Socket(streamLocation, port);
+                try (Socket socket = new Socket(streamLocation, port)) {
                     if (socket.isConnected()) {
                         InputStream in = new BufferedInputStream(socket.getInputStream());
                         playAudio(in);
                     }
                 } catch (IOException ex) {
                     LOGGER.log(Level.WARNING, ex.getMessage());
-                } finally {
-                    try {
-                        if(socket != null) socket.close();
-                    } catch (IOException e) {
-                        LOGGER.log(Level.WARNING, e.getMessage());
-                    }
                 }
             }
 

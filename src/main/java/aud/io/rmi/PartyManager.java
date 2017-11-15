@@ -16,7 +16,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
 
     private RemotePublisher publisher;
 
-    public ArrayList<RegisteredUser> getRegisteredUsers() {
+    public List<RegisteredUser> getRegisteredUsers() {
         return registeredUsers;
     }
 

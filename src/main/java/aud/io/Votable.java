@@ -9,8 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @JsonTypeInfo(use= JsonTypeInfo.Id.CLASS,property="_class")
-public abstract class Votable implements Serializable{
-
+public abstract class Votable implements Serializable {
     private HashMap<User, Vote> voters;
 
     private IMedia media;
@@ -24,7 +23,7 @@ public abstract class Votable implements Serializable{
     //Not usable as IMedia doesn't give back any values yet.
     public Votable(IMedia media) {
         this.media = media;
-        voters = new HashMap<User, Vote>();
+        voters = new HashMap<>();
     }
 
     /**
@@ -43,7 +42,7 @@ public abstract class Votable implements Serializable{
         this.name = name;
         this.length = length;
         this._id = _id;
-        voters = new HashMap<User, Vote>();
+        voters = new HashMap<>();
     }
 
 
@@ -51,7 +50,7 @@ public abstract class Votable implements Serializable{
         this.media = media;
         this.name = name;
         this.length = length;
-        voters = new HashMap<User, Vote>();
+        voters = new HashMap<>();
     }
 
     /**

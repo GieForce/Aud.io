@@ -3,11 +3,15 @@ package aud.io.rmi;
 import aud.io.*;
 import aud.io.fontyspublisher.IRemotePropertyListener;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
+import aud.io.mongo.StreamMedia;
 
 import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ClientManager extends UnicastRemoteObject implements IRemotePropertyListener {
 
@@ -19,6 +23,12 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     private RegisteredUser registeredUser;
     private TemporaryUser temporaryUser;
     private List<Votable> votables;
+    private static final Logger LOGGER = Logger.getLogger(StreamMedia.class.getName());
+
+    private static final String MSG_NOT_IN_PARTY = "You're not in a party";
+    private static final String MSG_ALREADY_IN_PARTY = "You're already in a party";
+    private static final String MSG_NOT_LOGGED_IN = "You're not logged in";
+    private static final String MSG_ALREADY_LOGGED_IN = "You're already logged in";
 
     public ClientManager(IRemotePublisherForListener publisher, IPartyManager server) throws RemoteException {
         this.publisher = publisher;
@@ -28,13 +38,13 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     @Override
     public synchronized void propertyChange(PropertyChangeEvent evt) throws RemoteException {
         currentParty = (Party) evt.getNewValue();
-        System.out.println(currentParty.getPartyMessage());
+        LOGGER.log(Level.INFO, currentParty.getPartyKey());
     }
 
     public String createParty(String partyName) throws RemoteException {
 
         if (currentParty != null) {
-            return "You are already in a party";
+            return MSG_ALREADY_IN_PARTY;
         }
 
         //TODO: Verify with server if logged in?
@@ -57,11 +67,11 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
 
     public String leaveParty() throws RemoteException {
         if (currentParty == null) {
-            return "You're not in a party.";
+            return MSG_NOT_IN_PARTY;
         }
 
         if (getUser() == null) {
-            return "You're not logged in.";
+            return MSG_NOT_LOGGED_IN;
         }
 
         publisher.unsubscribeRemoteListener(this, currentParty.getPartyKey());
@@ -74,11 +84,11 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
 
     public String joinParty(String partyKey) throws RemoteException {
         if (currentParty != null) {
-            return "You're already in a party.";
+            return MSG_ALREADY_IN_PARTY;
         }
 
         if (getUser() == null) {
-            return "You're not logged in.";
+            return MSG_NOT_LOGGED_IN;
         }
 
         IParty iParty = server.joinParty(partyKey, getUser());
@@ -93,43 +103,44 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         return String.format("You have joined the party: %s with the key: %s", party.getName(), party.getPartyKey());
     }
 
-    public List<Votable> getVotables() throws RemoteException {
+    public List<Votable> getVotables() {
         if (votables == null)
             //addMedia hasn't run yet
-            return null;
+            return new ArrayList<>();
         return votables;
     }
 
     public String addMedia(String media) throws RemoteException {
         votables = null;
         if (currentParty == null) {
-            return "You're not in a party.";
+            return MSG_NOT_IN_PARTY;
         }
 
         if (getUser() == null) {
-            return "You're not logged in.";
+            return MSG_NOT_LOGGED_IN;
         }
 
         votables = server.addMedia(media, currentParty.getPartyKey(), getUser());
 
-        if (votables.size() == 0) {
+        if (votables.isEmpty()) {
             return "The song does not exist.";
         } else if (votables.size() == 1) {
             return "You have added the song.";
         } else {
-            String s = "choose one of the following:" + System.lineSeparator();
+            StringBuilder builder = new StringBuilder();
+            builder.append(String.format("choose one of the following:%s", System.lineSeparator()));
 
             for (Votable votable : votables) {
-                s += String.format("%s%s", votable.getName(), System.lineSeparator());
+                builder.append(String.format("%s%s", votable.getName(), System.lineSeparator()));
             }
 
-            return s;
+            return builder.toString();
         }
     }
 
     public String login(String username, String password) throws RemoteException {
         if (getUser() != null) {
-            return "You're already logged in";
+            return MSG_ALREADY_LOGGED_IN;
         }
         User user = server.login(username, password);
 
@@ -143,7 +154,7 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
 
     public String logout() throws RemoteException {
         if (getUser() == null) {
-            return "You're not logged in.";
+            return MSG_NOT_LOGGED_IN;
         }
         String partyKey = "";
 
@@ -161,7 +172,7 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
 
     public String getTemporaryUser(String nickname) throws RemoteException {
         if (getUser() != null) {
-            return "You're already logged in.";
+            return MSG_ALREADY_LOGGED_IN;
         }
 
         User user = server.getTemporaryUser(nickname);
@@ -173,10 +184,10 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     public String play() throws RemoteException {
         User user = getUser();
         if (user == null) {
-            return "You're not logged in";
+            return MSG_NOT_LOGGED_IN;
         }
         if (currentParty == null) {
-            return "You're not in a party";
+            return MSG_NOT_IN_PARTY;
         }
 
         Votable votable = currentParty.getNextSong();
@@ -191,7 +202,7 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
 
     public String getPartyInfo() {
         if (currentParty == null) {
-            return "You're not in a party.";
+            return MSG_NOT_IN_PARTY;
         }
 
         return currentParty.toString();
@@ -216,5 +227,4 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         registeredUser = null;
         temporaryUser = null;
     }
-
 }
