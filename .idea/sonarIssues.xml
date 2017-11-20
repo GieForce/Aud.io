@@ -68,7 +68,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/Demo/Client/ClientManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/Demo/Client/GUI_Client.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/Demo/Shared/SharedData.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java">
           <value>
             <set />
           </value>
@@ -143,6 +158,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/aud/io/YoutubeVideo.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/client/ClientStream.java">
           <value>
             <set />
@@ -188,7 +208,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/gui/LoginController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/gui/Main.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/gui/RmiClient.java">
           <value>
             <set />
           </value>
@@ -199,6 +229,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/sample/Main.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/server/ApplicationServer.java">
           <value>
             <set />
           </value>
@@ -214,6 +249,111 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/resources/gui.fxml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Gracenote/wrappers/gnsdk_java/samples/AudioApp/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Gracenote/wrappers/gnsdk_java/samples/musicid_file_trackid/MusicIDFileTrackID.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Client/Client.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Client/RMIClient.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Client/ReparatieClientManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Client/ReparatieListener.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Repositories/IKlantContext.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Repositories/KlantContext.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Repositories/KlantMongoContext.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Repositories/KlantRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Server/ReparatieManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Server/ReparatiePublisher.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Server/ReparatieServerManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Server/Server.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Shared/IReparatieManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Shared/IReparatiePublisher.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Shared/Klant.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Shared/ReparatieManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/Shared/SharedData.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/java/UIController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/resources/UI.fxml">
           <value>
             <set />
           </value>

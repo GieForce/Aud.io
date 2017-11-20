@@ -10,6 +10,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Votable votable = new Track(new StreamMedia("eenLocatie"), "slapend rijk", 0f, "boef", "slaaptekort" );
+        //Votable votable2 = new YoutubeVideo(new StreamMedia("eenLocatie"), "slapend rijk", 0f, "boef");
         MongoDatabase mongoDatabase = new MongoDatabase();
         mongoDatabase.saveVotable(votable);
 

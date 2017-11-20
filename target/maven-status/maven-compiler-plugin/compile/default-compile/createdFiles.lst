@@ -56,7 +56,6 @@ Demo\Shared\TemporaryUser.class
 gui\PartyViewController.class
 aud\io\Party.class
 Demo\Shared\SharedData.class
-server\Main.class
 server\StreamServer.class
 aud\io\MemoryDatabase.class
 Demo\Shared\User.class

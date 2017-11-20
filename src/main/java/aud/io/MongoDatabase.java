@@ -4,7 +4,6 @@ import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MongoDatabase implements IDatabase {
     @Override
