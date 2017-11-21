@@ -4,6 +4,7 @@ import aud.io.Votable;
 import aud.io.audioplayer.AudioPlayer;
 import aud.io.audioplayer.Track;
 import aud.io.memory.MemoryMedia;
+import uk.co.caprica.vlcj.component.AudioMediaPlayerComponent;
 
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
@@ -15,7 +16,10 @@ public class PlayerTest {
     private  static ExecutorService pool = Executors.newFixedThreadPool(3);
 
     public static void main(String[] args){
-        player = new AudioPlayer(pool);
+
+        AudioMediaPlayerComponent VLCplayer = new AudioMediaPlayerComponent();
+
+        player = new AudioPlayer(pool, VLCplayer);
 
         Votable votable = new Track(new MemoryMedia("audio/Demo.mp3"));
 

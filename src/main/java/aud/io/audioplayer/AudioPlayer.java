@@ -11,17 +11,20 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicBoolean;
+import uk.co.caprica.vlcj.component.AudioMediaPlayerComponent;
+import uk.co.caprica.vlcj.player.MediaPlayer;
+import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
 
 public class AudioPlayer extends Observable implements IPlayer {
     private final ExecutorService pool;
-    private Object VLCPlayer;
+    private  AudioMediaPlayerComponent VLCPlayer;
     private Future currentSong;
 
-    public AudioPlayer(ExecutorService pool) {
+    public AudioPlayer(ExecutorService pool, AudioMediaPlayerComponent VLCPlayer) {
         this.pool = pool;
 
         //TODO: Insert actual player
-        VLCPlayer = null;
+        this.VLCPlayer = VLCPlayer;
     }
 
 
@@ -68,11 +71,11 @@ public class AudioPlayer extends Observable implements IPlayer {
         private File mediaFile;
         private IMedia trackMedia;
         private ExecutorService pool;
-        private Object VLCPlayer;
+        private AudioMediaPlayerComponent VLCPlayer;
         private AtomicBoolean play, pause, stop;
         private boolean loadedSong = false;
 
-        PlayerRunnable(IMedia trackMedia, ExecutorService pool, AudioPlayer player, Object VLCPlayer) {
+        PlayerRunnable(IMedia trackMedia, ExecutorService pool, AudioPlayer player, AudioMediaPlayerComponent VLCPlayer) {
             this.trackMedia = trackMedia;
             this.pool = pool;
             player.addObserver(this);
