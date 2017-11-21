@@ -4,7 +4,6 @@ import aud.io.rmi.IPartyManager;
 import aud.io.rmi.PartyManager;
 import aud.io.fontyspublisher.RemotePublisher;
 import aud.io.fontyspublisher.SharedData;
-import log.Logger;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -13,45 +12,62 @@ import java.rmi.registry.Registry;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ApplicationServer {
     private static int port;
     private static String serverName;
     private static String publisherName;
+    private static Logger logger;
 
     public static void main(String[] args) {
-        Logger.setupLogger(ApplicationServer.class.getName());
+        setupLogger();
         initSharedData();
 
         try {
-            Logger.log(Level.INFO, "Server will start.");
+            logger.log(Level.INFO, "Server will start.");
             RemotePublisher publisher = new RemotePublisher();
             IPartyManager server = new PartyManager(publisher);
 
             Registry registry = LocateRegistry.createRegistry(port);
-            Logger.log(Level.INFO, "Registry created");
+            logger.log(Level.INFO, "Registry created");
             registry.rebind(publisherName, publisher);
-            Logger.log(Level.INFO, "Publisher bound to registry");
+            logger.log(Level.INFO, "Publisher bound to registry");
             registry.rebind(serverName, server);
-            Logger.log(Level.INFO, "Server name bound to registry");
+            logger.log(Level.INFO, "Server name bound to registry");
         } catch (RemoteException e) {
-            Logger.log(Level.SEVERE, e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
         Scanner scanner = new Scanner(System.in);
-        Logger.log(Level.INFO, "Server has started, type 'exit' to stop.");
+        logger.log(Level.INFO, "Server has started, type 'exit' to stop.");
 
         boolean loop = true;
 
         while (loop) {
             if (scanner.nextLine().equals("exit")) {
                 loop = false;
-                Logger.log(Level.INFO, "Server is shutting down.");
+                logger.log(Level.INFO, "Server is shutting down.");
             } else {
-                Logger.log(Level.INFO, "Unknown command, type 'exit' to stop.");
+                logger.log(Level.INFO, "Unknown command, type 'exit' to stop.");
             }
         }
         System.exit(0);
+    }
+
+    private static void setupLogger() {
+        try {
+            String logname = "Server";
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log",logname, timeStamp));
+            fh.setLevel(Level.ALL);
+            logger = java.util.logging.Logger.getLogger(logname);
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
     }
 
     private static void initSharedData() {

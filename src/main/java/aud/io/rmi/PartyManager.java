@@ -4,14 +4,15 @@ package aud.io.rmi;
 import aud.io.*;
 import aud.io.fontyspublisher.RemotePublisher;
 import aud.io.memory.MemoryDatabase;
-import log.Logger;
-import rmi.ApplicationServer;
-import sun.rmi.runtime.Log;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PartyManager extends UnicastRemoteObject implements Observer, IPartyManager {
     private ArrayList<RegisteredUser> registeredUsers;
@@ -19,6 +20,31 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     private IDatabase database;
 
     private RemotePublisher publisher;
+    private Logger logger;
+
+    /**
+     * Create a new PartyManager which will handle all Parties
+     */
+    public PartyManager(RemotePublisher publisher) throws RemoteException {
+        this.publisher = publisher;
+        database = new MemoryDatabase();
+        activeParties = new ArrayList<>();
+        setupLogger();
+    }
+
+    private void setupLogger() {
+        try {
+            String logname = "PartyManager";
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log",logname, timeStamp));
+            fh.setLevel(Level.ALL);
+            logger = java.util.logging.Logger.getLogger(logname);
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
+    }
 
     public List<RegisteredUser> getRegisteredUsers() {
         return registeredUsers;
@@ -31,17 +57,6 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     public IDatabase getDatabase() {
         return database;
     }
-
-    /**
-     * Create a new PartyManager which will handle all Parties
-     */
-    public PartyManager(RemotePublisher publisher) throws RemoteException {
-        this.publisher = publisher;
-        database = new MemoryDatabase();
-        activeParties = new ArrayList<>();
-        Logger.setupLogger(ApplicationServer.class.getName());
-    }
-
 
     //public String createParty(RegisteredUser host, String partyName) {
     //    Party party = new Party(host, partyName);
@@ -136,7 +151,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
             party.join(user);
 
             party.setPartyMessage(String.format("%s has joined the party.", user.getNickname()));
-            Logger.log(Level.INFO, String.format("%s has joined %s", user.getNickname(), party.getName()));
+            logger.log(Level.INFO, String.format("%s has joined %s", user.getNickname(), party.getName()));
             publisher.inform(party.getPartyKey(), null, party);
 
             return party;
@@ -155,7 +170,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     public synchronized IParty createParty(RegisteredUser user, String partyName) throws RemoteException {
         Party party = new Party(user, partyName);
         activeParties.add(party);
-        Logger.log(Level.INFO, String.format("%s has created a new party (%s) ", user.getNickname(), party.getName()));
+        logger.log(Level.INFO, String.format("%s has created a new party (%s) ", user.getNickname(), party.getName()));
         publisher.registerProperty(party.getPartyKey());
 
         return party;
@@ -177,7 +192,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
             Party party = getPartyByKey(partyKey);
             if (party != null) {
                 party.addToVotables(votables.get(0));
-                Logger.log(Level.INFO, String.format("%s added %s to %s", user.getNickname(), votables.get(0).getName(), party.getName()));
+                logger.log(Level.INFO, String.format("%s added %s to %s", user.getNickname(), votables.get(0).getName(), party.getName()));
                 party.setPartyMessage(String.format("%s added %s", user.getNickname(), votables.get(0).getName()));
                 publisher.inform(party.getPartyKey(), null, party);
 
@@ -201,7 +216,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
         User user = database.loginUser(name, password);
         if (user != null) {
             if (user.getNickname().equals(name)) {
-                Logger.log(Level.INFO, String.format("%s logged in", user.getNickname()));
+                logger.log(Level.INFO, String.format("%s logged in", user.getNickname()));
                 return user;
             }
             return database.loginUser(name, password);
@@ -221,7 +236,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     public synchronized Boolean createUser(String name, String password, String nickname) throws RemoteException {
         Boolean success = database.createUser(name, nickname, password);
         if(success) {
-            Logger.log(Level.INFO, String.format("Created new user: name:%s nick:%s", name, nickname));
+            logger.log(Level.INFO, String.format("Created new user: name:%s nick:%s", name, nickname));
             return database.createUser(name, nickname, password);
         }
         return success;
@@ -231,7 +246,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     public synchronized Boolean logout(User user, String partyKey) throws RemoteException {
         if (!partyKey.equals("")) {
             leaveParty(user, partyKey);
-            Logger.log(Level.INFO, String.format("%s logged out", user.getNickname()));
+            logger.log(Level.INFO, String.format("%s logged out", user.getNickname()));
         }
         return true;
     }
@@ -248,7 +263,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
         Party party = getPartyByKey(partyKey);
         if (party.mediaIsPlayed(media, host)) {
             party.setPartyMessage(String.format("%s has started playing.", media.getName()));
-            Logger.log(Level.INFO, String.format("%s has started playing", media.getName()));
+            logger.log(Level.INFO, String.format("%s has started playing", media.getName()));
             publisher.inform(party.getPartyKey(), null, party);
             return true;
         }
@@ -266,7 +281,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
         Party party = getPartyByKey(partyKey);
         if (party != null) {
             party.removeUser(user);
-            Logger.log(Level.INFO, String.format("%s has left party %s", user.getNickname(), party.getName()));
+            logger.log(Level.INFO, String.format("%s has left party %s", user.getNickname(), party.getName()));
             party.setPartyMessage(String.format("%s has left the party.", user.getNickname()));
             publisher.inform(party.getPartyKey(), null, party);
         }
