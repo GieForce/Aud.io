@@ -4,6 +4,7 @@ import aud.io.rmi.ClientManager;
 import aud.io.rmi.IPartyManager;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
 import aud.io.fontyspublisher.SharedData;
+import log.Logger;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -11,7 +12,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Scanner;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ApplicationClient {
 
@@ -23,9 +23,8 @@ public class ApplicationClient {
     private static String publisherName;
     private static boolean allowRun;
 
-    private static final Logger LOGGER = Logger.getLogger(ApplicationClient.class.getName());
-
     public static void main(String[] args) {
+        Logger.setupLogger(ApplicationClient.class.getName());
         initSharedData();
 
         try {
@@ -35,19 +34,20 @@ public class ApplicationClient {
             manager = new ClientManager(publisher, server);
 
         } catch (RemoteException | NotBoundException e) {
-            LOGGER.log(Level.WARNING, e.getMessage());
+            Logger.log(Level.WARNING, e.getMessage());
         }
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Type 'help' for a list of all commands.");
+        Logger.log(Level.INFO, "Type 'help' for a list of all commands");
+//        System.out.println("Type 'help' for a list of all commands.");
 
         allowRun = true;
         while (allowRun) {
             try {
                 executeInput(scanner.nextLine(), scanner);
             } catch (RemoteException e) {
-                LOGGER.log(Level.WARNING, e.getMessage());
+                Logger.log(Level.WARNING, e.getMessage());
             }
         }
 

@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import log.Logger;
+import rmi.ApplicationServer;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -28,6 +30,7 @@ public class CreatePartyController {
     }
 
     public void createParty(ActionEvent actionEvent) throws IOException {
+        Logger.setupLogger(CreatePartyController.class.getName());
         String partyName = tbPartyName.getText();
         if (Objects.equals(partyName, "") || partyName == null) {
             Message.Show("Error", "Please enter a partyname");
