@@ -3,13 +3,18 @@ package aud.io.rmi;
 import aud.io.*;
 import aud.io.fontyspublisher.IRemotePropertyListener;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
-import aud.io.mongo.StreamMedia;
+import rmi.ApplicationServer;
 
 import java.beans.PropertyChangeEvent;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +28,8 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     private RegisteredUser registeredUser;
     private TemporaryUser temporaryUser;
     private List<Votable> votables;
-    private static final Logger LOGGER = Logger.getLogger(StreamMedia.class.getName());
+
+    private Logger logger;
 
     private static final String MSG_NOT_IN_PARTY = "You're not in a party";
     private static final String MSG_ALREADY_IN_PARTY = "You're already in a party";
@@ -31,18 +37,35 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     private static final String MSG_ALREADY_LOGGED_IN = "You're already logged in";
 
     public ClientManager(IRemotePublisherForListener publisher, IPartyManager server) throws RemoteException {
+        //Replace with token
+        setupLogger();
         this.publisher = publisher;
         this.server = server;
+    }
+
+    private void setupLogger() {
+        try {
+            String logname = "ClientManager";
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log",logname, timeStamp));
+            fh.setLevel(Level.ALL);
+            ConsoleHandler ch = new ConsoleHandler();
+            ch.setLevel(Level.SEVERE);
+            logger = java.util.logging.Logger.getLogger(logname);
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
     }
 
     @Override
     public synchronized void propertyChange(PropertyChangeEvent evt) throws RemoteException {
         currentParty = (Party) evt.getNewValue();
-        LOGGER.log(Level.INFO, currentParty.getPartyKey());
+//        logger.log(Level.INFO, currentParty.getPartyKey());
     }
 
     public String createParty(String partyName) throws RemoteException {
-
         if (currentParty != null) {
             return MSG_ALREADY_IN_PARTY;
         }
@@ -58,9 +81,11 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
 
                 return String.format("You have created the party: %s with the key: %s", party.getName(), party.getPartyKey());
             } else {
+                logger.log(Level.FINE, String.format("%s wasn't a registered user", getUser().getNickname()));
                 return "To create a party you have to be a registered user.";
             }
         } else {
+            logger.log(Level.FINE, String.format("%s wasn't logged in", getUser().getNickname()));
             return "You need to be logged in to create a party.";
         }
     }
@@ -79,6 +104,8 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
 
         currentParty = null;
 
+        logger.log(Level.INFO, String.format("%s left party: name: %s key: %s",
+                getUser().getNickname(), getParty().getName(), getParty().getPartyKey()));
         return "You left the party.";
     }
 
@@ -100,6 +127,8 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         publisher.subscribeRemoteListener(this, party.getPartyKey());
         currentParty = party;
 
+        logger.log(Level.INFO, String.format("%s joined party: name: %s key: %s",
+                getUser().getNickname(), party.getName(), party.getPartyKey()));
         return String.format("You have joined the party: %s with the key: %s", party.getName(), party.getPartyKey());
     }
 
@@ -125,6 +154,8 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         if (votables.isEmpty()) {
             return "The song does not exist.";
         } else if (votables.size() == 1) {
+            logger.log(Level.INFO, String.format("%s added %s to party: name: %s key: %s",
+                    getUser().getNickname(), votables.get(0).getName(), currentParty.getName(), currentParty.getPartyKey()));
             return "You have added the song.";
         } else {
             StringBuilder builder = new StringBuilder();
@@ -145,10 +176,12 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         User user = server.login(username, password);
 
         if (user == null) {
+            logger.log(Level.WARNING, String.format("%s tried to login", username));
             return "Incorrect username or password.";
         }
 
         registeredUser = (RegisteredUser) user;
+        logger.log(Level.INFO, String.format("%s logged in", user.getNickname()));
         return String.format("You logged in as: %s", user.getNickname());
     }
 
@@ -164,9 +197,11 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
             currentParty = null;
         }
 
-        server.logout(getUser(), partyKey);
+        User u = getUser();
+        server.logout(u, partyKey);
         clearUsers();
 
+        logger.log(Level.INFO, String.format("%s logged out", u.getNickname()));
         return "You logged out.";
     }
 
@@ -178,6 +213,7 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         User user = server.getTemporaryUser(nickname);
         temporaryUser = (TemporaryUser) user;
 
+        logger.log(Level.INFO, String.format("Temporary User %s created", user.getNickname()));
         return String.format("You logged in as: %s", user.getNickname());
     }
 
@@ -194,6 +230,7 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
 
         if (server.mediaIsPlayed(votable, currentParty.getPartyKey(), user)) {
             votable.getMedia().play();
+            logger.log(Level.INFO, String.format("%s started playing %s", user.getNickname(), votable.getName()));
             return String.format("You started playing %s", votable.getName());
         }
 

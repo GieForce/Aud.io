@@ -5,11 +5,15 @@ import aud.io.rmi.IPartyManager;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
 import aud.io.fontyspublisher.SharedData;
 
+import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,10 +26,11 @@ public class ApplicationClient {
     private static String serverName;
     private static String publisherName;
     private static boolean allowRun;
+    private static Logger logger;
 
-    private static final Logger LOGGER = Logger.getLogger(ApplicationClient.class.getName());
 
     public static void main(String[] args) {
+        setupLogger();
         initSharedData();
 
         try {
@@ -35,7 +40,7 @@ public class ApplicationClient {
             manager = new ClientManager(publisher, server);
 
         } catch (RemoteException | NotBoundException e) {
-            LOGGER.log(Level.WARNING, e.getMessage());
+            logger.log(Level.WARNING, e.getMessage());
         }
 
         Scanner scanner = new Scanner(System.in);
@@ -47,7 +52,7 @@ public class ApplicationClient {
             try {
                 executeInput(scanner.nextLine(), scanner);
             } catch (RemoteException e) {
-                LOGGER.log(Level.WARNING, e.getMessage());
+                logger.log(Level.WARNING, e.getMessage());
             }
         }
 
@@ -115,7 +120,20 @@ public class ApplicationClient {
             System.out.println("Shutting down program");
             allowRun = false;
         }
+    }
 
+    private static void setupLogger() {
+        try {
+            String logname = "Client";
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log",logname, timeStamp));
+            fh.setLevel(Level.ALL);
+            logger = java.util.logging.Logger.getLogger(logname);
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
     }
 
     private static void initSharedData() {
