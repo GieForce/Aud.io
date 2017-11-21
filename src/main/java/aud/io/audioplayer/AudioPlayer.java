@@ -36,17 +36,17 @@ public class AudioPlayer implements IPlayer {
     @Override
     public void play(Votable votable) {
         //load new song and start playing
-        pool.submit(new PlayerPunnable(votable.getMedia(), pool));
+        pool.submit(new PlayerRunnable(votable.getMedia(), pool));
     }
 
-    private class PlayerPunnable implements Runnable{
+    private class PlayerRunnable implements Runnable{
 
         private Future mediaFileContainer;
         private File mediaFile;
         private IMedia trackMedia;
         private ExecutorService pool;
 
-        PlayerPunnable(IMedia trackMedia, ExecutorService pool) {
+        PlayerRunnable(IMedia trackMedia, ExecutorService pool) {
             this.trackMedia = trackMedia;
             this.pool = pool;
         }
