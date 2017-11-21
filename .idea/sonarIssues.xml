@@ -83,6 +83,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/aud/io/ACRCloud/ACRCloudManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java">
           <value>
             <set />
@@ -93,12 +98,42 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/aud/io/Demos/PlayerTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/aud/io/Drive/DriveManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/aud/io/Drive/DriveService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/aud/io/DriveService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/aud/io/Files/FileManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/aud/io/IMedia.java">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/aud/io/Main.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/aud/io/MediaFiles.java">
           <value>
             <set />
           </value>
@@ -159,6 +194,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/aud/io/YoutubeVideo.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/aud/io/fontyspublisher/SharedData.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/aud/io/memory/MemoryMedia.java">
           <value>
             <set />
           </value>
@@ -228,6 +273,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/rmi/ApplicationServer.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/sample/Main.java">
           <value>
             <set />
@@ -249,6 +299,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/resources/gui.fxml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/ACRCloud/acrcloud_sdk_java-master/windows/win64/src/com/acrcloud/utils/ACRRequest.java">
           <value>
             <set />
           </value>
@@ -354,6 +409,31 @@
           </value>
         </entry>
         <entry key="$USER_HOME$/School/Semester 3/GSO3/Killerapp/repairapp/src/main/resources/UI.fxml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/JSF/KochFractal/v2/Test/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/JSF/KochFractal/v2/untitled/src/Admin.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/JSF/KochFractal/v2/untitled/src/Client.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/JSF/KochFractal/v2/untitled/src/IClient.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/School/Semester 3/JSF/KochFractal/v2/untitled/src/Klant.java">
           <value>
             <set />
           </value>

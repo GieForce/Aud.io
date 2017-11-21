@@ -1,22 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2521a8a-4c29-466f-a421-54064c010fe1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/aud/io/YoutubeVideo.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/aud/io/IMedia.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/aud/io/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/aud/io/Party.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/aud/io/PartyManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/aud/io/Votable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/server/Main.class" afterPath="" />
+    <list default="true" id="e2521a8a-4c29-466f-a421-54064c010fe1" name="Default" comment="Small text demo of audioplayer implemented">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sonar-project.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/aud/io/ACRCloud/ACRCloudManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/aud/io/Demos/PlayerTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/aud/io/Drive/DriveManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/aud/io/Drive/DriveService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/aud/io/Files/FileManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/aud/io/IPlayer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/aud/io/audioplayer/AudioPlayer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/aud/io/fontyspublisher/SharedData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/aud/io/memory/MemoryMedia.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/aud/io/mongo/Connection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/rmi/ApplicationServer.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Test/aud/io/SongTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Client/ClientMain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Client/ClientManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Server/PartyManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Server/ServerMain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/IClientParty.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/IParty.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/IPartyServer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/IServerParty.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/Party.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/RegisteredUser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/SharedData.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/TemporaryUser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/User.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/fontyspublisher/ILocalPropertyListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/fontyspublisher/IPropertyListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/fontyspublisher/IRemotePropertyListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/fontyspublisher/IRemotePublisherForDomain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/fontyspublisher/IRemotePublisherForListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/fontyspublisher/Publisher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Demo/Shared/fontyspublisher/RemotePublisher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/aud/io/Connection.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/aud/io/MemoryMedia.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/aud/io/Song.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/client/ClientStream.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/gui/Main.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/server/ApplicationServer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/server/StreamServer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/gui.fxml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/AudioFile/Demo.mp3" afterPath="$PROJECT_DIR$/src/main/resources/audio/Demo.mp3" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/AudioFile/Demo.wav" afterPath="$PROJECT_DIR$/src/main/resources/audio/Demo.wav" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/rmi/ClientManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/aud/io/IPartyManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/rmi/IPartyManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/aud/io/MemoryDatabase.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/memory/MemoryDatabase.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/aud/io/MongoDatabase.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/mongo/MongoDatabase.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/aud/io/PartyManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/rmi/PartyManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/aud/io/StreamMedia.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/mongo/StreamMedia.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/aud/io/Track.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/audioplayer/Track.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" afterPath="$PROJECT_DIR$/src/main/java/rmi/ApplicationClient.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/CreatePartyController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/CreatePartyController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/CreatePartyView.java" afterPath="$PROJECT_DIR$/src/main/java/gui/views/CreatePartyView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/GuiController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/GuiController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/JoinPartyController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/JoinPartyController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/JoinPartyView.java" afterPath="$PROJECT_DIR$/src/main/java/gui/views/JoinPartyView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/LoginView.java" afterPath="$PROJECT_DIR$/src/main/java/gui/views/LoginView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/MenuController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/MenuController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/MenuView.java" afterPath="$PROJECT_DIR$/src/main/java/gui/views/MenuView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/PartyView.java" afterPath="$PROJECT_DIR$/src/main/java/gui/views/PartyView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/PartyViewController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/PartyViewController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/RegisterController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/RegisterController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/RegisterView.java" afterPath="$PROJECT_DIR$/src/main/java/gui/views/RegisterView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/RmiClient.java" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/RmiClient.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/SongListController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/SongListController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/SongListView.java" afterPath="$PROJECT_DIR$/src/main/java/gui/views/SongListView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/TempUserController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/TempUserController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/gui/TempUserView.java" afterPath="$PROJECT_DIR$/src/main/java/gui/views/TempUserView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/Logo.png" afterPath="$PROJECT_DIR$/src/main/resources/img/Logo.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/background.png" afterPath="$PROJECT_DIR$/src/main/resources/img/background.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/create.fxml" afterPath="$PROJECT_DIR$/src/main/resources/layout/create.fxml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/fastforward.png" afterPath="$PROJECT_DIR$/src/main/resources/img/fastforward.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/join.fxml" afterPath="$PROJECT_DIR$/src/main/resources/layout/join.fxml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/login.fxml" afterPath="$PROJECT_DIR$/src/main/resources/layout/login.fxml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/menu.fxml" afterPath="$PROJECT_DIR$/src/main/resources/layout/menu.fxml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/party.fxml" afterPath="$PROJECT_DIR$/src/main/resources/layout/party.fxml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/register.fxml" afterPath="$PROJECT_DIR$/src/main/resources/layout/register.fxml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/songlist.fxml" afterPath="$PROJECT_DIR$/src/main/resources/layout/songlist.fxml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/temp.fxml" afterPath="$PROJECT_DIR$/src/main/resources/layout/temp.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Audio-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/Audio-1.0-SNAPSHOT.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/aud/io/PartyManagerTest.class" afterPath="$PROJECT_DIR$/target/test-classes/aud/io/PartyManagerTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarIssues.xml" afterPath="$PROJECT_DIR$/.idea/sonarIssues.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Audio.iml" afterPath="$PROJECT_DIR$/Audio.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/aud/io/ClientManagerTest.java" afterPath="$PROJECT_DIR$/Test/aud/io/ClientManagerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/aud/io/MemoryMediaTest.java" afterPath="$PROJECT_DIR$/Test/aud/io/MemoryMediaTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/aud/io/MongoDatabaseTest.java" afterPath="$PROJECT_DIR$/Test/aud/io/MongoDatabaseTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/aud/io/PartyManagerTest.java" afterPath="$PROJECT_DIR$/Test/aud/io/PartyManagerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/aud/io/PartyTest.java" afterPath="$PROJECT_DIR$/Test/aud/io/PartyTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/aud/io/StreamMediaTest.java" afterPath="$PROJECT_DIR$/Test/aud/io/StreamMediaTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/aud/io/TrackTest.java" afterPath="$PROJECT_DIR$/Test/aud/io/TrackTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/IMedia.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/IMedia.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/Main.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/MongoDatabase.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/MongoDatabase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/User.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/Party.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/Party.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/Votable.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/Votable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,14 +114,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Aud_io$PartyTest.coverage" NAME="PartyTest Coverage Results" MODIFIED="1510580970256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>aud.io.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Aud_io$PartyManagerTest_login.coverage" NAME="PartyManagerTest.login Coverage Results" MODIFIED="1510581181460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>aud.io.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Aud_io$PartyTest_getUsers.coverage" NAME="PartyTest.getUsers Coverage Results" MODIFIED="1509309747938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>aud.io.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Aud_io$PartyTest_getVotes.coverage" NAME="PartyTest.getVotes Coverage Results" MODIFIED="1510580461684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>aud.io.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Aud_io$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1507660593993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>client.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Aud_io$aud_io_in_Audio.coverage" NAME="aud.io in Audio Coverage Results" MODIFIED="1509312379373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>aud.io.*</FILTER>
+    <SUITE FILE_PATH="coverage/Aud_io$aud_io_in_Audio.coverage" NAME="aud.io in Audio Coverage Results" MODIFIED="1510653672496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>aud.io.mongo.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Aud_io$GUI_Client.coverage" NAME="GUI_Client Coverage Results" MODIFIED="1508766094669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>gui.*</FILTER>
@@ -63,64 +156,73 @@
     <fileColor scope="Non-Project Files (Material Darker)" color="323232" />
     <fileColor scope="Non-Project Files (Material Lighter)" color="eae8e8" />
     <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
+    <fileColor scope="Non-Project Files (Material Oceanic)" color="2E3C43" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="PartyManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Server/PartyManager.java">
+      <file leaf-file-name="PlayerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Demos/PlayerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1188">
-              <caret line="50" column="25" lean-forward="false" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
-              <folding />
+            <state relative-caret-position="0">
+              <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Client/ClientManager.java">
+      <file leaf-file-name="DriveService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Drive/DriveService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="42" column="52" lean-forward="false" selection-start-line="42" selection-start-column="52" selection-end-line="42" selection-end-column="52" />
-              <folding />
+            <state relative-caret-position="652">
+              <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DriveManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Drive/DriveManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1167">
+              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Files/FileManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="MongoDatabase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/MongoDatabase.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/mongo/MongoDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+            <state relative-caret-position="206">
+              <caret line="40" column="9" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Track.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Track.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="30" column="50" lean-forward="false" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StreamMedia.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/StreamMedia.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="1773">
+              <caret line="69" column="17" lean-forward="false" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -129,38 +231,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IDatabase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/IDatabase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IMedia.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/IMedia.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Song.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Song.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+            <state relative-caret-position="297">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -174,20 +246,18 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>shareddata</find>
-      <find>IPartymanager</find>
-      <find>RMIClient</find>
-      <find>subscribe</find>
-      <find>subscribeRemoteListener</find>
       <find>server</find>
-      <find>publisher</find>
+      <find>scopes</find>
+      <find>mongoDatabase</find>
+      <find>MongoDatabase</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -199,7 +269,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="IterationOneDemo" />
       </map>
     </option>
   </component>
@@ -211,57 +281,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/aud/io/SpotifyMedia.java" />
-        <option value="$PROJECT_DIR$/src/main/java/client/StreamClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/util.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Demo/Server/ServerMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/server/ApplicationServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/CreatePartyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/client/ApplicationClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/Connection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/Party.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/Track.java" />
+        <option value="$PROJECT_DIR$/src/main/java/client/ClientStream.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/StreamServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/client/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/GuiController.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/aud/io/IMedia.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aud/io/Song.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/GUI.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/Demo/Client/GUI_Client.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/GUI_Client.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/Controller.java" />
-        <option value="$USER_HOME$/School/Semester 3/PTS/TestGui/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/gui.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/ClientGui.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/gui.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/server/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/PartyViewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/RmiClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/gui/GuiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/JoinPartyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/SongListController.java" />
         <option value="$PROJECT_DIR$/src/main/java/gui/TempUserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/gui/TempUserView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/RegisterController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/MenuController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/CreatePartyController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/JoinPartyController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/PartyView.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/party.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/PartyViewController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/SongListView.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/songlist.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/SongListController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aud/io/RegisteredUser.java" />
-        <option value="$PROJECT_DIR$/Test/aud/io/TestOther.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aud/io/StreamMedia.java" />
-        <option value="$PROJECT_DIR$/Test/aud/io/StreamMediaTest.java" />
-        <option value="$PROJECT_DIR$/Test/aud/io/MemoryMediaTest.java" />
-        <option value="$PROJECT_DIR$/Test/aud/io/PartyManagerTest.java" />
-        <option value="$PROJECT_DIR$/Test/aud/io/MongoDatabaseTest.java" />
-        <option value="$PROJECT_DIR$/Test/aud/io/ClientManagerTest.java" />
-        <option value="$PROJECT_DIR$/Test/aud/io/SongTest.java" />
-        <option value="$PROJECT_DIR$/Test/aud/io/PartyTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/server/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/client/ClientStream.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aud/io/MemoryMedia.java" />
-        <option value="$PROJECT_DIR$/src/main/java/server/ApplicationServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Demo/Shared/SharedData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Demo/Client/ClientMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/RmiClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Demo/Client/ClientManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/MongoDatabase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/StreamMedia.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/MemoryDatabase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/rmi/ApplicationServer.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/create.fxml" />
+        <option value="$PROJECT_DIR$/src/main/resources/layout/create.fxml" />
+        <option value="$PROJECT_DIR$/Test/aud/io/MongoDatabaseTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/mongo/MongoDatabase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/MemoryMedia.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/audioplayer/Track.java" />
+        <option value="$PROJECT_DIR$/Test/aud/io/PartyManagerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/PartyManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/rmi/ClientManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/controllers/TempUserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/views/JoinPartyView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/IMedia.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/mongo/StreamMedia.java" />
+        <option value="$PROJECT_DIR$/Test/aud/io/PartyTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/audioplayer/AudioPlayer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/fontyspublisher/SharedData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/Demos/PlayerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/memory/MemoryMedia.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/MediaFiles.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/DriveService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/Drive/DriveService.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/ACRCloud/ACRCloudManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/Files/FileManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aud/io/Drive/DriveManager.java" />
       </list>
     </option>
   </component>
@@ -322,10 +392,24 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Aud.io" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Audio" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="Aud.io" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Audio" type="616d4139:PackageViewModuleNode" />
+              <item name="aud.io" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -333,10 +417,88 @@
               <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="io" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="io" type="462c0819:PsiDirectoryNode" />
+              <item name="ACRCloud" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="io" type="462c0819:PsiDirectoryNode" />
+              <item name="Drive" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="io" type="462c0819:PsiDirectoryNode" />
+              <item name="Files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="io" type="462c0819:PsiDirectoryNode" />
+              <item name="mongo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aud.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aud.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -345,35 +507,38 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../OutputUNIT" />
-    <property name="settings.editor.selected.configurable" value="gradle.compiler" />
+    <property name="last_opened_file_path" value="D:/School/S3/JSF/JSF3_w04_KochFractalFX-startup" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="SONARLINT_ANALYSIS_RESULTS_SCOPE" value="VCS changed files" />
+    <property name="SONARLINT_ANALYSIS_RESULTS_SPLIT_PROPORTION" value="0.51422155" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="aud.io" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\GieForce\IdeaProjects\Aud.io\src\main\java\aud\io" />
+      <recent name="C:\Users\GieForce\IdeaProjects\Aud.io\src\main\resources" />
+      <recent name="C:\Programming\Java\Aud.io\src\main\resources\audio" />
+      <recent name="C:\Programming\Java\Aud.io\src\main\resources\layout" />
+      <recent name="C:\Programming\Java\Aud.io\src\main\resources\img" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
       <recent name="aud.io" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Nick Hammes\IdeaProjects\Aud.io\src\main\java" />
-    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Davey\Documents\GitHub\Aud.io\Test\aud\io" />
-      <recent name="D:\Programming\Java\Aud.io\Test\aud\io" />
-      <recent name="C:\Users\GieForce\IdeaProjects\Aud.io\src\main\resources" />
-      <recent name="C:\Users\GieForce\IdeaProjects\Aud.io\src\main\java" />
-      <recent name="C:\Users\GieForce\IdeaProjects\Aud.io\src\main\java\sample" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Nick Hammes\IdeaProjects\Aud.io\src\main\java" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -388,15 +553,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ClientMain">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="ApplicationClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="client.*" />
+          <option name="PATTERN" value="rmi.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="client.ApplicationClient" />
+      <option name="MAIN_CLASS_NAME" value="rmi.ApplicationClient" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -408,14 +573,14 @@
       <module name="Audio" />
       <envs />
     </configuration>
-    <configuration name="ApplicationServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="DriveService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="server.*" />
+          <option name="PATTERN" value="aud.io.Drive.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="server.ApplicationServer" />
+      <option name="MAIN_CLASS_NAME" value="aud.io.Drive.DriveService" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -427,14 +592,14 @@
       <module name="Audio" />
       <envs />
     </configuration>
-    <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="Demo.Client.*" />
+          <option name="PATTERN" value="aud.io.Drive.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="Demo.Client.ClientMain" />
+      <option name="MAIN_CLASS_NAME" value="aud.io.Main" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -446,33 +611,14 @@
       <module name="Audio" />
       <envs />
     </configuration>
-    <configuration name="LoginView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="PlayerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="gui.*" />
+          <option name="PATTERN" value="aud.io.Demos.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="gui.LoginView" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Audio" />
-      <envs />
-    </configuration>
-    <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Demo.Server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="Demo.Server.ServerMain" />
+      <option name="MAIN_CLASS_NAME" value="aud.io.Demos.PlayerTest" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -565,20 +711,45 @@
       <properties />
       <listeners />
     </configuration>
+    <configuration name="aud.io in Audio" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="jacoco">
+        <pattern>
+          <option name="PATTERN" value="aud.io.mongo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Audio" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="aud.io" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.ApplicationServer" />
-      <item index="1" class="java.lang.String" itemvalue="Application.ApplicationClient" />
-      <item index="2" class="java.lang.String" itemvalue="Application.LoginView" />
-      <item index="3" class="java.lang.String" itemvalue="Application.ServerMain" />
-      <item index="4" class="java.lang.String" itemvalue="Application.ClientMain" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.aud.io in Audio" />
+      <item index="1" class="java.lang.String" itemvalue="Application.PlayerTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.ApplicationClient" />
+      <item index="3" class="java.lang.String" itemvalue="Application.DriveService" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.ClientMain" />
-        <item index="1" class="java.lang.String" itemvalue="Application.ServerMain" />
-        <item index="2" class="java.lang.String" itemvalue="Application.LoginView" />
-        <item index="3" class="java.lang.String" itemvalue="Application.ApplicationServer" />
-        <item index="4" class="java.lang.String" itemvalue="Application.ApplicationClient" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="Application.DriveService" />
+        <item index="2" class="java.lang.String" itemvalue="Application.PlayerTest" />
+        <item index="3" class="java.lang.String" itemvalue="Application.ApplicationClient" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.aud.io in Audio" />
       </list>
     </recent_temporary>
   </component>
@@ -623,23 +794,16 @@
       <workItem from="1509189921186" duration="11136000" />
       <workItem from="1509225128512" duration="162000" />
       <workItem from="1509304087798" duration="8514000" />
-      <workItem from="1509359195658" duration="3763000" />
-      <workItem from="1509982026278" duration="1479000" />
-      <workItem from="1510052390020" duration="3911000" />
-      <workItem from="1510059905539" duration="3772000" />
-      <workItem from="1510066680527" duration="261000" />
-      <workItem from="1510068091686" duration="1094000" />
-      <workItem from="1510069328672" duration="4703000" />
-      <workItem from="1510081522576" duration="2167000" />
-      <workItem from="1510166063373" duration="633000" />
-      <workItem from="1510299772577" duration="622000" />
-      <workItem from="1510315892582" duration="692000" />
-      <workItem from="1510496585888" duration="2071000" />
-      <workItem from="1510499133596" duration="1386000" />
-      <workItem from="1510582422425" duration="1368000" />
-      <workItem from="1510650820969" duration="796000" />
-      <workItem from="1510662908061" duration="785000" />
-      <workItem from="1511168127538" duration="16000" />
+      <workItem from="1510580386232" duration="1539000" />
+      <workItem from="1510644974528" duration="8715000" />
+      <workItem from="1510654864628" duration="8920000" />
+      <workItem from="1511168277768" duration="5285000" />
+      <workItem from="1511178756169" duration="2665000" />
+      <workItem from="1511190965580" duration="629000" />
+      <workItem from="1511251851139" duration="757000" />
+      <workItem from="1511252642920" duration="7922000" />
+      <workItem from="1511260680474" duration="8700000" />
+      <workItem from="1511278973033" duration="13041000" />
     </task>
     <task id="LOCAL-00001" summary="Added pomfile">
       <created>1507621359770</created>
@@ -704,96 +868,109 @@
       <option name="project" value="LOCAL" />
       <updated>1509205391538</updated>
     </task>
-    <task id="LOCAL-00010" summary="added static audio playing">
-      <created>1509361439982</created>
+    <task id="LOCAL-00010" summary="Fixed a few testcases.&#10;Added SonarQube project properties">
+      <created>1510581455975</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1509361439982</updated>
+      <updated>1510581455975</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fixed bugs according to SolarQube, added Logging to a Client, GUI and Server. Removed Demo">
+      <created>1510649559310</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1510649559311</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Code refactored">
+      <created>1510653585933</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1510653585933</updated>
+    </task>
+    <task id="LOCAL-00013" summary="IMedia.play() deprecated, use IMedia.getFile() instead">
+      <created>1510656564424</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1510656564424</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SongTest_setAlbum - 2017.10.29 at 22h 10m 14s.xml">
-      <configuration name="SongTest.setAlbum" configurationId="JUnit" />
+    <history-entry file="PartyManagerTest_login - 2017.11.13 at 14h 51m 44s.xml">
+      <configuration name="PartyManagerTest.login" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="aud_io_in_Audio - 2017.10.29 at 21h 44m 48s.xml">
+    <history-entry file="PartyManagerTest_login - 2017.11.13 at 14h 52m 06s.xml">
+      <configuration name="PartyManagerTest.login" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PartyManagerTest_login - 2017.11.13 at 14h 52m 37s.xml">
+      <configuration name="PartyManagerTest.login" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PartyManagerTest_login - 2017.11.13 at 14h 53m 03s.xml">
+      <configuration name="PartyManagerTest.login" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PartyTest - 2017.11.13 at 14h 49m 24s.xml">
+      <configuration name="PartyTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PartyTest - 2017.11.13 at 14h 49m 31s.xml">
+      <configuration name="PartyTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="aud_io_in_Audio - 2017.11.13 at 14h 49m 47s.xml">
       <configuration name="aud.io in Audio" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="aud_io_in_Audio - 2017.10.29 at 21h 55m 51s.xml">
+    <history-entry file="aud_io_in_Audio - 2017.11.13 at 14h 50m 33s.xml">
       <configuration name="aud.io in Audio" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="aud_io_in_Audio - 2017.10.29 at 21h 59m 02s.xml">
+    <history-entry file="aud_io_in_Audio - 2017.11.13 at 14h 53m 11s.xml">
       <configuration name="aud.io in Audio" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="aud_io_in_Audio - 2017.10.29 at 22h 01m 25s.xml">
-      <configuration name="aud.io in Audio" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="aud_io_in_Audio - 2017.10.29 at 22h 03m 21s.xml">
-      <configuration name="aud.io in Audio" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="aud_io_in_Audio - 2017.10.29 at 22h 05m 11s.xml">
-      <configuration name="aud.io in Audio" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="aud_io_in_Audio - 2017.10.29 at 22h 10m 59s.xml">
-      <configuration name="aud.io in Audio" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="aud_io_in_Audio - 2017.10.29 at 22h 13m 50s.xml">
-      <configuration name="aud.io in Audio" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="aud_io_in_Audio - 2017.10.29 at 22h 26m 23s.xml">
+    <history-entry file="aud_io_in_Audio - 2017.11.14 at 11h 01m 17s.xml">
       <configuration name="aud.io in Audio" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140511000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <option name="totallyTimeSpent" value="166536000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282887" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287827" sideWeight="0.5021482" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31897557" sideWeight="0.5042965" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921588" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32004556" sideWeight="0.49785176" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32764506" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26154673" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2488889" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39580908" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32596043" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31897557" sideWeight="0.49570355" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32761312" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Floobits" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19871107" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32596043" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39657143" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="soapUI Navigator" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32717392" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32867885" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32796487" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -836,12 +1013,30 @@
     <MESSAGE value="Added gui to project&#10;- Interaction GUI with server&#10;- Fix maven file (default java version 1.5)" />
     <MESSAGE value="Added maven libraries?" />
     <MESSAGE value="Added RMI to GUI" />
-    <MESSAGE value="added static audio playing" />
-    <option name="LAST_COMMIT_MESSAGE" value="added static audio playing" />
+    <MESSAGE value="Fixed a few testcases.&#10;Added SonarQube project properties" />
+    <MESSAGE value="Fixed bugs according to SolarQube, added Logging to a Client, GUI and Server. Removed Demo" />
+    <MESSAGE value="Code refactored" />
+    <MESSAGE value="IMedia.play() deprecated, use IMedia.getFile() instead" />
+    <MESSAGE value="Small text demo of audioplayer implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small text demo of audioplayer implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="43" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/aud/io/Files/FileManager.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/aud/io/mongo/MongoDatabase.java</url>
+          <line>40</line>
+          <properties />
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="58" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
@@ -879,390 +1074,401 @@
     <option name="serverIp" value="localhost" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Test/aud/io/ClientManagerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Party.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="11" column="47" lean-forward="false" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+        <state relative-caret-position="112">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/rmi/PartyManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="147" column="28" lean-forward="true" selection-start-line="147" selection-start-column="28" selection-end-line="147" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/mongo/Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/aud/io/PartyManagerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2323">
-          <caret line="113" column="62" lean-forward="false" selection-start-line="113" selection-start-column="62" selection-end-line="113" selection-end-column="62" />
+        <state relative-caret-position="1246">
+          <caret line="101" column="0" lean-forward="true" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Votable.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/controllers/JoinPartyController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        <state relative-caret-position="0">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/aud/io/TrackTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/controllers/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        <state relative-caret-position="0">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/aud/io/SongTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/controllers/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/aud/io/PartyTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/controllers/PartyViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2882">
-          <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/client/ClientStream.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/controllers/RmiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="29" column="44" lean-forward="false" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+        <state relative-caret-position="196">
+          <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/MemoryMedia.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/controllers/RegisterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="29" column="116" lean-forward="false" selection-start-line="29" selection-start-column="116" selection-end-line="29" selection-end-column="116" />
+        <state relative-caret-position="182">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/fontyspublisher/Publisher.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/controllers/SongListController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7436">
-          <caret line="350" column="0" lean-forward="false" selection-start-line="350" selection-start-column="0" selection-end-line="350" selection-end-column="0" />
+        <state relative-caret-position="14">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/MemoryDatabase.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/controllers/TempUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="224">
+          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/fontyspublisher/RemotePublisher.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/views/TempUserView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="92">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/Thread.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/views/SongListView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-176">
-          <caret line="747" column="0" lean-forward="false" selection-start-line="747" selection-start-column="0" selection-end-line="747" selection-end-column="0" />
+        <state relative-caret-position="92">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/views/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/views/PartyView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/views/MenuView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/views/RegisterView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/views/JoinPartyView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/mongo/StreamMedia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="34" column="17" lean-forward="false" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/aud/io/MemoryMediaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gui/Message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="270">
+          <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/PartyManager.java">
+    <entry file="file://$PROJECT_DIR$/Test/aud/io/PartyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="19" column="7" lean-forward="false" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+        <state relative-caret-position="135">
+          <caret line="16" column="10" lean-forward="false" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/gui.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/YoutubeVideo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/create.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/menu.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-858">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gui/MenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
+        <state relative-caret-position="108">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gui/LoginView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/client/ApplicationClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/fontyspublisher/IRemotePublisherForListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/IParty.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/rmi/ApplicationClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <caret line="79" column="9" lean-forward="false" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/IClientParty.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/http-client/google-http-client/1.23.0/google-http-client-1.23.0.jar!/com/google/api/client/util/store/FileDataStoreFactory.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        <state relative-caret-position="162">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/audioplayer/AudioPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/IPartyServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/TemporaryUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/SharedData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="57" lean-forward="false" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/RegisteredUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/ClientManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Client/ClientMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gui/CreatePartyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="30" column="53" lean-forward="false" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gui/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="28" column="15" lean-forward="false" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gui/RmiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="12" column="6" lean-forward="false" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/StreamServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/ApplicationServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-176">
-          <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/IPartyManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Server/ServerMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="42" column="48" lean-forward="false" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/IServerParty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="16" column="9" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/Party.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Shared/fontyspublisher/RemotePublisher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2268">
-          <caret line="90" column="16" lean-forward="false" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Server/PartyManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="50" column="25" lean-forward="false" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Demo/Client/ClientManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="42" column="52" lean-forward="false" selection-start-line="42" selection-start-column="52" selection-end-line="42" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Song.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/IDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="268">
+          <caret line="55" column="60" lean-forward="false" selection-start-line="55" selection-start-column="60" selection-end-line="55" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/IMedia.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        <state relative-caret-position="351">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/io/Reader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1404">
+          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/io/InputStreamReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/MongoDatabase.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/client_secret.json" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/fontyspublisher/SharedData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="27">
+          <caret line="4" column="62" lean-forward="false" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/StreamMedia.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/layout/create.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="20" column="53" lean-forward="true" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/views/CreatePartyView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
+        <state relative-caret-position="-195">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Votable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/rmi/ApplicationServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/memory/MemoryMedia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/controllers/CreatePartyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/controllers/GuiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-820">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/ACRCloud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/audioplayer/Track.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-378">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Files.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/ACRCloud/ACRCloudManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-267">
+          <caret line="127" column="18" lean-forward="false" selection-start-line="127" selection-start-column="12" selection-end-line="127" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5278#5294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/aud/io/MongoDatabaseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="13" column="18" lean-forward="false" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Track.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="30" column="50" lean-forward="false" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+        <state relative-caret-position="297">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        <state relative-caret-position="1773">
+          <caret line="69" column="17" lean-forward="false" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/mongo/MongoDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="40" column="9" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Drive/DriveService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="652">
+          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Demos/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Files/FileManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Drive/DriveManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1167">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ArquillianSettingsConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.17445482" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
@@ -1331,17 +1537,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.17445482" />
               </list>
             </option>
           </splitter-proportions>

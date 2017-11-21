@@ -1,5 +1,7 @@
 package aud.io;
 
+import aud.io.audioplayer.Track;
+
 import java.io.Serializable;
 import java.security.SecureRandom;
 import java.util.*;
@@ -21,7 +23,7 @@ public class Party extends Observable implements IParty, Serializable {
      * @param host User that will host the party
      * @param name Name for the party
      */
-    Party(RegisteredUser host, String name) {
+    public Party(RegisteredUser host, String name) {
         this.host = host;
         this.name = name;
 
@@ -200,13 +202,13 @@ public class Party extends Observable implements IParty, Serializable {
             return new String(buf);
         }
 
-        public static final String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public static final String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         //public static final String lower = upper.toLowerCase(Locale.ROOT);
 
         //public static final String digits = "0123456789";
 
-        public static final String alphanum = upper;// + lower + digits;
+        public static final String ALPHANUM = UPPER;// + lower + digits;
 
         private final Random random;
 
@@ -226,7 +228,7 @@ public class Party extends Observable implements IParty, Serializable {
          * Create an alphanumeric string generator.
          */
         private RandomString(int length, Random random) {
-            this(length, random, alphanum);
+            this(length, random, ALPHANUM);
         }
 
         /**

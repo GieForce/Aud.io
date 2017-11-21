@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.jongo.marshall.jackson.oid.MongoObjectId;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 @JsonTypeInfo(use= JsonTypeInfo.Id.CLASS,property="_class")
 public abstract class Votable implements Serializable{
@@ -82,8 +82,8 @@ public abstract class Votable implements Serializable{
      * Get Votes
      * @return List with votes
      */
-    public ArrayList<Vote> getVotes() {
-        return (ArrayList<Vote>) voters.values();
+    public Map<User, Vote> getVotes() {
+        return voters;
     }
 
     /**

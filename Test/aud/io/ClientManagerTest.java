@@ -1,9 +1,8 @@
 package aud.io;
 
+import aud.io.rmi.ClientManager;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class ClientManagerTest {
     ClientManager manager;

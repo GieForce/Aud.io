@@ -1,29 +1,20 @@
 package aud.io;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
+import aud.io.Drive.DriveManager;
+import aud.io.Files.FileManager;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 
-public class Main extends Application {
+public class Main {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Votable votable = new Track(new StreamMedia("eenLocatie"), "slapend rijk", 0f, "boef", "slaaptekort" );
-        //Votable votable2 = new YoutubeVideo(new StreamMedia("eenLocatie"), "slapend rijk", 0f, "boef");
-        MongoDatabase mongoDatabase = new MongoDatabase();
-        mongoDatabase.saveVotable(votable);
-
-        ArrayList<Votable> votableArrayList = mongoDatabase.getSongsWithSearchterm("");
-        //System.out.println(votableArrayList.toString());
-        for (Votable sVotable: votableArrayList
-             ) {
-            System.out.println(sVotable.getName());
+    public static void main(String[] args) throws IOException
+    {
+        FileManager fileManager = new FileManager();
+        try {
+            fileManager.upload(new File("C:\\Users\\GieForce\\School\\Downloads\\1UpXAZi26J3K5yoT3nMfs8OwZ4JSyOsW5.mp3"));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
