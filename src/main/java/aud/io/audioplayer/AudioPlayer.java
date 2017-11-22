@@ -11,16 +11,14 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicBoolean;
-import uk.co.caprica.vlcj.component.AudioMediaPlayerComponent;
 import uk.co.caprica.vlcj.player.MediaPlayer;
-import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
 
 public class AudioPlayer extends Observable implements IPlayer {
     private final ExecutorService pool;
-    private  AudioMediaPlayerComponent VLCPlayer;
+    private  MediaPlayer VLCPlayer;
     private Future currentSong;
 
-    public AudioPlayer(ExecutorService pool, AudioMediaPlayerComponent VLCPlayer) {
+    public AudioPlayer(ExecutorService pool, MediaPlayer VLCPlayer) {
         this.pool = pool;
 
         //TODO: Insert actual player
@@ -54,7 +52,9 @@ public class AudioPlayer extends Observable implements IPlayer {
         //load new song and start playing
         //TODO: Revise with thread handling in mind
         Future newSong = pool.submit(new PlayerRunnable(votable.getMedia(), pool, this, VLCPlayer));
-        currentSong.cancel(true);
+        if (currentSong != null){
+            currentSong.cancel(true);
+        }
         currentSong = newSong;
         play();
     }
@@ -71,11 +71,11 @@ public class AudioPlayer extends Observable implements IPlayer {
         private File mediaFile;
         private IMedia trackMedia;
         private ExecutorService pool;
-        private AudioMediaPlayerComponent VLCPlayer;
+        private MediaPlayer VLCPlayer;
         private AtomicBoolean play, pause, stop;
         private boolean loadedSong = false;
 
-        PlayerRunnable(IMedia trackMedia, ExecutorService pool, AudioPlayer player, AudioMediaPlayerComponent VLCPlayer) {
+        PlayerRunnable(IMedia trackMedia, ExecutorService pool, AudioPlayer player, MediaPlayer VLCPlayer) {
             this.trackMedia = trackMedia;
             this.pool = pool;
             player.addObserver(this);
@@ -100,7 +100,9 @@ public class AudioPlayer extends Observable implements IPlayer {
                     play.set(false);
                     if (!loadedSong){
                         //TODO: load song
+                        VLCPlayer.playMedia("audio/Demo.mp3");
                         loadedSong = true;
+                        VLCPlayer.play();
                     }
                     //TODO: play
                 }

@@ -19,7 +19,7 @@ public class PlayerTest {
 
         AudioMediaPlayerComponent VLCplayer = new AudioMediaPlayerComponent();
 
-        player = new AudioPlayer(pool, VLCplayer);
+        player = new AudioPlayer(pool, VLCplayer.getMediaPlayer());
 
         Votable votable = new Track(new MemoryMedia("audio/Demo.mp3"));
 
