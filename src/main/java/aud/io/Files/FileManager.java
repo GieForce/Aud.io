@@ -43,7 +43,7 @@ public class FileManager {
             for (int i =0; i < music.length(); i++)
             {
                 //Todo: aanpassen naar de goede waarden + korter maken (Is dit mogelijk?)
-                String locatie = "eenlocatie";
+                String locatie = music.getJSONObject(i).getString("acrid");
                 String title = music.getJSONObject(i).getString("title");
                 String album = music.getJSONObject(i).getString("title");
                 String artist = music.getJSONObject(i).getString("acrid");
@@ -66,10 +66,10 @@ public class FileManager {
 
 
             //Toevoegen van track aan de database
-//            if (track != null)
-//            {
-//                mongoDatabase.saveVotable(track);
-//            }
+            if (track != null)
+            {
+                mongoDatabase.saveVotable(track);
+            }
 
 
         }
