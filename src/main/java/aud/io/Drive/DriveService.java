@@ -35,8 +35,8 @@ public class DriveService {
     private static FileDataStoreFactory DATA_STORE_FACTORY;
 
     /** Global instance of the JSON factory. */
-    private static final JsonFactory JSON_FACTORY =
-            JacksonFactory.getDefaultInstance();
+        private static final JsonFactory JSON_FACTORY =
+                JacksonFactory.getDefaultInstance();
 
     /** Global instance of the HTTP transport. */
     private static HttpTransport HTTP_TRANSPORT;
@@ -65,7 +65,8 @@ public class DriveService {
         //InputStream in = DriveService.class.getResourceAsStream("client_secret.json");
        // InputStream in = ;
         GoogleClientSecrets clientSecrets =
-                GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(new FileInputStream("C:\\Users\\GieForce\\IdeaProjects\\Aud.io\\src\\main\\resources\\authentication\\client_secret.json")));
+                GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(new FileInputStream(
+                        "C:\\Users\\GieForce\\IdeaProjects\\Aud.io\\src\\main\\resources\\authentication\\client_secret.json")));
 
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow =
