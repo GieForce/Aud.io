@@ -75,9 +75,9 @@ public class FileManager {
         }
     }
 
-    public void download(String searchValue) throws IOException
+    public String download(String searchValue) throws IOException
     {
-        driveManager.download(searchValue);
+        return driveManager.download(searchValue);
     }
 
 }
