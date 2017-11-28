@@ -41,7 +41,7 @@ public class DriveManager {
             pageToken = result.getNextPageToken();
 
             //Uitvoeren van de filedownload
-            OutputStream outputStream = new FileOutputStream(new java.io.File("C:\\Users\\GieForce\\School\\Downloads\\" + fileToken + ".mp3"));
+            OutputStream outputStream = new FileOutputStream(new java.io.File("./Music/" + fileToken + ".mp3"));
             driveService.files().get(fileToken)
                     .executeMediaAndDownloadTo(outputStream);
 

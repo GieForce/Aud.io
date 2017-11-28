@@ -12,7 +12,8 @@ public class Main {
     {
         FileManager fileManager = new FileManager();
         try {
-            fileManager.upload(new File("./Music/Demo.mp3"));
+            //fileManager.upload(new File("./Music/Demo.mp3"));
+            fileManager.download("hallo");
         } catch (Exception e) {
             e.printStackTrace();
         }
