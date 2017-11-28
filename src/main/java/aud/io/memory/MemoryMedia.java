@@ -1,10 +1,9 @@
 package aud.io.memory;
 
 import aud.io.IMedia;
-import com.google.api.services.drive.model.File;
 
-
-import java.io.*;
+import java.io.File;
+import java.io.Serializable;
 import java.util.concurrent.Callable;
 
 public class MemoryMedia implements IMedia, Serializable {
@@ -23,12 +22,8 @@ public class MemoryMedia implements IMedia, Serializable {
 
     @Override
     public Callable<File> getFile() {
+
         return new GetFileCallable(location);
-    }
-
-    public void getFiles() throws IOException
-    {
-
     }
 
     private class GetFileCallable implements Callable<File>{
@@ -42,7 +37,7 @@ public class MemoryMedia implements IMedia, Serializable {
         @Override
         public File call() throws Exception {
 
-            return new File();
+            return new File(fileLocation);
         }
     }
 }

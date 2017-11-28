@@ -21,148 +21,138 @@ import java.util.logging.Logger;
 
 import uk.co.caprica.vlcj.player.MediaPlayer;
 
-public class AudioPlayer extends Observable implements IPlayer {
+import uk.co.caprica.vlcj.component.AudioMediaPlayerComponent;
+
+public class AudioPlayer implements IPlayer {
     private final ExecutorService pool;
-    private  MediaPlayer VLCPlayer;
-    private Future currentSong;
+    private AudioMediaPlayerComponent VLCPlayer;
+    private PlayerRunnable currentSong;
     private Logger logger;
 
-    public AudioPlayer(ExecutorService pool, MediaPlayer VLCPlayer) {
+    public AudioPlayer(ExecutorService pool, AudioMediaPlayerComponent VLCPlayer) {
         this.pool = pool;
-        setupLogger();
         //TODO: Insert actual player
         this.VLCPlayer = VLCPlayer;
     }
 
-    private void setupLogger() {
-        try {
-            String logname = "AudioPlayer";
-            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
-            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log", logname, timeStamp));
-            fh.setLevel(Level.ALL);
-            ConsoleHandler ch = new ConsoleHandler();
-            ch.setLevel(Level.ALL);
-            logger = java.util.logging.Logger.getLogger(logname);
-            logger.addHandler(fh);
-            logger.setLevel(Level.ALL);
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-        }
-    }
 
     @Override
     public void play() {
-        //resume playing previously loaded song
-        hasChanged();
-        notifyObservers(PlayerOption.Play);
+        currentSong.play();
     }
 
     @Override
     public void stop() {
-        //stop playing and empty loaded song
-        hasChanged();
-        notifyObservers(PlayerOption.Stop);
+        currentSong.stop();
     }
 
     @Override
     public void pause() {
-        //pause song
-        hasChanged();
-        notifyObservers(PlayerOption.Pause);
+        currentSong.pause();
     }
 
     @Override
     public void play(Votable votable) {
         //load new song and start playing
-        //TODO: Revise with thread handling in mind
-        Future newSong = pool.submit(new PlayerRunnable(votable.getMedia(), pool, this, VLCPlayer));
         if (currentSong != null){
-            currentSong.cancel(true);
+            currentSong.exit();
         }
-        currentSong = newSong;
+        //TODO: Revise with thread handling in mind
+        currentSong = new PlayerRunnable(votable.getMedia(), pool, this, VLCPlayer);
+
+        pool.submit(currentSong);
         play();
     }
 
-    private enum PlayerOption{
-        Play,
-        Pause,
-        Stop
-    }
-
-    private class PlayerRunnable implements Runnable, Observer{
+    private class PlayerRunnable implements Runnable{
 
         private Future mediaFileContainer;
         private File mediaFile;
         private IMedia trackMedia;
         private ExecutorService pool;
-        private MediaPlayer VLCPlayer;
-        private AtomicBoolean play, pause, stop;
+        private AudioMediaPlayerComponent VLCPlayer;
+        private AtomicBoolean play, pause, stop, exit;
         private boolean loadedSong = false;
 
-        PlayerRunnable(IMedia trackMedia, ExecutorService pool, AudioPlayer player, MediaPlayer VLCPlayer) {
+        PlayerRunnable(IMedia trackMedia, ExecutorService pool, AudioPlayer player, AudioMediaPlayerComponent VLCPlayer) {
             this.trackMedia = trackMedia;
             this.pool = pool;
-            player.addObserver(this);
             this.VLCPlayer = VLCPlayer;
             play = new AtomicBoolean(false);
             pause = new AtomicBoolean(false);
             stop = new AtomicBoolean(false);
+            exit = new AtomicBoolean(false);
         }
 
         @Override
         public void run() {
-            mediaFileContainer = pool.submit(trackMedia.getFile());
+            System.out.println("loading...");
 
+            VLCPlayer.getMediaPlayer().stop();
+            mediaFileContainer = pool.submit(trackMedia.getFile());
             try {
+                Object o = mediaFileContainer.get();
+                mediaFile = (File)o;
                 mediaFile = (File)mediaFileContainer.get();
             } catch (InterruptedException | ExecutionException e) {
                 logger.log(Level.SEVERE, e.toString());
             }
 
-            while (!Thread.currentThread().isInterrupted()){
+
+            System.out.println("loaded: " + mediaFile.getAbsolutePath());
+
+            while (!exit.get()){
                 if (play.get()){
                     play.set(false);
                     if (!loadedSong){
                         //TODO: load song
-                        VLCPlayer.playMedia("audio/Demo.mp3");
+                        System.out.println(mediaFile.getAbsolutePath());
+                        System.out.println("playing");
+                        VLCPlayer.getMediaPlayer().playMedia(mediaFile.getAbsolutePath());
                         loadedSong = true;
-                        VLCPlayer.play();
+                    } else{
+                        System.out.println("playing");
+                        VLCPlayer.getMediaPlayer().play();
                     }
                     //TODO: play
                 }
                 if (pause.get()){
                     pause.set(false);
+                    System.out.println("paused");
+                    VLCPlayer.getMediaPlayer().pause();
                     //TODO: pause
                 }
                 if (stop.get()){
                     stop.set(false);
+                    System.out.println("stopped");
+                    VLCPlayer.getMediaPlayer().stop();
+                    //VLCPlayer.getMediaPlayer().release();
+                    loadedSong = false;
                     //TODO: stop
                 }
             }
 
             //TODO: stop song, handle thread finishing
 
+            VLCPlayer.getMediaPlayer().stop();
+            //paVLCPlayer.getMediaPlayer().release();
+
         }
 
-        private  void playFile(File mediaFile){
-            System.out.println(mediaFile);
+        public void play(){
+            play.set(true);
         }
 
-        @Override
-        public synchronized void update(Observable o, Object arg) {
-            if (arg instanceof PlayerOption){
-                switch ((PlayerOption)arg){
-                    case Play:
-                        play.set(true);
-                        break;
-                    case Pause:
-                        pause.set(true);
-                        break;
-                    case Stop:
-                        stop.set(true);
-                        break;
-                }
-            }
+        public void pause(){
+            pause.set(true);
+        }
+
+        public void stop(){
+            stop.set(true);
+        }
+
+        public void exit(){
+            exit.set(true);
         }
     }
 }
