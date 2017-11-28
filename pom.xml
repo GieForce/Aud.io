@@ -8,11 +8,31 @@
     <artifactId>Audio</artifactId>
     <version>1.0-SNAPSHOT</version>
 <dependencies>
+    <dependency>
+        <groupId>uk.co.caprica</groupId>
+        <artifactId>vlcj</artifactId>
+        <version>3.10.1</version>
+    </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.2</version>
         </dependency>
+    <dependency>
+        <groupId>com.google.api-client</groupId>
+        <artifactId>google-api-client</artifactId>
+        <version>1.22.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.google.apis</groupId>
+        <artifactId>google-api-services-drive</artifactId>
+        <version>v3-rev90-1.22.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.google.oauth-client</groupId>
+        <artifactId>google-oauth-client-jetty</artifactId>
+        <version>1.22.0</version>
+    </dependency>
     <dependency>
         <groupId>org.mongodb</groupId>
         <artifactId>mongo-java-driver</artifactId>
@@ -37,6 +57,16 @@
         <groupId>org.mongojack</groupId>
         <artifactId>mongojack</artifactId>
         <version>2.8.0</version>
+    </dependency>
+    <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.17</version>
+    </dependency>
+    <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20160810</version>
     </dependency>
     <dependency>
         <groupId>uk.co.caprica</groupId>
