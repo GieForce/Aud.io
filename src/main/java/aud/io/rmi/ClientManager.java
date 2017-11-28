@@ -6,12 +6,9 @@ import aud.io.fontyspublisher.IRemotePublisherForListener;
 import aud.io.log.Logger;
 
 import java.beans.PropertyChangeEvent;
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -27,27 +24,15 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     private List<Votable> votables;
 
     private Logger logger;
+    private static final String MSG_NOT_IN_PARTY = "You're not in a party";
+    private static final String MSG_ALREADY_IN_PARTY = "You're already in a party";
+    private static final String MSG_NOT_LOGGED_IN = "You're not logged in";
+    private static final String MSG_ALREADY_LOGGED_IN = "You're already logged in";
 
     public ClientManager(IRemotePublisherForListener publisher, IPartyManager server) throws RemoteException {
         logger = new Logger("ClientManager", Level.ALL, Level.SEVERE);
         this.publisher = publisher;
         this.server = server;
-    }
-
-    private void setupLogger() {
-        try {
-            String logname = "ClientManager";
-            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
-            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log",logname, timeStamp));
-            fh.setLevel(Level.ALL);
-            ConsoleHandler ch = new ConsoleHandler();
-            ch.setLevel(Level.SEVERE);
-            logger = java.util.logging.Logger.getLogger(logname);
-            logger.addHandler(fh);
-            logger.setLevel(Level.ALL);
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-        }
     }
 
     @Override
