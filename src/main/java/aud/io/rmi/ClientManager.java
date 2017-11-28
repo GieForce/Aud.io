@@ -3,18 +3,13 @@ package aud.io.rmi;
 import aud.io.*;
 import aud.io.fontyspublisher.IRemotePropertyListener;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
+import aud.io.log.Logger;
 
 import java.beans.PropertyChangeEvent;
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ClientManager extends UnicastRemoteObject implements IRemotePropertyListener {
 
@@ -30,25 +25,9 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     private Logger logger;
 
     public ClientManager(IRemotePublisherForListener publisher, IPartyManager server) throws RemoteException {
-        setupLogger();
+        logger = new Logger("ClientManager", Level.ALL, Level.SEVERE);
         this.publisher = publisher;
         this.server = server;
-    }
-
-    private void setupLogger() {
-        try {
-            String logname = "ClientManager";
-            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
-            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log", logname, timeStamp));
-            fh.setLevel(Level.ALL);
-            ConsoleHandler ch = new ConsoleHandler();
-            ch.setLevel(Level.SEVERE);
-            logger = java.util.logging.Logger.getLogger(logname);
-            logger.addHandler(fh);
-            logger.setLevel(Level.ALL);
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-        }
     }
 
     @Override

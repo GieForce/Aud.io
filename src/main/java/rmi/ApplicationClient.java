@@ -1,22 +1,17 @@
 package rmi;
 
-import aud.io.rmi.ClientManager;
-import aud.io.rmi.IPartyManager;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
 import aud.io.fontyspublisher.SharedData;
+import aud.io.log.Logger;
+import aud.io.rmi.ClientManager;
+import aud.io.rmi.IPartyManager;
 
-import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Scanner;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ApplicationClient {
 
@@ -30,7 +25,7 @@ public class ApplicationClient {
     private static Logger logger;
 
     public static void main(String[] args) {
-        setupLogger();
+        logger = new Logger("ApplicationClient", Level.ALL, Level.SEVERE);
         initSharedData();
 
         try {
@@ -121,23 +116,6 @@ public class ApplicationClient {
             allowRun = false;
         }
 
-    }
-
-
-    private static void setupLogger() {
-        try {
-            String logname = "ApplicationClient";
-            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
-            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log",logname, timeStamp));
-            fh.setLevel(Level.ALL);
-            ConsoleHandler ch = new ConsoleHandler();
-            ch.setLevel(Level.SEVERE);
-            logger = java.util.logging.Logger.getLogger(logname);
-            logger.addHandler(fh);
-            logger.setLevel(Level.ALL);
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-        }
     }
 
     private static void initSharedData() {

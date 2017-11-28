@@ -3,16 +3,16 @@ package aud.io.rmi;
 
 import aud.io.*;
 import aud.io.fontyspublisher.RemotePublisher;
+import aud.io.log.Logger;
 import aud.io.memory.MemoryDatabase;
 
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.logging.FileHandler;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class PartyManager extends UnicastRemoteObject implements Observer, IPartyManager {
     private ArrayList<RegisteredUser> registeredUsers;
@@ -42,21 +42,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
         this.publisher = publisher;
         database = new MemoryDatabase();
         activeParties = new ArrayList<>();
-        setupLogger();
-    }
-
-    private void setupLogger() {
-        try {
-            String logname = "PartyManager";
-            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
-            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log", logname, timeStamp));
-            fh.setLevel(Level.ALL);
-            logger = java.util.logging.Logger.getLogger(logname);
-            logger.addHandler(fh);
-            logger.setLevel(Level.ALL);
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-        }
+        logger = new Logger("PartyManager", Level.ALL, Level.SEVERE);
     }
 
 

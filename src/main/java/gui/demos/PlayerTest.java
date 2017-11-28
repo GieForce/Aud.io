@@ -1,4 +1,4 @@
-package aud.io.Demos;
+package gui.demos;
 
 import aud.io.Votable;
 import aud.io.audioplayer.AudioPlayer;

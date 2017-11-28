@@ -6,6 +6,7 @@ import aud.io.User;
 import gui.Message;
 import gui.views.PartyView;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -13,7 +14,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class CreatePartyController {
-    public TextField tbPartyName;
+    @FXML
+    private TextField tbPartyName;
     private Stage stage;
     private User user;
 
@@ -27,7 +29,7 @@ public class CreatePartyController {
 
     public void CreateParty(ActionEvent actionEvent) throws IOException {
         String partyName = tbPartyName.getText();
-        if(Objects.equals(partyName, "") || partyName == null) {
+        if (Objects.equals(partyName, "") || partyName == null) {
             Message.Show("Error", "Please enter a partyname");
         } else {
             ClientManager manager = RmiClient.getManager();

@@ -7,6 +7,7 @@ import gui.Message;
 import gui.views.RegisterView;
 import gui.views.TempUserView;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -16,10 +17,14 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class LoginController {
-    public Button btnJoin;
-    public ImageView imageLogo;
-    public PasswordField tbPassword;
-    public TextField tbUsername;
+    @FXML
+    private Button btnJoin;
+    @FXML
+    private ImageView imageLogo;
+    @FXML
+    private PasswordField tbPassword;
+    @FXML
+    private TextField tbUsername;
 
     private Stage stage;
     private ClientManager manager;

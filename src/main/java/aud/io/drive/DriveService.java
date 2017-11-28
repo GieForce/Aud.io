@@ -1,4 +1,4 @@
-package aud.io.Drive;
+package aud.io.drive;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -12,9 +12,7 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 
 import com.google.api.services.drive.DriveScopes;
-import com.google.api.services.drive.model.*;
 import com.google.api.services.drive.Drive;
-import com.google.api.services.drive.model.File;
 
 import java.io.*;
 import java.util.Arrays;
@@ -25,7 +23,7 @@ public class DriveService {
 
     /** Application name. */
     private static final String APPLICATION_NAME =
-            "Drive API Java Quickstart";
+            "drive API Java Quickstart";
 
     /** Directory to store user credentials for this application. */
     private static final java.io.File DATA_STORE_DIR = new java.io.File(
@@ -82,8 +80,8 @@ public class DriveService {
     }
 
     /**
-     * Build and return an authorized Drive client service.
-     * @return an authorized Drive client service
+     * Build and return an authorized drive client service.
+     * @return an authorized drive client service
      * @throws IOException
      */
     public static Drive getDriveService() throws IOException {

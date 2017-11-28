@@ -1,4 +1,4 @@
-package aud.io.Drive;
+package aud.io.drive;
 
 import com.google.api.client.googleapis.media.MediaHttpUploader;
 import com.google.api.client.http.FileContent;
@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import static aud.io.Drive.DriveService.getDriveService;
+import static aud.io.drive.DriveService.getDriveService;
 
 public class DriveManager {
 

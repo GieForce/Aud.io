@@ -1,5 +1,6 @@
 package gui.controllers;
 
+import aud.io.log.Logger;
 import aud.io.rmi.ClientManager;
 import aud.io.rmi.IPartyManager;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
@@ -10,7 +11,6 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 class RmiClient {
     private static ClientManager manager;
@@ -19,13 +19,13 @@ class RmiClient {
     private String registryName;
     private String serverName;
     private String publisherName;
-    private static final Logger LOGGER = Logger.getLogger(RmiClient.class.getName());
+    private Logger logger;
 
     static ClientManager getManager() {
         return manager;
     }
 
-    private void initSharedData(){
+    private void initSharedData() {
         //Zodat deze bij server kan
         port = SharedData.getPort();
         registryName = SharedData.getRegistryName();
@@ -34,6 +34,7 @@ class RmiClient {
     }
 
     public void setupManager() {
+        logger = new Logger("RmiClient", Level.ALL, Level.SEVERE);
         initSharedData();
 
         //Maakt ClientManager aan
@@ -44,7 +45,7 @@ class RmiClient {
             manager = new ClientManager(publisher, server);
 
         } catch (RemoteException | NotBoundException e) {
-            LOGGER.log(Level.INFO, e.getMessage());
+            logger.log(Level.INFO, e.getMessage());
         }
     }
 }

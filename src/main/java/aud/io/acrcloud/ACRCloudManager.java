@@ -1,5 +1,6 @@
-package aud.io.ACRCloud;
+package aud.io.acrcloud;
 
+import aud.io.log.Logger;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Mac;
@@ -10,13 +11,15 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 
 public class ACRCloudManager {
+    private Logger logger;
 
-    public ACRCloudManager()
-    {
-
+    public ACRCloudManager() {
+        logger = new Logger("ACRCloudManager", Level.ALL, Level.ALL);
     }
+
 
     private String encodeBase64(byte[] bstr) {
         Base64 base64 = new Base64();
@@ -31,7 +34,7 @@ public class ACRCloudManager {
             byte[] rawHmac = mac.doFinal(data);
             return encodeBase64(rawHmac);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.toString());
         }
         return "";
     }
@@ -41,7 +44,7 @@ public class ACRCloudManager {
         int zoneOffset = cal.get(Calendar.ZONE_OFFSET);
         int dstOffset = cal.get(Calendar.DST_OFFSET);
         cal.add(Calendar.MILLISECOND, -(zoneOffset + dstOffset));
-        return cal.getTimeInMillis()/1000 + "";
+        return cal.getTimeInMillis() / 1000 + "";
     }
 
     private String postHttp(String posturl, Map<String, Object> params, int timeOut) {
@@ -66,7 +69,7 @@ public class ACRCloudManager {
             for (String key : params.keySet()) {
                 Object value = params.get(key);
                 if (value instanceof String || value instanceof Integer) {
-                    postBufferStream.write(String.format(stringKeyHeader, key, (String)value).getBytes());
+                    postBufferStream.write(String.format(stringKeyHeader, key, (String) value).getBytes());
                 } else if (value instanceof byte[]) {
                     postBufferStream.write(String.format(filePartHeader, key, key).getBytes());
                     postBufferStream.write((byte[]) value);
@@ -99,7 +102,7 @@ public class ACRCloudManager {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.toString());
         } finally {
             try {
                 if (postBufferStream != null) {
@@ -119,14 +122,13 @@ public class ACRCloudManager {
                     conn = null;
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.log(Level.SEVERE, e.toString());
             }
         }
         return res;
     }
 
-    private String recognize(String host, String accessKey, String secretKey, byte[] queryData, String queryType, int timeout)
-    {
+    private String recognize(String host, String accessKey, String secretKey, byte[] queryData, String queryType, int timeout) {
         String method = "POST";
         String httpURL = "/v1/identify";
         String dataType = queryType;
@@ -152,8 +154,7 @@ public class ACRCloudManager {
         return res;
     }
 
-    public String getMetaData(File uploadFile)
-    {
+    public String getMetaData(File uploadFile) {
         byte[] buffer = new byte[1024 * 1024];
         if (!uploadFile.exists()) {
             return "Getting metadata failed";
@@ -164,14 +165,14 @@ public class ACRCloudManager {
             fin = new FileInputStream(uploadFile);
             bufferLen = fin.read(buffer, 0, buffer.length);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.toString());
         } finally {
             try {
                 if (fin != null) {
                     fin.close();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.log(Level.SEVERE, e.toString());
             }
         }
         System.out.println("bufferLen=" + bufferLen);

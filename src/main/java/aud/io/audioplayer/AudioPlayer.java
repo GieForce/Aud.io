@@ -5,26 +5,50 @@ import aud.io.IPlayer;
 import aud.io.Votable;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import uk.co.caprica.vlcj.player.MediaPlayer;
 
 public class AudioPlayer extends Observable implements IPlayer {
     private final ExecutorService pool;
     private  MediaPlayer VLCPlayer;
     private Future currentSong;
+    private Logger logger;
 
     public AudioPlayer(ExecutorService pool, MediaPlayer VLCPlayer) {
         this.pool = pool;
-
+        setupLogger();
         //TODO: Insert actual player
         this.VLCPlayer = VLCPlayer;
     }
 
+    private void setupLogger() {
+        try {
+            String logname = "AudioPlayer";
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log", logname, timeStamp));
+            fh.setLevel(Level.ALL);
+            ConsoleHandler ch = new ConsoleHandler();
+            ch.setLevel(Level.ALL);
+            logger = java.util.logging.Logger.getLogger(logname);
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
+    }
 
     @Override
     public void play() {
@@ -92,7 +116,7 @@ public class AudioPlayer extends Observable implements IPlayer {
             try {
                 mediaFile = (File)mediaFileContainer.get();
             } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
+                logger.log(Level.SEVERE, e.toString());
             }
 
             while (!Thread.currentThread().isInterrupted()){

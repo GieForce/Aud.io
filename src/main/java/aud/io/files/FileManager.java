@@ -1,7 +1,7 @@
-package aud.io.Files;
+package aud.io.files;
 
-import aud.io.ACRCloud.ACRCloudManager;
-import aud.io.Drive.DriveManager;
+import aud.io.acrcloud.ACRCloudManager;
+import aud.io.drive.DriveManager;
 import aud.io.audioplayer.Track;
 import aud.io.memory.MemoryMedia;
 import aud.io.mongo.MongoDatabase;
@@ -9,18 +9,42 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FileManager {
 
     DriveManager driveManager;
     MongoDatabase mongoDatabase;
     Track track;
+    private Logger logger;
 
     public FileManager() throws IOException
     {
+        setupLogger();
         driveManager = new DriveManager();
         mongoDatabase = new MongoDatabase();
     }
+    private void setupLogger() {
+        try {
+            String logname = "FileManager";
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log", logname, timeStamp));
+            fh.setLevel(Level.ALL);
+            ConsoleHandler ch = new ConsoleHandler();
+            ch.setLevel(Level.ALL);
+            logger = java.util.logging.Logger.getLogger(logname);
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
+    }
+
 
     public void upload(java.io.File uploadFile)
     {
@@ -60,7 +84,7 @@ public class FileManager {
                 try {
                     driveManager.upload(uploadFile, fileName);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    logger.log(Level.SEVERE, e.toString());
                 }
             }
 

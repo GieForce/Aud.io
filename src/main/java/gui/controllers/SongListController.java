@@ -4,6 +4,7 @@ import aud.io.rmi.ClientManager;
 import aud.io.Votable;
 import gui.Message;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -21,8 +22,10 @@ import java.rmi.RemoteException;
 import java.util.Objects;
 
 public class SongListController {
-    public VBox songContainer;
-    public TextField tbSongName;
+    @FXML
+    private VBox songContainer;
+    @FXML
+    private TextField tbSongName;
     private Stage stage;
     private ClientManager manager;
 
@@ -41,7 +44,7 @@ public class SongListController {
     public void SearchSong(ActionEvent actionEvent) throws RemoteException {
         songContainer.getChildren().clear();
         String name = tbSongName.getText();
-        if(!Objects.equals(name, "") || name != null) {
+        if (!Objects.equals(name, "") || name != null) {
             manager.addMedia(name);
             for (Votable v : manager.getVotables()) {
                 setHboxSong(v);

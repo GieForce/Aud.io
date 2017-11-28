@@ -17,11 +17,10 @@ import java.util.logging.Logger;
 
 
 public class GuiController implements Initializable {
-
-    private static  int port;
-    private static  String registryName;
-    private static  String serverName;
-    private static  String publisherName;
+    private static int port;
+    private static String registryName;
+    private static String serverName;
+    private static String publisherName;
 
     private static Registry registry;
     private static IPartyManager server;
@@ -30,8 +29,7 @@ public class GuiController implements Initializable {
 
     private static final Logger LOGGER = Logger.getLogger(GuiController.class.getName());
 
-    public void getSongs()
-    {
+    public void getSongs() {
         System.out.println("Songs");
     }
 
@@ -39,8 +37,7 @@ public class GuiController implements Initializable {
         LOGGER.log(Level.INFO, "Created a party");
     }
 
-    public void login()
-    {
+    public void login() {
         //manager.login("Stefan");
     }
 
@@ -51,13 +48,11 @@ public class GuiController implements Initializable {
         publisherName = SharedData.getPublisherName();
 
         try {
-            registry = LocateRegistry.getRegistry(registryName,port);
+            registry = LocateRegistry.getRegistry(registryName, port);
             server = (IPartyManager) registry.lookup(serverName);
             publisher = (IRemotePublisherForListener) registry.lookup(publisherName);
             manager = new ClientManager(publisher, server);
-        }
-        catch (RemoteException | NotBoundException ex)
-        {
+        } catch (RemoteException | NotBoundException ex) {
             LOGGER.log(Level.WARNING, ex.getMessage());
         }
     }

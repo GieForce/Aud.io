@@ -5,6 +5,7 @@ import aud.io.TemporaryUser;
 import gui.views.JoinPartyView;
 import gui.Message;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -12,7 +13,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class TempUserController {
-    public TextField tbTempName;
+    @FXML
+    private TextField tbTempName;
     private Stage stage;
 
     public void setStage(Stage stage) {
