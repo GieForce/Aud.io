@@ -5,10 +5,13 @@ import com.google.api.client.http.FileContent;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
 import com.google.api.services.drive.model.FileList;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import org.apache.commons.io.IOExceptionWithCause;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.logging.Logger;
 
 import static aud.io.drive.DriveService.getDriveService;
 
@@ -21,31 +24,41 @@ public class DriveManager {
         driveService =  getDriveService();
     }
 
-    public void download(String searchValue) throws IOException
+    public String download(String searchValue) throws IOException
     {
-        String fileToken = null;
-        String pageToken = null;
-        do {
-            FileList result = driveService.files().list()
-                    .setQ("name='Test.mp3'")
-                    .setSpaces("drive")
-                    .setFields("nextPageToken, files(id, name)")
-                    .setPageToken(pageToken)
-                    .execute();
-            for (File file : result.getFiles())
-            {
-                System.out.printf("Found file: %s (%s)\n",
-                        file.getName(), file.getId());
-                fileToken = file.getId();
-            }
-            pageToken = result.getNextPageToken();
+        try
+        {
+            String fileToken = null;
+            String pageToken = null;
+            do {
+                FileList result = driveService.files().list()
+                        .setQ("name='Test.mp3'")
+                        .setSpaces("drive")
+                        .setFields("nextPageToken, files(id, name)")
+                        .setPageToken(pageToken)
+                        .execute();
+                for (File file : result.getFiles())
+                {
+                    System.out.printf("Found file: %s (%s)\n",
+                            file.getName(), file.getId());
+                    fileToken = file.getId();
+                }
+                pageToken = result.getNextPageToken();
 
-            //Uitvoeren van de filedownload
-            OutputStream outputStream = new FileOutputStream(new java.io.File("C:\\Users\\GieForce\\School\\Downloads\\" + fileToken + ".mp3"));
-            driveService.files().get(fileToken)
-                    .executeMediaAndDownloadTo(outputStream);
+                //Uitvoeren van de filedownload
+                OutputStream outputStream = new FileOutputStream(new java.io.File("./Music/" + fileToken + ".mp3"));
+                driveService.files().get(fileToken)
+                        .executeMediaAndDownloadTo(outputStream);
 
-        }while (pageToken != null);
+                return pageToken;
+            }while (pageToken != null);
+        }
+        catch (IOException ex)
+        {
+            //Todo logging
+            ex.printStackTrace();
+            return "File not found";
+        }
     }
 
     public boolean upload(java.io.File uploadFile, String fileName) throws IOException
