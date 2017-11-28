@@ -18,9 +18,9 @@ import java.util.concurrent.Executors;
 public class PlayerTest {
 
     private static IPlayer player;
-    private  static ExecutorService pool = Executors.newFixedThreadPool(3);
-
-    public static void main(String[] args){
+    private static ExecutorService pool = Executors.newFixedThreadPool(3);
+    private static String path = "src/main/resources/audio/Demo.mp3";
+    public static void main(String[] args) {
 
         //System.load("C:\\Users\\Nick Hammes\\IdeaProjects\\Aud.io\\src\\main\\resources\\lib\\libvlc.dll");
 
@@ -30,17 +30,17 @@ public class PlayerTest {
         System.out.println(found);
         System.out.println(LibVlc.INSTANCE.libvlc_get_version());
 
-        AudioMediaPlayerComponent VLCplayer = new AudioMediaPlayerComponent();
+        AudioMediaPlayerComponent vlcplayer = new AudioMediaPlayerComponent();
 
-        player = new AudioPlayer(pool, VLCplayer);
+        player = new AudioPlayer(pool, vlcplayer);
 
-        Votable votable = new Track(new MemoryMedia("C:\\Programming\\Java\\Aud.io\\src\\main\\resources\\audio\\Demo.mp3"));
+        Votable votable = new Track(new MemoryMedia(path));
 
         player.play(votable);
 
         boolean loop = true;
-        while (loop){
-            if (executeNextLine(scanner.nextLine())){
+        while (loop) {
+            if (executeNextLine(scanner.nextLine())) {
                 loop = false;
                 System.out.println("Bye bye");
                 pool.shutdown();
@@ -51,23 +51,23 @@ public class PlayerTest {
     }
 
     private static boolean executeNextLine(String s) {
-        if (s.equals("new")){
-            player.play(new Track(new MemoryMedia("C:\\Programming\\Java\\Aud.io\\src\\main\\resources\\audio\\Demo.mp3")));
+        if (s.equals("new")) {
+            player.play(new Track(new MemoryMedia(path)));
             return false;
         }
-        if (s.equals("play")){
+        if (s.equals("play")) {
             player.play();
             return false;
         }
-        if (s.equals("pause")){
+        if (s.equals("pause")) {
             player.pause();
             return false;
         }
-        if (s.equals("stop")){
+        if (s.equals("stop")) {
             player.stop();
             return false;
         }
-        if (s.equals("quit")){
+        if (s.equals("quit")) {
             return true;
         }
         return false;

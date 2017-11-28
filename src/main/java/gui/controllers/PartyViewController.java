@@ -1,23 +1,36 @@
 package gui.controllers;
 
+import aud.io.IPlayer;
 import aud.io.TemporaryUser;
 import aud.io.User;
+import aud.io.Votable;
+import aud.io.audioplayer.AudioPlayer;
+import aud.io.audioplayer.Track;
+import aud.io.log.Logger;
+import aud.io.memory.MemoryMedia;
 import gui.views.SongListView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import uk.co.caprica.vlcj.component.AudioMediaPlayerComponent;
+import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class PartyViewController {
+    @FXML
+    private Button btnToggleSong;
     @FXML
     private TextArea taChat;
     @FXML
@@ -30,7 +43,23 @@ public class PartyViewController {
     private String key;
     private User user;
 
-    private static final Logger LOGGER = Logger.getLogger("Chat");
+    private boolean playing;
+    private boolean paused;
+
+    private IPlayer player;
+    private ExecutorService pool = Executors.newFixedThreadPool(3);
+
+    private Logger logger;
+    private String path = "src/main/resources/audio/Demo.mp3";
+    private Votable votable;
+
+    public void initialize() {
+        logger = new Logger("PartyView", Level.ALL, Level.SEVERE);
+        boolean found = new NativeDiscovery().discover();
+        AudioMediaPlayerComponent vlcplayer = new AudioMediaPlayerComponent();
+        player = new AudioPlayer(pool, vlcplayer);
+        votable = new Track(new MemoryMedia(path));
+    }
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -53,7 +82,7 @@ public class PartyViewController {
         printSystemMessage("Party key is " + key);
     }
 
-    public void SendMessage(ActionEvent actionEvent) {
+    public void sendMessage(ActionEvent actionEvent) {
         printUserMesage();
     }
 
@@ -71,7 +100,7 @@ public class PartyViewController {
 
     private void print(String msg, User user) {
         String prev = taChat.getText();
-        LOGGER.log(Level.INFO, String.format("[%s]: %s", user.getNickname(), msg));
+        logger.log(Level.INFO, String.format("[%s]: %s", user.getNickname(), msg));
         if (prev == null || Objects.equals(prev, "")) {
             taChat.setText(String.format("%s: %s", user.getNickname(), msg));
         } else {
@@ -79,7 +108,7 @@ public class PartyViewController {
         }
     }
 
-    public void EnterPressed(KeyEvent keyEvent) {
+    public void enterPressed(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             printUserMesage();
         }
@@ -102,4 +131,22 @@ public class PartyViewController {
     public void voteSkip(ActionEvent actionEvent) {
         //TODO: Get song and add vote
     }
+
+    public void toggleSong(ActionEvent actionEvent) {
+        if (!playing) {
+            if (paused) player.play();
+            else player.play(votable);
+            btnToggleSong.setText("\u23F8");
+            btnToggleSong.setPadding(new Insets(4,4,8,4));
+            playing = true;
+            paused = false;
+        } else {
+            player.pause();
+            btnToggleSong.setText("▶");
+            btnToggleSong.setPadding(new Insets(4,4,4,4));
+            paused = true;
+            playing = false;
+        }
+    }
 }
+

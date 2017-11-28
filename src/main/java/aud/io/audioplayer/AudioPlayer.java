@@ -91,8 +91,6 @@ public class AudioPlayer implements IPlayer {
             VLCPlayer.getMediaPlayer().stop();
             mediaFileContainer = pool.submit(trackMedia.getFile());
             try {
-                Object o = mediaFileContainer.get();
-                mediaFile = (File)o;
                 mediaFile = (File)mediaFileContainer.get();
             } catch (InterruptedException | ExecutionException e) {
                 logger.log(Level.SEVERE, e.toString());

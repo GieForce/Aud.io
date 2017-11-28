@@ -39,6 +39,7 @@ public class SongListController {
     }
 
     public void enterPressed(KeyEvent keyEvent) {
+
     }
 
     public void searchSong(ActionEvent actionEvent) throws RemoteException {
