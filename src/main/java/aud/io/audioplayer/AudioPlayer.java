@@ -27,32 +27,14 @@ public class AudioPlayer implements IPlayer {
     private final ExecutorService pool;
     private AudioMediaPlayerComponent VLCPlayer;
     private PlayerRunnable currentSong;
-    private  MediaPlayer VLCPlayer;
-    private Future currentSong;
     private Logger logger;
 
     public AudioPlayer(ExecutorService pool, AudioMediaPlayerComponent VLCPlayer) {
         this.pool = pool;
-        setupLogger();
         //TODO: Insert actual player
         this.VLCPlayer = VLCPlayer;
     }
 
-    private void setupLogger() {
-        try {
-            String logname = "AudioPlayer";
-            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
-            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log", logname, timeStamp));
-            fh.setLevel(Level.ALL);
-            ConsoleHandler ch = new ConsoleHandler();
-            ch.setLevel(Level.ALL);
-            logger = java.util.logging.Logger.getLogger(logname);
-            logger.addHandler(fh);
-            logger.setLevel(Level.ALL);
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-        }
-    }
 
     @Override
     public void play() {
@@ -104,14 +86,20 @@ public class AudioPlayer implements IPlayer {
 
         @Override
         public void run() {
+            System.out.println("loading...");
+
             VLCPlayer.getMediaPlayer().stop();
             mediaFileContainer = pool.submit(trackMedia.getFile());
-
             try {
+                Object o = mediaFileContainer.get();
+                mediaFile = (File)o;
                 mediaFile = (File)mediaFileContainer.get();
             } catch (InterruptedException | ExecutionException e) {
                 logger.log(Level.SEVERE, e.toString());
             }
+
+
+            System.out.println("loaded: " + mediaFile.getAbsolutePath());
 
             while (!exit.get()){
                 if (play.get()){

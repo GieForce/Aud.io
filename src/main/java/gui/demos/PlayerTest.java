@@ -34,7 +34,7 @@ public class PlayerTest {
 
         player = new AudioPlayer(pool, VLCplayer);
 
-        Votable votable = new Track(new MemoryMedia("C:\\Users\\Nick Hammes\\IdeaProjects\\Aud.io\\src\\main\\resources\\audio\\Demo.mp3"));
+        Votable votable = new Track(new MemoryMedia("C:\\Programming\\Java\\Aud.io\\src\\main\\resources\\audio\\Demo.mp3"));
 
         player.play(votable);
 
@@ -52,7 +52,7 @@ public class PlayerTest {
 
     private static boolean executeNextLine(String s) {
         if (s.equals("new")){
-            player.play(new Track(new MemoryMedia("C:\\Users\\Nick Hammes\\IdeaProjects\\Aud.io\\src\\main\\resources\\audio\\Demo.mp3")));
+            player.play(new Track(new MemoryMedia("C:\\Programming\\Java\\Aud.io\\src\\main\\resources\\audio\\Demo.mp3")));
             return false;
         }
         if (s.equals("play")){
