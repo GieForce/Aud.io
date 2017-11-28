@@ -1,9 +1,10 @@
 package rmi;
 
-import aud.io.rmi.ClientManager;
-import aud.io.rmi.IPartyManager;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
 import aud.io.fontyspublisher.SharedData;
+import aud.io.log.Logger;
+import aud.io.rmi.ClientManager;
+import aud.io.rmi.IPartyManager;
 
 import java.io.IOException;
 import java.rmi.NotBoundException;
@@ -15,7 +16,6 @@ import java.util.Calendar;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ApplicationClient {
 
@@ -28,9 +28,8 @@ public class ApplicationClient {
     private static boolean allowRun;
     private static Logger logger;
 
-
     public static void main(String[] args) {
-        setupLogger();
+        logger = new Logger("ApplicationClient", Level.ALL, Level.SEVERE);
         initSharedData();
 
         try {

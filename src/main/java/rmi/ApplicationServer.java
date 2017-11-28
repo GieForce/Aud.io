@@ -1,9 +1,10 @@
 package rmi;
 
-import aud.io.rmi.IPartyManager;
-import aud.io.rmi.PartyManager;
 import aud.io.fontyspublisher.RemotePublisher;
 import aud.io.fontyspublisher.SharedData;
+import aud.io.log.Logger;
+import aud.io.rmi.IPartyManager;
+import aud.io.rmi.PartyManager;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -14,7 +15,6 @@ import java.util.Calendar;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ApplicationServer {
     private static int port;
@@ -23,14 +23,13 @@ public class ApplicationServer {
     private static Logger logger;
 
     public static void main(String[] args) {
-        setupLogger();
+        logger = new Logger("ApplicationServer", Level.ALL, Level.ALL);
         initSharedData();
 
         try {
-            logger.log(Level.INFO, "Server will start.");
+            logger.log(Level.FINE, "Server will start.");
             RemotePublisher publisher = new RemotePublisher();
             IPartyManager server = new PartyManager(publisher);
-
             Registry registry = LocateRegistry.createRegistry(port);
             logger.log(Level.INFO, "Registry created");
             registry.rebind(publisherName, publisher);
@@ -38,10 +37,10 @@ public class ApplicationServer {
             registry.rebind(serverName, server);
             logger.log(Level.INFO, "Server name bound to registry");
         } catch (RemoteException e) {
-            logger.log(Level.SEVERE, e.getMessage());
+            logger.log(Level.WARNING, e.getMessage());
         }
         Scanner scanner = new Scanner(System.in);
-        logger.log(Level.INFO, "Server has started, type 'exit' to stop.");
+        logger.log(Level.FINE, "Server has started, type 'exit' to stop.");
 
         boolean loop = true;
 

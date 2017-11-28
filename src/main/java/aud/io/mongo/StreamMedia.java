@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.net.Socket;
+import java.util.concurrent.Callable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -70,5 +71,10 @@ public class StreamMedia implements IMedia, Serializable {
             }
 
         })).start();
+    }
+
+    @Override
+    public Callable getFile() {
+        return null;
     }
 }

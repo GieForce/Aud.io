@@ -18,6 +18,10 @@ import java.util.Objects;
 
 public class LoginController {
     @FXML
+    private Button btnJoin;
+    @FXML
+    private ImageView imageLogo;
+    @FXML
     private PasswordField tbPassword;
     @FXML
     private TextField tbUsername;

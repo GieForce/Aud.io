@@ -26,7 +26,6 @@ public class SongListController {
     private VBox songContainer;
     @FXML
     private TextField tbSongName;
-
     private Stage stage;
     private ClientManager manager;
 

@@ -3,16 +3,17 @@ package aud.io.rmi;
 
 import aud.io.*;
 import aud.io.fontyspublisher.RemotePublisher;
+import aud.io.log.Logger;
 import aud.io.memory.MemoryDatabase;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.logging.FileHandler;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class PartyManager extends UnicastRemoteObject implements Observer, IPartyManager {
     private ArrayList<RegisteredUser> registeredUsers;
@@ -57,6 +58,19 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     public IDatabase getDatabase() {
         return database;
     }
+
+    private Logger logger;
+
+    /**
+     * Create a new PartyManager which will handle all Parties
+     */
+    public PartyManager(RemotePublisher publisher) throws RemoteException {
+        this.publisher = publisher;
+        database = new MemoryDatabase();
+        activeParties = new ArrayList<>();
+        logger = new Logger("PartyManager", Level.ALL, Level.SEVERE);
+    }
+
 
     //public String createParty(RegisteredUser host, String partyName) {
     //    Party party = new Party(host, partyName);
@@ -204,7 +218,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     }
 
     /**
-     * login for existing users
+     * Login for existing users
      *
      * @param name     Email of the user
      * @param password Password of the user
@@ -235,7 +249,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     @Override
     public synchronized Boolean createUser(String name, String password, String nickname) throws RemoteException {
         Boolean success = database.createUser(name, nickname, password);
-        if(success) {
+        if (success) {
             logger.log(Level.INFO, String.format("Created new user: name:%s nick:%s", name, nickname));
             return database.createUser(name, nickname, password);
         }
@@ -283,6 +297,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
             party.removeUser(user);
             logger.log(Level.INFO, String.format("%s has left party %s", user.getNickname(), party.getName()));
             party.setPartyMessage(String.format("%s has left the party.", user.getNickname()));
+            logger.log(Level.INFO, String.format("%s has left party %s", user.getNickname(), party.getName()));
             publisher.inform(party.getPartyKey(), null, party);
         }
     }

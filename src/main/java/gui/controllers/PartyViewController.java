@@ -79,7 +79,7 @@ public class PartyViewController {
         }
     }
 
-    public void enterPressed(KeyEvent keyEvent) {
+    public void EnterPressed(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             printUserMesage();
         }

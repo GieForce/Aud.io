@@ -3,7 +3,7 @@ package aud.io.rmi;
 import aud.io.*;
 import aud.io.fontyspublisher.IRemotePropertyListener;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
-import rmi.ApplicationServer;
+import aud.io.log.Logger;
 
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
@@ -13,10 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ClientManager extends UnicastRemoteObject implements IRemotePropertyListener {
 
@@ -31,14 +28,8 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
 
     private Logger logger;
 
-    private static final String MSG_NOT_IN_PARTY = "You're not in a party";
-    private static final String MSG_ALREADY_IN_PARTY = "You're already in a party";
-    private static final String MSG_NOT_LOGGED_IN = "You're not logged in";
-    private static final String MSG_ALREADY_LOGGED_IN = "You're already logged in";
-
     public ClientManager(IRemotePublisherForListener publisher, IPartyManager server) throws RemoteException {
-        //Replace with token
-        setupLogger();
+        logger = new Logger("ClientManager", Level.ALL, Level.SEVERE);
         this.publisher = publisher;
         this.server = server;
     }
@@ -62,7 +53,7 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     @Override
     public synchronized void propertyChange(PropertyChangeEvent evt) throws RemoteException {
         currentParty = (Party) evt.getNewValue();
-//        logger.log(Level.INFO, currentParty.getPartyKey());
+//        System.out.println(currentParty.getPartyMessage());
     }
 
     public String createParty(String partyName) throws RemoteException {
@@ -78,7 +69,7 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
 
                 publisher.subscribeRemoteListener(this, party.getPartyKey());
                 currentParty = party;
-
+                logger.log(Level.INFO, String.format("%s created the party: %s with the key: %s", getUser().getNickname(), party.getName(), party.getPartyKey()));
                 return String.format("You have created the party: %s with the key: %s", party.getName(), party.getPartyKey());
             } else {
                 logger.log(Level.FINE, String.format("%s wasn't a registered user", getUser().getNickname()));
@@ -103,7 +94,6 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         server.leaveParty(getUser(), currentParty.getPartyKey());
 
         currentParty = null;
-
         logger.log(Level.INFO, String.format("%s left party: name: %s key: %s",
                 getUser().getNickname(), getParty().getName(), getParty().getPartyKey()));
         return "You left the party.";

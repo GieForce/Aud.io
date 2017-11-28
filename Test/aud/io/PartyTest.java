@@ -17,9 +17,7 @@ public class PartyTest {
     Party party;
     RegisteredUser registeredUser;
     TemporaryUser normalUser;
-    IMedia media = () -> {
-
-    };
+    IMedia media = null;
     Votable votable;
     Votable votable1 = new Track(media);
 
