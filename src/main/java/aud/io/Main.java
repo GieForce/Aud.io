@@ -11,7 +11,7 @@ public class Main {
     {
         FileManager fileManager = new FileManager();
         try {
-            fileManager.upload(new File("C:\\Users\\GieForce\\School\\Downloads\\1UpXAZi26J3K5yoT3nMfs8OwZ4JSyOsW5.mp3"));
+            fileManager.upload(new File("./Music/Demo.mp3"));
         } catch (Exception e) {
             e.printStackTrace();
         }
