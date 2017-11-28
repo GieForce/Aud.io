@@ -85,21 +85,21 @@ public class PartyViewController {
         }
     }
 
-    public void AddSongs(ActionEvent actionEvent) throws IOException {
+    public void addSongs(ActionEvent actionEvent) throws IOException {
         SongListView songListView = new SongListView();
         Stage s = new Stage();
         songListView.start(s);
     }
 
-    public void VoteUp(ActionEvent actionEvent) {
+    public void voteUp(ActionEvent actionEvent) {
         //TODO: Get song and add vote
     }
 
-    public void VoteDown(ActionEvent actionEvent) {
+    public void voteDown(ActionEvent actionEvent) {
         //TODO: Get song and add vote
     }
 
-    public void VoteSkip(ActionEvent actionEvent) {
+    public void voteSkip(ActionEvent actionEvent) {
         //TODO: Get song and add vote
     }
 }

@@ -89,7 +89,7 @@
                         <padding>
                             <Insets top="10.0"/>
                         </padding>
-                        <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#Register"
+                        <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#register"
                                 style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;"
                                 text="Register" textFill="#f5e9be">
                             <font>

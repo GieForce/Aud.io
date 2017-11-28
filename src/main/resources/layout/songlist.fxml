@@ -49,7 +49,7 @@
                                 </HBox>
                                 <HBox alignment="CENTER">
                                     <children>
-                                        <TextField fx:id="tbSongName" minWidth="280.0" onKeyPressed="#EnterPressed"
+                                        <TextField fx:id="tbSongName" minWidth="280.0" onKeyPressed="#enterPressed"
                                                    prefWidth="280.0" promptText="Name"
                                                    style="-fx-background-radius: 50 50 50 50; -fx-border-radius: 50 50 50 50;">
                                             <font>
@@ -59,7 +59,7 @@
                                                 <Insets right="10.0"/>
                                             </HBox.margin>
                                         </TextField>
-                                        <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#SearchSong"
+                                        <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#searchSong"
                                                 style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;"
                                                 text="Search" textFill="#f5e9be">
                                             <font>

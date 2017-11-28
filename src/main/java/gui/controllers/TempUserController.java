@@ -21,7 +21,7 @@ public class TempUserController {
         this.stage = stage;
     }
 
-    public void SetName(ActionEvent actionEvent) throws IOException {
+    public void setName(ActionEvent actionEvent) throws IOException {
         String nickname = tbTempName.getText();
         if (!Objects.equals(nickname, "") || nickname != null) {
             ClientManager manager = RmiClient.getManager();

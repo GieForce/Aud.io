@@ -10,7 +10,6 @@ public class Party extends Observable implements IParty, Serializable {
     private ArrayList<User> participants;
     private ArrayList<Votable> votables;
     private RegisteredUser host;
-    private Votable nowPlayer;
     private String name;
     private String partyKey;
 
@@ -46,7 +45,7 @@ public class Party extends Observable implements IParty, Serializable {
      * @param user User to generate Votables for
      * @return List with Votables which should suit the users preferences.
      */
-    public synchronized ArrayList<Votable> generateVoteList(User user) {
+    public synchronized List<Votable> generateVoteList(User user) {
         //TODO: Implement
         return new ArrayList<>();
     }
@@ -98,7 +97,7 @@ public class Party extends Observable implements IParty, Serializable {
      * Gets participants
      * @return participants
      */
-    public synchronized ArrayList<User> getUsers() {
+    public synchronized List<User> getUsers() {
         return participants;
     }
 
@@ -130,7 +129,7 @@ public class Party extends Observable implements IParty, Serializable {
      * Returns all Votables in the playlist
      * @return all Votables in party
      */
-    public synchronized ArrayList<Votable> getPlaylist() {
+    public synchronized List<Votable> getPlaylist() {
         return votables;
     }
 
@@ -146,7 +145,7 @@ public class Party extends Observable implements IParty, Serializable {
      * Get participants
      * @return participants
      */
-    public synchronized ArrayList<User> getParticipants() {
+    public synchronized List<User> getParticipants() {
         return participants;
     }
 
@@ -157,7 +156,6 @@ public class Party extends Observable implements IParty, Serializable {
                 break;
             }
         }
-        //participants.remove(user);
     }
 
     @Override
@@ -175,16 +173,16 @@ public class Party extends Observable implements IParty, Serializable {
 
         //TODO: If other media added, need more instanceof checks.
         s += String.format("%sCurrent songs: %s", System.lineSeparator(), System.lineSeparator());
+        StringBuilder builder = new StringBuilder();
+        builder.append(s);
         for (Votable votable : votables){
             if (votable instanceof Track){
                 Track track = (Track)votable;
-                s += String.format("%s by %s%s", track.getName(), track.getArtist(), System.lineSeparator());
+                builder.append(String.format("%s by %s%s", track.getName(), track.getArtist(), System.lineSeparator()));
             }
         }
-
-        s += System.lineSeparator();
-
-        return s;
+        builder.append(System.lineSeparator());
+        return builder.toString();
     }
 
     /**
@@ -196,19 +194,13 @@ public class Party extends Observable implements IParty, Serializable {
         /**
          * Generate a random string.
          */
-        public synchronized String nextString() {
+        synchronized String nextString() {
             for (int idx = 0; idx < buf.length; ++idx)
                 buf[idx] = symbols[random.nextInt(symbols.length)];
             return new String(buf);
         }
 
-        public static final String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-        //public static final String lower = upper.toLowerCase(Locale.ROOT);
-
-        //public static final String digits = "0123456789";
-
-        public static final String ALPHANUM = UPPER;// + lower + digits;
+        static final String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         private final Random random;
 
@@ -216,7 +208,7 @@ public class Party extends Observable implements IParty, Serializable {
 
         private final char[] buf;
 
-        public RandomString(int length, Random random, String symbols) {
+        RandomString(int length, Random random, String symbols) {
             if (length < 1) throw new IllegalArgumentException();
             if (symbols.length() < 2) throw new IllegalArgumentException();
             this.random = Objects.requireNonNull(random);
@@ -228,7 +220,7 @@ public class Party extends Observable implements IParty, Serializable {
          * Create an alphanumeric string generator.
          */
         private RandomString(int length, Random random) {
-            this(length, random, ALPHANUM);
+            this(length, random, UPPER);
         }
 
         /**

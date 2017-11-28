@@ -38,10 +38,10 @@ public class SongListController {
         }
     }
 
-    public void EnterPressed(KeyEvent keyEvent) {
+    public void enterPressed(KeyEvent keyEvent) {
     }
 
-    public void SearchSong(ActionEvent actionEvent) throws RemoteException {
+    public void searchSong(ActionEvent actionEvent) throws RemoteException {
         songContainer.getChildren().clear();
         String name = tbSongName.getText();
         if (!Objects.equals(name, "") || name != null) {
@@ -67,7 +67,7 @@ public class SongListController {
         b.setMaxWidth(50);
         b.setMinWidth(50);
         b.setMnemonicParsing(false);
-        b.setOnAction(this::AddSong);
+        b.setOnAction(this::addSong);
         b.setStyle("-fx-background-color: black; -fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;");
         b.setText("+");
         b.setTextAlignment(TextAlignment.CENTER);
@@ -100,7 +100,7 @@ public class SongListController {
         songContainer.getChildren().add(box);
     }
 
-    public void AddSong(ActionEvent actionEvent) {
+    public void addSong(ActionEvent actionEvent) {
 
     }
 

@@ -32,7 +32,7 @@ public class MongoDatabaseTest {
 
     @Test
     public void getSongsWithSearchterm() throws Exception {
-        ArrayList list = mongoDatabase.getSongsWithSearchterm("Slapend Rijk");
+        ArrayList list = (ArrayList) mongoDatabase.getSongsWithSearchterm("Slapend Rijk");
         //TODO Werkt DB al goed genoeg?
     }
 

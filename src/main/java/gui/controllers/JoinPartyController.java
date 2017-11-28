@@ -27,7 +27,7 @@ public class JoinPartyController {
         this.user = user;
     }
 
-    public void JoinParty(ActionEvent actionEvent) throws IOException {
+    public void joinParty(ActionEvent actionEvent) throws IOException {
         String partyKey = tbPartyId.getText();
         if (partyKey == null || Objects.equals(partyKey, "")) {
             Message.Show("Error", "Please fill in Party ID");

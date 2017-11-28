@@ -38,7 +38,7 @@ public class LoginController {
         manager = RmiClient.getManager();
     }
 
-    public void Login(ActionEvent actionEvent) throws IOException {
+    public void login(ActionEvent actionEvent) throws IOException {
         String user = tbUsername.getText();
         String password = tbPassword.getText();
         //TODO: Check details in database
@@ -49,21 +49,21 @@ public class LoginController {
                 MenuView menu = new MenuView();
                 menu.start(stage, regUser);
             } else {
-                Message.Show("Error", "Login details don't match!");
+                Message.Show("Error", "login details don't match!");
             }
         } else {
             Message.Show("Error", "One or more fields were empty, please fill those in.");
         }
     }
 
-    public void GuestLogin(MouseEvent mouseEvent) throws IOException {
+    public void guestLogin(MouseEvent mouseEvent) throws IOException {
         //Redirect to party list
         TempUserView tempUserView = new TempUserView();
         tempUserView.start(stage);
     }
 
-    public void SignUp(MouseEvent mouseEvent) throws IOException {
-        //Redirect to Register
+    public void signUp(MouseEvent mouseEvent) throws IOException {
+        //Redirect to register
         RegisterView register = new RegisterView();
         register.start(stage);
     }

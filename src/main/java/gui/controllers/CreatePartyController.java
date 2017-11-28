@@ -27,7 +27,7 @@ public class CreatePartyController {
         this.user = user;
     }
 
-    public void CreateParty(ActionEvent actionEvent) throws IOException {
+    public void createParty(ActionEvent actionEvent) throws IOException {
         String partyName = tbPartyName.getText();
         if (Objects.equals(partyName, "") || partyName == null) {
             Message.Show("Error", "Please enter a partyname");

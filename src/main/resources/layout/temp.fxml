@@ -68,7 +68,7 @@
                                                     <Font size="24.0" />
                                                 </font>
                                             </TextField>
-                                            <Button fx:id="btnSetName" mnemonicParsing="false" onAction="#SetName" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;" text="Confirm" textFill="#f5e9be">
+                                            <Button fx:id="btnSetName" mnemonicParsing="false" onAction="#setName" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;" text="Confirm" textFill="#f5e9be">
                                                 <font>
                                                     <Font size="24.0" />
                                                 </font>

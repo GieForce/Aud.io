@@ -28,7 +28,7 @@ public class RegisterController {
         this.stage = stage;
     }
 
-    public void Register(ActionEvent actionEvent) throws Exception {
+    public void register(ActionEvent actionEvent) throws Exception {
         String mail = tbMail.getText();
         String username = tbUsername.getText();
         String password = tbPassword.getText();

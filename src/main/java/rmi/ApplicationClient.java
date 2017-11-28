@@ -6,11 +6,15 @@ import aud.io.log.Logger;
 import aud.io.rmi.ClientManager;
 import aud.io.rmi.IPartyManager;
 
+import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 
 public class ApplicationClient {
@@ -115,7 +119,20 @@ public class ApplicationClient {
             System.out.println("Shutting down program");
             allowRun = false;
         }
+    }
 
+    private static void setupLogger() {
+        try {
+            String logname = "Client";
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log",logname, timeStamp));
+            fh.setLevel(Level.ALL);
+            logger = java.util.logging.Logger.getLogger(logname);
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
     }
 
     private static void initSharedData() {

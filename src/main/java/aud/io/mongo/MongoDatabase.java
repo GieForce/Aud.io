@@ -8,6 +8,7 @@ import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MongoDatabase implements IDatabase {
     @Override
@@ -21,7 +22,7 @@ public class MongoDatabase implements IDatabase {
     }
 
     @Override
-    public ArrayList<Votable> getSongsWithSearchterm(String searchterm) {
+    public List<Votable> getSongsWithSearchterm(String searchterm) {
 
         ArrayList<Votable> votables = new ArrayList<>();
 

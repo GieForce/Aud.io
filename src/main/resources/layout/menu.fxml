@@ -41,7 +41,7 @@
                         </padding>
                         <VBox alignment="CENTER">
                             <children>
-                        <Button fx:id="btnCreate" mnemonicParsing="false" onAction="#CreateParty" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #f5e9be;" text="Create party" textFill="#50626a">
+                        <Button fx:id="btnCreate" mnemonicParsing="false" onAction="#createParty" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #f5e9be;" text="Create party" textFill="#50626a">
                            <font>
                               <Font size="36.0" />
                            </font>
@@ -52,7 +52,7 @@
                               <Insets right="50.0" />
                            </VBox.margin>
                         </Button>
-                                <Button fx:id="btnJoin" mnemonicParsing="false" onAction="#JoinParty" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;" text="Join party" textFill="#f5e9be">
+                                <Button fx:id="btnJoin" mnemonicParsing="false" onAction="#joinParty" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;" text="Join party" textFill="#f5e9be">
                                     <font>
                                         <Font size="36.0" />
                                     </font>

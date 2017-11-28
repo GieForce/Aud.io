@@ -6,10 +6,14 @@ import aud.io.log.Logger;
 import aud.io.rmi.IPartyManager;
 import aud.io.rmi.PartyManager;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 
 public class ApplicationServer {
@@ -32,8 +36,6 @@ public class ApplicationServer {
             logger.log(Level.INFO, "Publisher bound to registry");
             registry.rebind(serverName, server);
             logger.log(Level.INFO, "Server name bound to registry");
-
-
         } catch (RemoteException e) {
             logger.log(Level.WARNING, e.getMessage());
         }
@@ -41,6 +43,7 @@ public class ApplicationServer {
         logger.log(Level.FINE, "Server has started, type 'exit' to stop.");
 
         boolean loop = true;
+
         while (loop) {
             if (scanner.nextLine().equals("exit")) {
                 loop = false;
@@ -50,6 +53,20 @@ public class ApplicationServer {
             }
         }
         System.exit(0);
+    }
+
+    private static void setupLogger() {
+        try {
+            String logname = "Server";
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log",logname, timeStamp));
+            fh.setLevel(Level.ALL);
+            logger = java.util.logging.Logger.getLogger(logname);
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
     }
 
     private static void initSharedData() {

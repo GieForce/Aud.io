@@ -6,6 +6,7 @@ import aud.io.fontyspublisher.RemotePublisher;
 import aud.io.log.Logger;
 import aud.io.memory.MemoryDatabase;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -20,8 +21,33 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     private IDatabase database;
 
     private RemotePublisher publisher;
+    private Logger logger;
 
-    public ArrayList<RegisteredUser> getRegisteredUsers() {
+    /**
+     * Create a new PartyManager which will handle all Parties
+     */
+    public PartyManager(RemotePublisher publisher) throws RemoteException {
+        this.publisher = publisher;
+        database = new MemoryDatabase();
+        activeParties = new ArrayList<>();
+        setupLogger();
+    }
+
+    private void setupLogger() {
+        try {
+            String logname = "PartyManager";
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+            FileHandler fh = new FileHandler(String.format("logs/%s-%s.log",logname, timeStamp));
+            fh.setLevel(Level.ALL);
+            logger = java.util.logging.Logger.getLogger(logname);
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
+    }
+
+    public List<RegisteredUser> getRegisteredUsers() {
         return registeredUsers;
     }
 
@@ -52,7 +78,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     //}
 
 
-    //public RegisteredUser Login(String email, String password) {
+    //public RegisteredUser login(String email, String password) {
     //    RegisteredUser rUser = null;
     //    for (RegisteredUser user : registeredUsers) {
     //        if (user.checkLogin(email, password)) {
@@ -269,6 +295,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
         Party party = getPartyByKey(partyKey);
         if (party != null) {
             party.removeUser(user);
+            logger.log(Level.INFO, String.format("%s has left party %s", user.getNickname(), party.getName()));
             party.setPartyMessage(String.format("%s has left the party.", user.getNickname()));
             logger.log(Level.INFO, String.format("%s has left party %s", user.getNickname(), party.getName()));
             publisher.inform(party.getPartyKey(), null, party);
