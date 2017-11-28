@@ -99,9 +99,9 @@ public class FileManager {
         }
     }
 
-    public void download()
+    public String download(String searchValue) throws IOException
     {
-
+        return driveManager.download(searchValue);
     }
 
 }
