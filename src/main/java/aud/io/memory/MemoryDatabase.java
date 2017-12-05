@@ -30,13 +30,13 @@ public class MemoryDatabase implements IDatabase {
                                      ,new Track(new MemoryMedia("brabant"),"brabant",0f,"guus meeuwis","guus")};
 
     @Override
-    public synchronized User loginUser(String name, String password) {
+    public synchronized boolean loginUser(String name, String password) {
         for (RegisteredUser user : users) {
             if (user.checkLogin(name, password)){
-                return user;
+                return false;
             }
         }
-        return null;
+        return false;
     }
 
     @Override

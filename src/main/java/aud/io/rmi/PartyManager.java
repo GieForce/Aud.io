@@ -201,14 +201,14 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
 
     @Override
     public synchronized User login(String name, String password) throws RemoteException {
-        User user = database.loginUser(name, password);
-        if (user != null) {
-            if (user.getNickname().equals(name)) {
-                logger.log(Level.INFO, String.format("%s logged in", user.getNickname()));
-                return user;
-            }
-            return database.loginUser(name, password);
-        }
+//        User user = database.loginUser(name, password);
+//        if (user != null) {
+//            if (user.getNickname().equals(name)) {
+//                logger.log(Level.INFO, String.format("%s logged in", user.getNickname()));
+//                return user;
+//            }
+//            return database.loginUser(name, password);
+//        }
         return null;
     }
 
