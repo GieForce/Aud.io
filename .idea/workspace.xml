@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88ba7775-61cc-4d36-aa27-8fbcf889f0e3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Aud.io.iml" afterPath="$PROJECT_DIR$/Aud.io.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/IDatabase.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/IDatabase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/Main.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/drive/DriveManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/drive/DriveManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/drive/DriveService.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/drive/DriveService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/files/FileManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/files/FileManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/memory/MemoryDatabase.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/memory/MemoryDatabase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/memory/MemoryMedia.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/memory/MemoryMedia.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/mongo/MongoDatabase.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/mongo/MongoDatabase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/mongo/StreamMedia.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/mongo/StreamMedia.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/rmi/PartyManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/rmi/PartyManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -78,8 +66,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="14" column="52" lean-forward="true" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -192,6 +180,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Drive_implementation_v2" />
+      </map>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -641,7 +634,7 @@
       <workItem from="1511875153264" duration="251000" />
       <workItem from="1512483015791" duration="1489000" />
       <workItem from="1512488012568" duration="2803000" />
-      <workItem from="1512503484981" duration="798000" />
+      <workItem from="1512503484981" duration="974000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed workspace errors">
       <created>1511875183800</created>
@@ -650,7 +643,14 @@
       <option name="project" value="LOCAL" />
       <updated>1511875183800</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added drive mechanism for uploading">
+      <created>1512504330030</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1512504330030</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -686,7 +686,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133420000" />
+    <option name="totallyTimeSpent" value="133596000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -746,7 +746,8 @@
     <MESSAGE value="Split up controllers and views" />
     <MESSAGE value="Solved a few vulnerabilities" />
     <MESSAGE value="Fixed workspace errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed workspace errors" />
+    <MESSAGE value="Added drive mechanism for uploading" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added drive mechanism for uploading" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1016,6 +1017,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1119,8 +1121,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state relative-caret-position="210">
+          <caret line="14" column="52" lean-forward="true" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
