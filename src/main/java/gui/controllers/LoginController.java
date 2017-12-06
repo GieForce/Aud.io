@@ -1,6 +1,7 @@
 package gui.controllers;
 
 import aud.io.mongo.Connection;
+import aud.io.mongo.MongoDatabase;
 import aud.io.rmi.ClientManager;
 import aud.io.RegisteredUser;
 import gui.views.RegisterView;
@@ -32,45 +33,14 @@ public class LoginController {
         manager = RmiClient.getManager();
     }
 
-    public boolean login(ActionEvent actionEvent) throws IOException {
+    public void login(ActionEvent actionEvent) throws IOException {
 
-        RegisteredUser user;
         String username = tbUsername.getText();
         String password = tbPassword.getText();
-        String hash;
 
-           MongoCollection users = Connection.connect().getCollection("users");
+        MongoDatabase md = new MongoDatabase();
 
-           RegisteredUser regUser = users.findOne("{ nickname : "+ username + " , {password :" + password + "}").as(RegisteredUser.class);
-
-
-            System.out.println("Hallo");
-           String hashedPassword = regUser.getMongoPassword();
-
-//            Hash h = new Hash();
-//            h.checkPass(password, hashedPassword);
-
-            if (regUser != null)
-            {
-                return true;
-            }
-            else return false;
-
-
-
-
-
-       /* MongoCollection users = Connection.connect().getCollection("users");
-        MongoCursor<RegisteredUser> usersSearch = users.find("{ nickname : 'joel' }").as(RegisteredUser.class);
-
-        while (usersSearch.hasNext())
-        {
-            user = usersSearch.next();
-
-            System.out.println(user.getNickname());
-
-        }*/
-
+        md.loginUser(username, password);
 
 
 
