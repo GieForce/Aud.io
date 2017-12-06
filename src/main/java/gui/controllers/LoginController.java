@@ -1,27 +1,18 @@
 package gui.controllers;
 
-import aud.io.Hashing.Hash;
-import aud.io.User;
 import aud.io.mongo.Connection;
 import aud.io.rmi.ClientManager;
 import aud.io.RegisteredUser;
-import gui.views.MenuView;
-import gui.Message;
 import gui.views.RegisterView;
 import gui.views.TempUserView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.jongo.MongoCollection;
-import org.jongo.MongoCursor;
 
 import java.io.IOException;
-import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class LoginController {
     @FXML
@@ -56,8 +47,8 @@ public class LoginController {
             System.out.println("Hallo");
            String hashedPassword = regUser.getMongoPassword();
 
-            Hash h = new Hash();
-            h.checkPass(password, hashedPassword);
+//            Hash h = new Hash();
+//            h.checkPass(password, hashedPassword);
 
             if (regUser != null)
             {
