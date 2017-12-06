@@ -5,6 +5,7 @@ import aud.io.drive.DriveManager;
 import aud.io.audioplayer.Track;
 import aud.io.memory.MemoryMedia;
 import aud.io.mongo.MongoDatabase;
+import aud.io.mongo.StreamMedia;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -74,7 +75,7 @@ public class FileManager {
                 float length = 0f;
                 //ACR Cloud bevat al een uniek ID dit is handig om op te slaan in de database
                 fileName = music.getJSONObject(i).getString("acrid");
-                track = new Track(new MemoryMedia(locatie), title, length, artist, album);
+                track = new Track(new StreamMedia(locatie), title, length, artist, album);
                 System.out.println(track.getArtist());
             }
 

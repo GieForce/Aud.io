@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.concurrent.Callable;
 
+/**
+ * @deprecated
+ */
 public class MemoryMedia implements IMedia, Serializable {
 
     private String location;
