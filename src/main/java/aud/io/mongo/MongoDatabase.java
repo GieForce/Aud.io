@@ -1,10 +1,12 @@
 package aud.io.mongo;
 
+import Hashing.Hash;
 import aud.io.IDatabase;
 import aud.io.RegisteredUser;
 import aud.io.audioplayer.Track;
-import aud.io.User;
 import aud.io.Votable;
+import com.mongodb.DBObject;
+import com.mongodb.QueryBuilder;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
 
@@ -14,19 +16,36 @@ import java.util.concurrent.locks.Condition;
 
 public class MongoDatabase implements IDatabase {
     @Override
-    public boolean loginUser(String name, String password) {
-        MongoCollection userCollection = Connection.connect().getCollection("users");
-        User user = userCollection.findOne("{nickname: '" + name + "', password: '"+ password + "'}").as(RegisteredUser.class);
-        if (user != null)
+    public RegisteredUser loginUser(String name, String password) {
+
+        MongoCollection users = Connection.connect().getCollection("users");
+        RegisteredUser userSearch = users.findOne("{nickname:'" + name +"'}").as(RegisteredUser.class);
+
+        String hashedPass = userSearch.getMongoPassword();
+
+        Hash h = new Hash();
+        h.checkPass(password,hashedPass);
+        if (h.checkPass(password,hashedPass))
         {
-            return true;
+            System.out.println("Gelukt");
+            return userSearch;
         }
-        else return false;
+        else {
+
+            return null;
+        }
     }
 
     @Override
     public boolean createUser(String name, String nickname, String password) {
-        return false;
+        Hash h = new Hash();
+      String hashedPass =  h.hashPassword(password);
+       MongoCollection users = Connection.connect().getCollection("users");
+       RegisteredUser rUser = new RegisteredUser(name, hashedPass, nickname);
+       users.save(rUser);
+
+
+        return true;
     }
 
     @Override
