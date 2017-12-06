@@ -1,9 +1,10 @@
 package gui.controllers;
 
-import aud.io.rmi.ClientManager;
 import aud.io.RegisteredUser;
-import gui.views.MenuView;
+import aud.io.mongo.MongoDatabase;
+import aud.io.rmi.ClientManager;
 import gui.Message;
+import gui.views.MenuView;
 import gui.views.RegisterView;
 import gui.views.TempUserView;
 import javafx.event.ActionEvent;
@@ -39,12 +40,14 @@ public class LoginController {
     }
 
     public void login(ActionEvent actionEvent) throws IOException {
-        String user = tbUsername.getText();
+
+        String username = tbUsername.getText();
         String password = tbPassword.getText();
-        //TODO: Check details in database
-        if (!Objects.equals(user, "") || user != null || !Objects.equals(password, "") || password != null) {
-            manager.login(user, password);
-            RegisteredUser regUser = (RegisteredUser) manager.getUser();
+
+        MongoDatabase md = new MongoDatabase();
+
+        if (!Objects.equals(username, "") || username != null || !Objects.equals(password, "") || password != null) {
+                        RegisteredUser regUser = md.loginUser(username, password);
             if (regUser != null) {
                 MenuView menu = new MenuView();
                 menu.start(stage, regUser);
