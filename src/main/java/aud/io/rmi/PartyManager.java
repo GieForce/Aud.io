@@ -218,7 +218,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
      * @param name     Email of the new user
      * @param password Password of the new user
      * @param nickname Nickname the user would like to use
-     * @return wether or not adding user succeeded
+     * @return whether or not adding user succeeded
      */
     @Override
     public synchronized Boolean createUser(String name, String password, String nickname) throws RemoteException {
@@ -235,8 +235,9 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
         if (!partyKey.equals("")) {
             leaveParty(user, partyKey);
             logger.log(Level.INFO, String.format("%s logged out", user.getNickname()));
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override
