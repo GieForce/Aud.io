@@ -1,5 +1,6 @@
 package gui.controllers;
 
+import aud.io.mongo.MongoDatabase;
 import aud.io.rmi.ClientManager;
 import aud.io.RegisteredUser;
 import gui.views.MenuView;
@@ -40,7 +41,11 @@ public class RegisterController {
         } else if (password.equals(passwordConfirm)) {
             ClientManager manager = RmiClient.getManager();
             //TODO: Implement manager register
-            RegisteredUser user = new RegisteredUser(mail, username, password);
+            MongoDatabase db = new MongoDatabase();
+
+            RegisteredUser user = new RegisteredUser(mail,username,password);
+            db.createUser(mail,username,password);
+
             //Show Menu
             MenuView menu = new MenuView();
             menu.start(stage, user);
