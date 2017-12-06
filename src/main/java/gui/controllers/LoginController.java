@@ -1,19 +1,21 @@
 package gui.controllers;
 
-import aud.io.mongo.Connection;
+import aud.io.RegisteredUser;
 import aud.io.mongo.MongoDatabase;
 import aud.io.rmi.ClientManager;
-import aud.io.RegisteredUser;
+import gui.Message;
+import gui.views.MenuView;
 import gui.views.RegisterView;
 import gui.views.TempUserView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.jongo.MongoCollection;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LoginController {
     @FXML
@@ -44,16 +46,8 @@ public class LoginController {
 
         MongoDatabase md = new MongoDatabase();
 
-        md.loginUser(username, password);
-
-
-
-        /*String username = tbUsername.getText();
-        String password = tbPassword.getText();
-        //TODO: Check details in database
-        if (!Objects.equals(user, "") || user != null || !Objects.equals(password, "") || password != null) {
-            manager.login(user, password);
-            RegisteredUser regUser = (RegisteredUser) manager.getUser();
+        if (!Objects.equals(username, "") || username != null || !Objects.equals(password, "") || password != null) {
+                        RegisteredUser regUser = md.loginUser(username, password);
             if (regUser != null) {
                 MenuView menu = new MenuView();
                 menu.start(stage, regUser);
@@ -62,7 +56,7 @@ public class LoginController {
             }
         } else {
             Message.Show("Error", "One or more fields were empty, please fill those in.");
-        }*/
+        }
     }
 
     public void guestLogin(MouseEvent mouseEvent) throws IOException {
