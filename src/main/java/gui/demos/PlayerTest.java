@@ -4,13 +4,18 @@ import aud.io.IPlayer;
 import aud.io.Votable;
 import aud.io.audioplayer.AudioPlayer;
 import aud.io.audioplayer.Track;
+import aud.io.drive.DriveManager;
 import aud.io.memory.MemoryMedia;
+import aud.io.mongo.MongoDatabase;
 import com.sun.jna.Native;
 import uk.co.caprica.vlcj.binding.LibVlc;
 import uk.co.caprica.vlcj.component.AudioMediaPlayerComponent;
 import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -20,9 +25,8 @@ public class PlayerTest {
     private static IPlayer player;
     private static ExecutorService pool = Executors.newFixedThreadPool(3);
     private static String path = "src/main/resources/audio/Demo.mp3";
-    public static void main(String[] args) {
 
-        //System.load("C:\\Users\\Nick Hammes\\IdeaProjects\\Aud.io\\src\\main\\resources\\lib\\libvlc.dll");
+    public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -34,9 +38,11 @@ public class PlayerTest {
 
         player = new AudioPlayer(pool, vlcplayer);
 
-        Votable votable = new Track(new MemoryMedia(path));
+        MongoDatabase mongoDatabase = new MongoDatabase();
+        List<Votable> votableList = mongoDatabase.getAllSongs();
 
-        player.play(votable);
+        player.play(votableList.get(4));
+
 
         boolean loop = true;
         while (loop) {
