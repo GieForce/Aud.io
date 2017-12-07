@@ -5,12 +5,14 @@ import aud.io.Votable;
 import aud.io.audioplayer.AudioPlayer;
 import aud.io.audioplayer.Track;
 import aud.io.memory.MemoryMedia;
+import aud.io.mongo.MongoDatabase;
 import com.sun.jna.Native;
 import uk.co.caprica.vlcj.binding.LibVlc;
 import uk.co.caprica.vlcj.component.AudioMediaPlayerComponent;
 import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,8 +24,6 @@ public class PlayerTest {
     private static String path = "src/main/resources/audio/Demo.mp3";
     public static void main(String[] args) {
 
-        //System.load("C:\\Users\\Nick Hammes\\IdeaProjects\\Aud.io\\src\\main\\resources\\lib\\libvlc.dll");
-
         Scanner scanner = new Scanner(System.in);
 
         boolean found = new NativeDiscovery().discover();
@@ -34,9 +34,11 @@ public class PlayerTest {
 
         player = new AudioPlayer(pool, vlcplayer);
 
-        Votable votable = new Track(new MemoryMedia(path));
+        MongoDatabase mongoDatabase = new MongoDatabase();
+        List<Votable> votableList = mongoDatabase.getAllSongs();
 
-        player.play(votable);
+        player.play(votableList.get(1));
+
 
         boolean loop = true;
         while (loop) {
@@ -47,7 +49,6 @@ public class PlayerTest {
                 System.exit(0);
             }
         }
-
     }
 
     private static boolean executeNextLine(String s) {

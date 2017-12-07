@@ -63,18 +63,33 @@ public class DriveManager {
 
     public boolean upload(java.io.File uploadFile, String fileName) throws IOException
     {
-        //Toevoegen van titel aan de file
-        File fileMetadata = new File();
-        fileMetadata.setName(fileName);
+        FileList result = driveService.files().list()
+                .setQ("name='" + fileName + "'")
+                .setSpaces("drive")
+                .setFields("nextPageToken, files(id, name)")
+                .execute();
 
-        //Aanmaken van de file voor google drive
-        FileContent mediaContent = new FileContent("", uploadFile);
+        if (result.getFiles().isEmpty())
+        {
+            //Toevoegen van titel aan de file
+            File fileMetadata = new File();
+            fileMetadata.setName(fileName);
 
-        //Uploaden naar de drive
-        Drive.Files.Create create = driveService.files().create(fileMetadata, mediaContent);
-        MediaHttpUploader uploader = create.getMediaHttpUploader();
-        uploader.setDirectUploadEnabled(true);
-        create.execute();
-        return true;
+            //Aanmaken van de file voor google drive
+            FileContent mediaContent = new FileContent("", uploadFile);
+
+            //Uploaden naar de drive
+            Drive.Files.Create create = driveService.files().create(fileMetadata, mediaContent);
+            MediaHttpUploader uploader = create.getMediaHttpUploader();
+            uploader.setDirectUploadEnabled(true);
+            create.execute();
+            return true;
+        }
+        else
+        {
+            System.out.println("This item already exists");
+            logger.log(Level.WARNING, "This item already exists");
+            return false;
+        }
     }
 }

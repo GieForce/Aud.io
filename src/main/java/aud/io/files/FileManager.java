@@ -83,20 +83,16 @@ public class FileManager {
             if (fileName != null)
             {
                 try {
-                    driveManager.upload(uploadFile, fileName);
+                    if (driveManager.upload(uploadFile, fileName))
+                    {
+                        //Toevoegen track aan database
+                        mongoDatabase.saveVotable(track);
+                    }
+
                 } catch (IOException e) {
                     logger.log(Level.SEVERE, e.toString());
                 }
             }
-
-
-            //Toevoegen van track aan de database
-            if (track != null)
-            {
-                mongoDatabase.saveVotable(track);
-            }
-
-
         }
     }
 
