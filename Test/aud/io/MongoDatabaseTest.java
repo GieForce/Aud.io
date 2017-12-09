@@ -20,14 +20,19 @@ public class MongoDatabaseTest {
 
     @Test
     public void loginUser() throws Exception {
-        mongoDatabase.loginUser("Test","Test");
-        //TODO Returned nog null dus wachten op implementatie
+        RegisteredUser user = new RegisteredUser("Davey","Davey","Davey");
+        RegisteredUser user1 = mongoDatabase.loginUser("Davey","Davey");
+        assertEquals(user1.getNickname(),user.getNickname());
+        }
+
+    @Test
+    public void loginUserFalse() throws Exception {
+        assertNull(mongoDatabase.loginUser("Davey","Banana"));
     }
 
     @Test
     public void createUser() throws Exception {
-        mongoDatabase.createUser("Test","Test","Test");
-        //TODO Returned nog false dus wachten op implematatie
+        assertTrue(mongoDatabase.createUser("Test","Test","Test"));
     }
 
     @Test
@@ -39,6 +44,12 @@ public class MongoDatabaseTest {
     @Test
     public void saveVotable() throws Exception {
         assertTrue(mongoDatabase.saveVotable(new Track(null, "Track1",5,"Ruud","Rudj")));
+    }
+
+    @Test
+    public void getAllSongs(){
+        assertNotNull(mongoDatabase.getAllSongs());
+        //TODO
     }
 
 }
