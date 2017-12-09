@@ -40,7 +40,7 @@ public class RegisteredUserTest {
 
     @Test
     public void checkLogin() {
-        assertTrue(user.checkLogin("dhrlaaboudi@gmail.com", "boterkoek"));
+        assertTrue(user.checkLogin("dhrlaaboudi@gmail.com", "Hich"));
     }
 
 }
