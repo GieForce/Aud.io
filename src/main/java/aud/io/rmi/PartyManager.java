@@ -5,6 +5,7 @@ import aud.io.*;
 import aud.io.fontyspublisher.RemotePublisher;
 import aud.io.log.Logger;
 import aud.io.memory.MemoryDatabase;
+import aud.io.mongo.MongoDatabase;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -40,7 +41,7 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
      */
     public PartyManager(RemotePublisher publisher) throws RemoteException {
         this.publisher = publisher;
-        database = new MemoryDatabase();
+        database = new MongoDatabase();//MemoryDatabase();
         activeParties = new ArrayList<>();
         logger = new Logger("PartyManager", Level.ALL, Level.SEVERE);
     }
@@ -174,7 +175,9 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     @Override
     public synchronized List<Votable> addMedia(String media, String partyKey, User user) throws RemoteException {
 
-        List<Votable> votables = database.getSongsWithSearchterm(media);
+        //TODO: revise, make into just adding one media and add another to get all media(or with searchterm) from DB
+
+        List<Votable> votables = database.getAllSongs();//getSongsWithSearchterm(media);
 
         if (votables.size() == 1) {
             Party party = getPartyByKey(partyKey);
@@ -201,14 +204,14 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
 
     @Override
     public synchronized User login(String name, String password) throws RemoteException {
-//        User user = database.loginUser(name, password);
-//        if (user != null) {
-//            if (user.getNickname().equals(name)) {
-//                logger.log(Level.INFO, String.format("%s logged in", user.getNickname()));
-//                return user;
-//            }
-//            return database.loginUser(name, password);
-//        }
+        User user = database.loginUser(name, password);
+        if (user != null) {
+            if (user.getNickname().equals(name)) {
+                logger.log(Level.INFO, String.format("%s logged in", user.getNickname()));
+                return user;
+            }
+            return database.loginUser(name, password);
+        }
         return null;
     }
 
@@ -241,14 +244,18 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     }
 
     @Override
-    public synchronized void vote(Votable votable, User user, String partyKey) throws RemoteException {
+    public synchronized void vote(Votable votable, Vote vote, User user, String partyKey) throws RemoteException {
         //Not sure how to implement this, should do the following:
         //User votes on a votable with a vote, vote isn't defined though.
+        Party party = getPartyByKey(partyKey);
+        //TODO: Check if null
+        party.voteOnVotable(user, votable, vote);
+        //TODO: set party message
+        publisher.inform(party.getPartyKey(), null, party);
     }
 
     @Override
     public synchronized boolean mediaIsPlayed(Votable media, String partyKey, User host) throws RemoteException {
-        //TODO: remove votable correctly, this current implementation is a hack
         Party party = getPartyByKey(partyKey);
         if (party.mediaIsPlayed(media, host)) {
             party.setPartyMessage(String.format("%s has started playing.", media.getName()));

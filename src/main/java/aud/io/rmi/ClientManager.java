@@ -1,15 +1,20 @@
 package aud.io.rmi;
 
 import aud.io.*;
+import aud.io.audioplayer.AudioPlayer;
 import aud.io.fontyspublisher.IRemotePropertyListener;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
 import aud.io.log.Logger;
+import uk.co.caprica.vlcj.component.AudioMediaPlayerComponent;
+import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 
 import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 
 public class ClientManager extends UnicastRemoteObject implements IRemotePropertyListener {
@@ -23,6 +28,9 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     private TemporaryUser temporaryUser;
     private List<Votable> votables;
 
+    private static IPlayer player;
+    private static ExecutorService pool = Executors.newFixedThreadPool(3);
+
     private Logger logger;
     private static final String MSG_NOT_IN_PARTY = "You're not in a party";
     private static final String MSG_ALREADY_IN_PARTY = "You're already in a party";
@@ -33,6 +41,9 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         logger = new Logger("ClientManager", Level.ALL, Level.SEVERE);
         this.publisher = publisher;
         this.server = server;
+        (new NativeDiscovery()).discover();
+
+        player = new AudioPlayer(pool, new AudioMediaPlayerComponent());
     }
 
     @Override
@@ -115,6 +126,9 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     }
 
     public String addMedia(String media) throws RemoteException {
+
+        //TODO: revise, make into just adding one media and add another to get all media(or with searchterm) from Server
+
         votables = null;
         if (currentParty == null) {
             return MSG_NOT_IN_PARTY;
@@ -144,20 +158,23 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         }
     }
 
-    public String login(String username, String password) throws RemoteException {
+    public RegisteredUser login(String username, String password) throws RemoteException {
         if (getUser() != null) {
-            return MSG_ALREADY_LOGGED_IN;
+            //return MSG_ALREADY_LOGGED_IN;
+            return null;
         }
         User user = server.login(username, password);
 
         if (user == null) {
             logger.log(Level.WARNING, String.format("%s tried to login", username));
-            return "Incorrect username or password.";
+            //return "Incorrect username or password.";
+            return null;
         }
 
         registeredUser = (RegisteredUser) user;
         logger.log(Level.INFO, String.format("%s logged in", user.getNickname()));
-        return String.format("You logged in as: %s", user.getNickname());
+        return registeredUser;
+        //return String.format("You logged in as: %s", user.getNickname());
     }
 
     public String logout() throws RemoteException {
@@ -192,6 +209,18 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         return String.format("You logged in as: %s", user.getNickname());
     }
 
+    public void resumePlaying(){
+        player.play();
+    }
+
+    public void pause(){
+        player.pause();
+    }
+
+    public void stop(){
+        player.stop();
+    }
+
     public String play() throws RemoteException {
         User user = getUser();
         if (user == null) {
@@ -204,13 +233,28 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         Votable votable = currentParty.getNextSong();
 
         if (server.mediaIsPlayed(votable, currentParty.getPartyKey(), user)) {
-            votable.getMedia().play();
+            player.play(votable);
             logger.log(Level.INFO, String.format("%s started playing %s", user.getNickname(), votable.getName()));
             return String.format("You started playing %s", votable.getName());
         }
 
         return "This action is not allowed.";
     }
+
+    public List<Votable> getVotablesToVoteOn(){
+        User user = getUser();
+        if (user == null) {
+            return null;
+        }
+        if (currentParty == null) {
+            return null;
+        }
+
+        return currentParty.generateVoteList(user);
+
+    }
+
+    //TODO: functie vote, functie create user
 
     public String getPartyInfo() {
         if (currentParty == null) {

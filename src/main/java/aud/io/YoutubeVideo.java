@@ -6,6 +6,9 @@ import org.jongo.marshall.jackson.oid.MongoObjectId;
 
 import java.io.Serializable;
 
+/**
+ * @deprecated
+ */
 public class YoutubeVideo extends Votable implements Serializable {
 
     //MongoDB van Track

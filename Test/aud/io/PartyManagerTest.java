@@ -91,7 +91,7 @@ public class PartyManagerTest {
     @Test
     public void vote() throws Exception {
         //nog niks om te testen
-        manager.vote(null,registeredUser,party.getPartyKey());
+        manager.vote(null, Vote.LIKE,registeredUser,party.getPartyKey());
     }
 
     @Test
