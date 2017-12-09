@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws IOException
     {
         FileManager fileManager = new FileManager();
-        File file = new File("C:\\Users\\GieForce\\School\\Downloads\\1UpXAZi26J3K5yoT3nMfs8OwZ4JSyOsW5.mp3");
+        File file = new File("C:\\Users\\GieForce\\School\\Downloads\\traag.mp3");
         fileManager.upload(file);
 
         MongoDatabase mongoDatabase = new MongoDatabase();
