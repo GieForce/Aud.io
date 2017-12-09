@@ -89,7 +89,8 @@ public class ApplicationClient {
 
         if (line.equals("add")) {
             System.out.print("song:");
-            System.out.println(manager.addMedia(scanner.nextLine()));
+            //TODO: revise add media
+            //System.out.println(manager.addMedia(scanner.nextLine()));
         }
 
         if (line.equals("play")) {
@@ -159,6 +160,7 @@ public class ApplicationClient {
         return builder.toString();
     }
 
+    //TODO: finish this!
     private static String voteOnVotable(String songname, List<Votable> votables){
         for (Votable v:votables){
             if (v.getName().contains(songname)){

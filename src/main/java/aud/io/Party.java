@@ -13,6 +13,8 @@ public class Party extends Observable implements IParty, Serializable {
     private String name;
     private String partyKey;
 
+    private double removalThreshold = 0.5f;
+
     private String partyMessage;
 
     private RandomString stringGenerator;
@@ -153,6 +155,17 @@ public class Party extends Observable implements IParty, Serializable {
      */
     public synchronized void addToVotables(Votable votable) {
         votables.add(votable);
+    }
+
+    public synchronized void removeVotable(Votable votable){
+        votables.remove(votable);
+    }
+
+    public synchronized boolean belowRemovalThreshold(Votable votable){
+        if (votable.getDislikes() >= removalThreshold * (participants.size() + 1)){
+            return true;
+        }
+        return false;
     }
 
     /**
