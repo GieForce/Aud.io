@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2017-12-09T15:56:33</date>
+  <millis>1512831393131</millis>
+  <sequence>48</sequence>
+  <logger>PartyManager</logger>
+  <level>INFO</level>
+  <class>aud.io.log.Logger</class>
+  <method>log</method>
+  <thread>1</thread>
+  <message>Wachtwoord has created a new party (PartyDav) </message>
+</record>
+<record>
+  <date>2017-12-09T15:56:33</date>
+  <millis>1512831393135</millis>
+  <sequence>49</sequence>
+  <logger>PartyManager</logger>
+  <level>INFO</level>
+  <class>aud.io.log.Logger</class>
+  <method>log</method>
+  <thread>1</thread>
+  <message>Wachtwoord has created a new party (PartyDav) </message>
+</record>
+</log>

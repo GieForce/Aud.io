@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2017-12-06T13:57:41</date>
+  <millis>1512565061374</millis>
+  <sequence>0</sequence>
+  <logger>RmiClient</logger>
+  <level>INFO</level>
+  <class>aud.io.log.Logger</class>
+  <method>log</method>
+  <thread>15</thread>
+  <message>Connection refused to host: localhost; nested exception is: 
+	java.net.ConnectException: Connection refused: connect</message>
+</record>
