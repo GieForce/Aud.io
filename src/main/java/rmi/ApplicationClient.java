@@ -93,6 +93,18 @@ public class ApplicationClient {
             System.out.println(manager.play());
         }
 
+        if (line.equals("pause")) {
+            manager.pause();
+        }
+
+        if (line.equals("stop")) {
+            manager.stop();
+        }
+
+        if (line.equals("resume")) {
+            manager.resumePlaying();
+        }
+
         if (line.equals("help")) {
             System.out.println("----------");
             System.out.println("type 'temp' to log in as a temporary user");

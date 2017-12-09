@@ -46,8 +46,13 @@ public class Party extends Observable implements IParty, Serializable {
      * @return List with Votables which should suit the users preferences.
      */
     public synchronized List<Votable> generateVoteList(User user) {
-        //TODO: Implement
-        return new ArrayList<>();
+        List<Votable> votablesToReturn = new ArrayList<>();
+        for(Votable votable:votables){
+            if (!votable.hasVoted(user)){
+                votablesToReturn.add(votable);
+            }
+        }
+        return votablesToReturn;
     }
 
     /**
@@ -60,8 +65,6 @@ public class Party extends Observable implements IParty, Serializable {
     }
 
     public boolean mediaIsPlayed(Votable media, User host){
-        //TODO: remove votable correctly, this current implementation is a hack
-
         if (host.getNickname().equals(this.host.getNickname())){
             for (Votable votable : votables){
                 if (votable.getName().equals(media.getName())){
@@ -70,7 +73,6 @@ public class Party extends Observable implements IParty, Serializable {
                 }
             }
         }
-
         return false;
     }
 
@@ -122,7 +124,18 @@ public class Party extends Observable implements IParty, Serializable {
      * @return next song
      */
     public synchronized Votable getNextSong() {
-        return votables.get(0);
+        if (votables.size() == 0){
+            return null;
+        }
+
+        Votable votableToReturn = votables.get(0);
+
+        for(Votable votable:votables){
+            if (votable.getVoteScore() > votableToReturn.getVoteScore()){
+                votableToReturn = votable;
+            }
+        }
+        return votableToReturn;
     }
 
     /**

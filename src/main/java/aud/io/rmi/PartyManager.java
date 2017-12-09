@@ -201,14 +201,14 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
 
     @Override
     public synchronized User login(String name, String password) throws RemoteException {
-//        User user = database.loginUser(name, password);
-//        if (user != null) {
-//            if (user.getNickname().equals(name)) {
-//                logger.log(Level.INFO, String.format("%s logged in", user.getNickname()));
-//                return user;
-//            }
-//            return database.loginUser(name, password);
-//        }
+        User user = database.loginUser(name, password);
+        if (user != null) {
+            if (user.getNickname().equals(name)) {
+                logger.log(Level.INFO, String.format("%s logged in", user.getNickname()));
+                return user;
+            }
+            return database.loginUser(name, password);
+        }
         return null;
     }
 
@@ -241,14 +241,16 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
     }
 
     @Override
-    public synchronized void vote(Votable votable, User user, String partyKey) throws RemoteException {
+    public synchronized void vote(Votable votable, Vote vote, User user, String partyKey) throws RemoteException {
         //Not sure how to implement this, should do the following:
         //User votes on a votable with a vote, vote isn't defined though.
+        Party party = getPartyByKey(partyKey);
+        party.voteOnVotable(user, votable, vote);
+        publisher.inform(party.getPartyKey(), null, party);
     }
 
     @Override
     public synchronized boolean mediaIsPlayed(Votable media, String partyKey, User host) throws RemoteException {
-        //TODO: remove votable correctly, this current implementation is a hack
         Party party = getPartyByKey(partyKey);
         if (party.mediaIsPlayed(media, host)) {
             party.setPartyMessage(String.format("%s has started playing.", media.getName()));

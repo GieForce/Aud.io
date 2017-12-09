@@ -93,4 +93,33 @@ public abstract class Votable implements Serializable {
     public void vote(User user, Vote vote) {
         voters.put(user, vote);
     }
+
+    /**
+     * @return score of the votes
+     */
+    public int getVoteScore(){
+        int votes = 0;
+        for(Map.Entry<User, Vote> entry:voters.entrySet()){
+            switch (entry.getValue()){
+                case LIKE:
+                    votes++;
+                    break;
+                case DISLIKE:
+                    votes--;
+                    break;
+                default:
+                    break;
+            }
+        }
+        return votes;
+    }
+
+    public boolean hasVoted(User user){
+        for(Map.Entry<User, Vote> entry:voters.entrySet()){
+            if(entry.getKey().getNickname().equals(user.getNickname())){
+                return true;
+            }
+        }
+        return false;
+    }
 }

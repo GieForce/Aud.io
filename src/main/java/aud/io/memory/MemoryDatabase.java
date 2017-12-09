@@ -18,16 +18,16 @@ public class MemoryDatabase implements IDatabase {
                                             ,new RegisteredUser("hicham","hicham","hicham")
                                             ,new RegisteredUser("davey","davey","davey")};
 
-    private static Votable[] songs = {new Track(new MemoryMedia("never gonna give you up"),"never gonna give you up",0f,"rick astley","best of rick astley")
-                                     ,new Track(new MemoryMedia("shooting stars"),"shooting stars",0f,"bag raiders","shooting stars")
-                                     ,new Track(new MemoryMedia("sandstorm"),"sandstorm",0f,"darude","sandstorm")
-                                     ,new Track(new MemoryMedia("iron maiden"),"iron maiden",0f,"iron maiden","iron maiden")
-                                     ,new Track(new MemoryMedia("the pretender"),"the pretender",0f,"foo fighters","foo fighters")
-                                     ,new Track(new MemoryMedia("strife"),"strife",0f,"trivium","trivium")
-                                     ,new Track(new MemoryMedia("rap god"),"rap god",0f,"eminem","eminem")
-                                     ,new Track(new MemoryMedia("shut the lights"),"shut the lights",0f,"DEVA","DEVA")
-                                     ,new Track(new MemoryMedia("carry on my wayward son"),"carry on my wayward son",0f,"kansas","kansas")
-                                     ,new Track(new MemoryMedia("brabant"),"brabant",0f,"guus meeuwis","guus")};
+    private static Votable[] songs = {new Track(new MemoryMedia("src/main/resources/audio/Demo.mp3"),"never gonna give you up",0f,"rick astley","best of rick astley")
+                                     ,new Track(new MemoryMedia("src/main/resources/audio/Demo.mp3"),"shooting stars",0f,"bag raiders","shooting stars")
+                                     ,new Track(new MemoryMedia("src/main/resources/audio/Demo.mp3"),"sandstorm",0f,"darude","sandstorm")
+                                     ,new Track(new MemoryMedia("src/main/resources/audio/Demo.mp3"),"iron maiden",0f,"iron maiden","iron maiden")
+                                     ,new Track(new MemoryMedia("src/main/resources/audio/Demo.mp3"),"the pretender",0f,"foo fighters","foo fighters")
+                                     ,new Track(new MemoryMedia("src/main/resources/audio/Demo.mp3"),"strife",0f,"trivium","trivium")
+                                     ,new Track(new MemoryMedia("src/main/resources/audio/Demo.mp3"),"rap god",0f,"eminem","eminem")
+                                     ,new Track(new MemoryMedia("src/main/resources/audio/Demo.mp3"),"shut the lights",0f,"DEVA","DEVA")
+                                     ,new Track(new MemoryMedia("src/main/resources/audio/Demo.mp3"),"carry on my wayward son",0f,"kansas","kansas")
+                                     ,new Track(new MemoryMedia("src/main/resources/audio/Demo.mp3"),"brabant",0f,"guus meeuwis","guus")};
 
     @Override
     public synchronized RegisteredUser loginUser(String name, String password) {
