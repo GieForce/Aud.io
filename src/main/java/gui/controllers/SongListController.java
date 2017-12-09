@@ -32,10 +32,11 @@ public class SongListController {
 
     public void initialize() throws RemoteException {
         manager = RmiClient.getManager();
-        manager.addMedia("");
-        for (Votable v : manager.getVotables()) {
-            setHboxSong(v);
-        }
+        //TODO: addMedia function has changed, please revise!!
+        //manager.addMedia(null);
+        //for (Votable v : manager.getVotables()) {
+        //    setHboxSong(v);
+        //}
     }
 
     public void enterPressed(KeyEvent keyEvent) {
@@ -46,10 +47,11 @@ public class SongListController {
         songContainer.getChildren().clear();
         String name = tbSongName.getText();
         if (!Objects.equals(name, "") || name != null) {
-            manager.addMedia(name);
-            for (Votable v : manager.getVotables()) {
-                setHboxSong(v);
-            }
+            //TODO: needs to be revised!!
+            //manager.addMedia(name);
+            //for (Votable v : manager.getVotables()) {
+            //    setHboxSong(v);
+            //}
         } else {
             Message.Show("Error", "Please enter a song name");
         }

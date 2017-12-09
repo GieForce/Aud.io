@@ -118,44 +118,58 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         return String.format("You have joined the party: %s with the key: %s", party.getName(), party.getPartyKey());
     }
 
-    public List<Votable> getVotables() {
-        if (votables == null)
+    public List<Votable> getPartyVotables() {
+        if (currentParty.getPlaylist() == null)
             //addMedia hasn't run yet
             return new ArrayList<>();
-        return votables;
+        return currentParty.getPlaylist();
     }
 
-    public String addMedia(String media) throws RemoteException {
+    public List<Votable> getAllVotables() throws RemoteException {
 
-        //TODO: revise, make into just adding one media and add another to get all media(or with searchterm) from Server
-
-        votables = null;
         if (currentParty == null) {
-            return MSG_NOT_IN_PARTY;
+            //return MSG_NOT_IN_PARTY;
+            return null;
         }
 
         if (getUser() == null) {
-            return MSG_NOT_LOGGED_IN;
+            //return MSG_NOT_LOGGED_IN;
+            return null;
         }
 
-        votables = server.addMedia(media, currentParty.getPartyKey(), getUser());
+        return server.getAllVotables();
+    }
 
-        if (votables.isEmpty()) {
-            return "The song does not exist.";
-        } else if (votables.size() == 1) {
-            logger.log(Level.INFO, String.format("%s added %s to party: name: %s key: %s",
-                    getUser().getNickname(), votables.get(0).getName(), currentParty.getName(), currentParty.getPartyKey()));
-            return "You have added the song.";
-        } else {
-            StringBuilder builder = new StringBuilder();
-            builder.append(String.format("choose one of the following:%s", System.lineSeparator()));
+    public List<Votable> searchVotablesWithSearchTerm(String searchTerm) throws RemoteException {
 
-            for (Votable votable : votables) {
-                builder.append(String.format("%s%s", votable.getName(), System.lineSeparator()));
-            }
-
-            return builder.toString();
+        if (currentParty == null) {
+            //return MSG_NOT_IN_PARTY;
+            return null;
         }
+
+        if (getUser() == null) {
+            //return MSG_NOT_LOGGED_IN;
+            return null;
+        }
+
+        return server.searchVotablesWithSearchTerm(searchTerm);
+    }
+
+    public void addMedia(Votable media) throws RemoteException {
+
+        if (currentParty == null) {
+            //return MSG_NOT_IN_PARTY;
+            return;
+        }
+
+        if (getUser() == null) {
+            //return MSG_NOT_LOGGED_IN;
+            return;
+        }
+
+        server.addMedia(media, currentParty.getPartyKey(), getUser());
+        logger.log(Level.INFO, String.format("%s added %s to party: name: %s key: %s",
+                getUser().getNickname(), media.getName(), currentParty.getName(), currentParty.getPartyKey()));
     }
 
     public RegisteredUser login(String username, String password) throws RemoteException {
@@ -254,7 +268,37 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
 
     }
 
-    //TODO: functie vote, functie create user
+    public void removeVotable(Votable votable) throws RemoteException {
+        if (currentParty == null) {
+            //return MSG_NOT_IN_PARTY;
+            return;
+        }
+
+        if (getUser() == null) {
+            //return MSG_NOT_LOGGED_IN;
+            return;
+        }
+
+        server.removeVotable(getUser(),currentParty.getPartyKey(),votable);
+    }
+
+    public void voteOnVotable(Votable votable, Vote vote) throws RemoteException {
+        if (currentParty == null) {
+            //return MSG_NOT_IN_PARTY;
+            return;
+        }
+
+        if (getUser() == null) {
+            //return MSG_NOT_LOGGED_IN;
+            return;
+        }
+
+        server.vote(votable,vote,getUser(),currentParty.getPartyKey());
+    }
+
+    public void createUser(String email, String password, String nickname) throws RemoteException {
+        server.createUser(email,password,nickname);
+    }
 
     public String getPartyInfo() {
         if (currentParty == null) {

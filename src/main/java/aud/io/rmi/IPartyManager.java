@@ -12,7 +12,11 @@ public interface IPartyManager  extends Remote {
 
     IParty createParty(RegisteredUser user, String partyName) throws RemoteException;
 
-    List<Votable> addMedia(String media, String partyKey, User user) throws RemoteException;
+    void addMedia(Votable media, String partyKey, User user) throws RemoteException;
+
+    List<Votable> getAllVotables() throws RemoteException;
+
+    List<Votable> searchVotablesWithSearchTerm(String searchTerm) throws RemoteException;
 
     User login(String name, String password) throws RemoteException;
 
@@ -27,4 +31,6 @@ public interface IPartyManager  extends Remote {
     User getTemporaryUser(String nickname) throws RemoteException;
 
     void leaveParty(User user, String partyKey) throws RemoteException;
+
+    void removeVotable(User user, String partyKey, Votable votable) throws RemoteException;
 }

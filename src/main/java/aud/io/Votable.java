@@ -127,4 +127,18 @@ public abstract class Votable implements Serializable {
         }
         return false;
     }
+
+    public int getDislikes(){
+        int dislikes = 0;
+        for(Map.Entry<User, Vote> entry:voters.entrySet()){
+            switch (entry.getValue()){
+                case DISLIKE:
+                    dislikes++;
+                    break;
+                default:
+                    break;
+            }
+        }
+        return dislikes;
+    }
 }
