@@ -1,5 +1,7 @@
 package rmi;
 
+import aud.io.Votable;
+import aud.io.audioplayer.Track;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
 import aud.io.fontyspublisher.SharedData;
 import aud.io.log.Logger;
@@ -10,6 +12,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 
@@ -105,6 +108,14 @@ public class ApplicationClient {
             manager.resumePlaying();
         }
 
+        if (line.equals("vote")) {
+            List<Votable> votables = manager.getVotablesToVoteOn();
+            System.out.println("you can vote on:");
+            System.out.println(printableVotableList(votables));
+            System.out.print("song name:");
+            System.out.println(voteOnVotable(scanner.nextLine(), votables));
+        }
+
         if (line.equals("help")) {
             System.out.println("----------");
             System.out.println("type 'temp' to log in as a temporary user");
@@ -134,6 +145,27 @@ public class ApplicationClient {
         registryName = SharedData.getRegistryName();
         serverName = SharedData.getServerName();
         publisherName = SharedData.getPublisherName();
+    }
+
+    private static String printableVotableList(List<Votable> votables){
+        StringBuilder builder = new StringBuilder();
+        for(Votable v : votables){
+            if (v instanceof Track){
+                Track t = (Track)v;
+                builder.append(String.format("%s by %s with %s votescore %s", t.getName(), t.getArtist(), t.getVoteScore(), System.lineSeparator()));
+            }
+        }
+        builder.append(System.lineSeparator());
+        return builder.toString();
+    }
+
+    private static String voteOnVotable(String songname, List<Votable> votables){
+        for (Votable v:votables){
+            if (v.getName().contains(songname)){
+
+            }
+        }
+        return "";
     }
 
 }

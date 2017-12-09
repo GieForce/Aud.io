@@ -44,10 +44,9 @@ public class LoginController {
         String username = tbUsername.getText();
         String password = tbPassword.getText();
 
-        MongoDatabase md = new MongoDatabase();
-
         if (!Objects.equals(username, "") || username != null || !Objects.equals(password, "") || password != null) {
-                        RegisteredUser regUser = md.loginUser(username, password);
+
+            RegisteredUser regUser = manager.login(username, password);//md.loginUser(username, password);
             if (regUser != null) {
                 MenuView menu = new MenuView();
                 menu.start(stage, regUser);

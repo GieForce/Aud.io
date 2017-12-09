@@ -126,6 +126,9 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     }
 
     public String addMedia(String media) throws RemoteException {
+
+        //TODO: revise, make into just adding one media and add another to get all media(or with searchterm) from Server
+
         votables = null;
         if (currentParty == null) {
             return MSG_NOT_IN_PARTY;
@@ -155,20 +158,23 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         }
     }
 
-    public String login(String username, String password) throws RemoteException {
+    public RegisteredUser login(String username, String password) throws RemoteException {
         if (getUser() != null) {
-            return MSG_ALREADY_LOGGED_IN;
+            //return MSG_ALREADY_LOGGED_IN;
+            return null;
         }
         User user = server.login(username, password);
 
         if (user == null) {
             logger.log(Level.WARNING, String.format("%s tried to login", username));
-            return "Incorrect username or password.";
+            //return "Incorrect username or password.";
+            return null;
         }
 
         registeredUser = (RegisteredUser) user;
         logger.log(Level.INFO, String.format("%s logged in", user.getNickname()));
-        return String.format("You logged in as: %s", user.getNickname());
+        return registeredUser;
+        //return String.format("You logged in as: %s", user.getNickname());
     }
 
     public String logout() throws RemoteException {
@@ -247,6 +253,8 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         return currentParty.generateVoteList(user);
 
     }
+
+    //TODO: functie vote, functie create user
 
     public String getPartyInfo() {
         if (currentParty == null) {

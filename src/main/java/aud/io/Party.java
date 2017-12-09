@@ -83,6 +83,7 @@ public class Party extends Observable implements IParty, Serializable {
      * @param vote Vote which has been made for Votable
      */
     public void voteOnVotable(User user, Votable votable, Vote vote) {
+        //TODO: handle exception votable does not exist anymore
         int index = votables.indexOf(votable);
         votables.get(index).vote(user, vote);
     }
@@ -191,7 +192,7 @@ public class Party extends Observable implements IParty, Serializable {
         for (Votable votable : votables){
             if (votable instanceof Track){
                 Track track = (Track)votable;
-                builder.append(String.format("%s by %s%s", track.getName(), track.getArtist(), System.lineSeparator()));
+                builder.append(String.format("%s by %s with %s votescore %s", track.getName(), track.getArtist(), track.getVoteScore(), System.lineSeparator()));
             }
         }
         builder.append(System.lineSeparator());

@@ -89,6 +89,10 @@ public class AudioPlayer implements IPlayer {
             System.out.println("loading...");
 
             VLCPlayer.getMediaPlayer().stop();
+            VLCPlayer.getMediaPlayer().release();
+            VLCPlayer.release();
+            VLCPlayer = new AudioMediaPlayerComponent();
+
             mediaFileContainer = pool.submit(trackMedia.getFile());
             try {
                 mediaFile = (File)mediaFileContainer.get();
@@ -133,7 +137,7 @@ public class AudioPlayer implements IPlayer {
             //TODO: stop song, handle thread finishing
 
             VLCPlayer.getMediaPlayer().stop();
-            //paVLCPlayer.getMediaPlayer().release();
+            //VLCPlayer.getMediaPlayer().release();
 
         }
 

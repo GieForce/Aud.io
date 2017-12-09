@@ -64,4 +64,9 @@ public class MemoryDatabase implements IDatabase {
 
         return found;
     }
+
+    @Override
+    public List<Votable> getAllSongs() {
+        return null;
+    }
 }

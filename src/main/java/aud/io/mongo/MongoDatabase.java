@@ -58,6 +58,7 @@ public class MongoDatabase implements IDatabase {
         return votables;
     }
 
+    @Override
     public List<Votable> getAllSongs() {
         ArrayList<Votable> votables = new ArrayList<>();
 
