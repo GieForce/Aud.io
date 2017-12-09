@@ -71,6 +71,6 @@ public class RegisteredUser extends User implements Serializable{
      * @return true wether or not details are correct
      */
     public boolean checkLogin(String email, String password) {
-        return Objects.equals(this.email, email) && Objects.equals(this.password, password);
+        return this.email.equals(email)&& this.password.equals(password);
     }
 }

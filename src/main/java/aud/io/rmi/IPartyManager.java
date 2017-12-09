@@ -1,9 +1,6 @@
 package aud.io.rmi;
 
-import aud.io.IParty;
-import aud.io.RegisteredUser;
-import aud.io.User;
-import aud.io.Votable;
+import aud.io.*;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -23,7 +20,7 @@ public interface IPartyManager  extends Remote {
 
     Boolean logout(User user, String partyKey) throws RemoteException;
 
-    void vote(Votable votable, User user, String partyKey) throws RemoteException;
+    void vote(Votable votable, Vote vote, User user, String partyKey) throws RemoteException;
 
     boolean mediaIsPlayed(Votable media, String partyKey, User host) throws RemoteException;
 
