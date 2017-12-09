@@ -91,7 +91,12 @@ public abstract class Votable implements Serializable {
      * @param vote Vote which the User made
      */
     public void vote(User user, Vote vote) {
-        voters.put(user, vote);
+        if (!hasVoted(user)){
+            voters.put(user, vote);
+        }
+        else{
+            voters.replace(user, vote);
+        }
     }
 
     /**
