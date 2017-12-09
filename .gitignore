@@ -42,10 +42,6 @@ cmake-build-debug/
 # IntelliJ
 out/
 
-#Logs
-
-logs/
-
 # Music
 Music/
 Music
