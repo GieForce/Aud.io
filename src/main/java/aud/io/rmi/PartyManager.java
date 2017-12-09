@@ -15,7 +15,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 
-public class PartyManager extends UnicastRemoteObject implements Observer, IPartyManager {
+public class PartyManager extends UnicastRemoteObject implements IPartyManager {
     private ArrayList<RegisteredUser> registeredUsers;
     private List<Party> activeParties;
     private IDatabase database;
@@ -46,32 +46,6 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
         logger = new Logger("PartyManager", Level.ALL, Level.SEVERE);
     }
 
-
-    //public String createParty(RegisteredUser host, String partyName) {
-    //    Party party = new Party(host, partyName);
-    //    return party.getPartyKey();
-    //}
-
-
-    //public RegisteredUser login(String email, String password) {
-    //    RegisteredUser rUser = null;
-    //    for (RegisteredUser user : registeredUsers) {
-    //        if (user.checkLogin(email, password)) {
-    //            rUser = user;
-    //            break;
-    //        }
-    //    }
-    //    return rUser;
-    //}
-
-
-    //public boolean createUser(String email, String password, String nickname) {
-    //    RegisteredUser user = new RegisteredUser(email, nickname, password);
-    //    registeredUsers.add(user);
-    //    return true;
-    //    //TODO Find ways for this to return false
-    //}
-
     /**
      * Not implemented
      */
@@ -79,46 +53,17 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
         //TODO: Implement
     }
 
-
-    //public boolean joinParty(User user, String partyKey) {
-    //    boolean joined = false;
-    //    for (Party p : activeParties) {
-    //        if (Objects.equals(p.getPartyKey(), partyKey)) {
-    //            p.join(user);
-    //            joined = true;
-    //            break;
-    //        }
-    //    }
-    //    return joined;
-    //}
-
-
-    //public boolean addToParty(Votable votable, String partyKey) {
-    //    boolean added = false;
-    //    for (Party p : activeParties) {
-    //        if (Objects.equals(p.getPartyKey(), partyKey)) {
-    //            p.addToVotables(votable);
-    //            added = true;
-    //            break;
-    //        }
-    //    }
-    //    return added;
-    //}
-
     /**
      * Update a thing
      *
      * @param o
      * @param arg
      */
-    @Override
-    public void update(Observable o, Object arg) {
-        //playListUpdate();
-    }
+
 
     /**
      * Update the playlist
-     *
+     *@deprecated
      * @param users    Users where the playlist will be updated
      * @param playlist list which will be updated
      */
@@ -173,25 +118,26 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
      * @return
      */
     @Override
-    public synchronized List<Votable> addMedia(String media, String partyKey, User user) throws RemoteException {
+    public synchronized void addMedia(Votable media, String partyKey, User user) throws RemoteException {
+        Party party = getPartyByKey(partyKey);
+        if (party != null) {
+            party.addToVotables(media);
+            logger.log(Level.INFO, String.format("%s added %s to %s", user.getNickname(), media.getName(), party.getName()));
+            party.setPartyMessage(String.format("%s added %s", user.getNickname(), media.getName()));
+            publisher.inform(party.getPartyKey(), null, party);
 
-        //TODO: revise, make into just adding one media and add another to get all media(or with searchterm) from DB
-
-        List<Votable> votables = database.getAllSongs();//getSongsWithSearchterm(media);
-
-        if (votables.size() == 1) {
-            Party party = getPartyByKey(partyKey);
-            if (party != null) {
-                party.addToVotables(votables.get(0));
-                logger.log(Level.INFO, String.format("%s added %s to %s", user.getNickname(), votables.get(0).getName(), party.getName()));
-                party.setPartyMessage(String.format("%s added %s", user.getNickname(), votables.get(0).getName()));
-                publisher.inform(party.getPartyKey(), null, party);
-
-                //TODO: User votes on votable?
-            }
+            //TODO: User votes on votable?
         }
+    }
 
-        return votables;
+    @Override
+    public List<Votable> getAllVotables() throws RemoteException {
+        return database.getAllSongs();
+    }
+
+    @Override
+    public List<Votable> searchVotablesWithSearchTerm(String searchTerm) throws RemoteException {
+        return database.getSongsWithSearchterm(searchTerm);
     }
 
     /**
@@ -248,20 +194,30 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
         //Not sure how to implement this, should do the following:
         //User votes on a votable with a vote, vote isn't defined though.
         Party party = getPartyByKey(partyKey);
-        //TODO: Check if null
-        party.voteOnVotable(user, votable, vote);
-        //TODO: set party message
-        publisher.inform(party.getPartyKey(), null, party);
+        if (party != null) {
+            party.voteOnVotable(user, votable, vote);
+            logger.log(Level.INFO, String.format("%s has voted on %s", user.getNickname(), votable.getName()));
+            party.setPartyMessage(String.format("%s has voted on %s.", user.getNickname(), votable.getName()));
+            if (party.belowRemovalThreshold(votable)){
+                removeVotable(user, partyKey, votable);
+            }else{
+                publisher.inform(party.getPartyKey(), null, party);
+            }
+
+            //logger.log(Level.INFO, String.format("%s has left party %s", user.getNickname(), party.getName()));
+        }
     }
 
     @Override
     public synchronized boolean mediaIsPlayed(Votable media, String partyKey, User host) throws RemoteException {
         Party party = getPartyByKey(partyKey);
-        if (party.mediaIsPlayed(media, host)) {
-            party.setPartyMessage(String.format("%s has started playing.", media.getName()));
-            logger.log(Level.INFO, String.format("%s has started playing", media.getName()));
-            publisher.inform(party.getPartyKey(), null, party);
-            return true;
+        if (party != null) {
+            if (party.mediaIsPlayed(media, host)) {
+                party.setPartyMessage(String.format("%s has started playing.", media.getName()));
+                logger.log(Level.INFO, String.format("%s has started playing", media.getName()));
+                publisher.inform(party.getPartyKey(), null, party);
+                return true;
+            }
         }
 
         return false;
@@ -279,7 +235,19 @@ public class PartyManager extends UnicastRemoteObject implements Observer, IPart
             party.removeUser(user);
             logger.log(Level.INFO, String.format("%s has left party %s", user.getNickname(), party.getName()));
             party.setPartyMessage(String.format("%s has left the party.", user.getNickname()));
-            logger.log(Level.INFO, String.format("%s has left party %s", user.getNickname(), party.getName()));
+            //logger.log(Level.INFO, String.format("%s has left party %s", user.getNickname(), party.getName()));
+            publisher.inform(party.getPartyKey(), null, party);
+        }
+    }
+
+    @Override
+    public void removeVotable(User user, String partyKey, Votable votable) throws RemoteException {
+        Party party = getPartyByKey(partyKey);
+        if (party != null) {
+            party.removeVotable(votable);
+            logger.log(Level.INFO, String.format("%s has removed %s in party %s", user.getNickname(),votable.getName(), party.getName()));
+            party.setPartyMessage(String.format("%s has removed %s in party %s", user.getNickname(),votable.getName(), party.getName()));
+            //logger.log(Level.INFO, String.format("%s has left party %s", user.getNickname(), party.getName()));
             publisher.inform(party.getPartyKey(), null, party);
         }
     }
