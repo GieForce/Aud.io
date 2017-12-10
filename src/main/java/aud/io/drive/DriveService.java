@@ -1,5 +1,6 @@
 package aud.io.drive;
 
+import aud.io.log.Logger;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -17,6 +18,7 @@ import com.google.api.services.drive.Drive;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
 
 
 public class DriveService {
@@ -49,11 +51,12 @@ public class DriveService {
 
 
     static {
+        Logger logger = new Logger("DriveService", Level.ALL, Level.ALL);
         try {
             HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
             DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
         } catch (Throwable t) {
-            t.printStackTrace();
+            logger.log(Level.SEVERE, t.toString());
             System.exit(1);
         }
     }
