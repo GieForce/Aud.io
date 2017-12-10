@@ -5,13 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.jongo.marshall.jackson.oid.MongoObjectId;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class RegisteredUser extends User implements Serializable{
 
     //MongoDB van User
     private static final String MONGO_EMAIL = "Email";
-    private static final String MONGO_PASSWORD = "Password";
+    private static final String MONGO_PASS = "Password";
     private static final String MONGO_NICKNAME = "Nickname";
 
     private String email;
@@ -23,7 +22,7 @@ public class RegisteredUser extends User implements Serializable{
 
     @JsonCreator
     public RegisteredUser(@JsonProperty(MONGO_EMAIL) String email,
-                @JsonProperty(MONGO_PASSWORD) String password,
+                @JsonProperty(MONGO_PASS) String password,
                 @JsonProperty(MONGO_NICKNAME) String nickname)
     {
         super(nickname);
