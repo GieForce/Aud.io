@@ -45,6 +45,7 @@ public class RegisterController {
 
             RegisteredUser user = new RegisteredUser(mail,username,password);
             db.createUser(mail,username,password);
+            RmiClient.getManager().login(username, password);
 
             //Show Menu
             MenuView menu = new MenuView();
