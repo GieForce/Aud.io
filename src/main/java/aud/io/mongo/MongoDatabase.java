@@ -46,10 +46,12 @@ public class MongoDatabase implements IDatabase {
     @Override
     public List<Votable> getSongsWithSearchterm(String searchterm) {
 
+        //TODO: Fix this
         ArrayList<Votable> votables = new ArrayList<>();
 
         MongoCollection votableCollection = Connection.connect().getCollection("votables");
-        MongoCursor<Track> searchVotables = votableCollection.find("{name: '" + searchterm + "'}").as(Track.class);
+        MongoCursor<Track> searchVotables = votableCollection.find("{$text: {$search: '" + searchterm +"'}}").as(Track.class);
+
 
         while (searchVotables.hasNext()) {
             votables.add(searchVotables.next());

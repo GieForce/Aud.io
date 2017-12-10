@@ -63,9 +63,10 @@ public class PartyManager extends UnicastRemoteObject implements IPartyManager {
 
     /**
      * Update the playlist
-     *@deprecated
+     *
      * @param users    Users where the playlist will be updated
      * @param playlist list which will be updated
+     * @deprecated
      */
     private void playListUpdate(ArrayList<User> users, ArrayList<Votable> playlist) {
         //TODO: Implement
@@ -196,11 +197,11 @@ public class PartyManager extends UnicastRemoteObject implements IPartyManager {
         Party party = getPartyByKey(partyKey);
         if (party != null) {
             party.voteOnVotable(user, votable, vote);
-            logger.log(Level.INFO, String.format("%s has voted on %s", user.getNickname(), votable.getName()));
+            logger.log(Level.INFO, String.format("%s has voted with %s on %s", user.getNickname(), vote.toString(), votable.getName()));
             party.setPartyMessage(String.format("%s has voted on %s.", user.getNickname(), votable.getName()));
-            if (party.belowRemovalThreshold(votable)){
+            if (party.belowRemovalThreshold(votable)) {
                 removeVotable(user, partyKey, votable);
-            }else{
+            } else {
                 publisher.inform(party.getPartyKey(), null, party);
             }
 
@@ -245,8 +246,8 @@ public class PartyManager extends UnicastRemoteObject implements IPartyManager {
         Party party = getPartyByKey(partyKey);
         if (party != null) {
             party.removeVotable(votable);
-            logger.log(Level.INFO, String.format("%s has removed %s in party %s", user.getNickname(),votable.getName(), party.getName()));
-            party.setPartyMessage(String.format("%s has removed %s in party %s", user.getNickname(),votable.getName(), party.getName()));
+            logger.log(Level.INFO, String.format("%s has removed %s in party %s", user.getNickname(), votable.getName(), party.getName()));
+            party.setPartyMessage(String.format("%s has removed %s in party %s", user.getNickname(), votable.getName(), party.getName()));
             //logger.log(Level.INFO, String.format("%s has left party %s", user.getNickname(), party.getName()));
             publisher.inform(party.getPartyKey(), null, party);
         }

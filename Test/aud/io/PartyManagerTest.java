@@ -39,10 +39,10 @@ public class PartyManagerTest {
         manager.sendKeepAlive();
     }
 
-    @Test
-    public void update() throws Exception {
-        manager.update(null,null);
-    }
+//    @Test
+//    public void update() throws Exception {
+//        manager.update(null,null);
+//    }
 
     @Test
     public void joinParty() throws Exception {
@@ -58,14 +58,14 @@ public class PartyManagerTest {
         assertTrue(manager.getActiveParties().stream().anyMatch(item -> "Party2Dab".equals(item.getName())));
     }
 
-    @Test
-    public void addMedia() throws Exception {
-        String partyKey = manager.getActiveParties().get(0).getPartyKey();
-        manager.addMedia("Kygo",partyKey,temporaryUser);
-        List expectedList = manager.addMedia("Joost",partyKey,temporaryUser);
-        List actualList = manager.getActiveParties().get(0).getPlaylist();
-        assertEquals(expectedList,actualList);
-    }
+//    @Test
+//    public void addMedia() throws Exception {
+//        String partyKey = manager.getActiveParties().get(0).getPartyKey();
+//        manager.addMedia("Kygo",partyKey,temporaryUser);
+//        List expectedList = manager.addMedia("Joost",partyKey,temporaryUser);
+//        List actualList = manager.getActiveParties().get(0).getPlaylist();
+//        assertEquals(expectedList,actualList);
+//    }
 
     @Test
     public void login() throws Exception {
