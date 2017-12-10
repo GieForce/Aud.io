@@ -50,7 +50,8 @@ public class MongoDatabase implements IDatabase {
         ArrayList<Votable> votables = new ArrayList<>();
 
         MongoCollection votableCollection = Connection.connect().getCollection("votables");
-        MongoCursor<Track> searchVotables = votableCollection.find("{name: '" + searchterm + "'}").as(Track.class);
+        MongoCursor<Track> searchVotables = votableCollection.find("{$text: {$search: '" + searchterm +"'}}").as(Track.class);
+
 
         while (searchVotables.hasNext()) {
             votables.add(searchVotables.next());
