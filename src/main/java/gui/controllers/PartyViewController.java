@@ -34,7 +34,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 
-public class PartyViewController {
+public class PartyViewController implements IGUIController{
     @FXML private VBox songContainer;
     @FXML
     private Button btnToggleSong;
@@ -68,6 +68,7 @@ public class PartyViewController {
         player = new AudioPlayer(pool, vlcplayer);
 
         manager = RmiClient.getManager();
+        manager.setCurrentController(this);
         try {
              votables = manager.getAllVotables();
             for (Votable v : votables) {
@@ -275,6 +276,11 @@ public class PartyViewController {
         VBox.setMargin(box, new Insets(0, 0, 6, 0));
         box.setPadding(new Insets(6, 6, 6, 6));
         songContainer.getChildren().add(box);
+    }
+
+    @Override
+    public synchronized void update() {
+        //TODO:Implement
     }
 }
 

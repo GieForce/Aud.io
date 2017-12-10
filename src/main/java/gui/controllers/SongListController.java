@@ -1,5 +1,6 @@
 package gui.controllers;
 
+import aud.io.IGUIController;
 import aud.io.Vote;
 import aud.io.rmi.ClientManager;
 import aud.io.Votable;
@@ -23,7 +24,7 @@ import javafx.stage.Stage;
 import java.rmi.RemoteException;
 import java.util.Objects;
 
-public class SongListController {
+public class SongListController implements IGUIController{
     @FXML
     private VBox songContainer;
     @FXML
@@ -120,5 +121,10 @@ public class SongListController {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    @Override
+    public void update() {
+        //TODO: Implement
     }
 }
