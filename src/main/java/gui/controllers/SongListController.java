@@ -1,7 +1,9 @@
 package gui.controllers;
 
+import aud.io.Vote;
 import aud.io.rmi.ClientManager;
 import aud.io.Votable;
+import gui.ButtonClass;
 import gui.Message;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,6 +34,9 @@ public class SongListController {
 
     public void initialize() throws RemoteException {
         manager = RmiClient.getManager();
+        for (Votable v : manager.getAllVotables()) {
+            setHboxSong(v);
+        }
         //TODO: addMedia function has changed, please revise!!
         //manager.addMedia(null);
         //for (Votable v : manager.getVotables()) {
@@ -47,11 +52,10 @@ public class SongListController {
         songContainer.getChildren().clear();
         String name = tbSongName.getText();
         if (!Objects.equals(name, "") || name != null) {
-            //TODO: needs to be revised!!
-            //manager.addMedia(name);
-            //for (Votable v : manager.getVotables()) {
-            //    setHboxSong(v);
-            //}
+            //Doesn't work yet
+            for (Votable v :manager.searchVotablesWithSearchTerm(name)) {
+                setHboxSong(v);
+            }
         } else {
             Message.Show("Error", "Please enter a song name");
         }
@@ -64,7 +68,7 @@ public class SongListController {
         box.setMinWidth(500);
         box.setStyle("-fx-background-color: #34454d; -fx-background-radius: 50 50 50 50;");
         //Button
-        Button b = new Button();
+        ButtonClass b = new ButtonClass(v);
         b.setMaxHeight(50);
         b.setMinHeight(50);
         b.setMaxWidth(50);
@@ -104,7 +108,14 @@ public class SongListController {
     }
 
     public void addSong(ActionEvent actionEvent) {
-
+        try {
+            ButtonClass btn = (ButtonClass) actionEvent.getSource();
+            Votable v = (Votable) btn.getObj();
+            manager.addMedia(v);
+            //TODO: Update UI
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setStage(Stage stage) {

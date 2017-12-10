@@ -86,7 +86,14 @@ public class Party extends Observable implements IParty, Serializable {
      */
     public void voteOnVotable(User user, Votable votable, Vote vote) {
         //TODO: handle exception votable does not exist anymore
-        int index = votables.indexOf(votable);
+        int index = -1;
+        for(int i = 0; i < votables.size(); i++) {
+            Votable v = votables.get(i);
+            if(votable.equals(v)) {
+                index = i;
+                break;
+            }
+        }
         votables.get(index).vote(user, vote);
     }
 

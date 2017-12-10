@@ -1,34 +1,41 @@
 package gui.controllers;
 
-import aud.io.IPlayer;
-import aud.io.TemporaryUser;
-import aud.io.User;
-import aud.io.Votable;
+import aud.io.*;
 import aud.io.audioplayer.AudioPlayer;
-import aud.io.audioplayer.Track;
 import aud.io.log.Logger;
-import aud.io.memory.MemoryMedia;
+import aud.io.rmi.ClientManager;
+import gui.ButtonClass;
 import gui.views.SongListView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import uk.co.caprica.vlcj.component.AudioMediaPlayerComponent;
 import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 
 public class PartyViewController {
+    @FXML private VBox songContainer;
     @FXML
     private Button btnToggleSong;
     @FXML
@@ -50,15 +57,26 @@ public class PartyViewController {
     private ExecutorService pool = Executors.newFixedThreadPool(3);
 
     private Logger logger;
-    private String path = "src/main/resources/audio/Demo.mp3";
     private Votable votable;
+    private List<Votable> votables;
+    private ClientManager manager;
 
     public void initialize() {
         logger = new Logger("PartyView", Level.ALL, Level.SEVERE);
         boolean found = new NativeDiscovery().discover();
         AudioMediaPlayerComponent vlcplayer = new AudioMediaPlayerComponent();
         player = new AudioPlayer(pool, vlcplayer);
-        votable = new Track(new MemoryMedia(path));
+
+        manager = RmiClient.getManager();
+        try {
+             votables = manager.getAllVotables();
+            for (Votable v : votables) {
+                manager.addMedia(v);
+                setHboxSong(v);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setStage(Stage stage) {
@@ -121,11 +139,23 @@ public class PartyViewController {
     }
 
     public void voteUp(ActionEvent actionEvent) {
-        //TODO: Get song and add vote
+        try {
+            ButtonClass btn = (ButtonClass) actionEvent.getSource();
+            Votable v = (Votable) btn.getObj();
+            manager.voteOnVotable(v, Vote.LIKE);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     public void voteDown(ActionEvent actionEvent) {
-        //TODO: Get song and add vote
+        try {
+            ButtonClass btn = (ButtonClass) actionEvent.getSource();
+            Votable v = (Votable) btn.getObj();
+            manager.voteOnVotable(v, Vote.DISLIKE);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     public void voteSkip(ActionEvent actionEvent) {
@@ -147,6 +177,104 @@ public class PartyViewController {
             paused = true;
             playing = false;
         }
+    }
+
+    private void setHboxSong(Votable v) {
+        Font defFont = new Font(24);
+        HBox box = new HBox();
+        box.setAlignment(Pos.CENTER_LEFT);
+        box.setMinWidth(500);
+        box.setStyle("-fx-background-color: #34454d; -fx-background-radius: 50 50 50 50;");
+        //Button
+        ButtonClass b = new ButtonClass(v);
+        b.setMaxHeight(50);
+        b.setMinHeight(50);
+        b.setMaxWidth(50);
+        b.setMinWidth(50);
+        b.setMnemonicParsing(false);
+        b.setOnAction(this::toggleSong);
+        b.setStyle("-fx-background-color: black; -fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;");
+        b.setText("+");
+        b.setTextAlignment(TextAlignment.CENTER);
+        b.setTextFill(Paint.valueOf("#f5e9be"));
+        b.setPadding(new Insets(3, 3, 3, 3));
+        b.setFont(defFont);
+        //Hbox child
+        HBox childHbox = new HBox();
+        childHbox.setAlignment(Pos.CENTER_LEFT);
+        //Vbox child
+        VBox childVbox = new VBox();
+        //Label
+        Label lblSongName = new Label();
+        lblSongName.setText(v.getName());
+        lblSongName.setTextFill(Paint.valueOf("#f5e9be"));
+        lblSongName.setFont(defFont);
+        //Votable label
+        HBox labelBox = new HBox();
+        labelBox.setAlignment(Pos.TOP_RIGHT);
+        labelBox.minWidth(300);
+        Label lbVotable = new Label();
+        lbVotable.setAlignment(Pos.TOP_LEFT);
+        lbVotable.setText(v.getVotesString());
+        lbVotable.setTextFill(Paint.valueOf("#f5e9be"));
+        lbVotable.setTextAlignment(TextAlignment.RIGHT);
+        HBox.setHgrow(lbVotable, Priority.ALWAYS);
+        lbVotable.setFont(new Font(22));
+        lbVotable.setPadding(new Insets(0,5,5,5));
+        labelBox.setPadding(new Insets(0,10,0,0));
+        labelBox.getChildren().add(lbVotable);
+        //Votebuttons
+        HBox voteButtons = new HBox();
+        voteButtons.setAlignment(Pos.CENTER_RIGHT);
+        voteButtons.minWidth(50);
+        VBox vchild = new VBox();
+        //btnUp
+        ButtonClass btnUp = new ButtonClass(v);
+        btnUp.minHeight(27);
+        btnUp.minWidth(27);
+        btnUp.setOnAction(this::voteUp);
+        btnUp.setStyle("-fx-background-color: black; -fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;");
+        btnUp.setText("▲");
+        btnUp.setTextFill(Paint.valueOf("#f5e9be"));
+        btnUp.setPadding(new Insets(5,5,5,5));
+        vchild.getChildren().add(btnUp);
+        VBox.setMargin(btnUp, new Insets(0,0,5,0));
+        //btnDown
+        ButtonClass btnDown = new ButtonClass(v);
+        btnDown.minHeight(27);
+        btnDown.minWidth(27);
+        btnDown.setOnAction(this::voteDown);
+        btnDown.setStyle("-fx-background-color: black; -fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;");
+        btnDown.setText("▼");
+        btnDown.setTextFill(Paint.valueOf("#f5e9be"));
+        btnDown.setPadding(new Insets(5,5,5,5));
+        vchild.getChildren().add(btnDown);
+        //btnSkip
+//        Button btnSkip = new Button();
+//        btnSkip.minHeight(45);
+//        btnSkip.minWidth(45);
+//        btnSkip.setOnAction(this::voteSkip);
+//        btnSkip.setStyle("-fx-background-color: black; -fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;");
+//        Image image = new Image("file:img/fastforward.png");
+//        btnSkip.setGraphic(new javafx.scene.image.ImageView(image));
+//        btnSkip.setPadding(new Insets(0,5,0,5));
+//        vchild.getChildren().add(btnSkip);
+        HBox.setMargin(vchild, new Insets(0,0,0,10));
+        voteButtons.getChildren().add(vchild);
+        //Label
+        //TODO: Change this to album or artist
+        Label lblSongLegth = new Label();
+        lblSongLegth.setText(String.valueOf(v.getLength()));
+        lblSongLegth.setTextFill(Paint.valueOf("#f5e9be"));
+        lblSongLegth.setFont(defFont);
+        childVbox.getChildren().addAll(lblSongName, lblSongLegth);
+        VBox.setMargin(lblSongName, new Insets(0, 4, 0, 4));
+        VBox.setMargin(lblSongLegth, new Insets(0, 4, 0, 8));
+        childHbox.getChildren().add(childVbox);
+        box.getChildren().addAll(b, childHbox, labelBox, voteButtons);
+        VBox.setMargin(box, new Insets(0, 0, 6, 0));
+        box.setPadding(new Insets(6, 6, 6, 6));
+        songContainer.getChildren().add(box);
     }
 }
 

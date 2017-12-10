@@ -2,13 +2,16 @@ package aud.io;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jongo.marshall.jackson.oid.MongoObjectId;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
-@JsonTypeInfo(use= JsonTypeInfo.Id.CLASS,property="_class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "_class")
 public abstract class Votable implements Serializable {
     private HashMap<User, Vote> voters;
 
@@ -18,6 +21,7 @@ public abstract class Votable implements Serializable {
 
     /**
      * Create new Votable with Media
+     *
      * @param media Location where the Votable is located
      */
     //Not usable as IMedia doesn't give back any values yet.
@@ -28,6 +32,7 @@ public abstract class Votable implements Serializable {
 
     /**
      * Create new Votable
+     *
      * @param media
      * @param name
      * @param length
@@ -55,6 +60,7 @@ public abstract class Votable implements Serializable {
 
     /**
      * Get Name
+     *
      * @return name
      */
     public String getName() {
@@ -63,6 +69,7 @@ public abstract class Votable implements Serializable {
 
     /**
      * Get Length
+     *
      * @return length
      */
     public float getLength() {
@@ -71,6 +78,7 @@ public abstract class Votable implements Serializable {
 
     /**
      * Get Media
+     *
      * @return media
      */
     public IMedia getMedia() {
@@ -79,6 +87,7 @@ public abstract class Votable implements Serializable {
 
     /**
      * Get Votes
+     *
      * @return List with votes
      */
     public Map<User, Vote> getVotes() {
@@ -87,14 +96,14 @@ public abstract class Votable implements Serializable {
 
     /**
      * Vote on this votable
+     *
      * @param user User which has voted
      * @param vote Vote which the User made
      */
     public void vote(User user, Vote vote) {
-        if (!hasVoted(user)){
+        if (!hasVoted(user)) {
             voters.put(user, vote);
-        }
-        else{
+        } else {
             voters.replace(user, vote);
         }
     }
@@ -102,10 +111,10 @@ public abstract class Votable implements Serializable {
     /**
      * @return score of the votes
      */
-    public int getVoteScore(){
+    public int getVoteScore() {
         int votes = 0;
-        for(Map.Entry<User, Vote> entry:voters.entrySet()){
-            switch (entry.getValue()){
+        for (Map.Entry<User, Vote> entry : voters.entrySet()) {
+            switch (entry.getValue()) {
                 case LIKE:
                     votes++;
                     break;
@@ -119,19 +128,19 @@ public abstract class Votable implements Serializable {
         return votes;
     }
 
-    public boolean hasVoted(User user){
-        for(Map.Entry<User, Vote> entry:voters.entrySet()){
-            if(entry.getKey().getNickname().equals(user.getNickname())){
+    public boolean hasVoted(User user) {
+        for (Map.Entry<User, Vote> entry : voters.entrySet()) {
+            if (entry.getKey().getNickname().equals(user.getNickname())) {
                 return true;
             }
         }
         return false;
     }
 
-    public int getDislikes(){
+    public int getDislikes() {
         int dislikes = 0;
-        for(Map.Entry<User, Vote> entry:voters.entrySet()){
-            switch (entry.getValue()){
+        for (Map.Entry<User, Vote> entry : voters.entrySet()) {
+            switch (entry.getValue()) {
                 case DISLIKE:
                     dislikes++;
                     break;
@@ -140,5 +149,16 @@ public abstract class Votable implements Serializable {
             }
         }
         return dislikes;
+    }
+
+    public String getVotesString() {
+        return "Votes:↑" + getVoteScore() + "\n↓" + getDislikes();
+    }
+
+    public boolean equals(Votable v) {
+        if (Objects.equals(this.name, v.name) && this.length == v.length) {
+            return true;
+        }
+        return false;
     }
 }
