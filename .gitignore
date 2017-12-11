@@ -42,10 +42,6 @@ cmake-build-debug/
 # IntelliJ
 out/
 
-# Music
-Music/
-Music
-
 # Client_secret
 authentication/client_secret.json/
 authentication/client_secret.json

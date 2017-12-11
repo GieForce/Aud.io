@@ -36,9 +36,9 @@ import java.util.logging.Level;
 
 public class PartyViewController {
     @FXML
-    private VBox songContainer;
+    private Button playButton;
     @FXML
-    private Button btnToggleSong;
+    private VBox songContainer;
     @FXML
     private TextArea taChat;
     @FXML
@@ -58,8 +58,6 @@ public class PartyViewController {
     private ExecutorService pool = Executors.newFixedThreadPool(3);
 
     private Logger logger;
-    private Votable playingVotable;
-    private ButtonClass playingButton;
     private List<Votable> votables;
     private ClientManager manager;
 
@@ -77,7 +75,7 @@ public class PartyViewController {
                 setHboxSong(v);
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+           logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -146,7 +144,7 @@ public class PartyViewController {
             Votable v = (Votable) btn.getObj();
             manager.voteOnVotable(v, Vote.LIKE);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -156,7 +154,7 @@ public class PartyViewController {
             Votable v = (Votable) btn.getObj();
             manager.voteOnVotable(v, Vote.DISLIKE);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -164,49 +162,102 @@ public class PartyViewController {
         //TODO: Get song and add vote
     }
 
-    public void toggleSong(ActionEvent actionEvent) {
-        ButtonClass btn = (ButtonClass) actionEvent.getSource();
-        Votable v = (Votable) btn.getObj();
-        if (playingVotable == null) {
-            playVotable(btn, v);
-        } else {
-            if (!playing && playingVotable.equals(v)) {
-                if (paused) player.play();
-                else {
-                    setPaused(btn);
+    public void playSong(ActionEvent actionEvent) {
+        try {
+            if (!playing) {
+                if (paused) {
+                    manager.resumePlaying();
+                    System.out.println("Resumed playing");
+                    setPaused();
+                } else {
+                    manager.play();
+                    System.out.println("Started playing");
+                    setPaused();
                 }
-            } else {
-                player.stop();
-                playVotable(btn, v);
+            } else if (playing) {
+                manager.pause();
+                System.out.println("Paused");
+                setPlaying();
             }
+        } catch (RemoteException e) {
+            logger.log(Level.SEVERE, e.toString());
         }
-
-//            if (paused) player.play();
-//            else player.play(v);
-//            btn.setText("\u23F8");
-//            btn.setPadding(new Insets(4,4,8,4));
-//            playing = true;
-//            paused = false;
     }
 
-    private void playVotable(ButtonClass btn, Votable v) {
-        player.play(v);
-        if(playingButton != null) playingButton.setText("▶");
-        btn.setText("\u23F8");
-        btn.setPadding(new Insets(4, 4, 8, 4));
+    private void setPlaying() {
+        playing = false;
+        paused = true;
+        playButton.setText("▶");
+    }
+
+    private void setPaused() {
         playing = true;
         paused = false;
-        playingVotable = v;
-        playingButton = btn;
+        playButton.setText("\u23F8");
     }
 
-    private void setPaused(ButtonClass btn) {
-        player.pause();
-        btn.setText("▶");
-        btn.setPadding(new Insets(4, 4, 4, 4));
-        paused = true;
-        playing = false;
+    public void stopSong(ActionEvent actionEvent) {
+        if (playing) {
+            manager.stop();
+            System.out.println("Stopped playing");
+            playing = false;
+            paused = false;
+        }
     }
+
+    public void skipSong(ActionEvent actionEvent) {
+        try {
+            if (playing) {
+                manager.play();
+                System.out.println("Skipped song");
+                setPaused();
+            }
+        } catch (RemoteException e) {
+            logger.log(Level.SEVERE, e.toString());
+        }
+    }
+
+//    public void toggleSong(ActionEvent actionEvent) {
+//        ButtonClass btn = (ButtonClass) actionEvent.getSource();
+//        Votable v = (Votable) btn.getObj();
+//        boolean isSame = false;
+//        if(playingVotable != null) isSame = playingVotable.equals(v);
+//        if (playingVotable == null) {
+//            playVotable(btn, v);
+//        } else {
+//            if (!playing) {
+//                if (paused) player.play();
+//                else {
+//                    setPaused(btn);
+//                }
+//            } else {
+//                if(isSame) setPaused(btn);
+//                else {
+//                    player.pause();
+//                    playVotable(btn, v);
+//                }
+//            }
+//        }
+//    }
+
+//    private void playVotable(ButtonClass btn, Votable v) {
+//        player.play(v);
+//        if(playingButton != null) playingButton.setText("▶");
+//        btn.setText("\u23F8");
+//        btn.setPadding(new Insets(4, 4, 8, 4));
+//        playing = true;
+//        paused = false;
+//        playingVotable = v;
+//        playingButton = btn;
+//    }
+//
+//    private void setPaused(ButtonClass btn) {
+//        player.pause();
+//        btn.setText("▶");
+//        btn.setPadding(new Insets(4, 4, 4, 4));
+//        paused = true;
+//        playing = false;
+//    }
 
     private void setHboxSong(Votable v) {
         Font defFont = new Font(24);
@@ -221,9 +272,9 @@ public class PartyViewController {
         b.setMaxWidth(50);
         b.setMinWidth(50);
         b.setMnemonicParsing(false);
-        b.setOnAction(this::toggleSong);
+//        b.setOnAction(this::toggleSong);
         b.setStyle("-fx-background-color: black; -fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;");
-        b.setText("▶");
+        b.setText(" ");
         b.setTextAlignment(TextAlignment.CENTER);
         b.setTextFill(Paint.valueOf("#f5e9be"));
         b.setPadding(new Insets(3, 3, 3, 3));
@@ -301,6 +352,7 @@ public class PartyViewController {
         VBox.setMargin(lblSongLegth, new Insets(0, 4, 0, 8));
         childHbox.getChildren().add(childVbox);
         box.getChildren().addAll(b, childHbox, labelBox, voteButtons);
+//        box.getChildren().addAll(childHbox, labelBox, voteButtons);
         VBox.setMargin(box, new Insets(0, 0, 6, 0));
         box.setPadding(new Insets(6, 6, 6, 6));
         songContainer.getChildren().add(box);

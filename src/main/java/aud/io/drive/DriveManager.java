@@ -43,7 +43,6 @@ public class DriveManager {
                 }
                 pageToken = result.getNextPageToken();
 
-
                 //Uitvoeren van de filedownload
                 String filelocation = "./Music/" + fileToken + ".mp3";
                 outputStream = new FileOutputStream(new java.io.File(filelocation));
@@ -53,6 +52,7 @@ public class DriveManager {
                 return filelocation;
             } catch (Exception ex) {
                 logger.log(Level.WARNING, "Downloaden mislukt");
+                logger.log(Level.SEVERE, ex.toString());
                 return null;
             } finally {
                 if (outputStream != null) {

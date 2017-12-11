@@ -89,8 +89,9 @@ public class AudioPlayer implements IPlayer {
             System.out.println("loading...");
 
             VLCPlayer.getMediaPlayer().stop();
-            VLCPlayer.getMediaPlayer().release();
-            VLCPlayer.release();
+            //VLCPlayer.getMediaPlayer().release();
+            //VLCPlayer.release();
+            System.out.println("new player...");
             VLCPlayer = new AudioMediaPlayerComponent();
 
             mediaFileContainer = pool.submit(trackMedia.getFile());
