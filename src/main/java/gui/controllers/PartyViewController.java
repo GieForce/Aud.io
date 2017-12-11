@@ -63,14 +63,6 @@ public class PartyViewController implements IGUIController {
         logger = new Logger("PartyView", Level.ALL, Level.SEVERE);
         manager = RmiClient.getManager();
         manager.setGuiController(this);
-        try {
-            for (Votable v : manager.getAllVotables()) {
-                manager.addMedia(v);
-                setHboxSong(v);
-            }
-        } catch (RemoteException e) {
-            logger.log(Level.SEVERE, e.toString());
-        }
     }
 
     private void setupParty() {
