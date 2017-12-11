@@ -167,17 +167,22 @@ public class PartyViewController {
     public void toggleSong(ActionEvent actionEvent) {
         ButtonClass btn = (ButtonClass) actionEvent.getSource();
         Votable v = (Votable) btn.getObj();
+        boolean isSame = false;
+        if(playingVotable != null) isSame = playingVotable.equals(v);
         if (playingVotable == null) {
             playVotable(btn, v);
         } else {
-            if (!playing && playingVotable.equals(v)) {
+            if (!playing) {
                 if (paused) player.play();
                 else {
                     setPaused(btn);
                 }
             } else {
-                player.stop();
-                playVotable(btn, v);
+                if(isSame) setPaused(btn);
+                else {
+//                    player.pause();
+                    playVotable(btn, v);
+                }
             }
         }
 

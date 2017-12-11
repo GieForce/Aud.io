@@ -1,6 +1,7 @@
 package rmi;
 
 import aud.io.Votable;
+import aud.io.Vote;
 import aud.io.audioplayer.Track;
 import aud.io.fontyspublisher.IRemotePublisherForListener;
 import aud.io.fontyspublisher.SharedData;
@@ -20,6 +21,8 @@ public class ApplicationClient {
 
     private static ClientManager manager;
 
+    private static CLIClientGUIController controller;
+
     private static int port;
     private static String registryName;
     private static String serverName;
@@ -36,6 +39,8 @@ public class ApplicationClient {
             IRemotePublisherForListener publisher = (IRemotePublisherForListener) registry.lookup(publisherName);
             IPartyManager server = (IPartyManager) registry.lookup(serverName);
             manager = new ClientManager(publisher, server);
+            controller = new CLIClientGUIController(manager);
+            manager.setGuiController(controller);
 
         } catch (RemoteException | NotBoundException e) {
             logger.log(Level.WARNING, e.getMessage());
@@ -69,6 +74,19 @@ public class ApplicationClient {
             System.out.println(manager.login(username, scanner.nextLine()));
         }
 
+        if (line.equals("register")) {
+            String username;
+            String password;
+            System.out.print("new username:");
+            username = scanner.nextLine();
+            System.out.println();
+            System.out.print("password:");
+            password = scanner.nextLine();
+            System.out.println();
+            manager.createUser(username, password, username);
+            System.out.println("Account created");
+        }
+
         if (line.equals("logout")) {
             System.out.println(manager.logout());
         }
@@ -91,6 +109,11 @@ public class ApplicationClient {
             System.out.print("song:");
             //TODO: revise add media
             //System.out.println(manager.addMedia(scanner.nextLine()));
+            List<Votable> votables = manager.getAllVotables();
+            System.out.println("you can choose from:");
+            System.out.println(printableVotableList(votables));
+            System.out.print("song name:");
+            System.out.println(voteOnVotable(scanner.nextLine(), votables, Vote.LIKE));
         }
 
         if (line.equals("play")) {
@@ -109,12 +132,20 @@ public class ApplicationClient {
             manager.resumePlaying();
         }
 
-        if (line.equals("vote")) {
+        if (line.equals("like")) {
             List<Votable> votables = manager.getVotablesToVoteOn();
             System.out.println("you can vote on:");
             System.out.println(printableVotableList(votables));
             System.out.print("song name:");
-            System.out.println(voteOnVotable(scanner.nextLine(), votables));
+            System.out.println(voteOnVotable(scanner.nextLine(), votables, Vote.LIKE));
+        }
+
+        if (line.equals("dislike")) {
+            List<Votable> votables = manager.getVotablesToVoteOn();
+            System.out.println("you can vote on:");
+            System.out.println(printableVotableList(votables));
+            System.out.print("song name:");
+            System.out.println(voteOnVotable(scanner.nextLine(), votables, Vote.DISLIKE));
         }
 
         if (line.equals("help")) {
@@ -160,13 +191,23 @@ public class ApplicationClient {
         return builder.toString();
     }
 
-    //TODO: finish this!
-    private static String voteOnVotable(String songname, List<Votable> votables){
+
+    private static String voteOnVotable(String songname, List<Votable> votables, Vote vote){
+        Votable votable = null;
         for (Votable v:votables){
             if (v.getName().contains(songname)){
-
+                try {
+                    votable = v;
+                    manager.voteOnVotable(v, vote);
+                } catch (RemoteException e) {
+                    logger.log(Level.WARNING, "Cannot vote");
+                }
             }
         }
+        return "You voted on " + votable.getName();
+    }
+
+    private static String addVotableToParty(){
         return "";
     }
 
