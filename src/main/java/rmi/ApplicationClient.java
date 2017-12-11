@@ -116,6 +116,17 @@ public class ApplicationClient {
             System.out.println(addVotableToParty(scanner.nextLine(), votables));
         }
 
+        if (line.equals("remove")) {
+            System.out.print("song:");
+            //TODO: revise add media
+            //System.out.println(manager.addMedia(scanner.nextLine()));
+            List<Votable> votables = manager.getVotablesToVoteOn();
+            System.out.println("you can choose from:");
+            System.out.println(printableVotableList(votables));
+            System.out.print("song name:");
+            System.out.println(removeVotableFromParty(scanner.nextLine(), votables));
+        }
+
         if (line.equals("play")) {
             System.out.println(manager.play());
         }
@@ -204,7 +215,12 @@ public class ApplicationClient {
                 }
             }
         }
-        return "You voted on " + votable.getName();
+
+        if (votable != null){
+            return "You voted on " + votable.getName();
+        }
+
+        return "Song not found";
     }
 
     private static String addVotableToParty(String songname, List<Votable> votables){
@@ -221,6 +237,25 @@ public class ApplicationClient {
         }
         if (votable != null){
             return "You added " + votable.getName();
+        }
+
+        return "Song not found";
+    }
+
+    private static String removeVotableFromParty(String songname, List<Votable> votables){
+        Votable votable = null;
+        for (Votable v:votables){
+            if (v.getName().contains(songname)){
+                try {
+                    votable = v;
+                    manager.removeVotable(v);
+                } catch (RemoteException e) {
+                    logger.log(Level.WARNING, "Cannot remove");
+                }
+            }
+        }
+        if (votable != null){
+            return "You removed " + votable.getName();
         }
 
         return "Song not found";
