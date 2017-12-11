@@ -226,6 +226,14 @@ public class PartyViewController implements IGUIController {
         }
     }
 
+    private void deleteSong(ActionEvent actionEvent) {
+        ButtonClass btn = (ButtonClass) actionEvent.getSource();
+        try {
+            manager.removeVotable((Votable) btn.getObj());
+        } catch (RemoteException e) {
+            logger.log(Level.SEVERE, e.toString());
+        }
+    }
 //    public void toggleSong(ActionEvent actionEvent) {
 //        ButtonClass btn = (ButtonClass) actionEvent.getSource();
 //        Votable v = (Votable) btn.getObj();
@@ -281,9 +289,10 @@ public class PartyViewController implements IGUIController {
         b.setMaxWidth(50);
         b.setMinWidth(50);
         b.setMnemonicParsing(false);
+        b.setOnAction(this::deleteSong);
 //        b.setOnAction(this::toggleSong);
         b.setStyle("-fx-background-color: black; -fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;");
-        b.setText(" ");
+        b.setText("X");
         b.setTextAlignment(TextAlignment.CENTER);
         b.setTextFill(Paint.valueOf("#f5e9be"));
         b.setPadding(new Insets(3, 3, 3, 3));

@@ -165,7 +165,13 @@ public class Party extends Observable implements IParty, Serializable {
     }
 
     public synchronized void removeVotable(Votable votable){
-        votables.remove(votable);
+        for(int i = 0; i < votables.size(); i++) {
+            Votable v = votables.get(i);
+            if(votable.equals(v)) {
+                votables.remove(v);
+                break;
+            }
+        }
     }
 
     public synchronized boolean belowRemovalThreshold(Votable votable){
