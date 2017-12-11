@@ -6,6 +6,7 @@ import aud.io.log.Logger;
 import aud.io.rmi.ClientManager;
 import gui.ButtonClass;
 import gui.views.SongListView;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -34,7 +35,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 
-public class PartyViewController {
+public class PartyViewController implements IGUIController {
     @FXML
     private Button playButton;
     @FXML
@@ -54,29 +55,37 @@ public class PartyViewController {
     private boolean playing;
     private boolean paused;
 
-    private IPlayer player;
     private ExecutorService pool = Executors.newFixedThreadPool(3);
 
     private Logger logger;
-    private List<Votable> votables;
     private ClientManager manager;
 
     public void initialize() {
         logger = new Logger("PartyView", Level.ALL, Level.SEVERE);
-        boolean found = new NativeDiscovery().discover();
-        AudioMediaPlayerComponent vlcplayer = new AudioMediaPlayerComponent();
-        player = new AudioPlayer(pool, vlcplayer);
-
         manager = RmiClient.getManager();
+        manager.setGuiController(this);
         try {
-            votables = manager.getAllVotables();
-            for (Votable v : votables) {
+            for (Votable v : manager.getAllVotables()) {
                 manager.addMedia(v);
                 setHboxSong(v);
             }
         } catch (RemoteException e) {
-           logger.log(Level.SEVERE, e.toString());
+            logger.log(Level.SEVERE, e.toString());
         }
+    }
+
+    private void setupParty() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                songContainer.getChildren().clear();
+                Party p = manager.getParty();
+                for (Votable v : manager.getPartyVotables()) {
+                    setHboxSong(v);
+                }
+                System.out.println("Ik zit erin");
+            }
+        });
     }
 
     public void setStage(Stage stage) {
@@ -200,8 +209,7 @@ public class PartyViewController {
         if (playing) {
             manager.stop();
             System.out.println("Stopped playing");
-            playing = false;
-            paused = false;
+            setPaused();
         }
     }
 
@@ -356,6 +364,12 @@ public class PartyViewController {
         VBox.setMargin(box, new Insets(0, 0, 6, 0));
         box.setPadding(new Insets(6, 6, 6, 6));
         songContainer.getChildren().add(box);
+    }
+
+    @Override
+    public void update() {
+        System.out.println("Update");
+        setupParty();
     }
 }
 
