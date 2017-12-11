@@ -29,8 +29,7 @@ import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
@@ -79,8 +78,10 @@ public class PartyViewController implements IGUIController {
             @Override
             public void run() {
                 songContainer.getChildren().clear();
-                Party p = manager.getParty();
-                for (Votable v : manager.getPartyVotables()) {
+                ArrayList<Votable> votables = (ArrayList<Votable>) manager.getPartyVotables();
+                votables.sort(Comparator.comparing(Votable::getVoteScore));
+                Collections.reverse(votables);
+                for (Votable v : votables) {
                     setHboxSong(v);
                 }
                 System.out.println("Ik zit erin");
