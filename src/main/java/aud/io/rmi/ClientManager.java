@@ -22,6 +22,8 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     private IRemotePublisherForListener publisher;
     private IPartyManager server;
 
+    private IGUIController guiController;
+
     private Party currentParty;
 
     private RegisteredUser registeredUser;
@@ -50,6 +52,13 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     public synchronized void propertyChange(PropertyChangeEvent evt) throws RemoteException {
         currentParty = (Party) evt.getNewValue();
 //        System.out.println(currentParty.getPartyMessage());
+        if (guiController != null){
+            guiController.update();
+        }
+    }
+
+    public void setGuiController(IGUIController controller){
+        guiController = controller;
     }
 
     public String createParty(String partyName) throws RemoteException {
