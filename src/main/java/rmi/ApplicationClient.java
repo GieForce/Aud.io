@@ -113,7 +113,7 @@ public class ApplicationClient {
             System.out.println("you can choose from:");
             System.out.println(printableVotableList(votables));
             System.out.print("song name:");
-            System.out.println(voteOnVotable(scanner.nextLine(), votables, Vote.LIKE));
+            System.out.println(addVotableToParty(scanner.nextLine(), votables));
         }
 
         if (line.equals("play")) {
@@ -184,7 +184,7 @@ public class ApplicationClient {
         for(Votable v : votables){
             if (v instanceof Track){
                 Track t = (Track)v;
-                builder.append(String.format("%s by %s with %s votescore %s", t.getName(), t.getArtist(), t.getVoteScore(), System.lineSeparator()));
+                builder.append(String.format("%s by %s with %s votescore %s", t.getName(), t.getAlbum(), t.getVoteScore(), System.lineSeparator()));
             }
         }
         builder.append(System.lineSeparator());
@@ -207,8 +207,23 @@ public class ApplicationClient {
         return "You voted on " + votable.getName();
     }
 
-    private static String addVotableToParty(){
-        return "";
+    private static String addVotableToParty(String songname, List<Votable> votables){
+        Votable votable = null;
+        for (Votable v:votables){
+            if (v.getName().contains(songname)){
+                try {
+                    votable = v;
+                    manager.addMedia(v);
+                } catch (RemoteException e) {
+                    logger.log(Level.WARNING, "Cannot vote");
+                }
+            }
+        }
+        if (votable != null){
+            return "You added " + votable.getName();
+        }
+
+        return "Song not found";
     }
 
 }

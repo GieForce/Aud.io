@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2521a8a-4c29-466f-a421-54064c010fe1" name="Default" comment="Added voting to GUI">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/aud/io/IGUIController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/rmi/CLIClientGUIController.java" />
+    <list default="true" id="e2521a8a-4c29-466f-a421-54064c010fe1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/drive/DriveService.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/drive/DriveService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/rmi/ClientManager.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/rmi/ClientManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/PartyViewController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/PartyViewController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/rmi/ApplicationClient.java" afterPath="$PROJECT_DIR$/src/main/java/rmi/ApplicationClient.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -63,16 +58,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="PartyViewController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gui/controllers/PartyViewController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="67" column="12" lean-forward="false" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="IGUIController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/IGUIController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -83,11 +68,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Party.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Party.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1702">
+              <caret line="85" column="7" lean-forward="true" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ClientManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/rmi/ClientManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-897">
-              <caret line="60" column="35" lean-forward="false" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
+            <state relative-caret-position="-61">
+              <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
               <folding>
                 <element signature="e#2194#2195#0" expanded="true" />
                 <element signature="e#2236#2237#0" expanded="true" />
@@ -107,12 +102,10 @@
       <file leaf-file-name="ApplicationClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/rmi/ApplicationClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="210" column="18" lean-forward="false" selection-start-line="210" selection-start-column="18" selection-end-line="210" selection-end-column="18" />
+            <state relative-caret-position="-1495">
+              <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7486#7487#0" expanded="true" />
-                <element signature="e#7511#7512#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -123,6 +116,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="230">
               <caret line="92" column="32" lean-forward="true" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PartyManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/rmi/PartyManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4117">
+              <caret line="197" column="28" lean-forward="false" selection-start-line="197" selection-start-column="28" selection-end-line="197" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -145,38 +148,28 @@
       <file leaf-file-name="IPartyManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/rmi/IPartyManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="14" column="9" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+            <state relative-caret-position="552">
+              <caret line="28" column="92" lean-forward="true" selection-start-line="28" selection-start-column="92" selection-end-line="28" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DriveService.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IParty.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/IParty.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DriveService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/drive/DriveService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1173">
               <caret line="69" column="101" lean-forward="true" selection-start-line="69" selection-start-column="101" selection-end-line="69" selection-end-column="101" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DriveManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/drive/DriveManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="943">
-              <caret line="53" column="36" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StreamMedia.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/mongo/StreamMedia.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -210,7 +203,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="NewGuiController" />
       </map>
     </option>
   </component>
@@ -543,7 +536,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.LoginView">
+  <component name="RunManager" selected="Application.ApplicationClient">
     <configuration name="ApplicationClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -728,9 +721,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.LoginView" />
+        <item index="0" class="java.lang.String" itemvalue="Application.ApplicationClient" />
         <item index="1" class="java.lang.String" itemvalue="Application.ApplicationServer" />
-        <item index="2" class="java.lang.String" itemvalue="Application.ApplicationClient" />
+        <item index="2" class="java.lang.String" itemvalue="Application.LoginView" />
         <item index="3" class="java.lang.String" itemvalue="Application.Main" />
         <item index="4" class="java.lang.String" itemvalue="Application.SongListView" />
       </list>
@@ -799,7 +792,7 @@
       <workItem from="1512907428414" duration="3254000" />
       <workItem from="1512911569527" duration="5615000" />
       <workItem from="1512932358338" duration="6910000" />
-      <workItem from="1512978887473" duration="4893000" />
+      <workItem from="1512978887473" duration="7305000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed workspace errors">
       <created>1511875183800</created>
@@ -934,7 +927,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512938480794</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added new GUIController, works fine....">
+      <created>1512983806318</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1512983806318</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -970,7 +970,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193032000" />
+    <option name="totallyTimeSpent" value="195444000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1033,7 +1033,8 @@
     <MESSAGE value="Added todo's, changed logincontroller, started on CLI client" />
     <MESSAGE value="Added voting to GUI" />
     <MESSAGE value="added IGUIController and implemented it" />
-    <option name="LAST_COMMIT_MESSAGE" value="added IGUIController and implemented it" />
+    <MESSAGE value="Added new GUIController, works fine...." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new GUIController, works fine...." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1217,13 +1218,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/IParty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gui/controllers/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1271,19 +1265,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Party.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="85" column="7" lean-forward="true" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
-          <folding>
-            <element signature="e#2991#2992#0" expanded="true" />
-            <element signature="e#3022#3023#0" expanded="true" />
-            <element signature="e#4283#4284#0" expanded="true" />
-            <element signature="e#4320#4321#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gui/VotableModel.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Votable.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1293,14 +1274,6 @@
             <element signature="e#3444#3445#0" expanded="true" />
             <element signature="e#3517#3518#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/rmi/PartyManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4117">
-          <caret line="197" column="28" lean-forward="false" selection-start-line="197" selection-start-column="28" selection-end-line="197" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1430,33 +1403,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/rmi/IPartyManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="14" column="9" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/rmi/ClientManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-897">
-          <caret line="60" column="35" lean-forward="false" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
-          <folding>
-            <element signature="e#2194#2195#0" expanded="true" />
-            <element signature="e#2236#2237#0" expanded="true" />
-            <element signature="method#leaveParty#0;class#ClientManager#0" expanded="false" />
-            <element signature="method#joinParty#0;class#ClientManager#0" expanded="false" />
-            <element signature="method#getPartyVotables#0;class#ClientManager#0" expanded="false" />
-            <element signature="method#getAllVotables#0;class#ClientManager#0" expanded="false" />
-            <element signature="method#login#0;class#ClientManager#0" expanded="false" />
-            <element signature="method#logout#0;class#ClientManager#0" expanded="false" />
-            <element signature="method#getTemporaryUser#0;class#ClientManager#0" expanded="false" />
-            <element signature="method#getVotablesToVoteOn#0;class#ClientManager#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/audioplayer/AudioPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -1477,22 +1423,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/rmi/ApplicationClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="210" column="18" lean-forward="false" selection-start-line="210" selection-start-column="18" selection-end-line="210" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7486#7487#0" expanded="true" />
-            <element signature="e#7511#7512#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/drive/DriveService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
           <caret line="69" column="101" lean-forward="true" selection-start-line="69" selection-start-column="101" selection-end-line="69" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/rmi/PartyManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4117">
+          <caret line="197" column="28" lean-forward="false" selection-start-line="197" selection-start-column="28" selection-end-line="197" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/rmi/ApplicationClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1495">
+          <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/rmi/ClientManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-61">
+          <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+          <folding>
+            <element signature="e#2194#2195#0" expanded="true" />
+            <element signature="e#2236#2237#0" expanded="true" />
+            <element signature="method#leaveParty#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#joinParty#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#getPartyVotables#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#getAllVotables#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#login#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#logout#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#getTemporaryUser#0;class#ClientManager#0" expanded="false" />
+            <element signature="method#getVotablesToVoteOn#0;class#ClientManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/rmi/IPartyManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="28" column="92" lean-forward="true" selection-start-line="28" selection-start-column="92" selection-end-line="28" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/IParty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/Party.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1702">
+          <caret line="85" column="7" lean-forward="true" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
           <folding />
         </state>
       </provider>
