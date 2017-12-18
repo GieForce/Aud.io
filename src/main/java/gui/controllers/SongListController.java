@@ -1,6 +1,7 @@
 package gui.controllers;
 
 import aud.io.Vote;
+import aud.io.log.Logger;
 import aud.io.rmi.ClientManager;
 import aud.io.Votable;
 import gui.ButtonClass;
@@ -22,6 +23,7 @@ import javafx.stage.Stage;
 
 import java.rmi.RemoteException;
 import java.util.Objects;
+import java.util.logging.Level;
 
 public class SongListController {
     @FXML
@@ -31,8 +33,11 @@ public class SongListController {
     private Stage stage;
     private ClientManager manager;
 
+    private Logger logger;
+
 
     public void initialize() throws RemoteException {
+        Logger logger = new Logger("SonglistController", Level.SEVERE, Level.SEVERE);
         manager = RmiClient.getManager();
         for (Votable v : manager.getAllVotables()) {
             setHboxSong(v);
@@ -114,7 +119,7 @@ public class SongListController {
             manager.addMedia(v);
             //TODO: Update UI
         } catch (RemoteException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 

@@ -63,14 +63,17 @@ public class PartyViewController implements IGUIController {
         logger = new Logger("PartyView", Level.ALL, Level.SEVERE);
         manager = RmiClient.getManager();
         manager.setGuiController(this);
-        try {
-            for (Votable v : manager.getAllVotables()) {
-                manager.addMedia(v);
-                setHboxSong(v);
-            }
-        } catch (RemoteException e) {
-            logger.log(Level.SEVERE, e.toString());
-        }
+        user = manager.getUser();
+        key = manager.getParty().getPartyKey();
+
+        //try {
+        //    for (Votable v : manager.getAllVotables()) {
+        //        manager.addMedia(v);
+        //        setHboxSong(v);
+        //    }
+        //} catch (RemoteException e) {
+        //    logger.log(Level.SEVERE, e.toString());
+        //}
     }
 
     private void setupParty() {
@@ -84,7 +87,6 @@ public class PartyViewController implements IGUIController {
                 for (Votable v : votables) {
                     setHboxSong(v);
                 }
-                System.out.println("Ik zit erin");
             }
         });
     }
@@ -238,7 +240,7 @@ public class PartyViewController implements IGUIController {
 //        ButtonClass btn = (ButtonClass) actionEvent.getSource();
 //        Votable v = (Votable) btn.getObj();
 //        boolean isSame = false;
-//        if(playingVotable != null) isSame = playingVotable.equals(v);
+//        if(playingVotable != null) isSame = playingVotable.isSame(v);
 //        if (playingVotable == null) {
 //            playVotable(btn, v);
 //        } else {
@@ -378,7 +380,6 @@ public class PartyViewController implements IGUIController {
 
     @Override
     public void update() {
-        System.out.println("Update");
         setupParty();
     }
 }

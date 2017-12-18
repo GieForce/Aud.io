@@ -155,7 +155,7 @@ public abstract class Votable implements Serializable {
         return "Votes:↑" + getVoteScore() + "\n↓" + getDislikes();
     }
 
-    public boolean equals(Votable v) {
+    public boolean isSame(Votable v) {
         if (Objects.equals(this.name, v.name) && this.length == v.length) {
             return true;
         }

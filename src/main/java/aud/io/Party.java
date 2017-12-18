@@ -89,7 +89,7 @@ public class Party extends Observable implements IParty, Serializable {
         int index = -1;
         for(int i = 0; i < votables.size(); i++) {
             Votable v = votables.get(i);
-            if(votable.equals(v)) {
+            if(votable.isSame(v)) {
                 index = i;
                 break;
             }
@@ -167,7 +167,7 @@ public class Party extends Observable implements IParty, Serializable {
     public synchronized void removeVotable(Votable votable){
         for(int i = 0; i < votables.size(); i++) {
             Votable v = votables.get(i);
-            if(votable.equals(v)) {
+            if(votable.isSame(v)) {
                 votables.remove(v);
                 break;
             }
@@ -175,6 +175,10 @@ public class Party extends Observable implements IParty, Serializable {
     }
 
     public synchronized boolean belowRemovalThreshold(Votable votable){
+        System.out.println("dislikes: " + votable.getDislikes());
+        System.out.println("peeps: " + (participants.size() + 1));
+
+
         if (votable.getDislikes() >= removalThreshold * (participants.size() + 1)){
             return true;
         }
