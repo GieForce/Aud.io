@@ -67,7 +67,7 @@ public class DriveService {
        // InputStream in = ;
         GoogleClientSecrets clientSecrets =
                 GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(new FileInputStream(
-                        "logs/client_secret.json")));
+                        "./Music/client_secret.json")));
 
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow =
