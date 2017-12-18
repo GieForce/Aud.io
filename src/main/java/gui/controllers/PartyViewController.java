@@ -240,7 +240,7 @@ public class PartyViewController implements IGUIController {
 //        ButtonClass btn = (ButtonClass) actionEvent.getSource();
 //        Votable v = (Votable) btn.getObj();
 //        boolean isSame = false;
-//        if(playingVotable != null) isSame = playingVotable.equals(v);
+//        if(playingVotable != null) isSame = playingVotable.isSame(v);
 //        if (playingVotable == null) {
 //            playVotable(btn, v);
 //        } else {
