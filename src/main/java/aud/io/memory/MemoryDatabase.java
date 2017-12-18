@@ -5,6 +5,7 @@ import aud.io.audioplayer.Track;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MemoryDatabase implements IDatabase {
@@ -67,6 +68,10 @@ public class MemoryDatabase implements IDatabase {
 
     @Override
     public List<Votable> getAllSongs() {
-        return null;
+        List<Votable> votables = new ArrayList<>();
+        Collections.addAll(votables, songs);
+
+        return votables;
+
     }
 }

@@ -138,11 +138,13 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
 
         if (currentParty == null) {
             //return MSG_NOT_IN_PARTY;
+            logger.log(Level.WARNING, "no current party");
             return null;
         }
 
         if (getUser() == null) {
             //return MSG_NOT_LOGGED_IN;
+            logger.log(Level.WARNING, "no current user");
             return null;
         }
 
