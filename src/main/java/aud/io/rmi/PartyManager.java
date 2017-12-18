@@ -41,7 +41,7 @@ public class PartyManager extends UnicastRemoteObject implements IPartyManager {
      */
     public PartyManager(RemotePublisher publisher) throws RemoteException {
         this.publisher = publisher;
-        database = /*new MongoDatabase();*/new MemoryDatabase();
+        database = new MongoDatabase();//new MemoryDatabase();
         activeParties = new ArrayList<>();
         logger = new Logger("PartyManager", Level.ALL, Level.SEVERE);
     }
