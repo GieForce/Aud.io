@@ -4,7 +4,6 @@
     <list default="true" id="e2521a8a-4c29-466f-a421-54064c010fe1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aud/io/fontyspublisher/SharedData.java" afterPath="$PROJECT_DIR$/src/main/java/aud/io/fontyspublisher/SharedData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/PartyViewController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/PartyViewController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -73,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/fontyspublisher/SharedData.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="92">
-              <caret line="4" column="60" lean-forward="false" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
+              <caret line="4" column="62" lean-forward="false" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -804,7 +803,7 @@
       <workItem from="1512932358338" duration="6910000" />
       <workItem from="1512978887473" duration="9032000" />
       <workItem from="1512988663162" duration="1914000" />
-      <workItem from="1513426177089" duration="4434000" />
+      <workItem from="1513426177089" duration="5830000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed workspace errors">
       <created>1511875183800</created>
@@ -967,7 +966,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513427681612</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Fixed partyviewController null partykey bug, setup for LAN testing">
+      <created>1513592646738</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1513592646738</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1003,7 +1009,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="203519000" />
+    <option name="totallyTimeSpent" value="204915000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1070,7 +1076,8 @@
     <MESSAGE value="Finished CLI" />
     <MESSAGE value="Used memoryDB" />
     <MESSAGE value="Fixed usage of memorydatabase" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed usage of memorydatabase" />
+    <MESSAGE value="Fixed partyviewController null partykey bug, setup for LAN testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed partyviewController null partykey bug, setup for LAN testing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1520,7 +1527,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/aud/io/fontyspublisher/SharedData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
-          <caret line="4" column="60" lean-forward="false" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
+          <caret line="4" column="62" lean-forward="false" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
           <folding />
         </state>
       </provider>
