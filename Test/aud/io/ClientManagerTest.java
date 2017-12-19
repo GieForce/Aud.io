@@ -29,7 +29,7 @@ public class ClientManagerTest {
 
         new MockRMIClient().setupManager();
         manager = MockRMIClient.getManager();
-        manager.login("Davey","Davey");
+        manager.login("davey","davey");
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ClientManagerTest {
     public void joinParty() throws Exception {
         new MockRMIClient().setupManager();
         ClientManager client = MockRMIClient.getManager();
-        client.login("ruud","ruud");
+        client.login("nick","nick");
         client.createParty("DabeuyParty");
         manager.joinParty(client.getParty().getPartyKey());
         Assert.assertEquals(manager.getParty().getName(),client.getParty().getName());
@@ -70,7 +70,7 @@ public class ClientManagerTest {
     @Test
     public void login() throws Exception {
         manager.logout();
-        manager.login("Davey","Davey");
+        manager.login("davey","davey");
         Assert.assertNotNull(manager.getUser());
     }
 
@@ -114,11 +114,20 @@ public class ClientManagerTest {
     }
 
     @Test
+    public void removeAllUsers() throws RemoteException {
+        ClientManager client = MockRMIClient.getManager();
+        client.getTemporaryUser("Test");
+//        client.removeAllUsers();
+//        manager.clear
+        Assert.assertNull(manager.getUser());
+        Assert.assertNull(client);
+    }
+    @Test
     public void TestNotLoggedIn() throws RemoteException {
         //TODO ERROR MESSAGING is niet helemaal goed
         manager.logout();
         ClientManager client = MockRMIClient.getManager();
-        client.login("ruud","ruud");
+        client.login("nick","nick");
         client.createParty("DabeuyParty");
         Assert.assertEquals("You're not logged in",manager.logout());
         Assert.assertEquals("You're not logged in",manager.joinParty(client.getParty().getPartyKey()));
