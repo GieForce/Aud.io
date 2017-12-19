@@ -98,9 +98,9 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         publisher.unsubscribeRemoteListener(this, currentParty.getPartyKey());
         server.leaveParty(getUser(), currentParty.getPartyKey());
 
-        currentParty = null;
         logger.log(Level.INFO, String.format("%s left party: name: %s key: %s",
                 getUser().getNickname(), getParty().getName(), getParty().getPartyKey()));
+        currentParty = null;
         return "You left the party.";
     }
 
