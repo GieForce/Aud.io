@@ -66,6 +66,8 @@ public class PartyViewController implements IGUIController {
         user = manager.getUser();
         key = manager.getParty().getPartyKey();
 
+        setupParty();
+
         //try {
         //    for (Votable v : manager.getAllVotables()) {
         //        manager.addMedia(v);

@@ -175,8 +175,8 @@ public class Party extends Observable implements IParty, Serializable {
     }
 
     public synchronized boolean belowRemovalThreshold(Votable votable){
-        System.out.println("dislikes: " + votable.getDislikes());
-        System.out.println("peeps: " + (participants.size() + 1));
+        //System.out.println("dislikes: " + votable.getDislikes());
+        //System.out.println("peeps: " + (participants.size() + 1));
 
 
         if (votable.getDislikes() >= removalThreshold * (participants.size() + 1)){
