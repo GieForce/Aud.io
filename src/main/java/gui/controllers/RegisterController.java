@@ -43,7 +43,7 @@ public class RegisterController {
             //TODO: Implement manager register
             MongoDatabase db = new MongoDatabase();
 
-            RegisteredUser user = new RegisteredUser(mail,username,password);
+            RegisteredUser user = new RegisteredUser(mail, password, username);
             db.createUser(mail,username,password);
             RmiClient.getManager().login(username, password);
 
