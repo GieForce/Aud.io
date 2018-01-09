@@ -29,7 +29,7 @@ public class ClientManagerTest {
 
         new MockRMIClient().setupManager();
         manager = MockRMIClient.getManager();
-        manager.login("Davey","Davey");
+        manager.login("davey","davey");
     }
 
     @Test
@@ -53,10 +53,12 @@ public class ClientManagerTest {
     public void joinParty() throws Exception {
         new MockRMIClient().setupManager();
         ClientManager client = MockRMIClient.getManager();
-        client.login("ruud","ruud");
+        client.login("nick","nick");
         client.createParty("DabeuyParty");
         manager.joinParty(client.getParty().getPartyKey());
         Assert.assertEquals(manager.getParty().getName(),client.getParty().getName());
+        manager.logout();
+        Assert.assertNull(manager.getParty());
     }
 
     @Test
@@ -70,8 +72,9 @@ public class ClientManagerTest {
     @Test
     public void login() throws Exception {
         manager.logout();
-        manager.login("Davey","Davey");
+        manager.login("davey","davey");
         Assert.assertNotNull(manager.getUser());
+        Assert.assertNull(manager.login("davey","davey"));
     }
 
     @Test
@@ -88,7 +91,13 @@ public class ClientManagerTest {
     }
 
     @Test
-    public void play() throws Exception {
+    public void Player() throws Exception {
+        manager.createParty("Gt");
+        Assert.assertEquals("This action is not allowed.",manager.play());
+//        manager.getParty().addToVotables();
+        manager.pause();
+        manager.stop();
+        manager.resumePlaying();
     }
 
     @Test
@@ -99,18 +108,37 @@ public class ClientManagerTest {
     }
 
     @Test
-    public void getAllVotables(){
-
+    public void getAllVotables() throws RemoteException {
+        Assert.assertNull(manager.getAllVotables());
+        manager.createParty("Test");
+        Assert.assertNotNull(manager.getAllVotables());
     }
 
     @Test
-    public void getPartyVotables(){
+    public void removeVotable(){
 
+    }
+    @Test
+    public void voteOnVotable(){
+
+    }
+    @Test
+    public void getVotablesToVoteOn() throws RemoteException {
+        manager.createParty("Test");
+        Assert.assertNotNull(manager.getVotablesToVoteOn());
+    }
+    @Test
+    public void searchVotablesWithSearchTerm() throws RemoteException {
+        manager.createParty("Test");
+        Assert.assertNotNull(manager.searchVotablesWithSearchTerm("Woonboot"));
     }
 
     @Test
-    public void searchVotablesWithSearchTerm(){
-
+    public void createUser() throws RemoteException {
+        manager.logout();
+        manager.createUser("Unittest@live.nl","Test","Test");
+        manager.login("Test","Test");
+        Assert.assertNotNull(manager.getUser());
     }
 
     @Test
@@ -118,7 +146,7 @@ public class ClientManagerTest {
         //TODO ERROR MESSAGING is niet helemaal goed
         manager.logout();
         ClientManager client = MockRMIClient.getManager();
-        client.login("ruud","ruud");
+        client.login("nick","nick");
         client.createParty("DabeuyParty");
         Assert.assertEquals("You're not logged in",manager.logout());
         Assert.assertEquals("You're not logged in",manager.joinParty(client.getParty().getPartyKey()));

@@ -152,7 +152,7 @@ public abstract class Votable implements Serializable {
     }
 
     public String getVotesString() {
-        return "Votes:↑" + getVoteScore() + "\n↓" + getDislikes();
+        return "Votes: " + getVoteScore();
     }
 
     public boolean isSame(Votable v) {
