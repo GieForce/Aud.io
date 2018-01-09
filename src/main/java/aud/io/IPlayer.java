@@ -6,5 +6,6 @@ public interface IPlayer{
     void stop();
     void pause();
     void play(Votable votable);
+    void changeVolume(int volume);
 
 }
