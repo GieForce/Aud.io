@@ -5,6 +5,8 @@ import aud.io.audioplayer.AudioPlayer;
 import aud.io.log.Logger;
 import aud.io.rmi.ClientManager;
 import gui.ButtonClass;
+import gui.views.JoinPartyView;
+import gui.views.LoginView;
 import gui.views.SongListView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -383,6 +385,17 @@ public class PartyViewController implements IGUIController {
     @Override
     public void update() {
         setupParty();
+    }
+
+    public void logout(ActionEvent actionEvent) {
+        try {
+            manager.leaveParty();
+            manager.logout();
+            LoginView login = new LoginView();
+            login.start(stage);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, e.toString());
+        }
     }
 }
 

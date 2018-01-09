@@ -1,5 +1,6 @@
 package gui.views;
 
+import aud.io.User;
 import gui.controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,7 @@ public class LoginView extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/login.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("login");
+        primaryStage.setTitle("Login");
         LoginController controller = loader.getController();
         controller.setStage(primaryStage);
         primaryStage.setScene(scene);
