@@ -73,7 +73,7 @@ public class PartyManagerTest {
     @Test
     public void login() throws Exception {
         User registeredUser1 = manager.login("davey","davey");
-        assertEquals(manager.login("davey", "davey"),registeredUser1);
+        assertEquals(manager.login("davey", "davey").getNickname(),registeredUser1.getNickname());
     }
 
     @Test

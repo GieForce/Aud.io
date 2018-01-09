@@ -20,8 +20,8 @@ public class MongoDatabaseTest {
 
     @Test
     public void loginUser() throws Exception {
-        RegisteredUser user = new RegisteredUser("Davey","Davey","Davey");
-        RegisteredUser user1 = mongoDatabase.loginUser("Davey","Davey");
+        RegisteredUser user = new RegisteredUser("davey","davey","davey");
+        RegisteredUser user1 = mongoDatabase.loginUser("davey","davey");
         assertEquals(user1.getNickname(),user.getNickname());
         }
 
@@ -37,7 +37,7 @@ public class MongoDatabaseTest {
 
     @Test
     public void getSongsWithSearchterm() throws Exception {
-        ArrayList list = (ArrayList) mongoDatabase.getSongsWithSearchterm("Slapend Rijk");
+        assertNotNull(mongoDatabase.getSongsWithSearchterm("B"));
         //TODO Werkt DB al goed genoeg?
     }
 

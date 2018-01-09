@@ -80,10 +80,12 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
                 logger.log(Level.FINE, String.format("%s wasn't a registered user", getUser().getNickname()));
                 return "To create a party you have to be a registered user.";
             }
-        } else {
-            logger.log(Level.FINE, String.format("%s wasn't logged in", getUser().getNickname()));
-            return "You need to be logged in to create a party.";
         }
+//        else {
+//            logger.log(Level.FINE, String.format("%s wasn't logged in", getUser().getNickname()));
+//            return "You need to be logged in to create a party.";
+//        }
+        return "You need to be logged in to create a party.";
     }
 
     public String leaveParty() throws RemoteException {
