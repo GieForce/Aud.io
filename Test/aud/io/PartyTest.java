@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
@@ -31,7 +32,11 @@ public class PartyTest {
 
     @Test
     public void generateVoteList() throws Exception {
+        Votable expectedTrack = new Track(media,"Track1",5,"Ruud","Rudj");
         ArrayList expectedRes = new ArrayList();
+        expectedRes.add(expectedTrack);
+        party.addToVotables(expectedTrack);
+//        party.getPlaylist().get(0).vote(registeredUser,Vote.LIKE);
         assertEquals(expectedRes, party.generateVoteList(registeredUser));
     }
 
@@ -91,6 +96,19 @@ public class PartyTest {
     }
 
     @Test
+    public void getNextSongTest() throws Exception {
+        Votable playingTrack = new Track(media,"Track0",5,"Ruud","Rudj");
+        Votable expectedTrack = new Track(media,"Track1",5,"Ruud","Rudj");
+        party.addToVotables(playingTrack);
+        party.addToVotables(expectedTrack);
+        party.join(normalUser);
+        party.getPlaylist().get(1).vote(registeredUser,Vote.LIKE);
+        party.getPlaylist().get(1).vote(normalUser,Vote.LIKE);
+        Votable accTrack = party.getNextSong();
+        assertEquals(expectedTrack.getName(),accTrack.getName());
+    }
+
+    @Test
     public void getPlaylist() throws Exception {
         Votable Track1 = new Track(media,"Track1",5,"Ruud","Rudj");
         Votable Track2 = new Track(media,"Track2",5,"Ruud1","Rudj1");
@@ -122,11 +140,16 @@ public class PartyTest {
     @Test
     public void mediaIsPlayed()
     {
-        party.mediaIsPlayed(new Track(media,"Track0",5,"Ruud","Rudj"),registeredUser);
+        Votable expectedTrack = new Track(media,"Track1",5,"Ruud","Rudj");
+        party.addToVotables(expectedTrack);
+        assertTrue(party.mediaIsPlayed(expectedTrack,registeredUser));
     }
     @Test
     public void ToString()
     {
+        Votable expectedTrack = new Track(media,"Track1",5,"Ruud","Rudj");
+        party.addToVotables(expectedTrack);
+        party.join(normalUser);
         String actString = party.toString();
         assertThat(actString,containsString("PartyHardy"));
     }
@@ -151,5 +174,39 @@ public class PartyTest {
         Map<User, Vote> testVotes = new HashMap<>();
         testVotes.put(registeredUser, Vote.LIKE);
         assertEquals(testVotes,votes);
+    }
+    @Test
+    public void RemoveVotable(){
+        Votable expectedTrack = new Track(media,"Track1",5,"Ruud","Rudj");
+        party.addToVotables(expectedTrack);
+        party.removeVotable(expectedTrack);
+        assertThat(party.getPlaylist(), not(hasItems(expectedTrack)));
+    }
+    @Test
+    public void RemoveUnreachableGuest(){
+        party.removeUser(normalUser);
+    }
+
+    @Test
+    public void BelowThreshold(){
+        party.join(normalUser);
+        Votable expectedTrack = new Track(media,"Track1",5,"Ruud","Rudj");
+        party.addToVotables(expectedTrack);
+        assertFalse(party.belowRemovalThreshold(expectedTrack));
+        party.getNextSong().vote(normalUser,Vote.DISLIKE);
+        party.getPlaylist().get(0).vote(registeredUser,Vote.DISLIKE);
+        assertTrue(party.belowRemovalThreshold(expectedTrack));
+    }
+
+    @Test
+    public void VotableTest(){
+        Votable expectedTrack = new Track(media,"Track1",5,"Ruud","Rudj");
+        Votable sametrack = new Track(media,"Track12",5,"Ruud","Rudj");
+        assertFalse(sametrack.isSame(expectedTrack));
+        party.addToVotables(expectedTrack);
+        party.getPlaylist().get(0).vote(registeredUser,Vote.DISLIKE);
+        assertEquals("Votes: -1",party.getPlaylist().get(0).getVotesString());
+        party.getPlaylist().get(0).vote(registeredUser,Vote.LIKE);
+        assertEquals("Votes: 1",party.getPlaylist().get(0).getVotesString());
     }
 }

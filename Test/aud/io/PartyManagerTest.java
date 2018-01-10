@@ -6,6 +6,7 @@ import aud.io.rmi.PartyManager;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -114,4 +115,12 @@ public class PartyManagerTest {
         assertThat(manager.getActiveParties().get(0).getParticipants(), not(hasItem(tUser)));
     }
     //TODO kan UpdatePlaylist niet testen want die is private.
+    @Test
+    public void getters() throws RemoteException {
+    assertNotNull(manager.getDatabase());
+    assertNotNull(manager.getAllVotables());
+    assertNotNull(manager.getRegisteredUsers());
+    assertNotNull(manager.searchVotablesWithSearchTerm("B"));
+    }
+
 }
