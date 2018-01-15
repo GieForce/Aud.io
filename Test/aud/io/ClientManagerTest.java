@@ -38,6 +38,16 @@ public class ClientManagerTest {
     }
 
     @Test
+    public void setGUIController(){
+        manager.setGuiController(new IGUIController() {
+            @Override
+            public void update() {
+
+            }
+        });
+    }
+
+    @Test
     public void createParty() throws Exception {
         manager.createParty("Party1");
         Assert.assertNotNull(manager.getParty());
@@ -47,6 +57,8 @@ public class ClientManagerTest {
     public void leaveParty() throws Exception {
         manager.leaveParty();
         Assert.assertNull(manager.getParty());
+        manager.createParty("TEST");
+        Assert.assertEquals("You left the party.",manager.leaveParty());
     }
 
     @Test
@@ -64,9 +76,10 @@ public class ClientManagerTest {
     @Test
     public void addMedia() throws Exception {
         manager.createParty("Addmedia");
-        Track track = new Track(null,"Zaanse Mayo",578,"Joost","Scandanavian Boy");
-        manager.addMedia(track);
-        Assert.assertThat(manager.getAllVotables(),hasItem(track));
+        Track track = new Track(null,"Back In Black",578,"KIP","KiP");
+        manager.addMedia(manager.getAllVotables().get(1));
+        Assert.assertEquals(track.getName(), manager.getAllVotables().get(1).getName());
+//        Assert.assertThat(manager.getAllVotables().get(1).getName(),hasItem(track.getName()));
     }
 
     @Test
@@ -75,6 +88,14 @@ public class ClientManagerTest {
         manager.login("davey","davey");
         Assert.assertNotNull(manager.getUser());
         Assert.assertNull(manager.login("davey","davey"));
+    }
+
+    @Test
+    public void loginWrong() throws Exception {
+        manager.logout();
+        manager.login("davey","davey1");
+        Assert.assertNull(manager.getUser());
+
     }
 
     @Test
@@ -93,11 +114,15 @@ public class ClientManagerTest {
     @Test
     public void Player() throws Exception {
         manager.createParty("Gt");
-        Assert.assertEquals("This action is not allowed.",manager.play());
+        manager.addMedia(manager.getAllVotables().get(1));
+        manager.addMedia(manager.getAllVotables().get(2));
+        manager.voteOnVotable(manager.getParty().getPlaylist().get(0),Vote.LIKE);
+        Assert.assertEquals("You started playing Westenwind",manager.play());
 //        manager.getParty().addToVotables();
         manager.pause();
-        manager.stop();
         manager.resumePlaying();
+        manager.stop();
+
     }
 
     @Test
@@ -115,11 +140,15 @@ public class ClientManagerTest {
     }
 
     @Test
-    public void removeVotable(){
-
+    public void removeVotable() throws RemoteException {
+        manager.createParty("Gt");
+        manager.addMedia(manager.getAllVotables().get(1));
+        manager.addMedia(manager.getAllVotables().get(2));
+        manager.removeVotable(manager.getPartyVotables().get(0));
+        Assert.assertEquals(1,manager.getParty().getPlaylist().size());
     }
     @Test
-    public void voteOnVotable(){
+    public void getPartyVotables(){
 
     }
     @Test
@@ -140,7 +169,15 @@ public class ClientManagerTest {
         manager.login("Test","Test");
         Assert.assertNotNull(manager.getUser());
     }
+    @Test
+    public void alternateRoutes() throws RemoteException{
+        manager.logout();
+        manager.getTemporaryUser("davey");
+        Assert.assertEquals("To create a party you have to be a registered user.",manager.createParty("Test"));
+        manager.logout();
+        Assert.assertEquals("You need to be logged in to create a party.",manager.createParty("Test"));
 
+    }
     @Test
     public void TestNotLoggedIn() throws RemoteException {
         //TODO ERROR MESSAGING is niet helemaal goed
