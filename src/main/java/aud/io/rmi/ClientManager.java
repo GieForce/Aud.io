@@ -240,6 +240,8 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         player.play();
     }
 
+    public void changeVolume(int volume) { player.changeVolume(volume);}
+
     public void pause(){
         player.pause();
     }

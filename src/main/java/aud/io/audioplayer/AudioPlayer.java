@@ -52,6 +52,11 @@ public class AudioPlayer implements IPlayer {
     }
 
     @Override
+    public void changeVolume(int volumeamount) {
+        currentSong.changeVolume(volumeamount);
+        }
+
+    @Override
     public void play(Votable votable) {
         //load new song and start playing
         if (currentSong != null){
@@ -73,6 +78,7 @@ public class AudioPlayer implements IPlayer {
         private AudioMediaPlayerComponent VLCPlayer;
         private AtomicBoolean play, pause, stop, exit;
         private boolean loadedSong = false;
+        private int volumeAmount;
 
         PlayerRunnable(IMedia trackMedia, ExecutorService pool, AudioPlayer player, AudioMediaPlayerComponent VLCPlayer) {
             this.trackMedia = trackMedia;
@@ -82,6 +88,7 @@ public class AudioPlayer implements IPlayer {
             pause = new AtomicBoolean(false);
             stop = new AtomicBoolean(false);
             exit = new AtomicBoolean(false);
+
         }
 
         @Override
@@ -139,7 +146,6 @@ public class AudioPlayer implements IPlayer {
 
             VLCPlayer.getMediaPlayer().stop();
             //VLCPlayer.getMediaPlayer().release();
-
         }
 
         public void play(){
@@ -157,5 +163,7 @@ public class AudioPlayer implements IPlayer {
         public void exit(){
             exit.set(true);
         }
+
+        public void changeVolume(int volume) { VLCPlayer.getMediaPlayer().setVolume(volume);}
     }
 }
