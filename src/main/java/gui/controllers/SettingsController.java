@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.management.remote.rmi.RMIServer;
 import java.util.ArrayList;
 
 public class SettingsController {
@@ -30,8 +31,8 @@ public class SettingsController {
     }
 
     public void initialize() {
-        //TODO: get settings here
-//        lbPlaylistName.setText(RmiClient.getManager().getParty().getName());
+        lbPlaylistName.setText(RmiClient.getManager().getParty().getName());
+        settings = RmiClient.getManager().getSettings();
         if (settings != null) {
             for (String song : settings.getBlockedSongs()) {
                 Platform.runLater(() -> addSongUI(song));
@@ -116,5 +117,10 @@ public class SettingsController {
             }
         });
         blockedArtistsContainer.getChildren().add(cbox);
+    }
+
+    public void saveSettings(ActionEvent actionEvent) {
+        RmiClient.getManager().alterSettings(settings);
+        stage.close();
     }
 }

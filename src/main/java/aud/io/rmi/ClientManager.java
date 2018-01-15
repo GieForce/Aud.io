@@ -29,6 +29,7 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
     private RegisteredUser registeredUser;
     private TemporaryUser temporaryUser;
     private List<Votable> votables;
+    private Settings settings;
 
     private static IPlayer player;
     private static ExecutorService pool = Executors.newFixedThreadPool(3);
@@ -166,6 +167,14 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         return server.searchVotablesWithSearchTerm(searchTerm);
     }
 
+    public Settings getSettings() {
+        return settings;
+    }
+
+    public void alterSettings(Settings settings) {
+        this.settings = settings;
+    }
+
     public void addMedia(Votable media) throws RemoteException {
 
         if (currentParty == null) {
@@ -177,10 +186,14 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
             //return MSG_NOT_LOGGED_IN;
             return;
         }
-
-        server.addMedia(media, currentParty.getPartyKey(), getUser());
-        logger.log(Level.INFO, String.format("%s added %s to party: name: %s key: %s",
-                getUser().getNickname(), media.getName(), currentParty.getName(), currentParty.getPartyKey()));
+        if(!settings.isBlocked(media)) {
+            server.addMedia(media, currentParty.getPartyKey(), getUser());
+            logger.log(Level.INFO, String.format("%s added %s to party: name: %s key: %s",
+                    getUser().getNickname(), media.getName(), currentParty.getName(), currentParty.getPartyKey()));
+        } else {
+            logger.log(Level.INFO, String.format("%s added %s to party: name: %s key: %s, but it's blocked",
+                    getUser().getNickname(), media.getName(), currentParty.getName(), currentParty.getPartyKey()));
+        }
     }
 
     public RegisteredUser login(String username, String password) throws RemoteException {

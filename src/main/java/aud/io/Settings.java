@@ -1,5 +1,7 @@
 package aud.io;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,5 +36,14 @@ public class Settings {
 
     public List<String> getBlockedSongs() {
         return blockedSongs;
+    }
+
+    public boolean isBlocked(Votable media) {
+        for (String song : blockedSongs) {
+            if (StringUtils.containsIgnoreCase(media.getName(), song)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

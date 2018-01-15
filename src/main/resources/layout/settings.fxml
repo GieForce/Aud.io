@@ -155,5 +155,13 @@
             </VBox>
             </HBox>
         </VBox>
+       <Button mnemonicParsing="false" onAction="#saveSettings" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50; -fx-background-color: #be4248;" text="Save" textFill="#f5e9be" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="370.0">
+       <font>
+          <Font size="14.0" />
+       </font>
+       <padding>
+          <Insets bottom="4.0" left="35.0" right="35.0" top="4.0" />
+       </padding>
+    </Button>
     </children>
 </AnchorPane>
