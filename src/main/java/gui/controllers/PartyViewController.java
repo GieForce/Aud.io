@@ -7,6 +7,7 @@ import aud.io.rmi.ClientManager;
 import gui.ButtonClass;
 import gui.views.JoinPartyView;
 import gui.views.LoginView;
+import gui.views.SettingsView;
 import gui.views.SongListView;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -37,6 +38,8 @@ import java.util.concurrent.Executors;
 import java.util.logging.Level;
 
 public class PartyViewController implements IGUIController {
+    @FXML
+    private Button btnSettings;
     @FXML
     private Button playButton;
     @FXML
@@ -418,6 +421,12 @@ public class PartyViewController implements IGUIController {
         } catch (IOException e) {
             logger.log(Level.SEVERE, e.toString());
         }
+    }
+
+    public void openSettings(ActionEvent actionEvent) throws IOException {
+        SettingsView settingsView = new SettingsView();
+        Stage s = new Stage();
+        settingsView.start(s);
     }
 }
 
