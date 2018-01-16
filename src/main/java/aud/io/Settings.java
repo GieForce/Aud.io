@@ -1,5 +1,6 @@
 package aud.io;
 
+import aud.io.audioplayer.Track;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
@@ -42,6 +43,14 @@ public class Settings {
         for (String song : blockedSongs) {
             if (StringUtils.containsIgnoreCase(media.getName(), song)) {
                 return true;
+            }
+        }
+        if (media instanceof Track) {
+            Track t = ((Track) media);
+            for (String artist : blockedArtists) {
+                if (StringUtils.containsIgnoreCase(t.getArtist(), artist)) {
+                    return true;
+                }
             }
         }
         return false;
