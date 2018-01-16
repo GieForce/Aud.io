@@ -87,6 +87,7 @@ public class PartyTest {
 
     @Test
     public void getNextSong() throws Exception {
+        assertNull(party.getNextSong());
         Votable playingTrack = new Track(media,"Track0",5,"Ruud","Rudj");
         Votable expectedTrack = new Track(media,"Track1",5,"Ruud","Rudj");
         party.addToVotables(playingTrack);
@@ -141,6 +142,7 @@ public class PartyTest {
     public void mediaIsPlayed()
     {
         Votable expectedTrack = new Track(media,"Track1",5,"Ruud","Rudj");
+        assertFalse(party.mediaIsPlayed(expectedTrack,registeredUser));
         party.addToVotables(expectedTrack);
         assertTrue(party.mediaIsPlayed(expectedTrack,registeredUser));
     }

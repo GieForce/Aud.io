@@ -23,12 +23,14 @@ import static org.hamcrest.core.IsCollectionContaining.hasItem;
 
 public class ClientManagerTest {
     ClientManager manager;
+    private Settings settings;
 
     @Before
     public void setUp() throws Exception {
 
         new MockRMIClient().setupManager();
         manager = MockRMIClient.getManager();
+        settings = manager.getSettings();
         manager.login("davey","davey");
     }
 
@@ -190,6 +192,23 @@ public class ClientManagerTest {
         Assert.assertEquals("You're not logged in",manager.leaveParty());
         Assert.assertEquals("You're not logged in",manager.play());
         Assert.assertEquals("You need to be logged in to create a party.",manager.createParty("HEYO"));
+    }
+
+    @Test
+    public void settings() throws RemoteException {
+        manager.createParty("Test2");
+        settings = new Settings();
+        settings.blockSong("Westenwind");
+        settings.blockArtist("Stef Ekkel");
+        Assert.assertNotNull(settings.getBlockedArtists());
+        Assert.assertNotNull(settings.getBlockedSongs());
+        Assert.assertTrue(settings.isBlocked(manager.getAllVotables().get(1)));
+        Assert.assertTrue(settings.isBlocked(manager.getAllVotables().get(10)));
+        settings.unblockArtist("Stef Ekkel");
+        settings.unblockSong("Westenwind");
+        Assert.assertFalse(settings.isBlocked(manager.getAllVotables().get(0)));
+        Assert.assertFalse(settings.isBlocked(manager.getAllVotables().get(1)));
+        Assert.assertFalse(settings.isBlocked(manager.getAllVotables().get(10)));
     }
 
     static class MockRMIClient {
