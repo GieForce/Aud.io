@@ -40,7 +40,6 @@ public class RegisterController {
             Message.Show("Error", "Please fill in all fields!");
         } else if (password.equals(passwordConfirm)) {
             ClientManager manager = RmiClient.getManager();
-            //TODO: Implement manager register
             MongoDatabase db = new MongoDatabase();
 
             RegisteredUser user = new RegisteredUser(mail, password, username);

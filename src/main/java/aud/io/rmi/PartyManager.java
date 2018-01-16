@@ -50,7 +50,7 @@ public class PartyManager extends UnicastRemoteObject implements IPartyManager {
      * Not implemented
      */
     public void sendKeepAlive() {
-        //TODO: Implement
+
     }
 
     /**
@@ -69,7 +69,7 @@ public class PartyManager extends UnicastRemoteObject implements IPartyManager {
      * @deprecated
      */
     private void playListUpdate(ArrayList<User> users, ArrayList<Votable> playlist) {
-        //TODO: Implement
+
     }
 
     /**
@@ -127,7 +127,7 @@ public class PartyManager extends UnicastRemoteObject implements IPartyManager {
             party.setPartyMessage(String.format("%s added %s", user.getNickname(), media.getName()));
             publisher.inform(party.getPartyKey(), null, party);
 
-            //TODO: User votes on votable?
+
         }
     }
 

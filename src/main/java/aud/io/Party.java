@@ -62,7 +62,7 @@ public class Party extends Observable implements IParty, Serializable {
      * @return A randomly generated partykey
      */
     private synchronized String generatePartyKey() {
-        //TODO: Collision check?
+
         return stringGenerator.nextString();
     }
 
@@ -85,7 +85,7 @@ public class Party extends Observable implements IParty, Serializable {
      * @param vote Vote which has been made for Votable
      */
     public void voteOnVotable(User user, Votable votable, Vote vote) {
-        //TODO: handle exception votable does not exist anymore
+
         int index = -1;
         for(int i = 0; i < votables.size(); i++) {
             Votable v = votables.get(i);
@@ -215,7 +215,6 @@ public class Party extends Observable implements IParty, Serializable {
             s += String.format("%s%s", user.getNickname(), System.lineSeparator());
         }
 
-        //TODO: If other media added, need more instanceof checks.
         s += String.format("%sCurrent songs: %s", System.lineSeparator(), System.lineSeparator());
         StringBuilder builder = new StringBuilder();
         builder.append(s);

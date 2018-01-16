@@ -127,7 +127,6 @@ public class PartyManagerTest {
         manager.leaveParty(tUser,manager.getActiveParties().get(0).getPartyKey());
         assertThat(manager.getActiveParties().get(0).getParticipants(), not(hasItem(tUser)));
     }
-    //TODO kan UpdatePlaylist niet testen want die is private.
     @Test
     public void getters() throws RemoteException {
     assertNotNull(manager.getDatabase());

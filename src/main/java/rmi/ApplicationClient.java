@@ -107,7 +107,6 @@ public class ApplicationClient {
 
         if (line.equals("add")) {
             System.out.print("song:");
-            //TODO: revise add media
             //System.out.println(manager.addMedia(scanner.nextLine()));
             List<Votable> votables = manager.getAllVotables();
             System.out.println("you can choose from:");
@@ -118,7 +117,6 @@ public class ApplicationClient {
 
         if (line.equals("remove")) {
             System.out.print("song:");
-            //TODO: revise add media
             //System.out.println(manager.addMedia(scanner.nextLine()));
             List<Votable> votables = manager.getVotablesToVoteOn();
             System.out.println("you can choose from:");

@@ -58,7 +58,6 @@ public class FileManager {
         if (result != "Getting metadata failed")
         {
             //Hier wordt een JSONObject aangemaakt van de waarden die we gebruiken in de applicatie
-            //Todo: Toevoegen van logging mechanisme
             JSONObject obj =  new JSONObject(result);
             System.out.println("Data:" + result);
             JSONArray music = obj.getJSONObject("metadata").getJSONArray("music");

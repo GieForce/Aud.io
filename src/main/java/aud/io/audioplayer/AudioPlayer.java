@@ -31,7 +31,6 @@ public class AudioPlayer implements IPlayer {
 
     public AudioPlayer(ExecutorService pool, AudioMediaPlayerComponent VLCPlayer) {
         this.pool = pool;
-        //TODO: Insert actual player
         this.VLCPlayer = VLCPlayer;
     }
 
@@ -70,7 +69,6 @@ public class AudioPlayer implements IPlayer {
         if (currentSong != null){
             currentSong.exit();
         }
-        //TODO: Revise with thread handling in mind
         currentSong = new PlayerRunnable(votable.getMedia(), pool, this, VLCPlayer);
 
         pool.submit(currentSong);
@@ -123,7 +121,6 @@ public class AudioPlayer implements IPlayer {
                 if (play.get()){
                     play.set(false);
                     if (!loadedSong){
-                        //TODO: load song
                         System.out.println(mediaFile.getAbsolutePath());
                         System.out.println("playing");
                         VLCPlayer.getMediaPlayer().playMedia(mediaFile.getAbsolutePath());
@@ -132,13 +129,11 @@ public class AudioPlayer implements IPlayer {
                         System.out.println("playing");
                         VLCPlayer.getMediaPlayer().play();
                     }
-                    //TODO: play
                 }
                 if (pause.get()){
                     pause.set(false);
                     System.out.println("paused");
                     VLCPlayer.getMediaPlayer().pause();
-                    //TODO: pause
                 }
                 if (stop.get()){
                     stop.set(false);
@@ -146,11 +141,8 @@ public class AudioPlayer implements IPlayer {
                     VLCPlayer.getMediaPlayer().stop();
                     //VLCPlayer.getMediaPlayer().release();
                     loadedSong = false;
-                    //TODO: stop
                 }
             }
-
-            //TODO: stop song, handle thread finishing
 
             VLCPlayer.getMediaPlayer().stop();
             //VLCPlayer.getMediaPlayer().release();

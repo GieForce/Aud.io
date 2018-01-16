@@ -86,15 +86,6 @@ public class PartyViewController implements IGUIController {
             }
         });
         setupParty();
-
-        //try {
-        //    for (Votable v : manager.getAllVotables()) {
-        //        manager.addMedia(v);
-        //        setHboxSong(v);
-        //    }
-        //} catch (RemoteException e) {
-        //    logger.log(Level.SEVERE, e.toString());
-        //}
     }
 
 
@@ -194,7 +185,6 @@ public class PartyViewController implements IGUIController {
     }
 
     public void voteSkip(ActionEvent actionEvent) {
-        //TODO: Get song and add vote
     }
 
     public void playSong(ActionEvent actionEvent) {
@@ -393,7 +383,6 @@ public class PartyViewController implements IGUIController {
         HBox.setMargin(vchild, new Insets(0, 0, 0, 10));
         voteButtons.getChildren().add(vchild);
         //Label
-        //TODO: Change this to album or artist
         Label lblSongLegth = new Label();
         lblSongLegth.setText(v.getLengthString());
         lblSongLegth.setTextFill(Paint.valueOf("#f5e9be"));
@@ -418,6 +407,7 @@ public class PartyViewController implements IGUIController {
         try {
             manager.leaveParty();
             manager.logout();
+            manager.stop();
             LoginView login = new LoginView();
             login.start(stage);
         } catch (IOException e) {

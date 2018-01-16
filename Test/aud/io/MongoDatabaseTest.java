@@ -38,7 +38,6 @@ public class MongoDatabaseTest {
     @Test
     public void getSongsWithSearchterm() throws Exception {
         assertNotNull(mongoDatabase.getSongsWithSearchterm("B"));
-        //TODO Werkt DB al goed genoeg?
     }
 
     @Test
@@ -49,7 +48,6 @@ public class MongoDatabaseTest {
     @Test
     public void getAllSongs(){
         assertNotNull(mongoDatabase.getAllSongs());
-        //TODO
     }
 
 }

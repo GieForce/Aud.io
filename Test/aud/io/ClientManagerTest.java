@@ -36,7 +36,6 @@ public class ClientManagerTest {
 
     @Test
     public void propertyChange() throws Exception {
-        //TODO niet zeker wat ik hier moet doen
     }
 
     @Test
@@ -182,7 +181,6 @@ public class ClientManagerTest {
     }
     @Test
     public void TestNotLoggedIn() throws RemoteException {
-        //TODO ERROR MESSAGING is niet helemaal goed
         manager.logout();
         ClientManager client = MockRMIClient.getManager();
         client.login("nick","nick");

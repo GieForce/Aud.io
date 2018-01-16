@@ -67,8 +67,6 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
             return MSG_ALREADY_IN_PARTY;
         }
 
-        //TODO: Verify with server if logged in?
-
         if (getUser() != null) {
             if (getUser() instanceof RegisteredUser) {
                 Party party = (Party) server.createParty((RegisteredUser) getUser(), partyName);

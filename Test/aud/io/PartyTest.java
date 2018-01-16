@@ -58,7 +58,6 @@ public class PartyTest {
     public void getPartyMessage()
     {
         party.getPartyMessage();
-        //TODO Verdergaan wanneer er wel een party message aangemaakt wordtdt
     }
 
     @Test

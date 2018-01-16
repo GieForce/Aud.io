@@ -43,7 +43,6 @@ public class SongListController {
         for (Votable v : manager.getAllVotables()) {
             setHboxSong(v);
         }
-        //TODO: addMedia function has changed, please revise!!
         //manager.addMedia(null);
         //for (Votable v : manager.getVotables()) {
         //    setHboxSong(v);
@@ -98,7 +97,6 @@ public class SongListController {
         lblSongName.setTextFill(Paint.valueOf("#f5e9be"));
         lblSongName.setFont(defFont);
         //Label
-        //TODO: Change this to album or artist
         Label lblSongLegth = new Label();
         lblSongLegth.setText(v.getLengthString());
         lblSongLegth.setTextFill(Paint.valueOf("#f5e9be"));
@@ -118,7 +116,6 @@ public class SongListController {
             ButtonClass btn = (ButtonClass) actionEvent.getSource();
             Votable v = (Votable) btn.getObj();
             manager.addMedia(v);
-            //TODO: Update UI
         } catch (RemoteException e) {
             logger.log(Level.SEVERE, e.toString());
         }

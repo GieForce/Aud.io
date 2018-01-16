@@ -46,7 +46,6 @@ public class PartyView extends Application {
     }
 
     public void start(Stage stage, String name, String partyKey, User user) throws IOException {
-        //TODO: do something with this user being the host
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/party.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
