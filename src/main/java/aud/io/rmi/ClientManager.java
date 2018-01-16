@@ -188,6 +188,18 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
             //return MSG_NOT_LOGGED_IN;
             return;
         }
+        if (settings != null){
+            if (settings.isBlocked(media)){
+                logger.log(Level.INFO, String.format("%s added %s to party: name: %s key: %s, but it's blocked",
+                        getUser().getNickname(), media.getName(), currentParty.getName(), currentParty.getPartyKey()));
+
+                return;
+            }
+        }
+        server.addMedia(media, currentParty.getPartyKey(), getUser());
+        logger.log(Level.INFO, String.format("%s added %s to party: name: %s key: %s",
+                getUser().getNickname(), media.getName(), currentParty.getName(), currentParty.getPartyKey()));
+        /*
         if(!settings.isBlocked(media)) {
             server.addMedia(media, currentParty.getPartyKey(), getUser());
             logger.log(Level.INFO, String.format("%s added %s to party: name: %s key: %s",
@@ -196,6 +208,7 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
             logger.log(Level.INFO, String.format("%s added %s to party: name: %s key: %s, but it's blocked",
                     getUser().getNickname(), media.getName(), currentParty.getName(), currentParty.getPartyKey()));
         }
+        */
     }
 
     public RegisteredUser login(String username, String password) throws RemoteException {
@@ -253,7 +266,9 @@ public class ClientManager extends UnicastRemoteObject implements IRemotePropert
         player.play();
     }
 
-    public void changeVolume(int volume) { player.changeVolume(volume);}
+    public void changeVolume(int volume) {
+        player.changeVolume(volume);
+    }
 
     public void pause(){
         player.pause();
