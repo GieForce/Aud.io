@@ -75,12 +75,13 @@ public class PartyViewController implements IGUIController {
         key = manager.getParty().getPartyKey();
         volumeslider.setMin(1);
         volumeslider.setMax(100);
+        volumeslider.setValue(100);
         volumeslider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 volume = newValue.intValue();
                 manager.changeVolume(volume);
-                System.out.println("Volume changed!" + volume);
+                //System.out.println("Volume changed!" + volume);
             }
         });
         setupParty();
@@ -236,7 +237,7 @@ public class PartyViewController implements IGUIController {
             setPaused();
         }
     }
-
+/*
     private void changeVolume(DragEvent actionEvent) {
         if (playing) {
             volume = (int)volumeslider.getValue();
@@ -244,7 +245,7 @@ public class PartyViewController implements IGUIController {
             System.out.println("Volume changed");
         }
     }
-
+*/
     public void skipSong(ActionEvent actionEvent) {
         try {
             if (playing) {

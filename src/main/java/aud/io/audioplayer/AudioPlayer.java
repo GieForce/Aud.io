@@ -53,8 +53,10 @@ public class AudioPlayer implements IPlayer {
 
     @Override
     public void changeVolume(int volumeamount) {
-        currentSong.changeVolume(volumeamount);
+        if (currentSong != null){
+            currentSong.changeVolume(volumeamount);
         }
+    }
 
     @Override
     public void play(Votable votable) {
@@ -164,6 +166,12 @@ public class AudioPlayer implements IPlayer {
             exit.set(true);
         }
 
-        public void changeVolume(int volume) { VLCPlayer.getMediaPlayer().setVolume(volume);}
+        public void changeVolume(int volume) {
+            if(VLCPlayer != null){
+                if (VLCPlayer.getMediaPlayer() != null){
+                    VLCPlayer.getMediaPlayer().setVolume(volume);
+                }
+            }
+        }
     }
 }
