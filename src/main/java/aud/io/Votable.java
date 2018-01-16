@@ -76,6 +76,10 @@ public abstract class Votable implements Serializable {
         return length;
     }
 
+    public String getLengthString() {
+        return intToTimeString((int)length);
+    }
+
     /**
      * Get Media
      *
@@ -149,6 +153,16 @@ public abstract class Votable implements Serializable {
             }
         }
         return dislikes;
+    }
+
+    private String intToTimeString(int timeInseconds){
+        int minutes = timeInseconds / 60;
+        int seconds = timeInseconds % 60;
+
+        if (seconds < 10){
+            return minutes + ":0" + seconds;
+        }
+        return minutes + ":" + seconds;
     }
 
     public String getVotesString() {
