@@ -77,8 +77,8 @@ public class ClientManagerTest {
     public void addMedia() throws Exception {
         manager.createParty("Addmedia");
         Track track = new Track(null,"Back In Black",578,"KIP","KiP");
-        manager.addMedia(manager.getAllVotables().get(1));
-        Assert.assertEquals(track.getName(), manager.getAllVotables().get(1).getName());
+        manager.addMedia(manager.getAllVotables().get(0));
+        Assert.assertEquals(track.getName(), manager.getAllVotables().get(0).getName());
 //        Assert.assertThat(manager.getAllVotables().get(1).getName(),hasItem(track.getName()));
     }
 
