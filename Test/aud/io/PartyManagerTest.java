@@ -31,7 +31,7 @@ public class PartyManagerTest {
         temporaryUser = new TemporaryUser("Dav");
         party = new Party(registeredUser,"PartyDav");
         manager.createParty(registeredUser, "PartyDav");
-        //manager.registeredUsers.add(registeredUser);
+//        manager.getRegisteredUsers().add(registeredUser);
         manager.createUser("rud.hscouten@email.com","RUDJ","Wachtwoord");
     }
 
@@ -93,13 +93,26 @@ public class PartyManagerTest {
     @Test
     public void vote() throws Exception {
         //nog niks om te testen
-        manager.vote(null, Vote.LIKE,registeredUser,party.getPartyKey());
+        Track track2 = new Track(null,"Joost",578,"HUP","HUP");
+        manager.addMedia(track2,manager.getActiveParties().get(0).getPartyKey(),temporaryUser);
+        manager.vote(manager.getActiveParties().get(0).getPlaylist().get(0), Vote.LIKE,registeredUser,party.getPartyKey());
+        assertEquals(1,manager.getActiveParties().get(0).getPlaylist().get(0).getVoteScore());
     }
 
     @Test
     public void mediaIsPlayed() throws Exception {
         //current implementation is a hack apparently
         assertFalse(manager.mediaIsPlayed(new Track(null,"Track1",5,"Ruud","Rudj"),party.getPartyKey(),registeredUser));
+    }
+
+    @Test
+    public void removeVotable() throws RemoteException {
+        Track track1 = new Track(null,"Kygo",500,"HUP","HUP");
+        Track track2 = new Track(null,"Joost",578,"HUP","HUP");
+        manager.addMedia(track1,manager.getActiveParties().get(0).getPartyKey(),temporaryUser);
+        manager.addMedia(track2,manager.getActiveParties().get(0).getPartyKey(),temporaryUser);
+        manager.removeVotable(registeredUser,manager.getActiveParties().get(0).getPartyKey(),track1);
+        assertThat(manager.getActiveParties().get(0).getPlaylist(), not(hasItem(track1)));
     }
 
     @Test
@@ -119,7 +132,7 @@ public class PartyManagerTest {
     public void getters() throws RemoteException {
     assertNotNull(manager.getDatabase());
     assertNotNull(manager.getAllVotables());
-    assertNotNull(manager.getRegisteredUsers());
+//    assertNotNull(manager.getRegisteredUsers());
     assertNotNull(manager.searchVotablesWithSearchTerm("B"));
     }
 
