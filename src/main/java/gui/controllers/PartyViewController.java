@@ -7,16 +7,17 @@ import aud.io.rmi.ClientManager;
 import gui.ButtonClass;
 import gui.views.JoinPartyView;
 import gui.views.LoginView;
+import gui.views.SettingsView;
 import gui.views.SongListView;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
@@ -38,6 +39,8 @@ import java.util.logging.Level;
 
 public class PartyViewController implements IGUIController {
     @FXML
+    private Button btnSettings;
+    @FXML
     private Button playButton;
     @FXML
     private VBox songContainer;
@@ -47,11 +50,14 @@ public class PartyViewController implements IGUIController {
     private TextField tbMessage;
     @FXML
     private Label lbPartyName;
+    @FXML
+    private Slider volumeslider;
 
     private String name;
     private Stage stage;
     private String key;
     private User user;
+    private int volume;
 
     private boolean playing;
     private boolean paused;
@@ -67,7 +73,16 @@ public class PartyViewController implements IGUIController {
         manager.setGuiController(this);
         user = manager.getUser();
         key = manager.getParty().getPartyKey();
-
+        volumeslider.setMin(1);
+        volumeslider.setMax(100);
+        volumeslider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                volume = newValue.intValue();
+                manager.changeVolume(volume);
+                System.out.println("Volume changed!" + volume);
+            }
+        });
         setupParty();
 
         //try {
@@ -79,6 +94,8 @@ public class PartyViewController implements IGUIController {
         //    logger.log(Level.SEVERE, e.toString());
         //}
     }
+
+
 
     private void setupParty() {
         Platform.runLater(new Runnable() {
@@ -217,6 +234,14 @@ public class PartyViewController implements IGUIController {
             manager.stop();
             System.out.println("Stopped playing");
             setPaused();
+        }
+    }
+
+    private void changeVolume(DragEvent actionEvent) {
+        if (playing) {
+            volume = (int)volumeslider.getValue();
+            manager.changeVolume(volume);
+            System.out.println("Volume changed");
         }
     }
 
@@ -396,6 +421,12 @@ public class PartyViewController implements IGUIController {
         } catch (IOException e) {
             logger.log(Level.SEVERE, e.toString());
         }
+    }
+
+    public void openSettings(ActionEvent actionEvent) throws IOException {
+        SettingsView settingsView = new SettingsView();
+        Stage s = new Stage();
+        settingsView.start(s);
     }
 }
 
