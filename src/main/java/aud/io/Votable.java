@@ -37,7 +37,7 @@ public abstract class Votable implements Serializable {
      * @param name
      * @param length
      */
-
+/*
     @MongoObjectId
     private String _id;
 
@@ -49,7 +49,7 @@ public abstract class Votable implements Serializable {
         this._id = _id;
         voters = new HashMap<>();
     }
-
+*/
 
     public Votable(IMedia media, String name, float length) {
         this.media = media;
