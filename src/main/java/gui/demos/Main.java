@@ -1,4 +1,4 @@
-package aud.io;
+package gui.demos;
 
 import aud.io.drive.DriveManager;
 import aud.io.files.FileManager;
