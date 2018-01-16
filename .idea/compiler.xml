@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Aud.io" />
+        <module name="Audio" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Aud.io" target="1.8" />
+      <module name="Audio" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

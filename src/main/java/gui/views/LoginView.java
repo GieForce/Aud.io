@@ -1,6 +1,5 @@
 package gui.views;
 
-import aud.io.User;
 import gui.controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

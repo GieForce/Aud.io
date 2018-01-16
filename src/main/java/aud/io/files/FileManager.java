@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.logging.ConsoleHandler;
@@ -67,15 +68,14 @@ public class FileManager {
             String fileName = null;
             for (int i =0; i < music.length(); i++)
             {
-                //Todo: aanpassen naar de goede waarden + korter maken (Is dit mogelijk?)
                 String locatie = music.getJSONObject(i).getString("acrid");
                 String title = music.getJSONObject(i).getString("title");
-                String album = music.getJSONObject(i).getString("title");
-                String artist = music.getJSONObject(i).getString("acrid");
-                float length = 0f;
+                String album = music.getJSONObject(i).getJSONObject("album").getString("name");
+                String artist = music.getJSONObject(i).getJSONArray("artists").getJSONObject(0).getString("name");
+                float length =  music.getJSONObject(i).getInt("duration_ms") / 1000;
                 //ACR Cloud bevat al een uniek ID dit is handig om op te slaan in de database
                 fileName = music.getJSONObject(i).getString("acrid");
-                track = new Track(new StreamMedia(locatie), title, length, artist, album);
+                track = new Track(new StreamMedia(locatie), title, Math.round(length), artist, album);
                 System.out.println(track.getArtist());
             }
 
