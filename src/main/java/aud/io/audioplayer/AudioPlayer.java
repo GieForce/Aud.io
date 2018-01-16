@@ -38,17 +38,23 @@ public class AudioPlayer implements IPlayer {
 
     @Override
     public void play() {
-        currentSong.play();
+        if (currentSong != null){
+            currentSong.play();
+        }
     }
 
     @Override
     public void stop() {
-        currentSong.stop();
+        if (currentSong != null){
+            currentSong.stop();
+        }
     }
 
     @Override
     public void pause() {
-        currentSong.pause();
+        if (currentSong != null){
+            currentSong.pause();
+        }
     }
 
     @Override
