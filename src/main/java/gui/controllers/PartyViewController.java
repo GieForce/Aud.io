@@ -2,6 +2,7 @@ package gui.controllers;
 
 import aud.io.*;
 import aud.io.audioplayer.AudioPlayer;
+import aud.io.audioplayer.Track;
 import aud.io.log.Logger;
 import aud.io.rmi.ClientManager;
 import gui.ButtonClass;
@@ -309,7 +310,7 @@ public class PartyViewController implements IGUIController {
 //    }
 
     private void setHboxSong(Votable v) {
-        Font defFont = new Font(24);
+        Font defFont = new Font(20);
         HBox box = new HBox();
         box.setAlignment(Pos.CENTER_LEFT);
         box.setMinWidth(500);
@@ -336,7 +337,7 @@ public class PartyViewController implements IGUIController {
         VBox childVbox = new VBox();
         //Label
         Label lblSongName = new Label();
-        lblSongName.setText(v.getName());
+        lblSongName.setText(String.format ("%s - %s", ((Track)v).getArtist(), v.getName()));
         lblSongName.setTextFill(Paint.valueOf("#f5e9be"));
         lblSongName.setFont(defFont);
         //Votable label
@@ -394,7 +395,7 @@ public class PartyViewController implements IGUIController {
         //Label
         //TODO: Change this to album or artist
         Label lblSongLegth = new Label();
-        lblSongLegth.setText(String.valueOf(v.getLength()));
+        lblSongLegth.setText(v.getLengthString());
         lblSongLegth.setTextFill(Paint.valueOf("#f5e9be"));
         lblSongLegth.setFont(defFont);
         childVbox.getChildren().addAll(lblSongName, lblSongLegth);

@@ -1,6 +1,7 @@
 package gui.controllers;
 
 import aud.io.Vote;
+import aud.io.audioplayer.Track;
 import aud.io.log.Logger;
 import aud.io.rmi.ClientManager;
 import aud.io.Votable;
@@ -93,13 +94,13 @@ public class SongListController {
         VBox childVbox = new VBox();
         //Label
         Label lblSongName = new Label();
-        lblSongName.setText(v.getName());
+        lblSongName.setText(String.format ("%s - %s", ((Track)v).getArtist(), v.getName()));
         lblSongName.setTextFill(Paint.valueOf("#f5e9be"));
         lblSongName.setFont(defFont);
         //Label
         //TODO: Change this to album or artist
         Label lblSongLegth = new Label();
-        lblSongLegth.setText(String.valueOf(v.getLength()));
+        lblSongLegth.setText(v.getLengthString());
         lblSongLegth.setTextFill(Paint.valueOf("#f5e9be"));
         lblSongLegth.setFont(defFont);
         childVbox.getChildren().addAll(lblSongName, lblSongLegth);
