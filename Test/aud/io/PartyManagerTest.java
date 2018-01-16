@@ -92,17 +92,22 @@ public class PartyManagerTest {
 
     @Test
     public void vote() throws Exception {
-        //nog niks om te testen
+        TemporaryUser u2 = new TemporaryUser("user");
+        manager.getActiveParties().get(0).join(u2);
+        manager.getActiveParties().get(0).join(temporaryUser);
         Track track2 = new Track(null,"Joost",578,"HUP","HUP");
-        manager.addMedia(track2,manager.getActiveParties().get(0).getPartyKey(),temporaryUser);
-        manager.vote(manager.getActiveParties().get(0).getPlaylist().get(0), Vote.LIKE,registeredUser,party.getPartyKey());
+        manager.addMedia(manager.getAllVotables().get(0),manager.getActiveParties().get(0).getPartyKey(),temporaryUser);
+        manager.vote(manager.getActiveParties().get(0).getPlaylist().get(0), Vote.LIKE,registeredUser,manager.getActiveParties().get(0).getPartyKey());
         assertEquals(1,manager.getActiveParties().get(0).getPlaylist().get(0).getVoteScore());
+        manager.addMedia(track2,manager.getActiveParties().get(0).getPartyKey(),temporaryUser);
+        manager.vote(manager.getActiveParties().get(0).getPlaylist().get(1), Vote.DISLIKE,temporaryUser,manager.getActiveParties().get(0).getPartyKey());
+        manager.vote(manager.getActiveParties().get(0).getPlaylist().get(1), Vote.DISLIKE,registeredUser,manager.getActiveParties().get(0).getPartyKey());
+        assertThat(manager.getActiveParties().get(0).getPlaylist(), not(hasItem(track2)));
     }
 
     @Test
     public void mediaIsPlayed() throws Exception {
-        //current implementation is a hack apparently
-        assertFalse(manager.mediaIsPlayed(new Track(null,"Track1",5,"Ruud","Rudj"),party.getPartyKey(),registeredUser));
+        assertFalse(manager.mediaIsPlayed(new Track(null,"Track1",5,"Ruud","Rudj"),manager.getActiveParties().get(0).getPartyKey(),registeredUser));
     }
 
     @Test

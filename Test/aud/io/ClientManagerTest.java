@@ -181,6 +181,12 @@ public class ClientManagerTest {
 
     }
     @Test
+    public void lengthVotable() throws RemoteException{
+        manager.createParty("Test");
+        Assert.assertEquals("4:16",manager.getAllVotables().get(0).getLengthString());
+    }
+
+    @Test
     public void TestNotLoggedIn() throws RemoteException {
         //TODO ERROR MESSAGING is niet helemaal goed
         manager.logout();
