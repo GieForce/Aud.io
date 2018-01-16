@@ -144,8 +144,8 @@ public class ClientManagerTest {
     @Test
     public void removeVotable() throws RemoteException {
         manager.createParty("Gt");
+        manager.addMedia(manager.getAllVotables().get(0));
         manager.addMedia(manager.getAllVotables().get(1));
-        manager.addMedia(manager.getAllVotables().get(2));
         manager.removeVotable(manager.getPartyVotables().get(0));
         Assert.assertEquals(1,manager.getParty().getPlaylist().size());
     }
@@ -199,16 +199,16 @@ public class ClientManagerTest {
         manager.createParty("Test2");
         settings = new Settings();
         settings.blockSong("Westenwind");
-        settings.blockArtist("Stef Ekkel");
+        settings.blockArtist("AC");
         Assert.assertNotNull(settings.getBlockedArtists());
         Assert.assertNotNull(settings.getBlockedSongs());
         Assert.assertTrue(settings.isBlocked(manager.getAllVotables().get(1)));
-        Assert.assertTrue(settings.isBlocked(manager.getAllVotables().get(10)));
-        settings.unblockArtist("Stef Ekkel");
+        Assert.assertTrue(settings.isBlocked(manager.getAllVotables().get(0)));
+        settings.unblockArtist("AC");
         settings.unblockSong("Westenwind");
         Assert.assertFalse(settings.isBlocked(manager.getAllVotables().get(0)));
         Assert.assertFalse(settings.isBlocked(manager.getAllVotables().get(1)));
-        Assert.assertFalse(settings.isBlocked(manager.getAllVotables().get(10)));
+//        Assert.assertFalse(settings.isBlocked(manager.getAllVotables().get(5)));
     }
 
     static class MockRMIClient {
