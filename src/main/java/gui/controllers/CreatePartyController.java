@@ -40,6 +40,6 @@ public class CreatePartyController {
             PartyView partyView = new PartyView();
             partyView.start(stage, p.getName(), p.getPartyKey(), user);
         }
-        Message.Show("Info", partyName);
+//        Message.Show("Info", partyName);
     }
 }
